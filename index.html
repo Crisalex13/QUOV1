@@ -165,23 +165,26 @@
   </section>
 
   <!-- ====== CATÁLOGO ====== -->
-  <section id="catalogo" class="py-20 px-6 bg-neutral-50">
-    <div class="mx-auto max-w-6xl">
-      <div class="flex items-center justify-between mb-8 reveal">
-        <h2 class="section-title">Catálogo completo</h2>
 
-        <div class="flex sm:hidden items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.35-4.35"/>
-          </svg>
-          <input id="searchInputMobile" type="text" placeholder="Buscar..." class="outline-none text-sm bg-transparent w-28" autocomplete="off" />
-        </div>
+  <!-- ====== CATÁLOGO ====== -->
+<section id="catalogo" class="py-20 px-6 bg-neutral-50">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-8 reveal">
+      <h2 class="section-title mb-4">Catálogo completo</h2>
+      <!-- Buscador móvil debajo del título -->
+      <div class="flex sm:hidden items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 w-full">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input id="searchInputMobile" type="text" placeholder="Buscar libro..." class="outline-none text-sm bg-transparent w-full" autocomplete="off" />
       </div>
-
-      <div id="catalogGrid" class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"></div>
     </div>
-  </section>
+    <div id="catalogGrid" class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"></div>
+  </div>
+</section>
+
+
 
   <!-- ====== FOOTER ====== -->
   <footer class="bg-neutral-900 text-neutral-400 px-6 py-16">

@@ -1,4 +1,6 @@
-    // 1 .- Modo Día/Noche
+/* ============================================ 
+ 1. Modo Día/Noche 
+============================================ */ 
     const darkModeToggle = document.getElementById('darkModeToggle');
     const sunIcon = darkModeToggle.querySelector('.sun-icon');
     const moonIcon = darkModeToggle.querySelector('.moon-icon');
@@ -24,7 +26,10 @@
       }
     });
 
-      // 2 .- ia modo videojuego cambio
+/* ============================================ 
+ 1. ia modo videojuego cambio
+============================================ */ 
+
     const chatFab = document.getElementById('chatFab');
     const chatHint = document.getElementById('chatHint');
     const chatOverlay = document.getElementById('chatOverlay');
@@ -33,7 +38,7 @@
     // Variable para controlar si el chat está abierto
     let isChatOpen = false;
 
-    // ===== FUNCIÓN PARA OCULTAR HINT (PERO NO PERMANENTEMENTE) =====
+    // ===== FUNCIÓN PARA OCULTAR HINT  =====
     function hideHint() {
       if (chatHint && !isChatOpen) {
         chatHint.style.opacity = '0';

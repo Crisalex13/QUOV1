@@ -1,6 +1,25 @@
-/* ============================================ */
-/* 1. RESET Y BASE
-/* ============================================ */
+/* ============================================ 
+TABLE OF CONTENTS
+============================================ 
+1. BASE
+2. VARIABLES Y MODO OSCURO
+3. COMPONENTES GLOBALES
+4. CURSOR PERSONALIZADO
+5. NAVBAR
+6. HERO SECTION
+7. STATS ROW
+8. BUSCADOR
+9. BOOK CARDS
+10. MODALES
+11. CHAT Y QUOV IA
+12. FOOTER
+13. ANIMACIONES
+14. RESPONSIVE (Desktop First)
+============================================ */
+
+/* ============================================ 
+1. BASE
+============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +28,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -16,12 +37,11 @@ body {
   font-family: 'Syne', sans-serif;
 }
 
-/* ============================================ */
-/* 2. MODO DÍA / NOCHE (DARK MODE)
-/* ============================================ */
-
-/* Variables del tema claro (por defecto) */
+/* ============================================ 
+2. VARIABLES Y MODO OSCURO
+============================================ */
 :root {
+  /* Colores claro */
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
   --bg-neutral-50: #fafafa;
@@ -39,8 +59,8 @@ body {
   --card-shadow-hover: rgba(0, 0, 0, 0.14);
 }
 
-/* Variables del tema oscuro */
 body.dark-mode {
+  /* Colores oscuro */
   --bg-primary: #1a1a1a;
   --bg-secondary: #2d2d2d;
   --bg-neutral-50: #222222;
@@ -57,7 +77,8 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
 }
-/* Estilos específicos para navbar en modo oscuro */
+
+/* Dark mode específico para navbar */
 body.dark-mode nav {
   background-color: #1a1a1a !important;
   border-bottom-color: #3d3d3d !important;
@@ -78,13 +99,10 @@ body.dark-mode .theme-toggle {
   color: #ffffff !important;
 }
 
-/* Aplicar fondo y texto */
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-/* Botón toggle día/noche */
+/* ============================================
+3. COMPONENTES GLOBALES
+============================================ */
+/* Botón tema día/noche */
 .theme-toggle {
   background: none;
   border: none;
@@ -102,8 +120,20 @@ body {
   background: var(--bg-neutral-100);
 }
 
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ============================================ */
-/* 3. CURSOR PERSONALIZADO
+/* 4. CURSOR PERSONALIZADO
 /* ============================================ */
 @media (hover: hover) and (pointer: fine) {
   *, body {
@@ -139,37 +169,15 @@ body {
   border: 1.5px solid rgba(0, 191, 255, 0.8);
 }
 
-body.cursor-blue #cursor-dot {
-  background: #00BFFF;
-}
-
-body.cursor-blue #cursor-ring {
-  border-color: rgba(0, 191, 255, 0.8);
-}
-
-body.cursor-white #cursor-dot {
-  background: #ffffff;
-}
-
-body.cursor-white #cursor-ring {
-  border-color: rgba(255, 255, 255, 0.95);
-}
-
-body.cursor-hover #cursor-dot {
-  width: 14px;
-  height: 14px;
-}
-
-body.cursor-hover #cursor-ring {
-  width: 52px;
-  height: 52px;
-}
+body.cursor-blue #cursor-dot { background: #00BFFF; }
+body.cursor-blue #cursor-ring { border-color: rgba(0, 191, 255, 0.8); }
+body.cursor-white #cursor-dot { background: #ffffff; }
+body.cursor-white #cursor-ring { border-color: rgba(255, 255, 255, 0.95); }
+body.cursor-hover #cursor-dot { width: 14px; height: 14px; }
+body.cursor-hover #cursor-ring { width: 52px; height: 52px; }
 
 @media (hover: none), (pointer: coarse) {
-  #cursor-dot,
-  #cursor-ring {
-    display: none !important;
-  }
+  #cursor-dot, #cursor-ring { display: none !important; }
 }
 
 /* ============================================ */
@@ -187,7 +195,6 @@ nav {
 
 .nav-link {
   display: flex;
-  flex-direction:row;
   font-family: 'Syne', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
@@ -200,7 +207,6 @@ nav {
 .nav-link:hover {
   opacity: 0.45;
 }
-
 
 /* ============================================ */
 /* 6. HERO SECTION
@@ -218,39 +224,33 @@ nav {
 }
 
 @keyframes pan {
-  0% {
-    background-position: 20% 30%;
-  }
-  100% {
-    background-position: 80% 30%;
-  }
+  0% { background-position: 20% 30%; }
+  100% { background-position: 80% 30%; }
 }
 
-/* Círculos decorativos */
-.hero-section::before {
+.hero-section::before,
+.hero-section::after {
   content: '';
   position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-section::before {
   top: -60px;
   right: -80px;
   width: 420px;
   height: 420px;
-  border-radius: 50%;
   background: rgba(255,255,255,0.08);
-  pointer-events: none;
-  z-index: 1;
 }
 
 .hero-section::after {
-  content: '';
-  position: absolute;
   bottom: -100px;
   left: 30%;
   width: 300px;
   height: 300px;
-  border-radius: 50%;
   background: rgba(255,255,255,0.05);
-  pointer-events: none;
-  z-index: 1;
 }
 
 .hero-section > div {
@@ -258,32 +258,17 @@ nav {
   z-index: 2;
 }
 
-@media (max-width: 639px) {
-  .hero-section {
-    padding: 40px 20px 48px;
-  }
-}
-
-/* Hero Logo */
 .hero-logo {
   height: 100px;
   width: auto;
   filter: brightness(0) invert(1);
 }
 
-/* Hero Title */
 .hero-title {
   font-size: clamp(3rem, 7vw, 5rem);
   line-height: 1.05;
 }
 
-@media (max-width: 639px) {
-  .hero-title {
-    font-size: 2.8rem !important;
-  }
-}
-
-/* Hero Subtitle */
 .hero-subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -294,12 +279,9 @@ nav {
 }
 
 @media (min-width: 640px) {
-  .hero-subtitle {
-    font-size: 1.125rem;
-  }
+  .hero-subtitle { font-size: 1.125rem; }
 }
 
-/* Hero Buttons Container */
 .hero-buttons {
   display: flex;
   gap: 12px;
@@ -307,18 +289,20 @@ nav {
   margin-bottom: 32px;
 }
 
-/* Hero Button Primary */
+.hero-btn-primary,
+.hero-btn-secondary {
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
 .hero-btn-primary {
   background: white;
   color: black;
-  border-radius: 14px;
-  padding: 14px 28px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
@@ -328,27 +312,9 @@ nav {
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
 
-body.dark-mode .hero-btn-primary {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-}
-
-body.dark-mode .hero-btn-primary:hover {
-  background: #e0e0e0;
-}
-
-/* Hero Button Secondary */
 .hero-btn-secondary {
   background: rgba(0,0,0,0.85);
   color: white;
-  border-radius: 14px;
-  padding: 14px 28px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: transform 0.15s, background 0.15s;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
 }
 
 .hero-btn-secondary:hover {
@@ -356,13 +322,18 @@ body.dark-mode .hero-btn-primary:hover {
   background: #000;
 }
 
+/* Dark mode hero buttons */
+body.dark-mode .hero-btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
 body.dark-mode .hero-btn-secondary {
   background: rgba(255,255,255,0.2);
 }
 
-body.dark-mode .hero-btn-secondary:hover {
-  background: rgba(255,255,255,0.3);
-}
+body.dark-mode .hero-btn-primary:hover { background: #e0e0e0; }
+body.dark-mode .hero-btn-secondary:hover { background: rgba(255,255,255,0.3); }
 
 /* ============================================ */
 /* 7. STATS ROW
@@ -372,16 +343,6 @@ body.dark-mode .hero-btn-secondary:hover {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
-}
-
-@media (max-width: 640px) {
-  .stats-row {
-    gap: 20px;
-  }
-  
-  .hero-stat-number {
-    font-size: 22px;
-  }
 }
 
 .hero-stat {
@@ -416,7 +377,7 @@ body.dark-mode .hero-btn-secondary:hover {
 }
 
 /* ============================================ */
-/* 8. BUSCADOR PRO
+/* 8. BUSCADOR
 /* ============================================ */
 .search-bar-pro {
   max-width: 520px;
@@ -448,9 +409,7 @@ body.dark-mode .hero-btn-secondary:hover {
   color: #111;
 }
 
-.search-bar-pro input::placeholder {
-  color: #aaa;
-}
+.search-bar-pro input::placeholder { color: #aaa; }
 
 .search-bar-pro button {
   background: #2d2d2d;
@@ -465,28 +424,7 @@ body.dark-mode .hero-btn-secondary:hover {
   transition: opacity 0.15s;
 }
 
-.search-bar-pro button:hover {
-  opacity: 0.85;
-}
-
-@media (max-width: 639px) {
-  .search-bar-pro {
-    max-width: 100%;
-  }
-}
-
-body.dark-mode .search-bar-pro {
-  background: var(--bg-secondary);
-  border-color: var(--border-light);
-}
-
-body.dark-mode .search-bar-pro input {
-  color: var(--text-primary);
-}
-
-body.dark-mode .search-bar-pro input::placeholder {
-  color: var(--text-neutral-400);
-}
+.search-bar-pro button:hover { opacity: 0.85; }
 
 /* ============================================ */
 /* 9. BOOK CARDS
@@ -499,45 +437,39 @@ body.dark-mode .search-bar-pro input::placeholder {
   color: var(--text-primary);
 }
 
-@media (max-width: 640px) {
-  .section-title {
-    font-size: 1.5rem;
-  }
-}
+#destacados { background-color: var(--bg-primary); }
+#catalogo { background-color: var(--bg-neutral-50); }
 
-#destacados {
-  background-color: var(--bg-primary);
-}
-
-#catalogo {
-  background-color: var(--bg-neutral-50);
-}
-
-.book-card {
+/* Card base */
+.book-card,
+.featured-card {
   border-radius: 20px;
   border: 1px solid var(--border-light);
   background: var(--card-bg);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   box-shadow: 0 2px 8px var(--card-shadow);
 }
 
-.book-card:hover {
-  transform: scale(1.035) translateY(-3px);
+.book-card:hover,
+.featured-card:hover {
   box-shadow: 0 16px 40px var(--card-shadow-hover);
 }
 
-.book-card .card-img-wrap {
+.book-card:hover { transform: scale(1.035) translateY(-3px); }
+.featured-card:hover { transform: scale(1.04) translateY(-4px); }
+
+/* Card image */
+.book-card .card-img-wrap,
+.featured-card .card-img-wrap {
   width: 100%;
   aspect-ratio: 600/900;
   overflow: hidden;
   background: #f5f5f5;
 }
 
-.book-card .card-img-wrap img {
+.book-card .card-img-wrap img,
+.featured-card .card-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -545,10 +477,12 @@ body.dark-mode .search-bar-pro input::placeholder {
   transition: transform 0.35s ease;
 }
 
-.book-card:hover .card-img-wrap img {
+.book-card:hover .card-img-wrap img,
+.featured-card:hover .card-img-wrap img {
   transform: scale(1.04);
 }
 
+/* Card body */
 .book-card .card-body {
   padding: 14px;
   display: flex;
@@ -581,43 +515,7 @@ body.dark-mode .search-bar-pro input::placeholder {
   white-space: nowrap;
 }
 
-/* Featured Cards */
-.featured-card {
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--card-bg);
-  border: 1px solid var(--border-light);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease;
-  box-shadow: 0 2px 8px var(--card-shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-.featured-card:hover {
-  transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 20px 48px var(--card-shadow-hover);
-}
-
-.featured-card .card-img-wrap {
-  width: 100%;
-  aspect-ratio: 600/900;
-  overflow: hidden;
-  background: #f5f5f5;
-}
-
-.featured-card .card-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.featured-card:hover .card-img-wrap img {
-  transform: scale(1.04);
-}
-
+/* Featured card footer */
 .featured-card .card-footer {
   padding: 12px 14px;
   display: flex;
@@ -626,23 +524,10 @@ body.dark-mode .search-bar-pro input::placeholder {
   gap: 8px;
 }
 
-.featured-card .card-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
-  flex: 1;
-}
+.featured-card .card-title { font-size: 0.82rem; }
+.featured-card .card-price { font-size: 0.88rem; }
 
-.featured-card .card-price {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
+/* Dark mode card images */
 body.dark-mode .book-card .card-img-wrap,
 body.dark-mode .featured-card .card-img-wrap {
   background: #3d3d3d;
@@ -662,630 +547,87 @@ body.dark-mode .featured-card .card-img-wrap {
 }
 
 @keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.modal-card .border-neutral-100 {
-  border-color: var(--border-light);
-}
+.modal-card .border-neutral-100 { border-color: var(--border-light); }
 
-/* Botones de Modal */
-.buy-button {
-  width: 100%;
-  border-radius: 1.5rem;
-  background: black;
-  padding: 1rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
-  transition: opacity 0.15s, transform 0.15s;
-  font-family: 'Syne', sans-serif;
-}
-
-.buy-button:hover {
-  opacity: 0.75;
-}
-
-.secondary-button {
-  width: 100%;
-  border-radius: 1.5rem;
-  border: 1px solid var(--border-light);
-  background: var(--bg-secondary);
-  padding: 1rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: background 0.15s, transform 0.15s;
-  font-family: 'Syne', sans-serif;
-  color: var(--text-primary);
-}
-
-.secondary-button:hover {
-  background: var(--bg-neutral-100);
-}
-
+/* Modal buttons */
+.buy-button,
+.secondary-button,
 .notify-save-button {
   width: 100%;
   border-radius: 1.5rem;
-  background: black;
   padding: 1rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: white;
-  transition: opacity 0.2s;
   font-family: 'Syne', sans-serif;
+  transition: opacity 0.15s, transform 0.15s;
 }
 
-.notify-save-button:hover {
-  opacity: 0.85;
+.buy-button,
+.notify-save-button {
+  background: black;
+  color: white;
 }
 
+.buy-button:hover,
+.notify-save-button:hover { opacity: 0.75; }
+
+.secondary-button {
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.secondary-button:hover { background: var(--bg-neutral-100); }
+
 /* ============================================ */
-/* 11. CHAT
+/* 11. CHAT Y QUOV IA (ESTILO NEÓN CYBERPUNK)
 /* ============================================ */
-/* Chat FAB */
+/* Botón flotante principal */
 .chat-fab {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 50;
   border-radius: 9999px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  background: #e0e0e0;
-  width: 130px;
-  height: 130px;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   border: none;
   cursor: pointer;
-}
-
-.chat-fab:hover {
-  opacity: 0.9;
-  transform: scale(1.06);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.18) !important;
-}
-
-.chat-fab:active {
-  transform: scale(0.98);
-}
-
-.chat-fab-logo {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-}
-
-.chat-fab-text {
-  color: #00BFFF;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  font-family: 'Syne', sans-serif;
-}
-
-/* Chat Hint */
-.chat-hint {
-  position: fixed;
-  bottom: 9rem;
-  right: 1.5rem;
-  z-index: 50;
-  display: none;
-  max-width: 200px;
-  border-radius: 1rem;
-  border: 1px solid var(--border-light);
-  background: var(--bg-primary);
-  padding: 12px 16px;
-  font-size: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  font-family: 'Inter', sans-serif;
-  color: var(--text-primary);
-}
-
-@media (min-width: 640px) {
-  .chat-hint {
-    display: block;
-  }
-}
-
-/* Chat Send Button */
-.chat-send-button {
-  border-radius: 1rem;
-  background: black;
-  padding: 1rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
-  transition: opacity 0.2s;
-  font-family: 'Syne', sans-serif;
-  border: none;
-  cursor: pointer;
-}
-
-.chat-send-button:hover {
-  opacity: 0.85;
-}
-
-/* Chat Overlay */
-#chatOverlay,
-#productOverlay {
-  transition: opacity 0.25s ease;
-}
-
-#chatOverlay .modal-card,
-#productOverlay .modal-card {
-  transition: transform 0.38s cubic-bezier(.22, 1, .36, 1),
-              opacity 0.25s ease,
-              box-shadow 0.25s ease;
-}
-
-#chatOverlay.chat-side-mode .modal-card {
-  transform: translateX(-190px);
-}
-
-#productOverlay.side-docked {
-  z-index: 60;
-  background: transparent;
-  pointer-events: none;
-}
-
-#productOverlay.side-docked .modal-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: min(420px, calc(100vw - 32px));
-  max-width: 420px;
-  transform: translate(325px, -50%);
-  pointer-events: auto;
-  z-index: 61;
-  box-shadow: 0 32px 64px rgba(0,0,0,0.22);
-  animation: dockBookIn 0.35s cubic-bezier(.22, 1, .36, 1);
-}
-
-@keyframes dockBookIn {
-  from {
-    opacity: 0;
-    transform: translate(380px, -50%) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translate(325px, -50%) scale(1);
-  }
-}
-
-@media (max-width: 1199px) {
-  #chatOverlay.chat-side-mode .modal-card {
-    transform: none;
-  }
-
-  #productOverlay.side-docked {
-    z-index: 50;
-    background: rgb(0 0 0 / 0.5);
-    pointer-events: auto;
-  }
-
-  #productOverlay.side-docked .modal-card {
-    position: static;
-    width: 100%;
-    max-width: 28rem;
-    transform: none;
-    z-index: auto;
-    animation: none;
-  }
-}
-
-/* ============================================ */
-/* 12. FOOTER
-/* ============================================ */
-footer {
-  background-color: var(--bg-neutral-900);
-}
-
-.footer-logo {
-  height: 32px;
-  width: auto;
-  filter: brightness(0) invert(1);
-}
-
-.footer-text {
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-}
-
-/* ============================================ */
-/* 13. SCROLL REVEAL ANIMATION
-/* ============================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ============================================ */
-/* 14. RESPONSIVE EXTRA
-/* ============================================ */
-@media (max-width: 639px) {
-  .stats-row {
-    gap: 16px !important;
-  }
-
-  .hero-stat-number {
-    font-size: 1.2rem;
-  }
-}
-
-/* ============================================ */
-/* 15. VISTA MÓVIL EXTRA PEQUEÑO (330px - 850px)
-/* ============================================ */
-
-@media (max-width: 480px) {
-  
-  /* ----- NAVBAR ----- */
-  nav .mx-auto {
-    padding: 0 8px;
-  }
-  
-  nav .flex.items-center.gap-6 {
-    gap: 12px;
-  }
-  
-  .logo-nav {
-    height: 28px;
-  }
-  
-  nav .font-display.font-bold.text-xl {
-    font-size: 1rem;
-  }
-  
-  /* Esconder texto "QUOV" en móvil muy pequeño (opcional) */
-  nav .font-display.font-bold.text-xl span {
-    display: none;
-  }
-  
-  /* ----- HERO SECTION ----- */
-  .hero-section {
-    padding: 30px 16px 40px !important;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem !important;
-    line-height: 1.1;
-  }
-  
-  .hero-logo {
-    height: 50px !important;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.85rem !important;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-subtitle br {
-    display: none;
-  }
-  
-  /* Botones hero */
-  .hero-buttons {
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  
-  .hero-btn-primary,
-  .hero-btn-secondary {
-    padding: 10px 18px;
-    font-size: 0.8rem;
-  }
-  
-  /* Stats row */
-  .stats-row {
-    gap: 12px !important;
-    justify-content: space-between;
-  }
-  
-  .hero-stat-number {
-    font-size: 1rem !important;
-  }
-  
-  .hero-stat-label {
-    font-size: 0.55rem;
-    letter-spacing: 0.02em;
-  }
-  
-  .stat-divider {
-    height: 25px;
-  }
-  
-  /* Buscador */
-  .search-bar-pro {
-    max-width: 100%;
-    padding: 6px 6px 6px 12px;
-    gap: 6px;
-  }
-  
-  .search-bar-pro input {
-    font-size: 0.8rem;
-    padding: 8px 0;
-  }
-  
-  .search-bar-pro button {
-    padding: 6px 14px;
-    font-size: 0.75rem;
-  }
-  
-  .search-bar-pro svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  /* ----- SECCIONES ----- */
-  .section-title {
-    font-size: 1.3rem !important;
-  }
-  
-  #destacados,
-  #catalogo {
-    padding: 30px 16px !important;
-  }
-  
-  /* Grid de tarjetas - 2 columnas en móvil */
-  .grid {
-    gap: 12px !important;
-  }
-  
-  /* Tarjetas más pequeñas */
-  .book-card .card-body {
-    padding: 10px;
-  }
-  
-  .card-title {
-    font-size: 0.7rem;
-  }
-  
-  .card-price {
-    font-size: 0.75rem;
-  }
-  
-  .featured-card .card-footer {
-    padding: 8px 10px;
-  }
-  
-  .featured-card .card-title {
-    font-size: 0.7rem;
-  }
-  
-  .featured-card .card-price {
-    font-size: 0.75rem;
-  }
-  
-  .book-card .card-body .text-neutral-500 {
-    font-size: 0.65rem;
-  }
-  
-  /* ----- MODALES ----- */
-  .modal-card {
-    border-radius: 20px;
-  }
-  
-  .modal-card .p-6 {
-    padding: 16px;
-  }
-  
-  #productTitle {
-    font-size: 0.9rem;
-  }
-  
-  .buy-button,
-  .secondary-button {
-    padding: 12px 16px;
-    font-size: 0.75rem;
-  }
-  
-  /* ----- CHAT ----- */
-  .chat-fab {
-    width: 80px;
-    height: 80px;
-    bottom: 1rem;
-    right: 1rem;
-  }
-  
-  .chat-fab-logo {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .chat-fab-text {
-    font-size: 7px;
-  }
-  
-  .chat-hint {
-    display: none !important;
-  }
-  
-  /* ----- FOOTER ----- */
-  footer {
-    padding: 30px 16px !important;
-  }
-  
-  footer .mx-auto {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-  
-  .footer-text {
-    font-size: 0.65rem;
-  }
-  
-  /* ----- CURSOR ----- */
-  #cursor-dot,
-  #cursor-ring {
-    display: none !important;
-  }
-  
-  * {
-    cursor: auto !important;
-  }
-}
-
-/* ============================================ */
-/* 16. MÓVIL MEDIANO (481px - 640px)
-/* ============================================ */
-
-@media (min-width: 481px) and (max-width: 640px) {
-  
-  .hero-title {
-    font-size: 2.5rem !important;
-  }
-  
-  .hero-logo {
-    height: 65px !important;
-  }
-  
-  .hero-stat-number {
-    font-size: 1.2rem !important;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .chat-fab {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .chat-fab-logo {
-    width: 55px;
-    height: 55px;
-  }
-}
-
-/* ============================================ */
-/* 17. AJUSTE PARA PANTALLAS MUY PEQUEÑAS (330px específico)
-/* ============================================ */
-
-@media (max-width: 360px) {
-  
-  /* Hero aún más compacto */
-  .hero-section {
-    padding: 20px 12px 30px !important;
-  }
-  
-  .hero-title {
-    font-size: 1.8rem !important;
-  }
-  
-  .hero-logo {
-    height: 40px !important;
-  }
-  
-  .hero-btn-primary,
-  .hero-btn-secondary {
-    padding: 8px 14px;
-    font-size: 0.7rem;
-  }
-  
-  /* Stats más compactos */
-  .stats-row {
-    gap: 8px !important;
-  }
-  
-  .hero-stat-number {
-    font-size: 0.85rem !important;
-  }
-  
-  .hero-stat-label {
-    font-size: 0.5rem;
-  }
-  
-  /* Tarjetas */
-  .grid {
-    gap: 8px !important;
-  }
-  
-  .card-title {
-    font-size: 0.65rem;
-  }
-  
-  .card-price {
-    font-size: 0.7rem;
-  }
-  
-  .featured-card .card-title {
-    font-size: 0.65rem;
-  }
-  
-  /* Botones */
-  .buy-button,
-  .secondary-button {
-    padding: 10px 12px;
-    font-size: 0.7rem;
-  }
-  
-  /* Chat FAB aún más pequeño */
-  .chat-fab {
-    width: 65px;
-    height: 65px;
-  }
-  
-  .chat-fab-logo {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .chat-fab-text {
-    font-size: 6px;
-  }
-}
-/* ============================================ */
-/* 18. ANIMACIONES QUOV IA - ESTILO VIDEOJUEGO */
-/* ============================================ */
-/* ============================================ */
-/* QUOV IA - ESTILO NEÓN / CYBERPUNK (Uiverse) */
-/* ============================================ */
-
-/* 1. Botón flotante principal */
-.chat-fab {
-  background: #0a0a0a !important; /* Fondo oscuro característico */
+  background: #0a0a0a !important;
   width: 85px !important;
   height: 85px !important;
-  border: 2px solid #00ffff !important; /* Borde cyan neón */
+  border: 2px solid #00ffff !important;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), inset 0 0 5px rgba(0, 255, 255, 0.3) !important;
   animation: floatNeon 3s ease-in-out infinite, pulseGlow 2s infinite alternate !important;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
-/* Flotación con efecto neón */
+/* Animaciones del chat */
 @keyframes floatNeon {
   0% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
   50% { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
   100% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
 }
 
-/* Pulso del brillo */
 @keyframes pulseGlow {
   0% { border-color: #00ffff; }
-  100% { border-color: #ff00ff; } /* Cambia a magenta para efecto cyberpunk */
+  100% { border-color: #ff00ff; }
 }
 
-/* Anillos exteriores (también neón) */
+@keyframes ringPulse {
+  0% { opacity: 0.7; transform: scale(0.9); }
+  70% { opacity: 0.2; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Anillos exteriores */
 .chat-fab::before,
 .chat-fab::after {
   content: '';
@@ -1294,35 +636,37 @@ footer {
   pointer-events: none;
   animation: ringPulse 2s ease-out infinite;
 }
+
 .chat-fab::before {
   top: -8px; left: -8px; right: -8px; bottom: -8px;
   border: 1px solid rgba(0, 255, 255, 0.6);
   box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
 }
+
 .chat-fab::after {
   top: -16px; left: -16px; right: -16px; bottom: -16px;
   border: 1px solid rgba(255, 0, 255, 0.4);
   box-shadow: 0 0 18px rgba(255, 0, 255, 0.3);
   animation-delay: 0.5s;
 }
-@keyframes ringPulse {
-  0% { opacity: 0.7; transform: scale(0.9); }
-  70% { opacity: 0.2; transform: scale(1.1); }
-  100% { opacity: 0; transform: scale(1.2); }
-}
 
-/* Logo y texto dentro del botón */
+/* Logo y texto del chat */
 .chat-fab-logo {
-  width: 45px !important; height: 45px !important;
+  width: 45px !important;
+  height: 45px !important;
   filter: drop-shadow(0 0 5px #00ffff);
 }
+
 .chat-fab-text {
   color: #00ffff !important;
   text-shadow: 0 0 5px #00ffff;
   font-size: 10px !important;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  font-family: 'Syne', sans-serif;
 }
 
-/* 2. Mensaje flotante (chat-hint) con estilo neón oscuro */
+/* Chat hint (mensaje flotante) */
 .chat-hint {
   position: fixed;
   bottom: 7rem;
@@ -1339,16 +683,13 @@ footer {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   backdrop-filter: blur(8px);
-  
-  /* Estados de animación */
   opacity: 0;
   visibility: hidden;
   transform: translateY(15px) scale(0.95);
   transition: all 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
-  pointer-events: none; /* Para que no interfiera con el hover */
+  pointer-events: none;
 }
 
-/* Estado visible: aparece suavemente */
 .chat-fab:hover + .chat-hint,
 .chat-hint:hover {
   opacity: 1;
@@ -1357,7 +698,6 @@ footer {
   pointer-events: auto;
 }
 
-/* Flecha del hint - también con transición */
 .chat-hint::after {
   content: '';
   position: absolute;
@@ -1371,20 +711,9 @@ footer {
   transition: border-color 0.3s ease;
 }
 
-/* Efecto de brillo al hacer hover sobre el hint */
 .chat-hint:hover {
   border-color: #ff00ff;
   box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
-}
-
-.chat-hint:hover::after {
-  border-top-color: #1a1a2e;
-}
-
-/* Animación de entrada tipo "wave" para el texto (opcional) */
-@keyframes textGlow {
-  0%, 100% { text-shadow: 0 0 2px #00ffff; }
-  50% { text-shadow: 0 0 8px #00ffff, 0 0 2px white; }
 }
 
 .chat-hint strong {
@@ -1392,9 +721,261 @@ footer {
   animation: textGlow 2s ease-in-out infinite;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .chat-hint {
-    display: none !important;
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 2px #00ffff; }
+  50% { text-shadow: 0 0 8px #00ffff, 0 0 2px white; }
+}
+
+/* Chat send button */
+.chat-send-button {
+  border-radius: 1rem;
+  background: black;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  transition: opacity 0.2s;
+  font-family: 'Syne', sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-send-button:hover { opacity: 0.85; }
+
+/* Chat overlay */
+#chatOverlay,
+#productOverlay { transition: opacity 0.25s ease; }
+
+#chatOverlay .modal-card,
+#productOverlay .modal-card {
+  transition: transform 0.38s cubic-bezier(.22, 1, .36, 1), opacity 0.25s ease, box-shadow 0.25s ease;
+}
+
+@keyframes dockBookIn {
+  from { opacity: 0; transform: translate(380px, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(325px, -50%) scale(1); }
+}
+
+#productOverlay.side-docked .modal-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(420px, calc(100vw - 32px));
+  max-width: 420px;
+  transform: translate(325px, -50%);
+  pointer-events: auto;
+  z-index: 61;
+  box-shadow: 0 32px 64px rgba(0,0,0,0.22);
+  animation: dockBookIn 0.35s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ============================================ */
+/* 12. FOOTER
+/* ============================================ */
+footer { background-color: var(--bg-neutral-900); }
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================ */
+/* 13. RESPONSIVE (Desktop First)
+/* ============================================ */
+
+/* Tablets pequeñas y móviles grandes (max 639px) */
+@media (max-width: 639px) {
+  .hero-section { padding: 40px 20px 48px; }
+  .hero-title { font-size: 2.8rem !important; }
+  .stats-row { gap: 16px !important; }
+  .hero-stat-number { font-size: 1.2rem; }
+  .search-bar-pro { max-width: 100%; }
+}
+
+/* Móviles (max 480px) */
+@media (max-width: 480px) {
+  /* Navbar compacto */
+  nav { padding: 8px 12px !important; }
+  
+  nav .mx-auto {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 0 8px;
+  }
+  
+  nav .flex.items-center[style*="gap: 3rem"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .logo-nav { height: 28px !important; }
+  nav .font-display.font-bold.text-xl { font-size: 0.9rem !important; }
+  
+  nav .flex.items-center[style*="gap: 2rem"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  
+  .nav-link {
+    font-size: 0.7rem !important;
+    padding: 4px 0 !important;
+    white-space: nowrap !important;
+  }
+  
+  nav .flex.items-center.gap-6 {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+  }
+  
+  .theme-toggle { padding: 4px !important; }
+  nav svg { width: 16px !important; height: 16px !important; }
+  
+  /* Hero */
+  .hero-section { padding: 30px 16px 40px !important; }
+  .hero-title { font-size: 2.2rem !important; line-height: 1.1; }
+  .hero-logo { height: 50px !important; }
+  .hero-subtitle { font-size: 0.85rem !important; margin-bottom: 1.5rem; }
+  .hero-subtitle br { display: none; }
+  
+  .hero-buttons { gap: 10px; margin-bottom: 24px; }
+  .hero-btn-primary,
+  .hero-btn-secondary { padding: 10px 18px; font-size: 0.8rem; }
+  
+  .stats-row { gap: 12px !important; justify-content: space-between; }
+  .hero-stat-number { font-size: 1rem !important; }
+  .hero-stat-label { font-size: 0.55rem; letter-spacing: 0.02em; }
+  .stat-divider { height: 25px; }
+  
+  .search-bar-pro { padding: 6px 6px 6px 12px; gap: 6px; }
+  .search-bar-pro input { font-size: 0.8rem; padding: 8px 0; }
+  .search-bar-pro button { padding: 6px 14px; font-size: 0.75rem; }
+  
+  /* Secciones */
+  .section-title { font-size: 1.3rem !important; }
+  #destacados, #catalogo { padding: 30px 16px !important; }
+  .grid { gap: 12px !important; }
+  
+  /* Tarjetas */
+  .book-card .card-body { padding: 10px; }
+  .card-title { font-size: 0.7rem; }
+  .card-price { font-size: 0.75rem; }
+  .featured-card .card-footer { padding: 8px 10px; }
+  .featured-card .card-title { font-size: 0.7rem; }
+  .featured-card .card-price { font-size: 0.75rem; }
+  
+  /* Modales */
+  .modal-card { border-radius: 20px; }
+  .modal-card .p-6 { padding: 16px; }
+  #productTitle { font-size: 0.9rem; }
+  .buy-button,
+  .secondary-button { padding: 12px 16px; font-size: 0.75rem; }
+  
+  /* Chat */
+  .chat-fab { width: 80px !important; height: 80px !important; bottom: 1rem; right: 1rem; }
+  .chat-fab-logo { width: 45px !important; height: 45px !important; }
+  .chat-fab-text { font-size: 7px !important; }
+  .chat-hint { display: none !important; }
+  
+  /* Footer */
+  footer { padding: 30px 16px !important; }
+  footer .mx-auto { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-text { font-size: 0.65rem; }
+  
+  /* Cursor */
+  #cursor-dot, #cursor-ring { display: none !important; }
+  * { cursor: auto !important; }
+}
+
+/* Móviles medianos (481px - 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+  .hero-title { font-size: 2.5rem !important; }
+  .hero-logo { height: 65px !important; }
+  .hero-stat-number { font-size: 1.2rem !important; }
+  .section-title { font-size: 1.5rem; }
+  .chat-fab { width: 100px !important; height: 100px !important; }
+  .chat-fab-logo { width: 55px !important; height: 55px !important; }
+}
+
+/* Pantallas muy pequeñas (max 360px) */
+@media (max-width: 360px) {
+  nav { padding: 6px 10px !important; }
+  nav .flex.items-center[style*="gap: 3rem"] { gap: 8px !important; }
+  nav .flex.items-center[style*="gap: 2rem"] { gap: 6px !important; }
+  .nav-link { font-size: 0.65rem !important; }
+  .logo-nav { height: 24px !important; }
+  nav .font-display.font-bold.text-xl { font-size: 0.8rem !important; }
+  
+  .hero-section { padding: 20px 12px 30px !important; }
+  .hero-title { font-size: 1.8rem !important; }
+  .hero-logo { height: 40px !important; }
+  .hero-btn-primary,
+  .hero-btn-secondary { padding: 8px 14px; font-size: 0.7rem; }
+  
+  .stats-row { gap: 8px !important; }
+  .hero-stat-number { font-size: 0.85rem !important; }
+  .hero-stat-label { font-size: 0.5rem; }
+  
+  .grid { gap: 8px !important; }
+  .card-title { font-size: 0.65rem; }
+  .card-price { font-size: 0.7rem; }
+  .featured-card .card-title { font-size: 0.65rem; }
+  
+  .buy-button,
+  .secondary-button { padding: 10px 12px; font-size: 0.7rem; }
+  
+  .chat-fab { width: 55px !important; height: 55px !important; }
+  .chat-fab-logo { width: 30px !important; height: 30px !important; }
+  .chat-fab-text { font-size: 6px !important; }
+}
+
+/* Pantallas de altura máxima 850px */
+@media (max-height: 850px) and (max-width: 360px) {
+  .hero-section { padding: 16px 16px 20px !important; }
+  .hero-title { font-size: 1.8rem !important; }
+  .stats-row { gap: 8px !important; }
+  .search-bar-pro { margin-bottom: 16px !important; }
+  .hero-buttons { margin-bottom: 16px !important; }
+}
+
+/* Pantallas exactas de 360px */
+@media (width: 360px) {
+  .nav-link { font-size: 0.65rem !important; }
+  .hero-stat-number { font-size: 0.85rem !important; }
+  .card-title { font-size: 0.6rem !important; }
+  .card-price { font-size: 0.65rem !important; }
+}
+
+/* Desktop pequeños (max 1199px) */
+@media (max-width: 1199px) {
+  #chatOverlay.chat-side-mode .modal-card { transform: none; }
+  #productOverlay.side-docked {
+    z-index: 50;
+    background: rgb(0 0 0 / 0.5);
+    pointer-events: auto;
+  }
+  #productOverlay.side-docked .modal-card {
+    position: static;
+    width: 100%;
+    max-width: 28rem;
+    transform: none;
+    z-index: auto;
+    animation: none;
   }
 }
