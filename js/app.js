@@ -1022,7 +1022,7 @@ chatMessages?.addEventListener("click", (e) => {
     `${window.location.pathname}${window.location.search}#book=${encodeURIComponent(id)}`
   );
 
-  openProductModal(item, { dockWithChat: true });
+  openProductModal(item, { dockWithChat: false });
 });
   window.addEventListener("load", () => {
     if (!chatHint) return;

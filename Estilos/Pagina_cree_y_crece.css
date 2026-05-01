@@ -639,7 +639,7 @@ body.dark-mode .featured-card .card-img-wrap {
 
 @keyframes ringPulse {
   0% { opacity: 0.7; transform: scale(0.9); }
-  70% { opacity: 0.2; transform: scale(1.1); }
+  70% { opacity: 0.9; transform: scale(1.1); }
   100% { opacity: 0; transform: scale(1.2); }
 }
 
@@ -771,8 +771,8 @@ body.dark-mode .featured-card .card-img-wrap {
 .chat-send-button:hover { opacity: 0.85; }
 
 /* Chat overlay */
-#chatOverlay,
-#productOverlay { transition: opacity 0.25s ease; }
+#chatOverlay { transition: opacity 0.25s ease; z-index: 60 !important; }
+#productOverlay { transition: opacity 0.25s ease; z-index: 65 !important; }
 
 #chatOverlay .modal-card,
 #productOverlay .modal-card {
@@ -1183,5 +1183,13 @@ footer { background-color: var(--bg-neutral-900); }
     transform: none;
     z-index: auto;
     animation: none;
+  }
+}
+/* Modal producto para escritorio de lado derecho */
+@media (min-width: 1200px) {
+  #productOverlay {
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
   }
 }
