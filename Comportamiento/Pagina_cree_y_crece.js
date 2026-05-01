@@ -27,131 +27,156 @@
     });
 
 /* ============================================ 
- 1. ia modo videojuego cambio
+ 2. Ia modo 
 ============================================ */ 
+    // ===== CHAT QUOV IA - VERSIÓN DEFINITIVA CORREGIDA =====
+const chatFab = document.getElementById('chatFab');
+const chatHint = document.getElementById('chatHint');
+const chatOverlay = document.getElementById('chatOverlay');
+const chatClose = document.getElementById('chatClose');
 
-    const chatFab = document.getElementById('chatFab');
-    const chatHint = document.getElementById('chatHint');
-    const chatOverlay = document.getElementById('chatOverlay');
-    const chatClose = document.getElementById('chatClose');
-    
-    // Variable para controlar si el chat está abierto
-    let isChatOpen = false;
+// Variable para controlar si el chat está abierto
+let isChatOpen = false;
 
-    // ===== FUNCIÓN PARA OCULTAR HINT  =====
-    function hideHint() {
-      if (chatHint && !isChatOpen) {
-        chatHint.style.opacity = '0';
-        chatHint.style.visibility = 'hidden';
-      }
+// ===== FUNCIÓN PARA OCULTAR HINT =====
+function hideHint() {
+  if (chatHint && !isChatOpen) {
+    chatHint.removeAttribute('style');
+    chatHint.style.opacity = '0';
+    chatHint.style.visibility = 'hidden';
+    chatHint.style.pointerEvents = 'none';
+  }
+}
+
+// ===== FUNCIÓN PARA MOSTRAR HINT =====
+function showHint() {
+  if (chatHint && !isChatOpen) {
+    chatHint.removeAttribute('style');
+    chatHint.style.opacity = '1';
+    chatHint.style.visibility = 'visible';
+    chatHint.style.pointerEvents = 'auto';
+    // Forzar animación
+    chatHint.style.transform = 'translateY(0) scale(1)';
+  }
+}
+
+// ===== FUNCIÓN PARA RESETEAR COMPLETAMENTE EL HINT =====
+function resetHintCompletely() {
+  if (chatHint) {
+    // Eliminar todos los estilos inline
+    chatHint.removeAttribute('style');
+    // Forzar que el CSS tome control
+    chatHint.style.display = '';
+    chatHint.style.opacity = '';
+    chatHint.style.visibility = '';
+  }
+}
+
+// ===== HOVER DEL BOTÓN =====
+chatFab.addEventListener('mouseenter', () => {
+  if (!isChatOpen) {
+    showHint();
+  }
+});
+
+chatFab.addEventListener('mouseleave', () => {
+  if (!isChatOpen) {
+    hideHint();
+  }
+});
+
+// ===== HOVER DEL HINT =====
+if (chatHint) {
+  chatHint.addEventListener('mouseenter', () => {
+    if (!isChatOpen) {
+      showHint();
     }
-
-    function showHint() {
-      if (chatHint && !isChatOpen) {
-        chatHint.style.opacity = '1';
-        chatHint.style.visibility = 'visible';
-      }
+  });
+  
+  chatHint.addEventListener('mouseleave', () => {
+    if (!isChatOpen) {
+      hideHint();
     }
+  });
+}
 
-    // ===== HOVER DEL BOTÓN =====
-    chatFab.addEventListener('mouseenter', () => {
-      if (!isChatOpen) {
-        showHint();
-      }
-    });
-
-    chatFab.addEventListener('mouseleave', () => {
-      if (!isChatOpen) {
-        hideHint();
-      }
-    });
-
-    // ===== HOVER DEL HINT (para que no desaparezca al mover el mouse) =====
+// ===== ABRIR CHAT =====
+chatFab.addEventListener('click', () => {
+  if (chatOverlay) {
+    isChatOpen = true;
+    // Ocultar hint
     if (chatHint) {
-      chatHint.addEventListener('mouseenter', () => {
-        if (!isChatOpen) {
+      chatHint.style.opacity = '0';
+      chatHint.style.visibility = 'hidden';
+    }
+    chatOverlay.classList.remove('hidden');
+    chatOverlay.classList.add('flex');
+  }
+});
+
+// ===== CERRAR CHAT - VERSIÓN MEJORADA =====
+function closeChat() {
+  if (chatOverlay) {
+    chatOverlay.classList.add('hidden');
+    chatOverlay.classList.remove('flex');
+    
+    // Pequeño retraso para asegurar que el DOM se actualice
+    setTimeout(() => {
+      isChatOpen = false;
+      // Resetear completamente el hint
+      resetHintCompletely();
+      // Verificar hover después de resetear
+      setTimeout(() => {
+        if (chatFab.matches(':hover') && !isChatOpen) {
           showHint();
         }
-      });
-      
-      chatHint.addEventListener('mouseleave', () => {
-        if (!isChatOpen) {
-          hideHint();
-        }
-      });
-    }
+      }, 50);
+    }, 150);
+  }
+}
 
-    // ===== ABRIR CHAT =====
-    chatFab.addEventListener('click', () => {
-      if (chatOverlay) {
-        isChatOpen = true;
-        // Ocultar hint completamente mientras el chat está abierto
-        if (chatHint) {
-          chatHint.style.opacity = '0';
-          chatHint.style.visibility = 'hidden';
-        }
-        chatOverlay.classList.remove('hidden');
-        chatOverlay.classList.add('flex');
-      }
-    });
+// Eventos de cierre
+if (chatClose) {
+  chatClose.addEventListener('click', closeChat);
+}
 
-    // ===== CERRAR CHAT =====
-    function closeChat() {
-      if (chatOverlay) {
-        isChatOpen = false;
-        chatOverlay.classList.add('hidden');
-        chatOverlay.classList.remove('flex');
-        // Restaurar hint solo si el mouse sigue sobre el botón
-        setTimeout(() => {
-          if (chatFab.matches(':hover') && !isChatOpen) {
-            showHint();
-          }
-        }, 100);
-      }
-    }
+chatOverlay.addEventListener('click', (e) => {
+  if (e.target === chatOverlay) {
+    closeChat();
+  }
+});
 
-    if (chatClose) {
-      chatClose.addEventListener('click', closeChat);
-    }
-
-    // Cerrar al hacer clic fuera del modal
-    chatOverlay.addEventListener('click', (e) => {
-      if (e.target === chatOverlay) {
-        closeChat();
-      }
-    });
-
-    // ===== FUNCIÓN DEL CHAT =====
-    function enviarMensaje() {
-      const input = document.getElementById('chatInput');
-      const message = input.value.trim();
-      if (!message) return;
-      
-      const chatMessages = document.getElementById('chatMessages');
-      
-      // Mensaje del usuario
-      const userMsg = document.createElement('div');
-      userMsg.className = 'max-w-[85%] rounded-2xl bg-black text-white px-4 py-2 ml-auto mb-2';
-      userMsg.textContent = message;
-      chatMessages.appendChild(userMsg);
-      
-      input.value = '';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      // Indicador de escritura
-      const typingIndicator = document.createElement('div');
-      typingIndicator.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
-      typingIndicator.innerHTML = '<span class="inline-block animate-pulse">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.2s">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.4s">●</span>';
-      chatMessages.appendChild(typingIndicator);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      // Respuesta de IA
-      setTimeout(() => {
-        typingIndicator.remove();
-        const botMsg = document.createElement('div');
-        botMsg.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
-        botMsg.innerHTML = `✨ ¡Hola! Para comprar "${message}", escríbenos por WhatsApp al <strong>55 6744 9830</strong>. ¿Necesitas algo más?`;
-        chatMessages.appendChild(botMsg);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }, 1200);
-    }
+// ===== FUNCIÓN DEL CHAT =====
+function enviarMensaje() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  if (!message) return;
+  
+  const chatMessages = document.getElementById('chatMessages');
+  
+  // Mensaje del usuario
+  const userMsg = document.createElement('div');
+  userMsg.className = 'max-w-[85%] rounded-2xl bg-black text-white px-4 py-2 ml-auto mb-2';
+  userMsg.textContent = message;
+  chatMessages.appendChild(userMsg);
+  
+  input.value = '';
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  
+  // Indicador de escritura
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
+  typingIndicator.innerHTML = '<span class="inline-block animate-pulse">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.2s">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.4s">●</span>';
+  chatMessages.appendChild(typingIndicator);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  
+  // Respuesta de IA
+  setTimeout(() => {
+    typingIndicator.remove();
+    const botMsg = document.createElement('div');
+    botMsg.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
+    botMsg.innerHTML = `✨ ¡Hola! Para comprar "${message}", escríbenos por WhatsApp al <strong>55 6744 9830</strong>. ¿Necesitas algo más?`;
+    chatMessages.appendChild(botMsg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1200);
+}
