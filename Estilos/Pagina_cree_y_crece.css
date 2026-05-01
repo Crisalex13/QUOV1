@@ -173,18 +173,6 @@ body.cursor-hover #cursor-ring {
 }
 
 /* ============================================ */
-/* 4. PARTÍCULAS 3D
-/* ============================================ */
-#particles-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-/* ============================================ */
 /* 5. NAVBAR
 /* ============================================ */
 .logo-nav {
@@ -198,6 +186,8 @@ nav {
 }
 
 .nav-link {
+  display: flex;
+  flex-direction:row;
   font-family: 'Syne', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
@@ -210,6 +200,7 @@ nav {
 .nav-link:hover {
   opacity: 0.45;
 }
+
 
 /* ============================================ */
 /* 6. HERO SECTION
@@ -1261,5 +1252,149 @@ footer {
   
   .chat-fab-text {
     font-size: 6px;
+  }
+}
+/* ============================================ */
+/* 18. ANIMACIONES QUOV IA - ESTILO VIDEOJUEGO */
+/* ============================================ */
+/* ============================================ */
+/* QUOV IA - ESTILO NEÓN / CYBERPUNK (Uiverse) */
+/* ============================================ */
+
+/* 1. Botón flotante principal */
+.chat-fab {
+  background: #0a0a0a !important; /* Fondo oscuro característico */
+  width: 85px !important;
+  height: 85px !important;
+  border: 2px solid #00ffff !important; /* Borde cyan neón */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), inset 0 0 5px rgba(0, 255, 255, 0.3) !important;
+  animation: floatNeon 3s ease-in-out infinite, pulseGlow 2s infinite alternate !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Flotación con efecto neón */
+@keyframes floatNeon {
+  0% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+  50% { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+  100% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+}
+
+/* Pulso del brillo */
+@keyframes pulseGlow {
+  0% { border-color: #00ffff; }
+  100% { border-color: #ff00ff; } /* Cambia a magenta para efecto cyberpunk */
+}
+
+/* Anillos exteriores (también neón) */
+.chat-fab::before,
+.chat-fab::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ringPulse 2s ease-out infinite;
+}
+.chat-fab::before {
+  top: -8px; left: -8px; right: -8px; bottom: -8px;
+  border: 1px solid rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+.chat-fab::after {
+  top: -16px; left: -16px; right: -16px; bottom: -16px;
+  border: 1px solid rgba(255, 0, 255, 0.4);
+  box-shadow: 0 0 18px rgba(255, 0, 255, 0.3);
+  animation-delay: 0.5s;
+}
+@keyframes ringPulse {
+  0% { opacity: 0.7; transform: scale(0.9); }
+  70% { opacity: 0.2; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Logo y texto dentro del botón */
+.chat-fab-logo {
+  width: 45px !important; height: 45px !important;
+  filter: drop-shadow(0 0 5px #00ffff);
+}
+.chat-fab-text {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px #00ffff;
+  font-size: 10px !important;
+}
+
+/* 2. Mensaje flotante (chat-hint) con estilo neón oscuro */
+.chat-hint {
+  position: fixed;
+  bottom: 7rem;
+  right: 1.8rem;
+  z-index: 99;
+  max-width: 240px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+  color: #00ffff;
+  border: 1px solid rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  
+  /* Estados de animación */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+  pointer-events: none; /* Para que no interfiera con el hover */
+}
+
+/* Estado visible: aparece suavemente */
+.chat-fab:hover + .chat-hint,
+.chat-hint:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Flecha del hint - también con transición */
+.chat-hint::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #1a1a2e;
+  transition: border-color 0.3s ease;
+}
+
+/* Efecto de brillo al hacer hover sobre el hint */
+.chat-hint:hover {
+  border-color: #ff00ff;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
+}
+
+.chat-hint:hover::after {
+  border-top-color: #1a1a2e;
+}
+
+/* Animación de entrada tipo "wave" para el texto (opcional) */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 2px #00ffff; }
+  50% { text-shadow: 0 0 8px #00ffff, 0 0 2px white; }
+}
+
+.chat-hint strong {
+  color: #ff00ff;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .chat-hint {
+    display: none !important;
   }
 }
