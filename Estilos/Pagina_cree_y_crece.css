@@ -282,7 +282,6 @@ nav .flex.items-center.gap-6 a:hover {
 .hero-section {
   position: relative;
   z-index: 1;
-  background: #00BFFF;
   background-image: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,191,255,0.4) 100%), url('../img/hero-bg.jpg');
   background-size: 130%;
   background-position: center 30%;
@@ -1031,11 +1030,10 @@ footer { background-color: var(--bg-neutral-900); }
 /* ============================================ 
 15. VIEW RESPONSIVE — TELÉFONOS CHICOS, MEDIANOS Y GRANDES
 ============================================ */
-
 /* ─────────────────────────────────────────────
-   XS — Teléfonos muy chicos: 360px hasta 481px
+   XS — Teléfonos muy chicos: 360px 
 ───────────────────────────────────────────── */
-@media (max-width: 360px) and (max-width: 481px){
+@media (min-width: 360px) {
   /* Navbar */
   nav { padding: 6px 10px !important; }
   nav .mx-auto {
