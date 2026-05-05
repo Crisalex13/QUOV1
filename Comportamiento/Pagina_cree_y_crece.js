@@ -29,7 +29,7 @@
 /* ============================================ 
  2. Ia modo 
 ============================================ */ 
-    // ===== CHAT QUOV IA - VERSIÓN DEFINITIVA CORREGIDA =====
+    // ===== CHAT QUOV IA =====
 const chatFab = document.getElementById('chatFab');
 const chatHint = document.getElementById('chatHint');
 const chatOverlay = document.getElementById('chatOverlay');
@@ -114,7 +114,7 @@ chatFab.addEventListener('click', () => {
   }
 });
 
-// ===== CERRAR CHAT - VERSIÓN MEJORADA =====
+// ===== CERRAR CHAT =====
 function closeChat() {
   if (chatOverlay) {
     chatOverlay.classList.add('hidden');
