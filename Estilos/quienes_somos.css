@@ -1,0 +1,332 @@
+/* ============================================
+   ESTILOS EXCLUSIVOS PARA QUIÉNES SOMOS
+   (NO incluir estilos de navbar, ya están en Pagina_cree_y_crece.css)
+============================================ */
+
+/* Asegurar que el container no interfiera con el navbar */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Page Title */
+.page-title-section {
+  background: linear-gradient(105deg, #f1f8fe 0%, #eaf4f1 100%);
+  padding: 70px 0 60px;
+  text-align: center;
+}
+
+.page-title-section h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #163a3f;
+  letter-spacing: -1px;
+  font-family: 'Syne', sans-serif;
+}
+
+.breadcrumb {
+  margin-top: 12px;
+  color: #3b6b62;
+}
+
+.breadcrumb a {
+  color: #26645b;
+  text-decoration: none;
+}
+
+/* About slider */
+.about-slider {
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.slider-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 16px;
+}
+
+.slider-card {
+  flex: 0 0 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1);
+}
+
+.slider-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.testimonial-quote {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fefcf5;
+  padding: 36px 32px;
+  border-radius: 48px;
+  text-align: center;
+  border: 1px solid #e9e4da;
+}
+
+.testimonial-quote p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #2c3b2f;
+}
+
+/* Awards wrapper */
+.awards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background: #1e2f36;
+  border-radius: 48px;
+  margin: 64px 0;
+  overflow: hidden;
+}
+
+.award-left {
+  background: #143139;
+  padding: 50px 42px;
+  flex: 1;
+  color: white;
+}
+
+.award-left h3 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: 'Syne', sans-serif;
+}
+
+.btn-badge {
+  background: #e9b35f;
+  padding: 12px 32px;
+  border-radius: 40px;
+  font-weight: bold;
+  color: #1e2f36;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.award-right {
+  flex: 1;
+  background: #1e3c3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.award-list {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px;
+  list-style: none;
+}
+
+.award-list li i {
+  font-size: 3rem;
+  color: #f7d44a;
+}
+
+.award-list li a {
+  display: block;
+  margin-top: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Success section */
+.success-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  margin: 70px 0;
+}
+
+.success-text {
+  flex: 1;
+}
+
+.success-text h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Syne', sans-serif;
+}
+
+.btn-more {
+  background: #2c7a6e;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 36px;
+  border: none;
+  margin-top: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.success-img {
+  flex: 1;
+}
+
+.success-img img {
+  width: 100%;
+  border-radius: 40px;
+}
+
+/* Counter section */
+.counter-section {
+  background: linear-gradient(95deg, #122e2e, #1c4646);
+  padding: 70px 0;
+  border-radius: 64px;
+  margin: 40px 0;
+  color: white;
+}
+
+.counter-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.counter-item {
+  flex: 1;
+}
+
+.counter-item .timer {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Team section */
+.team-section {
+  margin: 70px 0;
+  text-align: center;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.team-card {
+  background: white;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+  width: 240px;
+}
+
+.team-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.team-info {
+  padding: 20px;
+}
+
+.team-info h3 a {
+  text-decoration: none;
+  color: #1f4e5c;
+  font-family: 'Syne', sans-serif;
+}
+
+.team-icons a {
+  margin: 0 6px;
+  color: #2c7a6e;
+}
+
+/* Newsletter */
+.newsletter {
+  background: #f0f5f3;
+  border-radius: 60px;
+  padding: 45px 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.newsletter-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.newsletter-left i {
+  font-size: 3rem;
+  color: #2c5f6e;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 12px;
+}
+
+.newsletter-form input {
+  padding: 14px 22px;
+  border-radius: 60px;
+  border: none;
+  width: 260px;
+}
+
+.newsletter-form button {
+  background: #2c5f6e;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 60px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Back to top */
+.back2top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1f4e5c;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s;
+  z-index: 99;
+}
+
+.back2top.show {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .container { padding: 0 20px; }
+  .counter-grid { gap: 28px; }
+}
+
+@media (max-width: 720px) {
+  .counter-grid { flex-direction: column; gap: 40px; }
+  .newsletter { flex-direction: column; gap: 24px; text-align: center; }
+  .awards-wrapper { flex-direction: column; }
+  .award-left { text-align: center; }
+  .award-list { justify-content: center; }
+  .success-section { flex-direction: column; }
+  .page-title-section h1 { font-size: 2.2rem; }
+}

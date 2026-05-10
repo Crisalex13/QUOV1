@@ -55,10 +55,10 @@ body {
   --text-neutral-500: #737373;
   --text-neutral-400: #a3a3a3;
 
-  --border-light: #e5e5e5;
-  --card-bg: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.06);
-  --card-shadow-hover: rgba(0, 0, 0, 0.14);
+  --border-light: #d1d5db; 
+  --card-bg: #fefefe; 
+  --card-shadow: rgba(0, 0, 0, 0.1); 
+  --card-shadow-hover: rgba(0, 0, 0, 0.2);
 
   /* Chat día - colores suaves (verde azulado) */
   --chat-modal-bg: #ffffff;
@@ -133,6 +133,10 @@ body.dark-mode {
   --chat-scrollbar-track: #0f172a;
   --chat-scrollbar-thumb: #475569;
   --chat-scrollbar-thumb-hover: #64748b;
+
+  
+  --timeline-text: #ffffff;
+  --hito-text: #ffffff;
 }
 
 /* Dark mode específico para navbar */
