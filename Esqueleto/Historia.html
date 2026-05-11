@@ -8,7 +8,6 @@
   <!-- Tailwind CSS + Estilos QUOV -->
   <link rel="stylesheet" href="../dist/output.css" />
   <link rel="stylesheet" href="../Estilos/Pagina_cree_y_crece.css" />
-  <link rel="stylesheet" href="../Estilos/Historia.css" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +18,7 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../img/logo.png" />
+  <link rel="stylesheet" href="../Estilos/Historia.css" />
 </head>
 <body class="font-sans bg-white text-neutral-900">
 
@@ -83,7 +83,7 @@
   <!-- ====== HERO CON VIDEO ====== -->
   <div class="hero-video">
     <video autoplay muted loop playsinline>
-      <source src="https://cdn.coverr.co/videos/coverr-typing-on-a-laptop-1582011883206/1080p.mp4" type="video/mp4">
+      <source src="../video/mp4.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
     <div class="content">
@@ -97,7 +97,79 @@
     <div class="container">
       <div class="row">
         
-        <!-- COLUMNA IZQUIERDA - ARTÍCULOS -->
+        <!-- ✅ COLUMNA SIDEBAR (PRIMERO - LÍNEA DE TIEMPO ARRIBA) -->
+        <div class="col-xl-4">
+          <div class="sidebar-sticky">
+            
+            <!-- Widget LÍNEA DE TIEMPO -->
+            <div class="sidebar_widget">
+              <div class="widget_heading">
+                <h2>Línea de tiempo</h2>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2025</span>
+                <a href="#post-2025" class="timeline-link">El futuro de QUOV</a>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2024</span>
+                <a href="#post-2024" class="timeline-link">150 títulos verificados</a>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2023</span>
+                <a href="#post-2023" class="timeline-link">Lanzamiento tienda online</a>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2022</span>
+                <a href="#post-2022" class="timeline-link">Sistema de verificación</a>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2021</span>
+                <a href="#post-2021" class="timeline-link">50 libros y comunidad</a>
+              </div>
+              
+              <div class="timeline-item">
+                <span class="timeline-year">2020</span>
+                <a href="#post-2020" class="timeline-link">El nacimiento de QUOV</a>
+              </div>
+            </div>
+
+            <!-- Widget HITOS IMPORTANTES -->
+            <div class="sidebar_widget">
+              <div class="widget_heading">
+                <h2>Hitos importantes</h2>
+              </div>
+              
+              <div class="hito-item">
+                <i class="fas fa-trophy"></i>
+                <span><strong>+200</strong> títulos disponibles</span>
+              </div>
+              <div class="hito-item">
+                <i class="fas fa-users"></i>
+                <span><strong>+5,000</strong> lectores activos</span>
+              </div>
+              <div class="hito-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>100%</strong> libros verificados</span>
+              </div>
+              <div class="hito-item">
+                <i class="fas fa-truck"></i>
+                <span><strong>Envíos</strong> a toda CDMX</span>
+              </div>
+              <div class="hito-item">
+                <i class="fas fa-calendar-week"></i>
+                <span><strong>Eventos</strong> mensuales</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- COLUMNA ARTÍCULOS (SEGUNDO - APARECE DEBAJO) -->
         <div class="col-xl-8">
           
           <!-- Post 2025 -->
@@ -234,77 +306,6 @@
 
         </div>
 
-        <!-- COLUMNA DERECHA - SIDEBAR -->
-        <div class="col-xl-4">
-          <div class="sidebar-sticky">
-            
-            <!-- Widget LÍNEA DE TIEMPO -->
-            <div class="sidebar_widget">
-              <div class="widget_heading">
-                <h2>Línea de tiempo</h2>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2025</span>
-                <a href="#post-2025" class="timeline-link">El futuro de QUOV</a>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2024</span>
-                <a href="#post-2024" class="timeline-link">150 títulos verificados</a>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2023</span>
-                <a href="#post-2023" class="timeline-link">Lanzamiento tienda online</a>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2022</span>
-                <a href="#post-2022" class="timeline-link">Sistema de verificación</a>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2021</span>
-                <a href="#post-2021" class="timeline-link">50 libros y comunidad</a>
-              </div>
-              
-              <div class="timeline-item">
-                <span class="timeline-year">2020</span>
-                <a href="#post-2020" class="timeline-link">El nacimiento de QUOV</a>
-              </div>
-            </div>
-
-            <!-- Widget HITOS IMPORTANTES -->
-            <div class="sidebar_widget">
-              <div class="widget_heading">
-                <h2>Hitos importantes</h2>
-              </div>
-              
-              <div class="hito-item">
-                <i class="fas fa-trophy"></i>
-                <span><strong>+200</strong> títulos disponibles</span>
-              </div>
-              <div class="hito-item">
-                <i class="fas fa-users"></i>
-                <span><strong>+5,000</strong> lectores activos</span>
-              </div>
-              <div class="hito-item">
-                <i class="fas fa-check-circle"></i>
-                <span><strong>100%</strong> libros verificados</span>
-              </div>
-              <div class="hito-item">
-                <i class="fas fa-truck"></i>
-                <span><strong>Envíos</strong> a toda CDMX</span>
-              </div>
-              <div class="hito-item">
-                <i class="fas fa-calendar-week"></i>
-                <span><strong>Eventos</strong> mensuales</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -356,7 +357,7 @@
     <i class="fas fa-arrow-up"></i>
   </div>
 
-    <!-- ✅ Scripts con rutas consistentes -->
+  <!-- Scripts -->
   <script src="../Comportamiento/Pagina_cree_y_crece.js"></script>
   <script src="../Comportamiento/Historia.js"></script>
 </body>

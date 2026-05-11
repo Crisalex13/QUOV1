@@ -1,22 +1,43 @@
-/* ============================================
-   ESTILOS EXCLUSIVOS PARA QUIÉNES SOMOS
-   (NO incluir estilos de navbar, ya están en Pagina_cree_y_crece.css)
+/* ============================================ 
+TABLA DE CONTENIDO - QUIÉNES SOMOS
+============================================ 
+1. BASE Y CONTENEDORES
+2. PAGE TITLE
+3. IMAGE ACCORDION (CORREGIDO)
+4. TESTIMONIAL QUOTE
+5. AWARDS SECTION
+6. SUCCESS SECTION
+7. COUNTER SECTION
+8. TEAM SECTION
+9. COMMENT SECTION
+10. BACK TO TOP
+11. VIEW RESPONSIVE (TODOS LOS BREAKPOINTS)
+12. MODO OSCURO
+13. MEJORAS ADICIONALES
 ============================================ */
 
-/* Asegurar que el container no interfiera con el navbar */
+/* ========== 1. BASE Y CONTENEDORES ========== */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
 }
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  position: relative !important;
+}
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
-/* Page Title */
+/* ========== 2. PAGE TITLE ========== */
 .page-title-section {
   background: linear-gradient(105deg, #f1f8fe 0%, #eaf4f1 100%);
   padding: 70px 0 60px;
   text-align: center;
 }
-
 .page-title-section h1 {
   font-size: 3.2rem;
   font-weight: 800;
@@ -24,44 +45,104 @@
   letter-spacing: -1px;
   font-family: 'Syne', sans-serif;
 }
-
 .breadcrumb {
   margin-top: 12px;
   color: #3b6b62;
 }
-
 .breadcrumb a {
   color: #26645b;
   text-decoration: none;
 }
 
-/* About slider */
-.about-slider {
-  margin-top: 60px;
-  margin-bottom: 40px;
+/* ========== 3. IMAGE ACCORDION (CORREGIDO) ========== */
+.accordion-section {
+  margin: 60px 0;
 }
-
-.slider-grid {
+.accordion-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.accordion-group {
   display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
-
-.slider-card {
-  flex: 0 0 280px;
-  border-radius: 28px;
+.accordion-item {
+  position: relative;
+  flex: 1 1 280px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
 }
-
-.slider-card img {
+.accordion-item img {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.accordion-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -8px rgba(0,0,0,0.2);
+}
+.accordion-item:hover img {
+  transform: scale(1.05);
+}
+.accordion-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  padding: 60px 20px 20px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.accordion-overlay p {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+.accordion-btn {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 30px;
+  color: white;
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.accordion-btn:hover {
+  background: #2c7a6e;
+}
+@media (min-width: 768px) {
+  .accordion-group {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .accordion-item {
+    flex: 1;
+    transition: flex 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .accordion-item:hover {
+    flex: 3;
+  }
+  .accordion-item:not(:hover) {
+    flex: 1;
+  }
+  .accordion-item img {
+    height: 450px;
+  }
 }
 
+/* ========== 4. TESTIMONIAL QUOTE ========== */
 .testimonial-quote {
   max-width: 800px;
   margin: 40px auto;
@@ -71,14 +152,13 @@
   text-align: center;
   border: 1px solid #e9e4da;
 }
-
 .testimonial-quote p {
   font-size: 1.2rem;
   font-style: italic;
   color: #2c3b2f;
 }
 
-/* Awards wrapper */
+/* ========== 5. AWARDS SECTION ========== */
 .awards-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -87,20 +167,17 @@
   margin: 64px 0;
   overflow: hidden;
 }
-
 .award-left {
   background: #143139;
   padding: 50px 42px;
   flex: 1;
   color: white;
 }
-
 .award-left h3 {
   font-size: 2rem;
   text-transform: uppercase;
   font-family: 'Syne', sans-serif;
 }
-
 .btn-badge {
   background: #e9b35f;
   padding: 12px 32px;
@@ -109,8 +186,12 @@
   color: #1e2f36;
   text-decoration: none;
   display: inline-block;
+  transition: transform 0.2s, background 0.2s;
 }
-
+.btn-badge:hover {
+  background: #f0c06e;
+  transform: translateY(-2px);
+}
 .award-right {
   flex: 1;
   background: #1e3c3e;
@@ -118,7 +199,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .award-list {
   display: flex;
   gap: 40px;
@@ -126,38 +206,45 @@
   padding: 40px;
   list-style: none;
 }
-
+.award-list li {
+  text-align: center;
+}
 .award-list li i {
   font-size: 3rem;
   color: #f7d44a;
 }
-
 .award-list li a {
   display: block;
   margin-top: 12px;
   color: white;
   text-decoration: none;
   font-weight: 600;
+  transition: opacity 0.2s;
+}
+.award-list li a:hover {
+  opacity: 0.8;
 }
 
-/* Success section */
+/* ========== 6. SUCCESS SECTION ========== */
 .success-section {
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
   margin: 70px 0;
 }
-
 .success-text {
   flex: 1;
 }
-
 .success-text h3 {
   font-size: 2rem;
   font-weight: 800;
   font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
 }
-
+.success-text p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
 .btn-more {
   background: #2c7a6e;
   color: white;
@@ -167,18 +254,21 @@
   margin-top: 20px;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
 }
-
+.btn-more:hover {
+  background: #3a8f82;
+  transform: translateY(-2px);
+}
 .success-img {
   flex: 1;
 }
-
 .success-img img {
   width: 100%;
   border-radius: 40px;
 }
 
-/* Counter section */
+/* ========== 7. COUNTER SECTION ========== */
 .counter-section {
   background: linear-gradient(95deg, #122e2e, #1c4646);
   padding: 70px 0;
@@ -186,30 +276,49 @@
   margin: 40px 0;
   color: white;
 }
-
 .counter-grid {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   text-align: center;
 }
-
 .counter-item {
   flex: 1;
+  min-width: 150px;
 }
-
+.counter-item .icon {
+  margin-bottom: 15px;
+}
 .counter-item .timer {
   font-size: 3rem;
   font-weight: 800;
   font-family: 'Syne', sans-serif;
+  display: block;
+  line-height: 1;
+}
+.counter-item h5 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
-/* Team section */
+/* ========== 8. TEAM SECTION (CORREGIDO) ========== */
 .team-section {
   margin: 70px 0;
   text-align: center;
 }
-
+.team-section > h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.team-section > p {
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
 .team-grid {
   display: flex;
   flex-wrap: wrap;
@@ -217,82 +326,221 @@
   justify-content: center;
   margin-top: 48px;
 }
-
 .team-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 32px;
   overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+  box-shadow: 0 12px 28px var(--card-shadow);
   width: 240px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  position: relative;
 }
-
+.team-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+}
 .team-card img {
   width: 100%;
   height: 260px;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
-
+.team-card:hover img {
+  transform: scale(1.08);
+}
+.team-card .card-overlay {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 50px 20px 20px;
+  text-align: center;
+  transition: bottom 0.3s ease;
+  pointer-events: none;
+}
+.team-card:hover .card-overlay {
+  bottom: 0;
+}
+.team-card .card-overlay span {
+  display: inline-block;
+  background: #2c7a6e;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.team-card .card-overlay span:hover {
+  background: #00BFFF;
+}
 .team-info {
   padding: 20px;
 }
-
 .team-info h3 a {
   text-decoration: none;
   color: #1f4e5c;
   font-family: 'Syne', sans-serif;
+  transition: color 0.2s;
 }
-
+.team-info h3 a:hover {
+  color: #00BFFF;
+}
+.team-info p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
 .team-icons a {
-  margin: 0 6px;
+  margin: 0 8px;
   color: #2c7a6e;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+  font-size: 1.1rem;
+}
+.team-icons a:hover {
+  color: #00BFFF;
+  transform: scale(1.1);
+}
+.team-card {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.2s; }
+.team-card:nth-child(3) { animation-delay: 0.3s; }
+.team-card:nth-child(4) { animation-delay: 0.4s; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.edu_bottom_btn_wrapper {
+  margin-top: 60px !important;
 }
 
-/* Newsletter */
-.newsletter {
-  background: #f0f5f3;
-  border-radius: 60px;
-  padding: 45px 35px;
+/* ========== 9. COMMENT SECTION ========== */
+.comment-section {
+  margin: 60px 0;
+}
+.comment-wrapper {
+  background: var(--card-bg);
+  border-radius: 48px;
+  padding: 50px 45px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 50px 0;
+  gap: 40px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 28px var(--card-shadow);
 }
-
-.newsletter-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.comment-left {
+  flex: 1;
+  min-width: 220px;
 }
-
-.newsletter-left i {
+.comment-left i {
   font-size: 3rem;
   color: #2c5f6e;
+  margin-bottom: 20px;
+  display: inline-block;
 }
-
-.newsletter-form {
+.comment-left h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-family: 'Syne', sans-serif;
+}
+.comment-left p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.comment-form {
+  flex: 2;
+  min-width: 280px;
+}
+.comment-form form {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 18px;
 }
-
-.newsletter-form input {
-  padding: 14px 22px;
-  border-radius: 60px;
-  border: none;
-  width: 260px;
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
 }
-
-.newsletter-form button {
+.form-row .form-group {
+  flex: 1;
+  min-width: 180px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #2c7a6e;
+  box-shadow: 0 0 0 3px rgba(44, 122, 110, 0.1);
+}
+.form-group textarea {
+  border-radius: 24px;
+  resize: vertical;
+}
+#commentBtn {
   background: #2c5f6e;
   border: none;
   padding: 14px 28px;
-  border-radius: 60px;
+  border-radius: 40px;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#commentBtn:hover {
+  background: #3d7587;
+  transform: translateY(-2px);
+}
+.comment-status {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.85rem;
+  display: none;
+}
+.comment-status.success {
+  display: block;
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.comment-status.error {
+  display: block;
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
-/* Back to top */
+/* ========== 10. BACK TO TOP ========== */
 .back2top {
   position: fixed;
   bottom: 30px;
@@ -307,26 +555,310 @@
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transition: 0.2s;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
   z-index: 99;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
 .back2top.show {
   opacity: 1;
+  visibility: visible;
+}
+.back2top:hover {
+  background: #2c7a6e;
+  transform: translateY(-3px);
 }
 
-/* Responsive */
-@media (max-width: 980px) {
-  .container { padding: 0 20px; }
-  .counter-grid { gap: 28px; }
+/* ============================================ 
+11. VIEW RESPONSIVE (TODOS LOS BREAKPOINTS)
+============================================ */
+
+/* Móviles muy pequeños (max 360px) */
+@media (max-width: 360px) {
+  .container { padding: 0 12px; }
+  .page-title-section { padding: 40px 0 30px !important; }
+  .page-title-section h1 { font-size: 1.8rem !important; }
+  .accordion-item img { height: 220px !important; }
+  .accordion-overlay p { font-size: 0.8rem !important; }
+  .accordion-btn { font-size: 0.65rem !important; padding: 3px 10px !important; }
+  .team-card { width: 100% !important; max-width: 200px; margin: 0 auto; }
+  .team-card img { height: 180px !important; }
+  .team-info { padding: 12px !important; }
+  .team-info h3 { font-size: 0.9rem !important; }
+  .team-info p { font-size: 0.7rem !important; }
+  .team-icons a { font-size: 0.8rem !important; margin: 0 4px !important; }
+  .team-card .card-overlay { padding: 30px 10px 10px; }
+  .team-card .card-overlay span { padding: 4px 12px; font-size: 0.65rem; }
+  .counter-item .timer { font-size: 2rem !important; }
+  .counter-item .icon i { font-size: 1.5rem !important; }
+  .award-left { padding: 25px 20px !important; }
+  .award-left h3 { font-size: 1.3rem !important; }
+  .award-list { gap: 15px !important; padding: 20px !important; }
+  .award-list li i { font-size: 1.8rem !important; }
+  .success-text h3 { font-size: 1.5rem !important; }
+  .success-img img { border-radius: 24px !important; }
+  .comment-wrapper { padding: 25px 18px !important; }
+  .comment-left h3 { font-size: 1.2rem !important; }
+  .comment-left i { font-size: 2rem !important; }
+  #commentBtn { width: 100% !important; font-size: 0.85rem !important; }
+  .catalog-btn { padding: 10px 24px; font-size: 0.85rem; width: 100%; max-width: 220px; }
+  .back2top { width: 38px !important; height: 38px !important; bottom: 15px !important; right: 15px !important; }
+  .testimonial-quote { padding: 18px 15px !important; border-radius: 28px !important; }
+  .testimonial-quote p { font-size: 0.85rem !important; }
+  #cursor-dot, #cursor-ring { display: none !important; }
+  * { cursor: auto !important; }
 }
 
-@media (max-width: 720px) {
-  .counter-grid { flex-direction: column; gap: 40px; }
-  .newsletter { flex-direction: column; gap: 24px; text-align: center; }
-  .awards-wrapper { flex-direction: column; }
-  .award-left { text-align: center; }
-  .award-list { justify-content: center; }
-  .success-section { flex-direction: column; }
-  .page-title-section h1 { font-size: 2.2rem; }
+/* Móviles pequeños (361px - 480px) */
+@media (min-width: 361px) and (max-width: 480px) {
+  .container { padding: 0 12px; }
+  .page-title-section h1 { font-size: 2rem !important; }
+  .accordion-item img { height: 240px !important; }
+  .accordion-overlay p { font-size: 0.85rem !important; }
+  .team-card { width: calc(50% - 12px) !important; min-width: 140px; }
+  .team-card img { height: 180px !important; }
+  .team-info h3 { font-size: 0.9rem !important; }
+  .team-info p { font-size: 0.7rem !important; }
+  .counter-item .timer { font-size: 2.2rem !important; }
+  .award-left h3 { font-size: 1.4rem !important; }
+  .success-text h3 { font-size: 1.6rem !important; }
+  .comment-wrapper { flex-direction: column !important; text-align: center !important; padding: 30px 22px !important; }
+  .form-row { flex-direction: column !important; gap: 15px !important; }
+  .testimonial-quote { padding: 20px 18px !important; border-radius: 32px !important; }
+  .testimonial-quote p { font-size: 0.9rem !important; }
+  #cursor-dot, #cursor-ring { display: none !important; }
+  * { cursor: auto !important; }
 }
+
+/* Móviles medianos (481px - 639px) */
+@media (min-width: 481px) and (max-width: 639px) {
+  .page-title-section h1 { font-size: 2.2rem !important; }
+  .accordion-item img { height: 260px !important; }
+  .team-card { width: calc(50% - 15px) !important; min-width: 180px; }
+  .team-grid { gap: 25px !important; }
+  .counter-item .timer { font-size: 2.4rem !important; }
+  .testimonial-quote p { font-size: 1rem !important; }
+}
+
+/* Tablets pequeñas (640px - 699px) */
+@media (min-width: 640px) and (max-width: 699px) {
+  .container { padding: 0 16px; }
+  .accordion-group { flex-wrap: wrap !important; gap: 16px !important; }
+  .accordion-item { flex: 1 1 280px !important; }
+  .accordion-item img { height: 280px !important; }
+  .team-card { width: calc(33.33% - 20px) !important; min-width: 180px; }
+  .team-grid { gap: 20px !important; }
+  .counter-item .timer { font-size: 2.6rem !important; }
+  .testimonial-quote { padding: 24px 20px !important; margin: 30px 0 !important; border-radius: 32px !important; }
+  .testimonial-quote p { font-size: 0.95rem !important; }
+}
+
+/* Tablets medianas (700px - 850px) */
+@media (min-width: 700px) and (max-width: 850px) {
+  .container { padding: 0 20px !important; }
+  
+  /* Acordeón: grid de 2 columnas */
+  .accordion-group {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  .accordion-item { width: 100% !important; flex: none !important; }
+  .accordion-item:hover { transform: translateY(-5px) !important; flex: none !important; }
+  .accordion-item img { height: 260px !important; }
+  .accordion-overlay p { font-size: 0.9rem !important; }
+  .accordion-btn { font-size: 0.7rem !important; padding: 4px 12px !important; }
+  
+  /* Contadores: 2 columnas */
+  .counter-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+  .counter-item .timer { font-size: 2.5rem !important; }
+  .counter-item .icon i { font-size: 1.8rem !important; }
+  .counter-item h5 { font-size: 0.75rem !important; }
+  
+  /* Filosofía: columna */
+  .success-section { flex-direction: column !important; gap: 30px !important; text-align: center !important; }
+  .success-text h3 { font-size: 1.8rem !important; }
+  
+  /* Comentarios: columna */
+  .comment-wrapper { flex-direction: column !important; text-align: center !important; padding: 30px 25px !important; }
+  .comment-left { text-align: center !important; }
+  .form-row { flex-direction: column !important; gap: 15px !important; }
+  
+  /* Equipo: 2 columnas */
+  .team-card { width: calc(50% - 25px) !important; min-width: 200px; }
+  .team-card img { height: 220px !important; }
+  .team-grid { gap: 25px !important; }
+  
+  /* Awards */
+  .award-left { padding: 35px 25px !important; }
+  .award-left h3 { font-size: 1.5rem !important; }
+  .award-list { gap: 25px !important; padding: 25px !important; }
+  .award-list li i { font-size: 2.2rem !important; }
+  
+  /* Testimonial */
+  .testimonial-quote { padding: 25px 20px !important; border-radius: 35px !important; }
+  .testimonial-quote p { font-size: 1rem !important; }
+  
+  /* Counter section */
+  .counter-section { padding: 40px 0 !important; margin: 30px 0 !important; }
+  
+  /* Page title */
+  .page-title-section h1 { font-size: 2.5rem !important; }
+}
+
+/* Tablets grandes (851px - 1024px) */
+@media (min-width: 851px) and (max-width: 1024px) {
+  .container { padding: 0 30px !important; }
+  
+  /* Acordeón: normal pero compacto */
+  .accordion-group { gap: 15px !important; }
+  .accordion-item img { height: 320px !important; }
+  .accordion-overlay p { font-size: 0.9rem !important; }
+  
+  /* Contadores: horizontales */
+  .counter-grid { display: flex !important; justify-content: space-between !important; gap: 20px !important; }
+  .counter-item { flex: 1 !important; }
+  .counter-item .timer { font-size: 2.8rem !important; }
+  
+  /* Equipo: 3 columnas */
+  .team-card { width: calc(33.33% - 25px) !important; min-width: 200px; }
+  .team-card img { height: 240px !important; }
+  
+  /* Awards */
+  .award-left h3 { font-size: 1.7rem !important; }
+  .award-list { gap: 30px !important; }
+  .award-list li i { font-size: 2.5rem !important; }
+  
+  /* Filosofía */
+  .success-section { gap: 40px !important; }
+  .success-text h3 { font-size: 1.9rem !important; }
+  
+  /* Testimonial */
+  .testimonial-quote { padding: 28px 25px !important; border-radius: 40px !important; }
+  .testimonial-quote p { font-size: 1.05rem !important; }
+}
+
+/* Desktop pequeño (981px - 1024px) - ajuste fino */
+@media (min-width: 981px) and (max-width: 1024px) {
+  .accordion-item img { height: 340px !important; }
+  .team-card { width: calc(33.33% - 25px) !important; }
+}
+
+/* Desktop mediano (1025px - 1200px) - ACORDEÓN ACTIVO */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .container { max-width: 1100px !important; padding: 0 30px !important; }
+  
+  /* Acordeón: efecto hover expandible */
+  .accordion-group {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+  }
+  .accordion-item { flex: 1 !important; transition: flex 0.4s ease !important; }
+  .accordion-item:hover { flex: 2.8 !important; }
+  .accordion-item:not(:hover) { flex: 0.8 !important; }
+  .accordion-item img { height: 380px !important; }
+  .accordion-overlay p { font-size: 0.85rem !important; }
+  
+  /* Contadores: horizontales */
+  .counter-grid { display: flex !important; justify-content: space-between !important; gap: 25px !important; }
+  .counter-item { flex: 1 !important; }
+  .counter-item .timer { font-size: 3rem !important; }
+  
+  /* Equipo: 4 columnas compactas */
+  .team-grid { gap: 25px !important; }
+  .team-card { width: calc(25% - 25px) !important; min-width: 200px; }
+  .team-card img { height: 240px !important; }
+  .team-info { padding: 15px !important; }
+  .team-info h3 { font-size: 1rem !important; }
+  
+  /* Awards */
+  .award-left { padding: 40px 30px !important; }
+  .award-list { gap: 35px !important; }
+  
+  /* Comentarios */
+  .comment-wrapper { padding: 40px 35px !important; gap: 35px !important; }
+}
+
+/* Desktop grande (1201px - 1400px) */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .container { max-width: 1200px !important; padding: 0 40px !important; }
+  .page-title-section { padding: 80px 0 70px !important; }
+  .page-title-section h1 { font-size: 3.2rem !important; }
+  .accordion-item img { height: 400px !important; }
+  .team-card { width: 260px !important; }
+  .team-card img { height: 260px !important; }
+  .counter-item .timer { font-size: 3.5rem !important; }
+}
+
+/* Pantallas muy grandes (1401px+) */
+@media (min-width: 1401px) {
+  .container { max-width: 1320px !important; }
+  .page-title-section h1 { font-size: 3.5rem !important; }
+  .accordion-item img { height: 480px !important; }
+  .team-card { width: 280px !important; }
+  .team-card img { height: 280px !important; }
+  .counter-item .timer { font-size: 3.8rem !important; }
+}
+
+/* Altura reducida en móviles */
+@media (max-height: 700px) and (max-width: 480px) {
+  .page-title-section { padding: 20px 0 15px !important; }
+  .accordion-section { margin: 20px 0 !important; }
+  .team-section { margin: 20px 0 !important; }
+  .counter-section { padding: 20px 0 !important; }
+  .success-section { margin: 25px 0 !important; }
+}
+
+/* ========== 12. MODO OSCURO ========== */
+body.dark-mode .page-title-section {
+  background: linear-gradient(105deg, #1a2a2e 0%, #1a3a3a 100%);
+}
+body.dark-mode .page-title-section h1 { color: #e0e0e0; }
+body.dark-mode .breadcrumb, body.dark-mode .breadcrumb a { color: #7ab3a0; }
+body.dark-mode .testimonial-quote { background: var(--card-bg); border-color: var(--border-light); }
+body.dark-mode .testimonial-quote p { color: var(--text-secondary); }
+body.dark-mode .team-card { background: var(--card-bg); }
+body.dark-mode .team-info h3 a { color: #7ab3a0; }
+body.dark-mode .team-info p { color: var(--text-secondary); }
+body.dark-mode .comment-wrapper { background: var(--card-bg); border-color: var(--border-light); }
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+body.dark-mode .accordion-item { background: var(--card-bg); }
+
+/* ========== 13. MEJORAS ADICIONALES ========== */
+.catalog-btn {
+  display: inline-block;
+  background: #2c5f6e;
+  padding: 14px 42px;
+  border-radius: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.catalog-btn:hover {
+  background: #3d7587;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(44, 95, 110, 0.3);
+}
+.catalog-btn:active { transform: translateY(0); }
+@media (max-width: 768px) {
+  .edu_bottom_btn_wrapper { margin-top: 40px !important; }
+}
+img, video, iframe, .accordion-group, .team-grid, .awards-wrapper { max-width: 100%; }
+html { scroll-behavior: smooth; }

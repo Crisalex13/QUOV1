@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Quiénes Somos | QUOV</title>
   
-  <!-- ✅ AGREGADO: Tailwind CSS -->
+  <!-- Tailwind CSS + Estilos QUOV -->
   <link rel="stylesheet" href="../dist/output.css" />
   <link rel="stylesheet" href="../Estilos/Pagina_cree_y_crece.css" />
   <link rel="stylesheet" href="../Estilos/quienes_somos.css" />
@@ -16,8 +16,11 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../img/logo.png" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="font-sans bg-white text-neutral-900 cursor-blue">
+<body class="font-sans bg-white text-neutral-900 cursor-blue" style="overflow-x: hidden;">
 
   <!-- CURSOR PERSONALIZADO -->
   <div id="cursor-dot"></div>
@@ -26,30 +29,19 @@
   <!-- ====== NAVBAR ====== -->
   <nav class="sticky top-0 z-40 bg-white border-b border-neutral-100 px-6 py-4">
     <div class="mx-auto max-w-6xl flex items-center justify-between gap-4">
-
-      <!-- IZQUIERDA - Logo + Menú -->
       <div class="flex items-center" style="gap: 3rem;">
-        
-        <!-- Logo -->
         <a href="../index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right: 1rem;">
           <img src="../img/logo.png" alt="QUOV" class="logo-nav" />
           QUOV
         </a>
-
-        <!-- Menú -->
         <div class="flex items-center" style="gap: 2rem;">
           <a href="../index.html#catalogo" class="nav-link hidden sm:block">Catálogo</a>
           <a href="../index.html#destacados" class="nav-link hidden sm:block">Destacados</a>
           <a href="Quien somos.html" class="nav-link hidden sm:block" style="color: #5f9c8b; font-weight: 700;">Quiénes somos</a>
-          <a href="../index.html#historia" class="nav-link hidden sm:block">Historia</a>
+          <a href="historia.html" class="nav-link hidden sm:block">Historia</a>
         </div>
-
       </div>
-
-      <!-- DERECHA - Modo día/noche + Redes sociales -->
       <div class="flex items-center gap-6">
-
-        <!-- Botón Día/Noche -->
         <button id="darkModeToggle" class="theme-toggle" aria-label="Cambiar modo día/noche">
           <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/>
@@ -66,38 +58,29 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </button>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/quov_oficial?igsh=OHNuajlsdG1rdG9h" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
           </svg>
         </a>
-
-        <!-- TikTok -->
         <a href="https://www.tiktok.com/@quov_oficial" target="_blank" aria-label="TikTok" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
           </svg>
         </a>
-
-        <!-- WhatsApp -->
         <a href="https://wa.me/525567449830" target="_blank" aria-label="WhatsApp" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.124 1.527 5.855L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.366l-.358-.214-3.724.977.997-3.645-.234-.374A9.818 9.818 0 1112 21.818z"/>
           </svg>
         </a>
-
       </div>
-
     </div>
   </nav>
 
-  <!-- ✅ El resto de tu contenido permanece igual -->
-  <!-- Page Title -->
+  <!-- ====== PAGE TITLE ====== -->
   <div class="page-title-section">
     <div class="container">
       <h1>Quiénes somos</h1>
@@ -105,24 +88,63 @@
     </div>
   </div>
 
-  <!-- Slider de imágenes -->
-  <div class="container about-slider">
-    <div class="slider-grid" id="aboutSlider">
-      <div class="slider-card"><img src="https://placehold.co/600x400/dfe6e9/2c5f6e?text=Equipo+QUOV" alt="team"></div>
-      <div class="slider-card"><img src="https://placehold.co/600x400/cbd5e1/1f4e5c?text=Nuestra+Inspiración" alt="inspiration"></div>
-      <div class="slider-card"><img src="https://placehold.co/600x400/b0c4b1/2c5f6e?text=Lectura+y+Crecimiento" alt="lectura"></div>
-      <div class="slider-card"><img src="https://placehold.co/600x400/d4e0d9/26645b?text=Nuestros+Logros" alt="logros"></div>
+  <!-- ====== IMAGE ACCORDION (NUEVO COMPONENTE) ====== -->
+  <div class="accordion-section">
+    <div class="accordion-container">
+      <div class="accordion-group">
+        
+        <div class="accordion-item">
+          <img src="https://placehold.co/800x500/2c5f6e/white?text=Equipo+QUOV" alt="Equipo QUOV">
+          <div class="accordion-overlay">
+            <p>Equipo QUOV</p>
+            <a href="#" class="accordion-btn">Ver más →</a>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <img src="https://placehold.co/800x500/1f4e5c/white?text=Nuestra+Inspiración" alt="Nuestra Inspiración">
+          <div class="accordion-overlay">
+            <p>Nuestra Inspiración</p>
+            <a href="#" class="accordion-btn">Ver más →</a>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <img src="https://placehold.co/800x500/3a7a6e/white?text=Lectura+y+Crecimiento" alt="Lectura y Crecimiento">
+          <div class="accordion-overlay">
+            <p>Lectura y Crecimiento</p>
+            <a href="#" class="accordion-btn">Ver más →</a>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <img src="https://placehold.co/800x500/26645b/white?text=Nuestros+Logros" alt="Nuestros Logros">
+          <div class="accordion-overlay">
+            <p>Nuestros Logros</p>
+            <a href="#" class="accordion-btn">Ver más →</a>
+          </div>
+        </div>
+        
+      </div>
     </div>
+  </div>
+
+  <!-- ====== TESTIMONIAL QUOTE ====== -->
+  <div class="container">
     <div class="testimonial-quote">
       <p>"En QUOV creemos que los libros de desarrollo personal transforman vidas. Por eso seleccionamos, verificamos y acercamos los mejores títulos a quienes buscan crecer."</p>
       <h5>- por <span>Equipo QUOV</span> (Fundación 2024)</h5>
     </div>
   </div>
 
-  <!-- Awards Section -->
+  <!-- ====== AWARDS SECTION ====== -->
   <div class="container">
     <div class="awards-wrapper">
-      <div class="award-left"><h3>NUESTROS LOGROS</h3><p>Más de 100 títulos verificados, +500 lectores satisfechos y una comunidad que sigue creciendo.</p><a href="#" class="btn-badge">Conoce más</a></div>
+      <div class="award-left">
+        <h3>NUESTROS LOGROS</h3>
+        <p>Más de 100 títulos verificados, +500 lectores satisfechos y una comunidad que sigue creciendo.</p>
+        <a href="#" class="btn-badge">Conoce más</a>
+      </div>
       <div class="award-right">
         <ul class="award-list">
           <li><i class="fas fa-award"></i><a href="#">+100 Libros</a></li>
@@ -134,7 +156,7 @@
     </div>
   </div>
 
-  <!-- Key of success / Nuestra filosofía -->
+  <!-- ====== FILOSOFÍA ====== -->
   <div class="container success-section">
     <div class="success-text">
       <h3>Nuestra filosofía</h3>
@@ -142,36 +164,145 @@
       <p>Cada título pasa por un riguroso proceso de verificación para garantizar que el contenido sea auténtico, relevante y transformador.</p>
       <button class="btn-more" id="viewMoreBtn">Conoce más →</button>
     </div>
-    <div class="success-img"><img src="https://placehold.co/600x500/ebe9e0/2c5f6e?text=CREE+y+CRECE+con+QUOV" alt="filosofia"></div>
+    <div class="success-img">
+      <img src="https://placehold.co/600x500/ebe9e0/2c5f6e?text=CREE+y+CRECE+con+QUOV" alt="filosofia">
+    </div>
   </div>
 
-  <!-- Counter section -->
+  <!-- ====== COUNTER SECTION ====== -->
   <div class="container counter-section">
     <div class="counter-grid">
-      <div class="counter-item"><div class="icon"><i class="fas fa-book-open fa-2x"></i></div><span class="timer" data-count="128">0</span><h5>Títulos disponibles</h5></div>
-      <div class="counter-item"><div class="icon"><i class="fas fa-user-check fa-2x"></i></div><span class="timer" data-count="524">0</span><h5>Lectores satisfechos</h5></div>
-      <div class="counter-item"><div class="icon"><i class="fas fa-check-circle fa-2x"></i></div><span class="timer" data-count="100">0</span><h5>% Verificados</h5></div>
-      <div class="counter-item"><div class="icon"><i class="fas fa-truck fa-2x"></i></div><span class="timer" data-count="1">0</span><h5>Envío local CDMX</h5></div>
+      <div class="counter-item">
+        <div class="icon"><i class="fas fa-book-open fa-2x"></i></div>
+        <span class="timer" data-count="128">0</span>
+        <h5>Títulos disponibles</h5>
+      </div>
+      <div class="counter-item">
+        <div class="icon"><i class="fas fa-user-check fa-2x"></i></div>
+        <span class="timer" data-count="524">0</span>
+        <h5>Lectores satisfechos</h5>
+      </div>
+      <div class="counter-item">
+        <div class="icon"><i class="fas fa-check-circle fa-2x"></i></div>
+        <span class="timer" data-count="100">0</span>
+        <h5>% Verificados</h5>
+      </div>
+      <div class="counter-item">
+        <div class="icon"><i class="fas fa-truck fa-2x"></i></div>
+        <span class="timer" data-count="1">0</span>
+        <h5>Envío local CDMX</h5>
+      </div>
     </div>
   </div>
 
-  <!-- Team section -->
+  <!-- ====== TEAM SECTION ====== -->
   <div class="container team-section">
-    <h3 style="font-size: 2rem;">NUESTRO EQUIPO</h3>
-    <p style="margin-bottom: 10px;">Personas apasionadas por los libros y el desarrollo personal</p>
+    <h3>NUESTRO EQUIPO</h3>
+    <p>Personas apasionadas por los libros y el desarrollo personal</p>
     <div class="team-grid">
-      <div class="team-card"><img src="https://placehold.co/400x400/dfe2e6/2c5f6e?text=Ana"><div class="team-info"><h3><a href="#">Ana Martínez</a></h3><p>Fundadora</p><div class="team-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div></div>
-      <div class="team-card"><img src="https://placehold.co/400x400/c8d0da/1f4e5c?text=Carlos"><div class="team-info"><h3><a href="#">Carlos Ruiz</a></h3><p>Selección de títulos</p><div class="team-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div></div>
-      <div class="team-card"><img src="https://placehold.co/400x400/b8c5cf/2c7a6e?text=Laura"><div class="team-info"><h3><a href="#">Laura Gómez</a></h3><p>Atención al cliente</p><div class="team-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div></div>
-      <div class="team-card"><img src="https://placehold.co/400x400/aebbc7/1f4e5c?text=David"><div class="team-info"><h3><a href="#">David López</a></h3><p>Verificación de calidad</p><div class="team-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div></div>
+      
+      <div class="team-card" data-persona="ana-martinez">
+        <img src="https://placehold.co/400x400/dfe2e6/2c5f6e?text=Ana" alt="Ana Martínez">
+        <div class="team-info">
+          <h3><a href="#">Ana Martínez</a></h3>
+          <p>Fundadora</p>
+          <div class="team-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <span>Ver perfil →</span>
+        </div>
+      </div>
+      
+      <div class="team-card" data-persona="carlos-ruiz">
+        <img src="https://placehold.co/400x400/c8d0da/1f4e5c?text=Carlos" alt="Carlos Ruiz">
+        <div class="team-info">
+          <h3><a href="#">Carlos Ruiz</a></h3>
+          <p>Selección de títulos</p>
+          <div class="team-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <span>Ver perfil →</span>
+        </div>
+      </div>
+      
+      <div class="team-card" data-persona="laura-gomez">
+        <img src="https://placehold.co/400x400/b8c5cf/2c7a6e?text=Laura" alt="Laura Gómez">
+        <div class="team-info">
+          <h3><a href="#">Laura Gómez</a></h3>
+          <p>Atención al cliente</p>
+          <div class="team-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <span>Ver perfil →</span>
+        </div>
+      </div>
+      
+      <div class="team-card" data-persona="david-lopez">
+        <img src="https://placehold.co/400x400/aebbc7/1f4e5c?text=David" alt="David López">
+        <div class="team-info">
+          <h3><a href="#">David López</a></h3>
+          <p>Verificación de calidad</p>
+          <div class="team-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <span>Ver perfil →</span>
+        </div>
+      </div>
+      
     </div>
-    <div class="edu_bottom_btn_wrapper" style="margin-top: 40px;"><a href="../index.html#catalogo" style="background:#2c5f6e; padding:12px 34px; border-radius:40px; color:white; text-decoration:none;">Ver catálogo →</a></div>
+    <div class="edu_bottom_btn_wrapper">
+      <button class="catalog-btn" onclick="window.open('../index.html#catalogo', '_blank')">Ver catálogo →</button>
+    </div>
   </div>
 
-  <!-- Newsletter -->
-  <div class="container newsletter">
-    <div class="newsletter-left"><i class="fas fa-envelope-open-text"></i><h3>Suscríbete a nuestro newsletter</h3></div>
-    <div class="newsletter-form"><input type="email" placeholder="Tu correo electrónico" id="newsletterEmail"><button id="newsletterBtn">Suscribirme</button></div>
+  <!-- ====== FORMULARIO DE COMENTARIOS ====== -->
+  <div class="container comment-section">
+    <div class="comment-wrapper">
+      <div class="comment-left">
+        <i class="fas fa-comment-dots"></i>
+        <h3>Sugerencias u opiniones sobre libros</h3>
+        <p>Tu opinión nos ayuda a mejorar y seleccionar los mejores títulos para ti.</p>
+      </div>
+      <div class="comment-form">
+        <form id="commentForm">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="commentName" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="commentEmail" placeholder="Tu correo electrónico" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="commentMessage" rows="4" placeholder="Escribe aquí tu sugerencia u opinión sobre algún libro..." required></textarea>
+          </div>
+          <div class="form-group">
+            <select id="commentType">
+              <option value="sugerencia">📖 Sugerencia de libro</option>
+              <option value="opinion">⭐ Opinión sobre un libro</option>
+              <option value="recomendacion">💡 Recomendación para QUOV</option>
+              <option value="otro">📝 Otro</option>
+            </select>
+          </div>
+          <button type="submit" id="commentBtn">
+            <i class="fas fa-paper-plane"></i> Enviar comentario
+          </button>
+        </form>
+        <div id="commentMessageStatus" class="comment-status"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ====== FOOTER ====== -->
@@ -183,7 +314,7 @@
       </div>
       <p class="footer-text">Libros de segunda mano verificados · Ciudad de México</p>
       <div class="flex items-center gap-5">
-        <a href="https://www.instagram.com/quov_oficial?igsh=OHNuajlsdG1rdG9h" target="_blank" class="hover:opacity-60 transition">
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" class="hover:opacity-60 transition">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="4"/>
@@ -207,12 +338,9 @@
 
   <div class="back2top" id="back2Top"><i class="fas fa-arrow-up"></i></div>
 
-  <!-- ✅ Scripts con rutas corregidas -->
+  <!-- Scripts -->
   <script src="../Comportamiento/Pagina_cree_y_crece.js"></script>
   <script src="../Comportamiento/quienes_somos.js"></script>
-
-  <!-- Font Awesome para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </body>
 </html>
