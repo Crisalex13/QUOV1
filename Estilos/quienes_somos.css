@@ -817,17 +817,40 @@ html, body {
 }
 
 /* ========== 12. MODO OSCURO ========== */
+
+/* ========== 12. MODO OSCURO ========== */
+
+body.dark-mode {
+  background-color: #0a0a0a;
+}
+
 body.dark-mode .page-title-section {
   background: linear-gradient(105deg, #1a2a2e 0%, #1a3a3a 100%);
 }
+
 body.dark-mode .page-title-section h1 { color: #e0e0e0; }
-body.dark-mode .breadcrumb, body.dark-mode .breadcrumb a { color: #7ab3a0; }
-body.dark-mode .testimonial-quote { background: var(--card-bg); border-color: var(--border-light); }
+
+body.dark-mode .breadcrumb, 
+body.dark-mode .breadcrumb a { color: #7ab3a0; }
+
+body.dark-mode .testimonial-quote { 
+  background: var(--card-bg); 
+  border-color: var(--border-light); 
+}
+
 body.dark-mode .testimonial-quote p { color: var(--text-secondary); }
+
 body.dark-mode .team-card { background: var(--card-bg); }
+
 body.dark-mode .team-info h3 a { color: #7ab3a0; }
+
 body.dark-mode .team-info p { color: var(--text-secondary); }
-body.dark-mode .comment-wrapper { background: var(--card-bg); border-color: var(--border-light); }
+
+body.dark-mode .comment-wrapper { 
+  background: var(--card-bg); 
+  border-color: var(--border-light); 
+}
+
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea,
 body.dark-mode .form-group select {
@@ -835,7 +858,33 @@ body.dark-mode .form-group select {
   border-color: var(--border-light);
   color: var(--text-primary);
 }
+
 body.dark-mode .accordion-item { background: var(--card-bg); }
+
+/* ========== CORRECCIÓN SECCIÓN FILOSOFÍA ========== */
+
+body.dark-mode .success-section {
+  background-color: #111111;
+}
+
+body.dark-mode .success-text h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .success-text p {
+  color: #cccccc;
+}
+
+body.dark-mode .btn-more {
+  color: #5f9c8b;
+  border: 1px solid #5f9c8b;
+  background: transparent;
+}
+
+body.dark-mode .btn-more:hover {
+  background: #5f9c8b;
+  color: #111111;
+}
 
 /* ========== 13. MEJORAS ADICIONALES ========== */
 .catalog-btn {

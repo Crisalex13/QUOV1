@@ -31,10 +31,198 @@ body {
 /* ============================================ 
 2. MODO OSCURO (TEXTOS BLANCOS)
 ============================================ */
-body.dark-mode .timeline-link,
-body.dark-mode .hito-item span,
+/* ============================================ 
+   MODO OSCURO COMPLETO - PÁGINA HISTORIA
+============================================ */
+
+/* Fondo general del body en modo oscuro */
+body.dark-mode {
+  background-color: #0a0a0a !important;
+}
+
+/* Navbar en modo oscuro */
+body.dark-mode nav {
+  background-color: #111111 !important;
+  border-bottom-color: #2a2a2a !important;
+}
+
+body.dark-mode nav a {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .nav-link {
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .nav-link:hover {
+  color: #5f9c8b !important;
+}
+
+/* Hero video overlay en modo oscuro */
+body.dark-mode .hero-video .overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .hero-video .content h1,
+body.dark-mode .hero-video .content p {
+  color: #ffffff !important;
+}
+
+/* Blog wrapper en modo oscuro */
+body.dark-mode .blog_wrapper {
+  background-color: #0a0a0a;
+}
+
+/* Sidebar widgets en modo oscuro */
+body.dark-mode .sidebar_widget {
+  background-color: #1a1a1a;
+  border-color: #333333;
+}
+
 body.dark-mode .widget_heading h2 {
   color: #ffffff !important;
+  border-bottom-color: #5f9c8b;
+}
+
+/* Timeline items en modo oscuro */
+body.dark-mode .timeline-item {
+  border-left-color: #5f9c8b;
+}
+
+body.dark-mode .timeline-year {
+  color: #5f9c8b !important;
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .timeline-link {
+  color: #ffffff !important;
+}
+
+body.dark-mode .timeline-link:hover {
+  color: #5f9c8b !important;
+}
+
+/* Hitos items en modo oscuro */
+body.dark-mode .hito-item {
+  border-bottom-color: #333333;
+}
+
+body.dark-mode .hito-item i {
+  color: #5f9c8b !important;
+}
+
+body.dark-mode .hito-item span {
+  color: #ffffff !important;
+}
+
+body.dark-mode .hito-item span strong {
+  color: #5f9c8b;
+}
+
+/* Blog posts en modo oscuro */
+body.dark-mode .iner_blog {
+  background-color: #1a1a1a;
+  border-color: #333333;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .blog-content {
+  background-color: #1a1a1a;
+}
+
+/* Entry meta en modo oscuro */
+body.dark-mode .entry-meta ul li,
+body.dark-mode .entry-meta ul li a {
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .entry-meta ul li i {
+  color: #5f9c8b;
+}
+
+body.dark-mode .entry-meta ul li a:hover {
+  color: #5f9c8b !important;
+}
+
+/* Títulos de posts en modo oscuro */
+body.dark-mode .entry-title a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .entry-title a:hover {
+  color: #5f9c8b !important;
+}
+
+/* Contenido de posts en modo oscuro */
+body.dark-mode .entry-content p {
+  color: #cccccc !important;
+}
+
+/* Botón read more en modo oscuro */
+body.dark-mode .blog_read {
+  color: #5f9c8b !important;
+}
+
+body.dark-mode .blog_read:hover {
+  color: #ffffff !important;
+  background-color: #5f9c8b;
+}
+
+/* CTA final en modo oscuro */
+body.dark-mode .cta-final {
+  background: linear-gradient(135deg, #0a2a2a 0%, #1a3a3a 100%);
+}
+
+body.dark-mode .cta-final h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .cta-final p {
+  color: #b0b0b0 !important;
+}
+
+/* Footer en modo oscuro */
+body.dark-mode footer {
+  background-color: #0a0a0a !important;
+  border-top-color: #2a2a2a;
+}
+
+body.dark-mode footer p {
+  color: #888888 !important;
+}
+
+/* Back to top button en modo oscuro */
+body.dark-mode .back2top {
+  background-color: #5f9c8b;
+  color: #ffffff;
+}
+
+body.dark-mode .back2top:hover {
+  background-color: #4a7d6e;
+}
+
+/* Placeholder images en modo oscuro (mejorar apariencia) */
+body.dark-mode .post-thumbnail img {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+
+/* Scrollbar en modo oscuro */
+body.dark-mode::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+  background: #5f9c8b;
+  border-radius: 5px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #4a7d6e;
 }
 
 /* ============================================ 
