@@ -11,6 +11,7 @@ TABLA DE CONTENIDO - basico.css
 8. RESPONSIVE
 9. CURSOR
 10. EFECTOS GLOW/HOVER
+11. SCROLLBAR ESTILO HISTORIA
 ============================================ */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
@@ -640,7 +641,7 @@ a, button {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* 2. EFECTO DE TEXTO ILUMINADO en enlaces y títulos (VERSIÓN COMPLETA) */
+/* 2. EFECTO DE TEXTO ILUMINADO en enlaces y títulos  */
 .nav-link:hover,
 .entry-title a:hover,
 .timeline-link:hover,
@@ -731,4 +732,64 @@ a, button {
   background: #00BFFF;
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
   transition: all 0.2s ease;
+}
+
+/* ========== 11. SCROLLBAR ESTILO HISTORIA (para TODAS las páginas) ========== */
+
+/* Modo DÍA */
+::-webkit-scrollbar {
+  width: 14px;          /* ← Cambiado a 14px como te gusta */
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;   /* ← Esquinas más redondeadas */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5f9c8b;    /* Color verde/azul de QUOV */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a7d6e;    /* Más oscuro al hacer hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: #e0e0e0;
+}
+
+/* Modo NOCHE */
+body.dark-mode::-webkit-scrollbar {
+  width: 14px;          /* ← Mismo ancho que modo día */
+  height: 14px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+  background: #5f9c8b;    /* ← Mismo color que modo día */
+  border-radius: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #4a7d6e;    /* ← Mismo hover que modo día */
+}
+
+body.dark-mode::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+
+/* Soporte para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5f9c8b #e0e0e0;
+}
+
+body.dark-mode * {
+  scrollbar-color: #5f9c8b #1a1a1a;
 }
