@@ -1,20 +1,19 @@
 /* ============================================ 
 TABLA DE CONTENIDO - basico.css
 ============================================ 
-1. VARIABLES GLOBALES (Día/Noche)
-2. MODO OSCURO - GENERAL
-3. NAVBAR (incluyendo modo oscuro)
-4. FOOTER (incluyendo modo oscuro)
+1. VARIABLES GLOBALES
+2. MODO OSCURO
+3. NAVBAR
+4. FOOTER
 5. BACK TO TOP
-6. CHAT IA - BOTÓN FLOTANTE Y ANIMACIONES
+6. CHAT IA - BOTÓN FLOTANTE
 7. CHAT IA - MODAL Y MENSAJES
-8. RESPONSIVE VIEW
+8. RESPONSIVE
 9. CURSOR
 ============================================ */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
 :root {
-  /* Colores modo claro */
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
   --bg-neutral-50: #fafafa;
@@ -30,7 +29,6 @@ TABLA DE CONTENIDO - basico.css
   --card-shadow: rgba(0, 0, 0, 0.1);
   --card-shadow-hover: rgba(0, 0, 0, 0.2);
 
-  /* Chat modo claro */
   --chat-modal-bg: #ffffff;
   --chat-header-bg: #f8f9fa;
   --chat-header-border: #e9ecef;
@@ -75,7 +73,6 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
 
-  /* Chat modo oscuro */
   --chat-modal-bg: #1e293b;
   --chat-header-bg: #0f172a;
   --chat-header-border: #334155;
@@ -103,7 +100,6 @@ body.dark-mode {
   --chat-scrollbar-thumb-hover: #64748b;
 }
 
-/* Fondo general para modo oscuro */
 body.dark-mode {
   background-color: #0a0a0a;
 }
@@ -146,7 +142,6 @@ nav .flex.items-center.gap-6 a:hover {
   text-shadow: 0 0 4px var(--text-shadow-color);
 }
 
-/* Navbar en modo oscuro */
 body.dark-mode nav {
   background-color: #1a1a1a !important;
   border-bottom-color: #3d3d3d !important;
@@ -183,7 +178,6 @@ footer {
   letter-spacing: 0.04em;
 }
 
-/* Footer en modo oscuro - la clase ya está en body.dark-mode, pero específico */
 body.dark-mode footer {
   background-color: #0a0a0a !important;
   border-top-color: #2a2a2a;
@@ -197,7 +191,7 @@ body.dark-mode .footer-text {
 /* ========== 5. BACK TO TOP ========== */
 .back2top {
   position: fixed;
-  bottom: 150px;
+  bottom: 100px;
   right: 30px;
   background: #1f4e5c;
   color: white;
@@ -226,7 +220,6 @@ body.dark-mode .footer-text {
   transform: translateY(-3px);
 }
 
-/* Back2Top en modo oscuro */
 body.dark-mode .back2top {
   background-color: #5f9c8b;
 }
@@ -235,11 +228,7 @@ body.dark-mode .back2top:hover {
   background-color: #4a7d6e;
 }
 
-/* ============================================ 
-6. CHAT IA - BOTÓN FLOTANTE Y ANIMACIONES
-============================================ */
-
-/* Botón flotante principal */
+/* ========== 6. CHAT IA - BOTÓN FLOTANTE ========== */
 .chat-fab {
   position: fixed !important;
   bottom: 30px !important;
@@ -260,64 +249,31 @@ body.dark-mode .back2top:hover {
   border: 2px solid #00BFFF !important;
   box-shadow: 0 0 15px rgba(0, 191, 255, 0.5), inset 0 0 5px rgba(0, 191, 255, 0.3) !important;
   animation: floatNeon 3s ease-in-out infinite, pulseGlow 2s infinite alternate !important;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 @keyframes floatNeon {
-  0% {
-    transform: translateY(0px);
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-  }
-  50% {
-    transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(0, 191, 255, 0.8);
-  }
-  100% {
-    transform: translateY(0px);
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-  }
+  0% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
+  50% { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0, 191, 255, 0.8); }
+  100% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
 }
 
 @keyframes pulseGlow {
-  0% {
-    border-color: #00BFFF;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-  }
-  50% {
-    border-color: #00e5ff;
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
-  }
-  100% {
-    border-color: #0088cc;
-    box-shadow: 0 0 15px rgba(0, 136, 204, 0.5);
-  }
+  0% { border-color: #00BFFF; box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
+  50% { border-color: #00e5ff; box-shadow: 0 0 25px rgba(0, 229, 255, 0.7); }
+  100% { border-color: #0088cc; box-shadow: 0 0 15px rgba(0, 136, 204, 0.5); }
 }
 
 @keyframes ringPulse {
-  0% {
-    opacity: 0.7;
-    transform: scale(0.9);
-  }
-  70% {
-    opacity: 0.9;
-    transform: scale(1.1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
+  0% { opacity: 0.7; transform: scale(0.9); }
+  70% { opacity: 0.9; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.2); }
 }
 
 @keyframes textGlow {
-  0%, 100% {
-    text-shadow: 0 0 2px #00BFFF;
-  }
-  50% {
-    text-shadow: 0 0 8px #00BFFF, 0 0 2px white;
-  }
+  0%, 100% { text-shadow: 0 0 2px #00BFFF; }
+  50% { text-shadow: 0 0 8px #00BFFF, 0 0 2px white; }
 }
 
-/* Anillos pulsantes alrededor del botón */
 .chat-fab::before,
 .chat-fab::after {
   content: '';
@@ -328,32 +284,24 @@ body.dark-mode .back2top:hover {
 }
 
 .chat-fab::before {
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
+  top: -8px; left: -8px; right: -8px; bottom: -8px;
   border: 1px solid rgba(0, 191, 255, 0.6);
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
 .chat-fab::after {
-  top: -16px;
-  left: -16px;
-  right: -16px;
-  bottom: -16px;
+  top: -16px; left: -16px; right: -16px; bottom: -16px;
   border: 1px solid rgba(0, 191, 255, 0.35);
   box-shadow: 0 0 18px rgba(0, 191, 255, 0.25);
   animation-delay: 0.5s;
 }
 
-/* Logo dentro del botón */
 .chat-fab-logo {
   width: 45px !important;
   height: 45px !important;
   filter: drop-shadow(0 0 5px #00BFFF);
 }
 
-/* Texto del botón */
 .chat-fab-text {
   color: #00BFFF !important;
   text-shadow: 0 0 5px #00BFFF;
@@ -363,7 +311,6 @@ body.dark-mode .back2top:hover {
   font-family: 'Syne', sans-serif;
 }
 
-/* Tooltip / Hint del chat */
 .chat-hint {
   position: fixed !important;
   bottom: 120px !important;
@@ -388,7 +335,6 @@ body.dark-mode .back2top:hover {
   pointer-events: none;
 }
 
-/* Mostrar hint al hover del botón */
 .chat-fab:hover + .chat-hint,
 .chat-hint:hover {
   opacity: 1 !important;
@@ -397,7 +343,6 @@ body.dark-mode .back2top:hover {
   pointer-events: auto !important;
 }
 
-/* Flecha del hint */
 .chat-hint::after {
   content: '';
   position: absolute;
@@ -421,17 +366,12 @@ body.dark-mode .back2top:hover {
   animation: textGlow 2s ease-in-out infinite;
 }
 
-/* ============================================ 
-7. CHAT IA - MODAL Y MENSAJES
-============================================ */
-
-/* Modal del chat */
+/* ========== 7. CHAT IA - MODAL Y MENSAJES ========== */
 #chatOverlay .modal-card {
   background: var(--chat-modal-bg) !important;
   border-color: var(--border-light) !important;
 }
 
-/* Header del modal */
 #chatOverlay .border-b {
   background: var(--chat-header-bg) !important;
   border-bottom: 1px solid var(--chat-header-border) !important;
@@ -441,7 +381,6 @@ body.dark-mode .back2top:hover {
   color: var(--chat-header-text) !important;
 }
 
-/* Botón cerrar */
 #chatClose {
   background: var(--chat-close-bg) !important;
   color: var(--chat-close-text) !important;
@@ -456,7 +395,6 @@ body.dark-mode .back2top:hover {
   transform: scale(1.1) !important;
 }
 
-/* Burbuja del USUARIO (mensajes enviados) */
 #chatMessages .bg-black {
   background: var(--chat-user-bubble-bg) !important;
   color: var(--chat-user-bubble-text) !important;
@@ -470,7 +408,6 @@ body.dark-mode .back2top:hover {
   animation: messageSlideInRight 0.3s ease-out !important;
 }
 
-/* Burbuja del BOT (respuestas automáticas) */
 #chatMessages .bg-neutral-100 {
   background: var(--chat-bot-bubble-bg) !important;
   color: var(--chat-bot-bubble-text) !important;
@@ -483,31 +420,16 @@ body.dark-mode .back2top:hover {
   animation: messageSlideInLeft 0.3s ease-out !important;
 }
 
-/* Animación de entrada para mensajes del usuario */
 @keyframes messageSlideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-/* Animación de entrada para mensajes del bot */
 @keyframes messageSlideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-/* Input del chat */
 #chatInput {
   background: var(--chat-input-bg) !important;
   border: 1px solid var(--chat-input-border) !important;
@@ -528,7 +450,6 @@ body.dark-mode .back2top:hover {
   outline: none !important;
 }
 
-/* Botón enviar */
 .chat-send-button {
   background: var(--chat-send-bg) !important;
   border-radius: 24px !important;
@@ -547,7 +468,6 @@ body.dark-mode .back2top:hover {
   opacity: 0.9 !important;
 }
 
-/* Scrollbar personalizado para el área de mensajes */
 #chatMessages::-webkit-scrollbar {
   width: 6px;
 }
@@ -566,7 +486,6 @@ body.dark-mode .back2top:hover {
   background: var(--chat-scrollbar-thumb-hover);
 }
 
-/* Z-index de overlays */
 #chatOverlay {
   transition: opacity 0.25s ease;
   z-index: 60 !important;
@@ -579,80 +498,31 @@ body.dark-mode .back2top:hover {
 
 /* ========== 8. RESPONSIVE ========== */
 @media (max-width: 640px) {
-  .chat-fab {
-    width: 65px !important;
-    height: 65px !important;
-    bottom: 20px !important;
-    right: 20px !important;
-  }
-
-  .chat-fab-logo {
-    width: 35px !important;
-    height: 35px !important;
-  }
-
-  .chat-fab-text {
-    font-size: 8px !important;
-  }
-
-  .chat-hint {
-    display: none !important;
-  }
-
-  .back2top {
-    width: 40px !important;
-    height: 40px !important;
-    bottom: 95px !important;
-    right: 20px !important;
-  }
-
-  .back2top i {
-    font-size: 0.9rem !important;
-  }
+  .chat-fab { width: 65px !important; height: 65px !important; bottom: 20px !important; right: 20px !important; }
+  .chat-fab-logo { width: 35px !important; height: 35px !important; }
+  .chat-fab-text { font-size: 8px !important; }
+  .chat-hint { display: none !important; }
+  .back2top { width: 40px !important; height: 40px !important; bottom: 85px !important; right: 20px !important; }
+  .back2top i { font-size: 0.9rem !important; }
 }
 
 @media (max-width: 360px) {
-  .chat-fab {
-    width: 55px !important;
-    height: 55px !important;
-  }
-
-  .chat-fab-logo {
-    width: 30px !important;
-    height: 30px !important;
-  }
-
-  .back2top {
-    width: 35px !important;
-    height: 35px !important;
-    bottom: 85px !important;
-  }
+  .chat-fab { width: 55px !important; height: 55px !important; }
+  .chat-fab-logo { width: 30px !important; height: 30px !important; }
+  .back2top { width: 35px !important; height: 35px !important; bottom: 75px !important; }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-  .chat-fab {
-    width: 75px !important;
-    height: 75px !important;
-  }
-
-  .chat-fab-logo {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .back2top {
-    width: 48px !important;
-    height: 48px !important;
-  }
+  .chat-fab { width: 75px !important; height: 75px !important; }
+  .chat-fab-logo { width: 40px !important; height: 40px !important; }
+  .back2top { width: 48px !important; height: 48px !important; }
 }
 
-/* ========== 9. CURSOR ========== */
-/* ========== 9. CURSOR ========== */
-/* Ocultar cursor original solo en desktop */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none !important;
-  }
+/* ========== 9. CURSOR - VERSIÓN SUAVE ========== */
+
+/* Ocultar el cursor original del sistema */
+* {
+  cursor: none !important;
 }
 
 /* Punto del cursor */
@@ -660,8 +530,8 @@ body.dark-mode .back2top:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: #00BFFF;
   border-radius: 50%;
   pointer-events: none;
@@ -675,37 +545,64 @@ body.dark-mode .back2top:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 34px;
-  height: 34px;
-  border: 1.5px solid rgba(0, 191, 255, 0.6);
+  width: 36px;
+  height: 36px;
+  border: 2px solid #00BFFF;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
   transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  opacity: 0.7;
 }
 
 /* Efecto hover */
 body.cursor-hover #cursor-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: #00e5ff;
 }
 
 body.cursor-hover #cursor-ring {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-color: #00e5ff;
-  border-width: 2px;
+  opacity: 1;
+}
+
+/* Modo blanco para hero section */
+body.cursor-white #cursor-dot {
+  background: #ffffff;
+}
+
+body.cursor-white #cursor-ring {
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 /* Modo oscuro */
 body.dark-mode #cursor-dot {
-  background: #7ab3a0;
+  background: #00BFFF
 }
 
 body.dark-mode #cursor-ring {
-  border-color: rgba(122, 179, 160, 0.8);
+  border-color: #00bfffbf;
+}
+
+body.dark-mode.cursor-hover #cursor-dot {
+  background: #00BFFF
+}
+
+body.dark-mode.cursor-hover #cursor-ring {
+  border-color: #00bfffbf;
+}
+
+/* Restaurar cursor normal en inputs */
+input, textarea, select {
+  cursor: text !important;
+}
+
+a, button {
+  cursor: pointer !important;
 }
 
 /* Deshabilitar en móviles */
@@ -713,7 +610,7 @@ body.dark-mode #cursor-ring {
   #cursor-dot, #cursor-ring {
     display: none !important;
   }
-  body {
+  * {
     cursor: auto !important;
   }
 }

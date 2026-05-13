@@ -2,7 +2,7 @@
 TABLA DE CONTENIDO - BASICO.JS 
 ============================================ 
 1. MODO DÍA/NOCHE
-2. CURSOR PERSONALIZADO
+2. CURSOR PERSONALIZADO (basado en app.js)
 3. BACK TO TOP
 4. CHAT IA - Funcionalidad completa
 ============================================ */
@@ -17,7 +17,6 @@ TABLA DE CONTENIDO - BASICO.JS
   const sunIcon = darkModeToggle.querySelector('.sun-icon');
   const moonIcon = darkModeToggle.querySelector('.moon-icon');
   
-  // Verificar preferencia guardada
   if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
     if (sunIcon) sunIcon.style.display = 'none';
@@ -26,78 +25,90 @@ TABLA DE CONTENIDO - BASICO.JS
   
   darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('darkMode', 'enabled');
-      if (sunIcon) sunIcon.style.display = 'none';
-      if (moonIcon) moonIcon.style.display = 'block';
-    } else {
-      localStorage.setItem('darkMode', 'disabled');
-      if (sunIcon) sunIcon.style.display = 'block';
-      if (moonIcon) moonIcon.style.display = 'none';
-    }
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    if (sunIcon) sunIcon.style.display = isDark ? 'none' : 'block';
+    if (moonIcon) moonIcon.style.display = isDark ? 'block' : 'none';
   });
 })();
 
 // ============================================ 
-// 2. CURSOR PERSONALIZADO 
-// ============================================
+// 2. CURSOR PERSONALIZADO (VERSIÓN SUAVE - basada en app.js)
+// ============================================ 
+(function initCustomCursor() {
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  
+  if (!dot || !ring) return;
 
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
+  // Detectar si es dispositivo táctil
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
 
-if (cursorDot && cursorRing) {
+  // Posiciones iniciales
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
 
-  let mouseX = 0;
-  let mouseY = 0;
+  // Cambiar color del cursor según el elemento
+  function setCursorMode(mode) {
+    document.body.classList.toggle('cursor-blue', mode === 'blue');
+    document.body.classList.toggle('cursor-white', mode === 'white');
+  }
 
-  let ringX = 0;
-  let ringY = 0;
+  setCursorMode('blue');
 
-  // Movimiento del mouse
+  // Mover el punto (sigue inmediatamente al mouse)
   document.addEventListener('mousemove', (e) => {
-
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // Punto central
-    cursorDot.style.transform =
-      `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+    // Usamos left/top para el punto (más suave)
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
 
+    // Detectar el color del cursor según el elemento debajo
+    const target = document.elementFromPoint(mouseX, mouseY);
+    if (!target) return;
+
+    let mode = 'blue';
+    if (target.closest('[data-cursor="blue"]')) {
+      mode = 'blue';
+    } else if (target.closest('[data-cursor="white"]')) {
+      mode = 'white';
+    } else if (target.closest('.hero-section')) {
+      mode = 'white';
+    } else {
+      mode = 'blue';
+    }
+    setCursorMode(mode);
+
+    // Efecto hover en elementos interactivos
+    const interactive = target.closest('a, button, input, textarea, [data-id], .search-bar-pro, #chatFab, #chatHint, .nav-link, .back2top, .accordion-btn, .btn-more, .btn-badge, .catalog-btn, .blog_read, .timeline-link, .team-card, .book-card, .featured-card');
+    document.body.classList.toggle('cursor-hover', !!interactive);
   });
 
-  // Animación suave del anillo
-  function animateCursor() {
+  // Salir del hover si el mouse sale de la ventana
+  document.addEventListener('mouseleave', () => {
+    document.body.classList.remove('cursor-hover');
+  });
 
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-
-    cursorRing.style.transform =
-      `translate(${ringX - 17}px, ${ringY - 17}px)`;
-
-    requestAnimationFrame(animateCursor);
+  // Animar el anillo (efecto suave con requestAnimationFrame)
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
   }
+  animateRing();
 
-  animateCursor();
-
-  // Elementos interactivos
-  const hoverElements = document.querySelectorAll(
-    'a, button, .nav-link, .blog_read, .timeline-link, .hero-btn-primary, .hero-btn-secondary, .back2top'
-  );
-
-  hoverElements.forEach(el => {
-
-    el.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-hover');
-    });
-
-    el.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-hover');
-    });
-
-  });
-
-}
+  console.log('✨ Cursor personalizado (versión suave) activado');
+})();
 
 // ============================================ 
 // 3. BACK TO TOP
@@ -136,7 +147,6 @@ if (cursorDot && cursorRing) {
   
   let isChatOpen = false;
   
-  // ===== FUNCIÓN PARA OCULTAR HINT =====
   function hideHint() {
     if (chatHint && !isChatOpen) {
       chatHint.style.opacity = '0';
@@ -145,7 +155,6 @@ if (cursorDot && cursorRing) {
     }
   }
   
-  // ===== FUNCIÓN PARA MOSTRAR HINT =====
   function showHint() {
     if (chatHint && !isChatOpen) {
       chatHint.style.opacity = '1';
@@ -155,34 +164,18 @@ if (cursorDot && cursorRing) {
     }
   }
   
-  // ===== FUNCIÓN PARA RESETEAR HINT =====
   function resetHint() {
-    if (chatHint) {
-      chatHint.removeAttribute('style');
-    }
+    if (chatHint) chatHint.removeAttribute('style');
   }
   
-  // ===== HOVER DEL BOTÓN =====
-  chatFab.addEventListener('mouseenter', () => {
-    if (!isChatOpen) showHint();
-  });
+  chatFab.addEventListener('mouseenter', () => { if (!isChatOpen) showHint(); });
+  chatFab.addEventListener('mouseleave', () => { if (!isChatOpen) hideHint(); });
   
-  chatFab.addEventListener('mouseleave', () => {
-    if (!isChatOpen) hideHint();
-  });
-  
-  // ===== HOVER DEL HINT =====
   if (chatHint) {
-    chatHint.addEventListener('mouseenter', () => {
-      if (!isChatOpen) showHint();
-    });
-    
-    chatHint.addEventListener('mouseleave', () => {
-      if (!isChatOpen) hideHint();
-    });
+    chatHint.addEventListener('mouseenter', () => { if (!isChatOpen) showHint(); });
+    chatHint.addEventListener('mouseleave', () => { if (!isChatOpen) hideHint(); });
   }
   
-  // ===== ABRIR CHAT =====
   chatFab.addEventListener('click', () => {
     if (chatOverlay) {
       isChatOpen = true;
@@ -195,70 +188,54 @@ if (cursorDot && cursorRing) {
     }
   });
   
-  // ===== CERRAR CHAT =====
   function closeChat() {
     if (chatOverlay) {
       chatOverlay.classList.add('hidden');
       chatOverlay.classList.remove('flex');
-      
       setTimeout(() => {
         isChatOpen = false;
         resetHint();
         setTimeout(() => {
-          if (chatFab.matches(':hover') && !isChatOpen) {
-            showHint();
-          }
+          if (chatFab.matches(':hover') && !isChatOpen) showHint();
         }, 50);
       }, 150);
     }
   }
   
-  if (chatClose) {
-    chatClose.addEventListener('click', closeChat);
-  }
-  
+  if (chatClose) chatClose.addEventListener('click', closeChat);
   if (chatOverlay) {
     chatOverlay.addEventListener('click', (e) => {
       if (e.target === chatOverlay) closeChat();
     });
   }
   
-  // ===== FUNCIÓN GLOBAL PARA ENVIAR MENSAJES =====
   window.enviarMensaje = function() {
     const input = document.getElementById('chatInput');
     if (!input) return;
-    
     const message = input.value.trim();
     if (!message) return;
-    
     const chatMessages = document.getElementById('chatMessages');
     if (!chatMessages) return;
     
-    // Mensaje del usuario
     const userMsg = document.createElement('div');
     userMsg.className = 'max-w-[85%] rounded-2xl bg-black text-white px-4 py-2 ml-auto mb-2';
     userMsg.textContent = message;
     chatMessages.appendChild(userMsg);
-    
     input.value = '';
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    // Indicador de escritura
     const typingIndicator = document.createElement('div');
     typingIndicator.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
     typingIndicator.innerHTML = '<span class="inline-block animate-pulse">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.2s">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.4s">●</span>';
     chatMessages.appendChild(typingIndicator);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    // Respuesta simulada
     setTimeout(() => {
       typingIndicator.remove();
       const botMsg = document.createElement('div');
       botMsg.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
-      
       let respuesta = '';
       const msgLower = message.toLowerCase();
-      
       if (msgLower.includes('precio') || msgLower.includes('cuesta')) {
         respuesta = '💰 Los precios de nuestros libros van desde <strong>$150 MXN</strong>. ¿Te gustaría que te comparta el catálogo?';
       } else if (msgLower.includes('disponible') || msgLower.includes('hay')) {
@@ -266,9 +243,8 @@ if (cursorDot && cursorRing) {
       } else if (msgLower.includes('comprar') || msgLower.includes('quiero')) {
         respuesta = '🛍️ ¡Excelente! Para comprar, escríbenos directamente a <strong>WhatsApp: 55 6744 9830</strong>. Te atenderemos enseguida.';
       } else {
-        respuesta = `✨ ¡Hola! Para más información sobre "${message}", escríbenos por <strong>WhatsApp al 55 6744 9830</strong>. ¿Necesitas algo más?`;
+        respuesta = '✨ ¡Hola! Para más información sobre "' + message + '", escríbenos por <strong>WhatsApp al 55 6744 9830</strong>. ¿Necesitas algo más?';
       }
-      
       botMsg.innerHTML = respuesta;
       chatMessages.appendChild(botMsg);
       chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -276,11 +252,10 @@ if (cursorDot && cursorRing) {
   };
 })();
 
-// ===== INICIALIZAR REVEAL AL SCROLL =====
+// ===== REVEAL AL SCROLL =====
 (function initRevealOnScroll() {
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length === 0) return;
-  
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -289,6 +264,5 @@ if (cursorDot && cursorRing) {
       }
     });
   }, { threshold: 0.1 });
-  
   revealElements.forEach(el => revealObserver.observe(el));
 })();
