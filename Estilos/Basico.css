@@ -762,7 +762,7 @@ a, button {
 
 /* Modo NOCHE */
 body.dark-mode::-webkit-scrollbar {
-  width: 14px;          /* ← Mismo ancho que modo día */
+  width: 30px;          /* ← Mismo ancho que modo día */
   height: 14px;
 }
 

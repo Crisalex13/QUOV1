@@ -6,6 +6,7 @@ TABLA DE CONTENIDO - BASICO.JS
 3. BACK TO TOP
 4. CHAT IA - Funcionalidad completa
 5. DETECTAR SECCIÓN VISIBLE Y MARCAR PESTAÑA ACTIVA 
+6. MANEJO DE LAS PESTAÑAS EN CATALOGO Y DESTACADO
 ============================================ */
 
 // ============================================ 
@@ -269,44 +270,117 @@ TABLA DE CONTENIDO - BASICO.JS
 })();
 
 // ============================================ 
-// ===== 5. DETECTAR SECCIÓN VISIBLE Y MARCAR PESTAÑA ACTIVA
+// ===== 6. MANEJO DE PESTAÑAS CATÁLOGO Y DESTACADOS
 // ============================================ 
 
-(function initActiveNavOnScroll() {
-  const catalogLink = document.querySelector('a[href="#catalogo"]');
+(function initCatalogTabs() {
+  const catalogoLink = document.querySelector('a[href="#catalogo"]');
   const destacadosLink = document.querySelector('a[href="#destacados"]');
   
-  if (!catalogLink || !destacadosLink) return;
+  // Si no existen estos enlaces en esta página, salir
+  if (!catalogoLink || !destacadosLink) return;
   
-  const catalogSection = document.getElementById('catalogo');
+  const catalogoSection = document.getElementById('catalogo');
   const destacadosSection = document.getElementById('destacados');
   
+  if (!catalogoSection || !destacadosSection) return;
+  
+  // Función para actualizar qué enlace está activo según scroll
   function updateActiveNav() {
     const scrollPos = window.scrollY + 150;
+    const catalogoTop = catalogoSection.offsetTop;
+    const destacadosTop = destacadosSection.offsetTop;
     
-    if (catalogSection && destacadosSection) {
-      const catalogTop = catalogSection.offsetTop;
-      const destacadosTop = destacadosSection.offsetTop;
-      
-      // Si estamos en la sección de destacados (más arriba)
-      if (scrollPos >= destacadosTop && scrollPos < catalogTop) {
-        destacadosLink.classList.add('active');
-        catalogLink.classList.remove('active');
-      } 
-      // Si estamos en catálogo o más abajo
-      else if (scrollPos >= catalogTop) {
-        catalogLink.classList.add('active');
-        destacadosLink.classList.remove('active');
-      }
-      // Si estamos al inicio (hero)
-      else {
-        destacadosLink.classList.remove('active');
-        catalogLink.classList.remove('active');
-      }
+    // Si estamos en destacados
+    if (scrollPos >= destacadosTop && scrollPos < catalogoTop) {
+      destacadosLink.classList.add('active');
+      catalogoLink.classList.remove('active');
+    } 
+    // Si estamos en catálogo
+    else if (scrollPos >= catalogoTop) {
+      catalogoLink.classList.add('active');
+      destacadosLink.classList.remove('active');
+    }
+    // Si estamos arriba (hero)
+    else {
+      destacadosLink.classList.remove('active');
+      catalogoLink.classList.remove('active');
     }
   }
   
+  // Evento de scroll
   window.addEventListener('scroll', updateActiveNav);
   window.addEventListener('load', updateActiveNav);
-  updateActiveNav();
+  
+  // Al hacer clic: scroll suave y actualizar
+  catalogoLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    catalogoSection.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(updateActiveNav, 100); // Pequeño delay para que el scroll termine
+  });
+  
+  destacadosLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    destacadosSection.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(updateActiveNav, 100);
+  });
+  
+  console.log('✅ Pestañas de Catálogo/Destacados activadas');
+})();
+
+// ============================================ 
+// ===== 6. MANEJO DE LAS PESTAÑAS EN CATALOGO Y DESTACADO
+// ============================================ 
+
+// Manejar activación de pestañas en Catálogo y Destacados
+(function initCatalogNav() {
+  const catalogoLink = document.querySelector('a[href="#catalogo"]');
+  const destacadosLink = document.querySelector('a[href="#destacados"]');
+  
+  if (!catalogoLink || !destacadosLink) return;
+  
+  // Función para actualizar qué enlace está activo
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 150;
+    const catalogoSection = document.getElementById('catalogo');
+    const destacadosSection = document.getElementById('destacados');
+    
+    if (!catalogoSection || !destacadosSection) return;
+    
+    const catalogoTop = catalogoSection.offsetTop;
+    const destacadosTop = destacadosSection.offsetTop;
+    
+    // Si estamos en la sección de destacados
+    if (scrollPos >= destacadosTop && scrollPos < catalogoTop) {
+      destacadosLink.classList.add('active');
+      catalogoLink.classList.remove('active');
+    } 
+    // Si estamos en catálogo o más abajo
+    else if (scrollPos >= catalogoTop) {
+      catalogoLink.classList.add('active');
+      destacadosLink.classList.remove('active');
+    }
+    // Si estamos arriba de destacados
+    else {
+      destacadosLink.classList.remove('active');
+      catalogoLink.classList.remove('active');
+    }
+  }
+  
+  // Escuchar scroll
+  window.addEventListener('scroll', updateActiveNav);
+  window.addEventListener('load', updateActiveNav);
+  
+  // Al hacer clic en los enlaces, hacer scroll suave
+  catalogoLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+    updateActiveNav();
+  });
+  
+  destacadosLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('destacados').scrollIntoView({ behavior: 'smooth' });
+    updateActiveNav();
+  });
 })();
