@@ -1,8 +1,13 @@
-// ============================================
-// QUIENES SOMOS.JS - COMPLETO CON TODOS LOS EFECTOS
-// ============================================
+/* ============================================ 
+TABLA DE CONTENIDO - QUIENES SOMOS.JS 
+============================================ 
+1. CONTADORES ANIMADOS
+2. FORMULARIO DE COMENTARIOS
+3. EFECTO DE TARJETAS DE EQUIPO
+4. ANIMACIÓN AL SCROLL
+============================================ */
 
-// ===== CONTADOR ANIMADO =====
+// ===== 1. CONTADOR ANIMADO =====
 const counters = document.querySelectorAll('.timer');
 const startCounters = () => {
   counters.forEach(counter => {
@@ -23,24 +28,17 @@ const startCounters = () => {
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) { startCounters(); observer.unobserve(entry.target); }
+    if (entry.isIntersecting) { 
+      startCounters(); 
+      observer.unobserve(entry.target); 
+    }
   });
 }, { threshold: 0.5 });
 
 const counterSection = document.querySelector('.counter-section');
 if (counterSection) observer.observe(counterSection);
 
-// ===== BACK TO TOP =====
-const backBtn = document.getElementById('back2Top');
-if (backBtn) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) backBtn.classList.add('show');
-    else backBtn.classList.remove('show');
-  });
-  backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-}
-
-// ===== VIEW MORE BUTTON =====
+// ===== 2. BOTÓN VIEW MORE =====
 const viewMoreBtn = document.getElementById('viewMoreBtn');
 if (viewMoreBtn) {
   viewMoreBtn.addEventListener('click', () => {
@@ -48,40 +46,7 @@ if (viewMoreBtn) {
   });
 }
 
-// ===== CURSOR PERSONALIZADO =====
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-
-if (cursorDot && cursorRing) {
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-  
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    cursorDot.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
-    
-    setTimeout(() => {
-      ringX = mouseX;
-      ringY = mouseY;
-      cursorRing.style.transform = `translate(${ringX - 18}px, ${ringY - 18}px)`;
-    }, 80);
-  });
-  
-  const hoverElements = document.querySelectorAll('a, button, .nav-link, .btn-more, .btn-badge, .back2top, .accordion-btn');
-  
-  hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-hover');
-    });
-  });
-}
-
-// ===== FORMULARIO DE COMENTARIOS =====
+// ===== 3. FORMULARIO DE COMENTARIOS =====
 const commentForm = document.getElementById('commentForm');
 const commentStatus = document.getElementById('commentMessageStatus');
 
@@ -118,7 +83,7 @@ if (commentForm) {
   });
 }
 
-// ===== EFECTOS DE TARJETAS DE EQUIPO =====
+// ===== 4. EFECTO DE TARJETAS DE EQUIPO =====
 document.querySelectorAll('.team-card').forEach(card => {
   card.addEventListener('click', function(e) {
     const ripple = document.createElement('span');
@@ -137,17 +102,9 @@ document.querySelectorAll('.team-card').forEach(card => {
     const nombreLimpio = nombre.toLowerCase().replace(/\s+/g, '-');
     window.open(`perfil-${nombreLimpio}.html`, '_blank');
   });
-  
-  card.addEventListener('mouseenter', () => {
-    card.style.transform = 'translateY(-8px) scale(1.02)';
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
 });
 
-// ===== EFECTO DE ONDA PARA BOTONES =====
+// ===== 5. EFECTO DE ONDA PARA BOTONES =====
 document.querySelectorAll('.btn-more, .btn-badge, .catalog-btn, .hero-btn-primary, .hero-btn-secondary, .accordion-btn').forEach(button => {
   button.addEventListener('click', function(e) {
     const ripple = document.createElement('span');
@@ -164,7 +121,7 @@ document.querySelectorAll('.btn-more, .btn-badge, .catalog-btn, .hero-btn-primar
   });
 });
 
-// ===== ANIMACIÓN AL SCROLL =====
+// ===== 6. ANIMACIÓN AL SCROLL =====
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -187,7 +144,7 @@ document.querySelectorAll('.team-card, .counter-item, .award-list li, .accordion
   observerCards.observe(el);
 });
 
-// ===== EFECTO DE RIPPLE GLOBAL =====
+// ===== 7. ESTILO DEL RIPPLE =====
 const style = document.createElement('style');
 style.textContent = `
   .ripple {
@@ -207,4 +164,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('✨ QUOV - Todos los efectos activados | Image Accordion funcionando');
+console.log('✨ QUOV - Quiénes Somos: Efectos específicos activados');
