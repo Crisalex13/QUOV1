@@ -10,6 +10,7 @@ TABLA DE CONTENIDO - basico.css
 7. CHAT IA - MODAL Y MENSAJES
 8. RESPONSIVE
 9. CURSOR
+10. EFECTOS GLOW/HOVER
 ============================================ */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
@@ -103,7 +104,6 @@ body.dark-mode {
 body.dark-mode {
   background-color: #0a0a0a;
 }
-
 /* ========== 3. NAVBAR ========== */
 .logo-nav {
   height: 36px;
@@ -126,6 +126,13 @@ nav {
   transition: opacity 0.15s;
 }
 
+/* ===== PESTAÑA ACTIVA - MODO DÍA (SOLO COLOR) ===== */
+.nav-link.active {
+  color: #00BFFF !important;
+  font-weight: 700;
+}
+
+/* Efecto hover para enlaces de navegación */
 nav .flex.items-center.gap-6 a {
   display: inline-flex;
   align-items: center;
@@ -142,6 +149,7 @@ nav .flex.items-center.gap-6 a:hover {
   text-shadow: 0 0 4px var(--text-shadow-color);
 }
 
+/* ===== MODO OSCURO - NAVBAR ===== */
 body.dark-mode nav {
   background-color: #1a1a1a !important;
   border-bottom-color: #3d3d3d !important;
@@ -160,6 +168,12 @@ body.dark-mode nav svg {
 
 body.dark-mode .theme-toggle {
   color: #ffffff !important;
+}
+
+/* ===== PESTAÑA ACTIVA - MODO OSCURO (SOLO COLOR) ===== */
+body.dark-mode .nav-link.active {
+  color: #4DCFFF !important;
+  font-weight: 700;
 }
 
 /* ========== 4. FOOTER ========== */
@@ -191,7 +205,7 @@ body.dark-mode .footer-text {
 /* ========== 5. BACK TO TOP ========== */
 .back2top {
   position: fixed;
-  bottom: 100px;
+  bottom: 150px;
   right: 30px;
   background: #1f4e5c;
   color: white;
@@ -518,8 +532,7 @@ body.dark-mode .back2top:hover {
   .back2top { width: 48px !important; height: 48px !important; }
 }
 
-/* ========== 9. CURSOR - VERSIÓN SUAVE ========== */
-
+/* ========== 9. CURSOR - VERSIÓN SUAVE INSPIRADA POR APP.JS========== */
 /* Ocultar el cursor original del sistema */
 * {
   cursor: none !important;
@@ -613,4 +626,109 @@ a, button {
   * {
     cursor: auto !important;
   }
+}
+
+/* ========== 10. EFECTOS GLOW/HOVER ========== */
+
+/* 1. EFECTO DE SOMBRA GLOW en elementos con hover */
+.book-card:hover,
+.featured-card:hover,
+.team-card:hover,
+.blog-post-wrapper:hover,
+.accordion-item:hover {
+  box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* 2. EFECTO DE TEXTO ILUMINADO en enlaces y títulos (VERSIÓN COMPLETA) */
+.nav-link:hover,
+.entry-title a:hover,
+.timeline-link:hover,
+.blog_read:hover,
+.team-info h3 a:hover,
+.team-icons a:hover,
+.breadcrumb a:hover,
+/* 🔽 SELECTORES PARA INDEX.HTML */
+.card-title:hover,
+.card-price:hover,
+.ver-detalle-btn:hover,
+.ver-detalle-catalogo-btn:hover,
+.search-bar-pro button:hover,
+/* 🔽 SELECTORES PARA QUIENES SOMOS.HTML */
+.catalog-btn:hover,
+.btn-more:hover,
+.btn-badge:hover,
+.accordion-btn:hover,
+#commentBtn:hover,
+.comment-left i:hover {
+  color: #00BFFF !important;
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+/* 3. EFECTO EN TARJETAS DE PRODUCTOS */
+.book-card:hover .card-title,
+.featured-card:hover .card-title,
+.book-card:hover .card-price,
+.featured-card:hover .card-price {
+  color: #00BFFF;
+  transition: color 0.2s ease;
+}
+
+/* 4. EFECTO EN BOTONES "VER DETALLES" */
+.ver-detalle-btn:hover,
+.ver-detalle-catalogo-btn:hover {
+  color: #00BFFF !important;
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+/* 5. EFECTO EN BADGES */
+.featured-card:hover .card-badge {
+  background: rgba(0, 191, 255, 0.15);
+  border-color: #00BFFF;
+  color: #00BFFF;
+  transition: all 0.2s ease;
+}
+
+/* 6. EFECTO EN BOTONES GENERALES (FONDO Y SOMBRA) */
+.hero-btn-primary:hover,
+.hero-btn-secondary:hover,
+.btn-more:hover,
+.btn-badge:hover,
+.catalog-btn:hover,
+.accordion-btn:hover,
+#commentBtn:hover {
+  background: #00BFFF;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+/* 7. EFECTO EN CONTADORES */
+.counter-item:hover .timer {
+  text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+  transition: text-shadow 0.2s ease;
+}
+
+/* 8. EFECTO EN IMÁGENES DE TARJETAS */
+.book-card:hover .card-img-wrap img,
+.featured-card:hover .card-img-wrap img,
+.team-card:hover img {
+  filter: brightness(1.05) contrast(1.02);
+  transition: filter 0.3s ease;
+}
+
+/* 9. EFECTO EN EL BOTÓN DE CHAT */
+.chat-fab:hover {
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.8), inset 0 0 8px rgba(0, 191, 255, 0.4) !important;
+  border-color: #4DCFFF !important;
+  transition: all 0.2s ease;
+}
+
+/* 10. EFECTO EN BACK TO TOP */
+.back2top:hover {
+  background: #00BFFF;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
+  transition: all 0.2s ease;
 }

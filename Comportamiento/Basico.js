@@ -5,6 +5,7 @@ TABLA DE CONTENIDO - BASICO.JS
 2. CURSOR PERSONALIZADO (basado en app.js)
 3. BACK TO TOP
 4. CHAT IA - Funcionalidad completa
+5. DETECTAR SECCIÓN VISIBLE Y MARCAR PESTAÑA ACTIVA 
 ============================================ */
 
 // ============================================ 
@@ -265,4 +266,47 @@ TABLA DE CONTENIDO - BASICO.JS
     });
   }, { threshold: 0.1 });
   revealElements.forEach(el => revealObserver.observe(el));
+})();
+
+// ============================================ 
+// ===== 5. DETECTAR SECCIÓN VISIBLE Y MARCAR PESTAÑA ACTIVA
+// ============================================ 
+
+(function initActiveNavOnScroll() {
+  const catalogLink = document.querySelector('a[href="#catalogo"]');
+  const destacadosLink = document.querySelector('a[href="#destacados"]');
+  
+  if (!catalogLink || !destacadosLink) return;
+  
+  const catalogSection = document.getElementById('catalogo');
+  const destacadosSection = document.getElementById('destacados');
+  
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 150;
+    
+    if (catalogSection && destacadosSection) {
+      const catalogTop = catalogSection.offsetTop;
+      const destacadosTop = destacadosSection.offsetTop;
+      
+      // Si estamos en la sección de destacados (más arriba)
+      if (scrollPos >= destacadosTop && scrollPos < catalogTop) {
+        destacadosLink.classList.add('active');
+        catalogLink.classList.remove('active');
+      } 
+      // Si estamos en catálogo o más abajo
+      else if (scrollPos >= catalogTop) {
+        catalogLink.classList.add('active');
+        destacadosLink.classList.remove('active');
+      }
+      // Si estamos al inicio (hero)
+      else {
+        destacadosLink.classList.remove('active');
+        catalogLink.classList.remove('active');
+      }
+    }
+  }
+  
+  window.addEventListener('scroll', updateActiveNav);
+  window.addEventListener('load', updateActiveNav);
+  updateActiveNav();
 })();

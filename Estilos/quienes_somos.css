@@ -36,7 +36,7 @@ body {
 
 /* ========== 2. PAGE TITLE ========== */
 .page-title-section {
-  background: linear-gradient(105deg, #f1f8fe 0%, #eaf4f1 100%);
+  background: linear-gradient(105deg, #B3EBFF 0%, #80DFFF 100%);
   padding: 70px 0 60px;
   text-align: center;
 }
@@ -44,19 +44,24 @@ body {
 .page-title-section h1 {
   font-size: 3.2rem;
   font-weight: 800;
-  color: #163a3f;
+  color: #006699;
   letter-spacing: -1px;
   font-family: 'Syne', sans-serif;
 }
 
 .breadcrumb {
   margin-top: 12px;
-  color: #3b6b62;
+  color: #0099CC;
 }
 
 .breadcrumb a {
-  color: #26645b;
+  color: #00BFFF;
   text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #4DCFFF;
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
 }
 
 /* ========== 3. IMAGE ACCORDION ========== */
@@ -135,7 +140,8 @@ body {
 }
 
 .accordion-btn:hover {
-  background: #2c7a6e;
+  background: #00BFFF;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
 }
 
 @media (min-width: 768px) {
@@ -183,14 +189,14 @@ body {
 .awards-wrapper {
   display: flex;
   flex-wrap: wrap;
-  background: #1e2f36;
+  background: #1a3a4a;
   border-radius: 48px;
   margin: 64px 0;
   overflow: hidden;
 }
 
 .award-left {
-  background: #143139;
+  background: #0D2E3A;
   padding: 50px 42px;
   flex: 1;
   color: white;
@@ -200,27 +206,35 @@ body {
   font-size: 2rem;
   text-transform: uppercase;
   font-family: 'Syne', sans-serif;
+  margin-bottom: 20px;
+}
+
+.award-left p {
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
 .btn-badge {
-  background: #e9b35f;
+  background: #00BFFF;
   padding: 12px 32px;
   border-radius: 40px;
   font-weight: bold;
-  color: #1e2f36;
+  color: #0D2E3A;
   text-decoration: none;
   display: inline-block;
   transition: transform 0.2s, background 0.2s;
+  margin-top: 20px;
 }
 
 .btn-badge:hover {
-  background: #f0c06e;
+  background: #4DCFFF;
   transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
 .award-right {
   flex: 1;
-  background: #1e3c3e;
+  background: #1E5A6E;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,7 +254,7 @@ body {
 
 .award-list li i {
   font-size: 3rem;
-  color: #f7d44a;
+  color: #FFB347;
 }
 
 .award-list li a {
@@ -273,15 +287,21 @@ body {
   font-weight: 800;
   font-family: 'Syne', sans-serif;
   color: var(--text-primary);
+  margin-bottom: 20px;
 }
 
 .success-text p {
   color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.success-text p:last-of-type {
+  margin-bottom: 30px;
 }
 
 .btn-more {
-  background: #2c7a6e;
+  background: #0099CC;
   color: white;
   padding: 12px 32px;
   border-radius: 36px;
@@ -293,8 +313,9 @@ body {
 }
 
 .btn-more:hover {
-  background: #3a8f82;
+  background: #00BFFF;
   transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
 .success-img {
@@ -308,7 +329,7 @@ body {
 
 /* ========== 7. COUNTER SECTION ========== */
 .counter-section {
-  background: linear-gradient(95deg, #122e2e, #1c4646);
+  background: linear-gradient(95deg, #0D2E3A, #1A5A6E);
   padding: 70px 0;
   border-radius: 64px;
   margin: 40px 0;
@@ -344,6 +365,10 @@ body {
   font-weight: 500;
   margin-top: 10px;
   opacity: 0.9;
+}
+
+.counter-item:hover .timer {
+  text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
 }
 
 /* ========== 8. TEAM SECTION ========== */
@@ -387,7 +412,7 @@ body {
 
 .team-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 35px -10px rgba(0, 191, 255, 0.2);
 }
 
 .team-card img {
@@ -399,6 +424,7 @@ body {
 
 .team-card:hover img {
   transform: scale(1.08);
+  filter: brightness(1.05) contrast(1.02);
 }
 
 .team-card .card-overlay {
@@ -420,7 +446,7 @@ body {
 
 .team-card .card-overlay span {
   display: inline-block;
-  background: #2c7a6e;
+  background: #0099CC;
   padding: 8px 20px;
   border-radius: 30px;
   font-size: 0.8rem;
@@ -432,6 +458,7 @@ body {
 
 .team-card .card-overlay span:hover {
   background: #00BFFF;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
 }
 
 .team-info {
@@ -440,13 +467,14 @@ body {
 
 .team-info h3 a {
   text-decoration: none;
-  color: #1f4e5c;
+  color: #006699;
   font-family: 'Syne', sans-serif;
   transition: color 0.2s;
 }
 
 .team-info h3 a:hover {
   color: #00BFFF;
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
 }
 
 .team-info p {
@@ -457,7 +485,7 @@ body {
 
 .team-icons a {
   margin: 0 8px;
-  color: #2c7a6e;
+  color: #0099CC;
   transition: color 0.2s, transform 0.2s;
   display: inline-block;
   font-size: 1.1rem;
@@ -466,6 +494,7 @@ body {
 .team-icons a:hover {
   color: #00BFFF;
   transform: scale(1.1);
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
 .team-card {
@@ -527,7 +556,7 @@ body {
 
 .comment-left i {
   font-size: 3rem;
-  color: #2c5f6e;
+  color: #0099CC;
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -585,8 +614,8 @@ body {
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-  border-color: #2c7a6e;
-  box-shadow: 0 0 0 3px rgba(44, 122, 110, 0.1);
+  border-color: #00BFFF;
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
 }
 
 .form-group textarea {
@@ -595,7 +624,7 @@ body {
 }
 
 #commentBtn {
-  background: #2c5f6e;
+  background: #0099CC;
   border: none;
   padding: 14px 28px;
   border-radius: 40px;
@@ -611,8 +640,9 @@ body {
 }
 
 #commentBtn:hover {
-  background: #3d7587;
+  background: #00BFFF;
   transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
 .comment-status {
@@ -1296,7 +1326,7 @@ body.dark-mode {
 }
 
 body.dark-mode .page-title-section {
-  background: linear-gradient(105deg, #1a2a2e 0%, #1a3a3a 100%);
+  background: linear-gradient(105deg, #0D2E3A 0%, #1A5A6E 100%);
 }
 
 body.dark-mode .page-title-section h1 {
@@ -1305,7 +1335,7 @@ body.dark-mode .page-title-section h1 {
 
 body.dark-mode .breadcrumb,
 body.dark-mode .breadcrumb a {
-  color: #7ab3a0;
+  color: #4DCFFF;
 }
 
 body.dark-mode .testimonial-quote {
@@ -1322,7 +1352,7 @@ body.dark-mode .team-card {
 }
 
 body.dark-mode .team-info h3 a {
-  color: #7ab3a0;
+  color: #4DCFFF;
 }
 
 body.dark-mode .team-info p {
@@ -1359,20 +1389,21 @@ body.dark-mode .success-text p {
 }
 
 body.dark-mode .btn-more {
-  color: #5f9c8b;
-  border: 1px solid #5f9c8b;
+  color: #00BFFF;
+  border: 1px solid #00BFFF;
   background: transparent;
 }
 
 body.dark-mode .btn-more:hover {
-  background: #5f9c8b;
+  background: #00BFFF;
   color: #111111;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
 /* ========== 12. MEJORAS ADICIONALES ========== */
 .catalog-btn {
   display: inline-block;
-  background: #2c5f6e;
+  background: #0099CC;
   padding: 14px 42px;
   border-radius: 40px;
   color: white;
@@ -1385,9 +1416,9 @@ body.dark-mode .btn-more:hover {
 }
 
 .catalog-btn:hover {
-  background: #3d7587;
+  background: #00BFFF;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(44, 95, 110, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.3);
 }
 
 .catalog-btn:active {
