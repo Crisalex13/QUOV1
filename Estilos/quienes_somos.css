@@ -2,13 +2,13 @@
    TABLA DE CONTENIDO - QUIÉNES SOMOS
    ============================================ 
    1. BASE Y CONTENEDORES
-   2. PAGE TITLE
+   2. PAGE TITLE Y HERO
    3. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP
    4. SECCIÓN QUOV 
    5. SECCIÓN EQUIPO
    6. MODAL DE PERFIL
    7. BOTÓN CATÁLOGO
-   8. MODO OSCURO
+   8. MODO OSCURO (COMPLETO)
    9. REDES SOCIALES EN MODAL
    10. VIDEO
    11. RESPONSIVE
@@ -33,33 +33,50 @@ body {
   box-sizing: border-box;
 }
 
-/* ========== 2. PAGE TITLE ========== */
-.page-title-section {
-  background: linear-gradient(105deg, #B3EBFF 0%, #80DFFF 100%);
-  padding: 50px 0 50px;
+/* ========== 2. PAGE TITLE Y HERO ========== */
+
+.hero-simple {
+  min-height: 40vh;
+  background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.page-title-section h1 {
-  font-size: 3.2rem;
+.hero-simple::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.3), transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-title-simple {
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  color: #006699;
-  letter-spacing: -1px;
   font-family: 'Syne', sans-serif;
+  background: linear-gradient(135deg, #22c8ff, #00BFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
 }
 
-.breadcrumb {
-  margin-top: 12px;
-  color: #0099CC;
-}
-
-.breadcrumb a {
-  color: #00BFFF;
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  color: #4DCFFF;
+.hero-subtitle-simple {
+  font-size: 1 rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* ========== 3. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP ========== */
@@ -149,12 +166,12 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #00BFFF, #0099CC, #00BFFF);
+  background: linear-gradient(90deg, #00BFFF, #08b3ec, #00BFFF);
   border-radius: 28px 28px 0 0;
 }
 
 .mvo-back {
-  background: linear-gradient(135deg, #0a2a3a 0%, #0d3d55 100%);
+  background: linear-gradient(135deg, #00bfffdc 0%, #00bfff7a 100%);
   color: white;
   transform: rotateY(180deg);
   border: 1px solid rgba(0, 191, 255, 0.5);
@@ -176,13 +193,20 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
-  color: #006699;
+  color: #00BFFF;
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
 
+.mvo-front a {
+  font-family: 'Syne', sans-serif;
+  font-size: .6 rem;
+  font-weight: 700;
+  color: #070909;
+}
+
 .mvo-back .mvo-icon-back {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   opacity: 0.8;
 }
@@ -191,7 +215,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #00BFFF;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -332,18 +356,6 @@ body {
   text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
-.quov-hint {
-  font-size: 0.75rem;
-  color: #00BFFF;
-  margin-top: 10px;
-  transition: opacity 0.3s;
-  opacity: 0.6;
-}
-
-.quov-card:hover .quov-hint {
-  opacity: 0;
-}
-
 /* ========== 5. SECCIÓN EQUIPO ========== */
 .team-section-wrapper {
   padding: 80px 0;
@@ -464,6 +476,7 @@ body {
   color: #888;
   font-size: 0.8rem;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .team-info-new .icons a {
@@ -497,7 +510,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #4DCFFF;
+  color: #00bfffad;
   font-family: 'Syne', sans-serif;
   gap: 12px;
 }
@@ -526,57 +539,6 @@ body {
     transform: translateY(0);
   }
 }
-/* ========== 6. MODAL DE PERFIL ========== */
-.profile-social {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 20px 0 25px;
-}
-
-.profile-social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #f0f0f0;
-  color: #333;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.profile-social-link:hover {
-  transform: translateY(-3px);
-}
-
-.profile-social-link.facebook:hover {
-  background: #1877f2;
-  color: white;
-}
-
-.profile-social-link.instagram:hover {
-  background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
-  color: white;
-}
-
-.profile-social-link.tiktok:hover {
-  background: #000000;
-  color: #00f2ea;
-}
-
-/* Modo oscuro para redes sociales */
-body.dark-mode .profile-social-link {
-  background: #2a2a2a;
-  color: #ccc;
-}
-
-body.dark-mode .profile-social-link:hover {
-  color: white;
-}
-
 
 /* ========== 6. MODAL DE PERFIL ========== */
 #profileModal {
@@ -597,54 +559,54 @@ body.dark-mode .profile-social-link:hover {
   background: rgba(0, 0, 0, 0.65);
 }
 
+/* Tamaño de la tarjeta */
 #profileCard {
   position: relative;
   z-index: 1;
   background: #fff;
-  border-radius: 32px;
-  width: 420px;
-  max-width: 90vw;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  border-radius: 20px; 
+  width: 280px;        
+  overflow: hidden;   
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   animation: profileSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes profileSlideIn {
-  from { opacity: 0; transform: translateY(40px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
+/* Imagen más pequeña */
 #profileCard img {
   width: 100%;
-  height: 260px;
+  height: 140px;       
   object-fit: cover;
 }
 
+/* Espaciado interno más ajustado */
 .profile-body {
-  padding: 28px;
+  padding: 15px 20px;  
   text-align: center;
 }
 
+/* Ajuste de fuentes */
 .profile-body h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;   
   font-weight: 800;
   color: #006699;
+  margin-top: 5px;
 }
 
 .profile-body .profile-role {
   color: #aaa;
-  font-size: 0.85rem;
-  margin-bottom: 16px;
+  font-size: 0.75rem;  
+  margin-bottom: 10px;
 }
 
 .profile-body p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;  
   color: #555;
-  line-height: 1.7;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
+/* Botón más pequeño */
 #profileClose {
   background: #0099CC;
   color: white;
@@ -657,40 +619,69 @@ body.dark-mode .profile-social-link:hover {
 }
 
 #profileClose:hover {
-  background: #00BFFF;
+  background: #00bfff52;
   transform: scale(1.04);
 }
 
 /* ========== 7. BOTÓN CATÁLOGO ========== */
 .catalog-btn {
-  display: inline-block;
-  background: #02b7f3ca;
-  padding: 14px 42px;
-  border-radius: 40px;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #02b7f3 !important;
+    background: linear-gradient(135deg, #02b7f3 0%, #0588ca 100%) !important; 
+    padding: 16px 48px; 
+    border-radius: 50px; 
+    
+    color: #ffffff !important; 
+    z-index: 1; 
+    overflow: hidden;
+    
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Syne', sans-serif; 
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease; 
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 6px 15px rgba(2, 183, 243, 0.3);
+    text-decoration: none;
 }
 
 .catalog-btn:hover {
-  background: #00BFFF;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 204, 255, 0.3);
+    background: #0e0e0e !important; 
+    background-image: none !important; 
+    transform: translateY(-4px) scale(1.02); 
+    color: #ffffff !important; 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
-.catalog-btn:active {
-  transform: translateY(0);
+/* Esto asegura que el texto sea blanco y esté arriba */
+.catalog-btn, 
+.catalog-btn * {
+    color: #ffffff !important;
+    position: relative;
+    z-index: 2;
 }
 
-/* ========== 8. MODO OSCURO ========== */
+/* EFECTO SOLO PARA LA FLECHA */
+.catalog-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 10px; /* El espacio ahora solo afecta a la flecha */
+}
+
+.catalog-btn:hover .arrow {
+    transform: translateX(5px); 
+}
+
+/* ========== 8. MODO OSCURO (COMPLETO) ========== */
 body.dark-mode {
   background-color: #0a0a0a;
 }
 
+/* Page Title Modo Oscuro */
 body.dark-mode .page-title-section {
   background: linear-gradient(105deg, #0D2E3A 0%, #1A5A6E 100%);
 }
@@ -704,31 +695,47 @@ body.dark-mode .breadcrumb a {
   color: #4DCFFF;
 }
 
-body.dark-mode .team-section > h3 {
-  color: #ffffff;
+/* MVO Modo Oscuro */
+body.dark-mode .mvo-front {
+  background: rgba(20, 20, 40, 0.95);
+  border-color: rgba(0, 191, 255, 0.4);
 }
 
-body.dark-mode .team-section > p {
-  color: #cccccc;
-}
-
-body.dark-mode .team-card {
-  background: #1a1a1a;
-  border-color: #333333;
-}
-
-body.dark-mode .team-info h3 a {
+body.dark-mode .mvo-front h4 {
   color: #4DCFFF;
 }
 
-body.dark-mode .team-info p {
-  color: #aaaaaa;
+body.dark-mode .mvo-back {
+  background: linear-gradient(135deg, #0a1a2a 0%, #0a2a3a 100%);
 }
 
-body.dark-mode .team-icons a {
+/* QUOV Modo Oscuro */
+body.dark-mode .quov-card {
+  background: rgba(10, 10, 20, 0.95);
+}
+
+body.dark-mode .quov-card h4 {
   color: #4DCFFF;
 }
 
+body.dark-mode .quov-card:hover .quov-msg {
+  color: #4DCFFF;
+}
+
+/* EQUIPO Modo Oscuro */
+body.dark-mode .team-card-new {
+  background: rgba(30, 30, 50, 0.95);
+}
+
+body.dark-mode .team-info-new h3 {
+  color: #4DCFFF;
+}
+
+body.dark-mode .team-info-new .role {
+  color: #aaa;
+}
+
+/* MODAL Modo Oscuro */
 body.dark-mode #profileCard {
   background: #1a1a1a;
 }
@@ -739,6 +746,20 @@ body.dark-mode .profile-body h2 {
 
 body.dark-mode .profile-body p {
   color: #ccc;
+}
+
+body.dark-mode .profile-body .profile-role {
+  color: #888;
+}
+
+/* Redes Sociales Modo Oscuro */
+body.dark-mode .social-icon {
+  background: #2a2a2a;
+  color: #ccc;
+}
+
+body.dark-mode .social-icon:hover {
+  color: white;
 }
 
 /* ========== 9. REDES SOCIALES EN MODAL ========== */
@@ -767,32 +788,19 @@ body.dark-mode .profile-body p {
   transform: translateY(-4px);
 }
 
-/* Facebook */
 .social-icon.facebook:hover {
   background: #1877f2;
   color: white;
 }
 
-/* Instagram */
 .social-icon.instagram:hover {
   background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
   color: white;
 }
 
-/* TikTok */
 .social-icon.tiktok:hover {
   background: #000000;
   color: #00f2ea;
-}
-
-/* Modo oscuro */
-body.dark-mode .social-icon {
-  background: #2a2a2a;
-  color: #ccc;
-}
-
-body.dark-mode .social-icon:hover {
-  color: white;
 }
 
 /* ========== 10. VIDEO ========== */
@@ -829,28 +837,6 @@ body.dark-mode .social-icon:hover {
     font-size: 1.8rem;
   }
 
-  .team-card {
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-  }
-
-  .team-card img {
-    height: 180px;
-  }
-
-  .team-info {
-    padding: 12px;
-  }
-
-  .team-info h3 a {
-    font-size: 0.9rem;
-  }
-
-  .team-info p {
-    font-size: 0.7rem;
-  }
-
   .catalog-btn {
     padding: 10px 24px;
     font-size: 0.85rem;
@@ -874,6 +860,12 @@ body.dark-mode .social-icon:hover {
     max-width: 300px;
   }
 
+  .team-card-new {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
   #cursor-dot,
   #cursor-ring {
     display: none !important;
@@ -893,22 +885,18 @@ body.dark-mode .social-icon:hover {
     font-size: 2rem;
   }
 
-  .team-card {
-    width: calc(50% - 15px);
-    min-width: 180px;
-  }
-
-  .team-grid {
-    gap: 20px;
-  }
-
-  .team-card img {
-    height: 200px;
-  }
-
   .quov-card {
     width: calc(50% - 15px);
     min-width: 250px;
+  }
+
+  .team-card-new {
+    width: calc(50% - 20px);
+    min-width: 180px;
+  }
+
+  .team-layout {
+    gap: 20px;
   }
 }
 
@@ -917,26 +905,17 @@ body.dark-mode .social-icon:hover {
     padding: 0 30px;
   }
 
-  .team-card {
-    width: calc(33.33% - 25px);
-    min-width: 200px;
-  }
-
-  .team-card img {
-    height: 240px;
-  }
-
   .quov-card {
     width: calc(33.33% - 20px);
     min-width: 260px;
   }
+
+  .team-card-new {
+    width: 200px;
+  }
 }
 
 @media (max-width: 768px) {
-  .edu_bottom_btn_wrapper {
-    margin-top: 40px;
-  }
-
   .mvo-card {
     width: 280px;
     height: 360px;

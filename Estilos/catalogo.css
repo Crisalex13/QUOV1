@@ -942,3 +942,54 @@ footer {
   }
 }
 
+/* ========== 13. REDUCIR TAMAÑO DEL MODAL DE PRODUCTO ========== */
+
+/* Reducir el modal de producto */
+#productOverlay .modal-card {
+  max-width: 360px !important;
+  width: 90% !important;
+  border-radius: 24px !important;
+}
+
+/* Cuando el libro está en modo lateral (derecha) */
+#productOverlay.side-docked .modal-card {
+  width: min(360px, calc(100vw - 40px)) !important;
+  max-width: 360px !important;
+}
+
+/* Reducir tamaño de la imagen dentro del modal */
+#productOverlay .modal-card img {
+  max-height: 200px !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+/* Reducir padding interno */
+#productOverlay .modal-card .p-6 {
+  padding: 16px !important;
+}
+
+/* Reducir título */
+#productTitle,
+#productName {
+  font-size: 1rem !important;
+}
+
+/* Reducir precio */
+#productPrice {
+  font-size: 1.2rem !important;
+}
+
+/* Botones más compactos */
+#productOverlay .buy-button,
+#productOverlay .secondary-button {
+  padding: 8px 16px !important;
+  font-size: 0.75rem !important;
+}
+
+/* Para el chat también reducir si quieres */
+#chatOverlay .modal-card {
+  max-width: 400px !important;
+  width: 90% !important;
+}

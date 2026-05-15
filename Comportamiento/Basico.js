@@ -2,11 +2,10 @@
 TABLA DE CONTENIDO - BASICO.JS 
 ============================================ 
 1. MODO DÍA/NOCHE
-2. CURSOR PERSONALIZADO (basado en app.js)
+2. CURSOR PERSONALIZADO
 3. BACK TO TOP
-4. CHAT IA - Funcionalidad completa
-5. DETECTAR SECCIÓN VISIBLE Y MARCAR PESTAÑA ACTIVA 
-6. MANEJO DE LAS PESTAÑAS EN CATALOGO Y DESTACADO
+4. REVEAL AL SCROLL
+5. EFECTO LATERAL AUTOMÁTICO
 ============================================ */
 
 // ============================================ 
@@ -35,7 +34,7 @@ TABLA DE CONTENIDO - BASICO.JS
 })();
 
 // ============================================ 
-// 2. CURSOR PERSONALIZADO (VERSIÓN SUAVE - basada en app.js)
+// 2. CURSOR PERSONALIZADO
 // ============================================ 
 (function initCustomCursor() {
   const dot = document.getElementById('cursor-dot');
@@ -43,20 +42,17 @@ TABLA DE CONTENIDO - BASICO.JS
   
   if (!dot || !ring) return;
 
-  // Detectar si es dispositivo táctil
   if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
     dot.style.display = 'none';
     ring.style.display = 'none';
     return;
   }
 
-  // Posiciones iniciales
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let ringX = mouseX;
   let ringY = mouseY;
 
-  // Cambiar color del cursor según el elemento
   function setCursorMode(mode) {
     document.body.classList.toggle('cursor-blue', mode === 'blue');
     document.body.classList.toggle('cursor-white', mode === 'white');
@@ -64,16 +60,12 @@ TABLA DE CONTENIDO - BASICO.JS
 
   setCursorMode('blue');
 
-  // Mover el punto (sigue inmediatamente al mouse)
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-
-    // Usamos left/top para el punto (más suave)
     dot.style.left = mouseX + 'px';
     dot.style.top = mouseY + 'px';
 
-    // Detectar el color del cursor según el elemento debajo
     const target = document.elementFromPoint(mouseX, mouseY);
     if (!target) return;
 
@@ -89,17 +81,14 @@ TABLA DE CONTENIDO - BASICO.JS
     }
     setCursorMode(mode);
 
-    // Efecto hover en elementos interactivos
-    const interactive = target.closest('a, button, input, textarea, [data-id], .search-bar-pro, #chatFab, #chatHint, .nav-link, .back2top, .accordion-btn, .btn-more, .btn-badge, .catalog-btn, .blog_read, .timeline-link, .team-card, .book-card, .featured-card');
+    const interactive = target.closest('a, button, input, textarea, .search-bar-pro, #chatFab, #chatHint, .nav-link, .back2top, .catalog-btn');
     document.body.classList.toggle('cursor-hover', !!interactive);
   });
 
-  // Salir del hover si el mouse sale de la ventana
   document.addEventListener('mouseleave', () => {
     document.body.classList.remove('cursor-hover');
   });
 
-  // Animar el anillo (efecto suave con requestAnimationFrame)
   function animateRing() {
     ringX += (mouseX - ringX) * 0.12;
     ringY += (mouseY - ringY) * 0.12;
@@ -109,7 +98,7 @@ TABLA DE CONTENIDO - BASICO.JS
   }
   animateRing();
 
-  console.log('✨ Cursor personalizado (versión suave) activado');
+  console.log('✨ Cursor personalizado activado');
 })();
 
 // ============================================ 
@@ -137,124 +126,8 @@ TABLA DE CONTENIDO - BASICO.JS
 })();
 
 // ============================================ 
-// 4. CHAT IA - Funcionalidad completa
+// 4. REVEAL AL SCROLL
 // ============================================ 
-(function initChat() {
-  const chatFab = document.getElementById('chatFab');
-  const chatHint = document.getElementById('chatHint');
-  const chatOverlay = document.getElementById('chatOverlay');
-  const chatClose = document.getElementById('chatClose');
-  
-  if (!chatFab) return;
-  
-  let isChatOpen = false;
-  
-  function hideHint() {
-    if (chatHint && !isChatOpen) {
-      chatHint.style.opacity = '0';
-      chatHint.style.visibility = 'hidden';
-      chatHint.style.pointerEvents = 'none';
-    }
-  }
-  
-  function showHint() {
-    if (chatHint && !isChatOpen) {
-      chatHint.style.opacity = '1';
-      chatHint.style.visibility = 'visible';
-      chatHint.style.pointerEvents = 'auto';
-      chatHint.style.transform = 'translateY(0) scale(1)';
-    }
-  }
-  
-  function resetHint() {
-    if (chatHint) chatHint.removeAttribute('style');
-  }
-  
-  chatFab.addEventListener('mouseenter', () => { if (!isChatOpen) showHint(); });
-  chatFab.addEventListener('mouseleave', () => { if (!isChatOpen) hideHint(); });
-  
-  if (chatHint) {
-    chatHint.addEventListener('mouseenter', () => { if (!isChatOpen) showHint(); });
-    chatHint.addEventListener('mouseleave', () => { if (!isChatOpen) hideHint(); });
-  }
-  
-  chatFab.addEventListener('click', () => {
-    if (chatOverlay) {
-      isChatOpen = true;
-      if (chatHint) {
-        chatHint.style.opacity = '0';
-        chatHint.style.visibility = 'hidden';
-      }
-      chatOverlay.classList.remove('hidden');
-      chatOverlay.classList.add('flex');
-    }
-  });
-  
-  function closeChat() {
-    if (chatOverlay) {
-      chatOverlay.classList.add('hidden');
-      chatOverlay.classList.remove('flex');
-      setTimeout(() => {
-        isChatOpen = false;
-        resetHint();
-        setTimeout(() => {
-          if (chatFab.matches(':hover') && !isChatOpen) showHint();
-        }, 50);
-      }, 150);
-    }
-  }
-  
-  if (chatClose) chatClose.addEventListener('click', closeChat);
-  if (chatOverlay) {
-    chatOverlay.addEventListener('click', (e) => {
-      if (e.target === chatOverlay) closeChat();
-    });
-  }
-  
-  window.enviarMensaje = function() {
-    const input = document.getElementById('chatInput');
-    if (!input) return;
-    const message = input.value.trim();
-    if (!message) return;
-    const chatMessages = document.getElementById('chatMessages');
-    if (!chatMessages) return;
-    
-    const userMsg = document.createElement('div');
-    userMsg.className = 'max-w-[85%] rounded-2xl bg-black text-white px-4 py-2 ml-auto mb-2';
-    userMsg.textContent = message;
-    chatMessages.appendChild(userMsg);
-    input.value = '';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
-    typingIndicator.innerHTML = '<span class="inline-block animate-pulse">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.2s">●</span> <span class="inline-block animate-pulse" style="animation-delay:0.4s">●</span>';
-    chatMessages.appendChild(typingIndicator);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    
-    setTimeout(() => {
-      typingIndicator.remove();
-      const botMsg = document.createElement('div');
-      botMsg.className = 'max-w-[85%] rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-2 mb-2';
-      let respuesta = '';
-      const msgLower = message.toLowerCase();
-      if (msgLower.includes('precio') || msgLower.includes('cuesta')) {
-        respuesta = '💰 Los precios de nuestros libros van desde <strong>$150 MXN</strong>. ¿Te gustaría que te comparta el catálogo?';
-      } else if (msgLower.includes('disponible') || msgLower.includes('hay')) {
-        respuesta = '📚 Para conocer la disponibilidad exacta de un libro, por favor contáctanos por <strong>WhatsApp al 55 6744 9830</strong>.';
-      } else if (msgLower.includes('comprar') || msgLower.includes('quiero')) {
-        respuesta = '🛍️ ¡Excelente! Para comprar, escríbenos directamente a <strong>WhatsApp: 55 6744 9830</strong>. Te atenderemos enseguida.';
-      } else {
-        respuesta = '✨ ¡Hola! Para más información sobre "' + message + '", escríbenos por <strong>WhatsApp al 55 6744 9830</strong>. ¿Necesitas algo más?';
-      }
-      botMsg.innerHTML = respuesta;
-      chatMessages.appendChild(botMsg);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 1200);
-  };
-})();
-
-// ===== REVEAL AL SCROLL =====
 (function initRevealOnScroll() {
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length === 0) return;
@@ -270,117 +143,62 @@ TABLA DE CONTENIDO - BASICO.JS
 })();
 
 // ============================================ 
-// ===== 6. MANEJO DE PESTAÑAS CATÁLOGO Y DESTACADOS
+// 5. EFECTO LATERAL AUTOMÁTICO
 // ============================================ 
-
-(function initCatalogTabs() {
-  const catalogoLink = document.querySelector('a[href="#catalogo"]');
-  const destacadosLink = document.querySelector('a[href="#destacados"]');
-  
-  // Si no existen estos enlaces en esta página, salir
-  if (!catalogoLink || !destacadosLink) return;
-  
-  const catalogoSection = document.getElementById('catalogo');
-  const destacadosSection = document.getElementById('destacados');
-  
-  if (!catalogoSection || !destacadosSection) return;
-  
-  // Función para actualizar qué enlace está activo según scroll
-  function updateActiveNav() {
-    const scrollPos = window.scrollY + 150;
-    const catalogoTop = catalogoSection.offsetTop;
-    const destacadosTop = destacadosSection.offsetTop;
+(function initSideEffect() {
+  setTimeout(() => {
+    const productOverlay = document.getElementById('productOverlay');
+    const chatOverlay = document.getElementById('chatOverlay');
     
-    // Si estamos en destacados
-    if (scrollPos >= destacadosTop && scrollPos < catalogoTop) {
-      destacadosLink.classList.add('active');
-      catalogoLink.classList.remove('active');
-    } 
-    // Si estamos en catálogo
-    else if (scrollPos >= catalogoTop) {
-      catalogoLink.classList.add('active');
-      destacadosLink.classList.remove('active');
+    if (!productOverlay || !chatOverlay) {
+      console.log('⚠️ Modales no encontrados');
+      return;
     }
-    // Si estamos arriba (hero)
-    else {
-      destacadosLink.classList.remove('active');
-      catalogoLink.classList.remove('active');
-    }
-  }
-  
-  // Evento de scroll
-  window.addEventListener('scroll', updateActiveNav);
-  window.addEventListener('load', updateActiveNav);
-  
-  // Al hacer clic: scroll suave y actualizar
-  catalogoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    catalogoSection.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(updateActiveNav, 100); // Pequeño delay para que el scroll termine
-  });
-  
-  destacadosLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    destacadosSection.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(updateActiveNav, 100);
-  });
-  
-  console.log('✅ Pestañas de Catálogo/Destacados activadas');
-})();
-
-// ============================================ 
-// ===== 6. MANEJO DE LAS PESTAÑAS EN CATALOGO Y DESTACADO
-// ============================================ 
-
-// Manejar activación de pestañas en Catálogo y Destacados
-(function initCatalogNav() {
-  const catalogoLink = document.querySelector('a[href="#catalogo"]');
-  const destacadosLink = document.querySelector('a[href="#destacados"]');
-  
-  if (!catalogoLink || !destacadosLink) return;
-  
-  // Función para actualizar qué enlace está activo
-  function updateActiveNav() {
-    const scrollPos = window.scrollY + 150;
-    const catalogoSection = document.getElementById('catalogo');
-    const destacadosSection = document.getElementById('destacados');
     
-    if (!catalogoSection || !destacadosSection) return;
-    
-    const catalogoTop = catalogoSection.offsetTop;
-    const destacadosTop = destacadosSection.offsetTop;
-    
-    // Si estamos en la sección de destacados
-    if (scrollPos >= destacadosTop && scrollPos < catalogoTop) {
-      destacadosLink.classList.add('active');
-      catalogoLink.classList.remove('active');
-    } 
-    // Si estamos en catálogo o más abajo
-    else if (scrollPos >= catalogoTop) {
-      catalogoLink.classList.add('active');
-      destacadosLink.classList.remove('active');
+    // Función para verificar y aplicar efecto lateral
+    function aplicarEfectoLateral() {
+      // Verificar si el modal del producto está visible (no tiene hidden)
+      const isProductVisible = productOverlay && 
+        !productOverlay.classList.contains('hidden') && 
+        productOverlay.style.display !== 'none';
+      
+      // Verificar si el modal del chat está visible
+      const isChatVisible = chatOverlay && 
+        !chatOverlay.classList.contains('hidden') && 
+        chatOverlay.style.display !== 'none';
+      
+      // Aplicar clases solo si ambos están visibles y en pantalla grande
+      if (isProductVisible && isChatVisible && window.innerWidth >= 1024) {
+        productOverlay.classList.add('side-docked');
+        chatOverlay.classList.add('chat-side-mode');
+        console.log('✅ Efecto lateral activado');
+      } else {
+        productOverlay.classList.remove('side-docked');
+        chatOverlay.classList.remove('chat-side-mode');
+      }
     }
-    // Si estamos arriba de destacados
-    else {
-      destacadosLink.classList.remove('active');
-      catalogoLink.classList.remove('active');
-    }
-  }
-  
-  // Escuchar scroll
-  window.addEventListener('scroll', updateActiveNav);
-  window.addEventListener('load', updateActiveNav);
-  
-  // Al hacer clic en los enlaces, hacer scroll suave
-  catalogoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
-    updateActiveNav();
-  });
-  
-  destacadosLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('destacados').scrollIntoView({ behavior: 'smooth' });
-    updateActiveNav();
-  });
+    
+    // Observar cambios en las clases de los overlays
+    const observer = new MutationObserver(() => {
+      setTimeout(aplicarEfectoLateral, 50);
+    });
+    
+    observer.observe(productOverlay, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(chatOverlay, { attributes: true, attributeFilter: ['class'] });
+    
+    // También verificar al cambiar tamaño de ventana
+    window.addEventListener('resize', () => {
+      setTimeout(aplicarEfectoLateral, 100);
+    });
+    
+    // Verificar cada vez que se hace clic (para detectar aperturas)
+    document.addEventListener('click', () => {
+      setTimeout(aplicarEfectoLateral, 100);
+    });
+    
+    // Verificar inicial
+    setTimeout(aplicarEfectoLateral, 500);
+    
+    console.log('✅ Efecto lateral automático activado');
+  }, 100);
 })();

@@ -7,10 +7,10 @@ TABLA DE CONTENIDO - basico.css
 4. FOOTER
 5. BACK TO TOP
 6. CHAT IA - BOTÓN FLOTANTE
-7. CHAT IA - MODAL Y MENSAJES
+7. CHAT IA - MODAL
 8. TARJETAS DEL IA
-9. SCROLLBAR ESTILO
-10. EFECTOS GLOW/HOVER
+9. SCROLLBAR
+10. EFECTOS HOVER
 11. CURSOR PERSONALIZADO
 ============================================ */
 
@@ -21,9 +21,10 @@ TABLA DE CONTENIDO - basico.css
   --bg-neutral-50: #fafafa;
   --bg-neutral-100: #f0f0f0;
   --bg-neutral-900: #171717;
-  --text-shadow-color: rgba(95, 156, 139, 0.5);
+  --text-shadow-color: rgba(0, 200, 255, 0.5);
   --text-primary: #111111;
   --text-secondary: #444444;
+  --text-neutral-500: #737373;
   --border-light: #d1d5db;
   --card-bg: #fefefe;
   --card-shadow: rgba(0, 0, 0, 0.1);
@@ -38,6 +39,7 @@ body.dark-mode {
   --bg-neutral-900: #0a0a0a;
   --text-primary: #f5f5f5;
   --text-secondary: #cccccc;
+  --text-neutral-500: #a3a3a3;
   --border-light: #3d3d3d;
   --card-bg: #2d2d2d;
 }
@@ -155,6 +157,10 @@ body.dark-mode .back2top {
   background-color: #5f9c8b;
 }
 
+body.dark-mode .back2top:hover {
+  background-color: #4a7d6e;
+}
+
 /* ========== 6. CHAT IA - BOTÓN FLOTANTE ========== */
 .chat-fab {
   position: fixed !important;
@@ -224,26 +230,282 @@ body.dark-mode .back2top {
 }
 
 /* ========== 7. CHAT IA - MODAL ========== */
+
+
+/* Contenedor de mensajes - tamaño reducido */
+#chatMessages {
+  max-height: 40vh !important;
+  min-height: 200px !important;
+  background: var(--bg-secondary) !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  overflow-y: auto !important;
+}
+
+/* Modo claro - fondo del chat */
+body:not(.dark-mode) #chatMessages {
+  background: #f5f5f5 !important;
+}
+
+/* Modo oscuro - fondo del chat */
+body.dark-mode #chatMessages {
+  background: #1a1a1a !important;
+}
+
+/* Fondo general del chat - más pequeño */
 #chatOverlay .modal-card {
+  max-width: 380px !important;
+  width: 90% !important;
   background: var(--bg-primary) !important;
 }
 
+/* Burbuja del usuario (tus mensajes) - #00BFFF */
+#chatMessages .bg-black {
+  background: #00BFFF !important;
+  color: white !important;
+  border-radius: 20px 20px 4px 20px !important;
+  max-width: 80% !important;
+  width: fit-content !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 8px auto !important;
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.3) !important;
+}
+
+/* Burbuja del bot (respuestas de QUOV) - MODO CLARO */
+body:not(.dark-mode) #chatMessages .bg-neutral-100 {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border-radius: 20px 20px 20px 4px !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 !important;
+  max-width: 80% !important;
+  width: auto !important;
+  border: 1px solid #00BFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.1) !important;
+}
+
+/* Burbuja del bot (respuestas de QUOV) - MODO OSCURO */
+body.dark-mode #chatMessages .bg-neutral-100 {
+  background: #2d2d2d !important;
+  color: #e0e0e0 !important;
+  border-radius: 20px 20px 20px 4px !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 !important;
+  max-width: 80% !important;
+  width: auto !important;
+  border: 1px solid #00BFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.2) !important;
+}
+
+/* Texto del bot - enlaces */
+#chatMessages a {
+  color: #00BFFF !important;
+  text-decoration: underline !important;
+}
+
+#chatMessages a:hover {
+  color: #4DCFFF !important;
+}
+
+/* Input del chat */
+#chatInput {
+  background: var(--bg-primary) !important;
+  border: 2px solid #00BFFF !important;
+  border-radius: 30px !important;
+  padding: 12px 18px !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+}
+
+#chatInput::placeholder {
+  color: #999 !important;
+}
+
+#chatInput:focus {
+  border-color: #00BFFF !important;
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2) !important;
+  outline: none !important;
+}
+
+/* Botón enviar */
+.chat-send-button {
+  background: #00BFFF !important;
+  border-radius: 30px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.chat-send-button:hover {
+  background: #0099CC !important;
+  transform: scale(1.02) !important;
+}
+
+/* Header del chat - MODO CLARO */
+body:not(.dark-mode) #chatOverlay .border-b {
+  background: #00BFFF !important;
+  border-bottom: 1px solid #0099CC !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+/* Header del chat - MODO OSCURO */
+body.dark-mode #chatOverlay .border-b {
+  background: #0088CC !important;
+  border-bottom: 1px solid #00BFFF !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+#chatOverlay .font-semibold {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+}
+
+/* Botón cerrar */
 #chatClose {
-  background: rgba(0, 0, 0, 0.05) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
   border-radius: 50% !important;
   width: 32px !important;
   height: 32px !important;
 }
 
-.chat-send-button {
-  background: #5f9c8b !important;
-  border-radius: 24px !important;
-  padding: 12px 24px !important;
-  font-weight: 600 !important;
-  color: white !important;
-  cursor: pointer !important;
+#chatClose:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.05) !important;
 }
 
+/* Scrollbar del chat - MODO CLARO */
+body:not(.dark-mode) #chatMessages::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+body:not(.dark-mode) #chatMessages::-webkit-scrollbar-thumb {
+  background: #00BFFF;
+  border-radius: 10px;
+}
+
+/* Scrollbar del chat - MODO OSCURO */
+body.dark-mode #chatMessages::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 10px;
+}
+
+body.dark-mode #chatMessages::-webkit-scrollbar-thumb {
+  background: #00BFFF;
+  border-radius: 10px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb:hover {
+  background: #0099CC !important;
+}
+
+#chatMessages::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* ========== 12. MODAL DE LIBRO LATERAL ========== */
+/* Estilos para el overlay del producto en modo lateral */
+#productOverlay.side-docked {
+  z-index: 70;
+  background: transparent;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+#productOverlay.side-docked.active {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+#productOverlay.side-docked .modal-card {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  left: auto;
+  width: min(450px, calc(100vw - 40px));
+  max-width: 450px;
+  max-height: 85vh;
+  transform: translateY(-50%) translateX(100%);
+  pointer-events: auto;
+  z-index: 61;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.22);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#productOverlay.side-docked.active .modal-card {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Estilo del scrollbar dentro del modal de libro */
+#productOverlay.side-docked .modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+#productOverlay.side-docked .modal-card::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+#productOverlay.side-docked .modal-card::-webkit-scrollbar-thumb {
+  background: #00BFFF;
+  border-radius: 10px;
+}
+
+/* Estilos para el chat en modo lateral */
+#chatOverlay.chat-side-mode {
+  background: transparent;
+  pointer-events: none;
+}
+
+#chatOverlay.chat-side-mode.active {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+#chatOverlay.chat-side-mode .modal-card {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  right: auto;
+  width: min(450px, calc(100vw - 40px));
+  max-width: 450px;
+  max-height: 85vh;
+  transform: translateY(-50%) translateX(-100%);
+  pointer-events: auto;
+  z-index: 61;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.22);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#chatOverlay.chat-side-mode.active .modal-card {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  #productOverlay.side-docked .modal-card,
+  #chatOverlay.chat-side-mode .modal-card {
+    width: calc(100vw - 20px);
+    max-height: 80vh;
+    top: auto;
+    bottom: 10px;
+    transform: translateY(100%);
+  }
+  
+  #productOverlay.side-docked.active .modal-card,
+  #chatOverlay.chat-side-mode.active .modal-card {
+    transform: translateY(0);
+  }
+}
 
 /* ========== 8. TARJETAS DEL IA ========== */
 .modal-card {
@@ -388,73 +650,114 @@ body.dark-mode * {
   background: #00BFFF !important;
 }
 
-
 /* ========== 11. CURSOR PERSONALIZADO ========== */
-@media (hover: hover) and (pointer: fine) {
-  *,
-  body {
-    cursor: none !important;
-  }
+/* Ocultar cursor del sistema en toda la página */
+* {
+  cursor: none !important;
 }
 
+/* Punto del cursor */
 #cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
   width: 10px;
   height: 10px;
+  background: #00BFFF;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  background: #00BFFF;
+  transition: width 0.2s, height 0.2s;
 }
 
+/* Anillo del cursor */
 #cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
   width: 36px;
   height: 36px;
+  border: 2px solid #00BFFF;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9998;
+  z-index: 99998;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease;
-  border: 1.5px solid rgba(0, 191, 255, 0.8);
+  transition: width 0.2s, height 0.2s;
+  opacity: 0.7;
 }
 
-body.cursor-blue #cursor-dot {
-  background: #00BFFF;
-}
-
-body.cursor-blue #cursor-ring {
-  border-color: rgba(0, 191, 255, 0.8);
-}
-
-body.cursor-white #cursor-dot {
-  background: #ffffff;
-}
-
-body.cursor-white #cursor-ring {
-  border-color: rgba(255, 255, 255, 0.95);
-}
-
-body.cursor-hover #cursor-dot {
+/* Efecto hover en elementos interactivos */
+a:hover ~ #cursor-dot,
+button:hover ~ #cursor-dot,
+.team-card-new:hover ~ #cursor-dot,
+.quov-card:hover ~ #cursor-dot,
+.catalog-btn:hover ~ #cursor-dot,
+#profileClose:hover ~ #cursor-dot,
+.social-icon:hover ~ #cursor-dot {
   width: 14px;
   height: 14px;
 }
 
-body.cursor-hover #cursor-ring {
+a:hover ~ #cursor-ring,
+button:hover ~ #cursor-ring,
+.team-card-new:hover ~ #cursor-ring,
+.quov-card:hover ~ #cursor-ring,
+.catalog-btn:hover ~ #cursor-ring,
+#profileClose:hover ~ #cursor-ring,
+.social-icon:hover ~ #cursor-ring {
   width: 52px;
   height: 52px;
 }
 
-@media (hover: none),
-(pointer: coarse) {
+/* En móviles, desactivar cursor personalizado */
+@media (max-width: 1024px) {
+  * {
+    cursor: auto !important;
+  }
   #cursor-dot,
   #cursor-ring {
     display: none !important;
   }
+}
+
+/* ========== 12. MODAL DE LIBRO LATERAL Y CHAT CENTRADO ========== */
+
+/* Cuando el libro está abierto a la derecha */
+#productOverlay.side-docked .modal-card {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  left: auto;
+  width: min(420px, calc(100vw - 45px));
+  max-width: 420px;
+  max-height: 85vh;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  z-index: 61;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
+}
+
+/* Chat se mueve LIGERAMENTE a la izquierda (casi centrado) */
+#chatOverlay.chat-side-mode .modal-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) translateY(-45%);
+  width: min(420px, calc(100vw - 40px));
+  max-width: 420px;
+  max-height: 85vh;
+  pointer-events: auto;
+  z-index: 61;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
+}
+
+#chatOverlay.chat-side-mode .modal-card {
+  left: 40%;
+  transform: translateX(-35%) translateY(-45%);
 }
