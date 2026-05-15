@@ -8,10 +8,10 @@ TABLA DE CONTENIDO - basico.css
 5. BACK TO TOP
 6. CHAT IA - BOTÓN FLOTANTE
 7. CHAT IA - MODAL Y MENSAJES
-8. RESPONSIVE
-9. CURSOR
+8. TARJETAS DEL IA
+9. SCROLLBAR ESTILO
 10. EFECTOS GLOW/HOVER
-11. SCROLLBAR ESTILO HISTORIA
+11. CURSOR PERSONALIZADO
 ============================================ */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
@@ -24,38 +24,9 @@ TABLA DE CONTENIDO - basico.css
   --text-shadow-color: rgba(95, 156, 139, 0.5);
   --text-primary: #111111;
   --text-secondary: #444444;
-  --text-neutral-500: #737373;
-  --text-neutral-400: #a3a3a3;
   --border-light: #d1d5db;
   --card-bg: #fefefe;
   --card-shadow: rgba(0, 0, 0, 0.1);
-  --card-shadow-hover: rgba(0, 0, 0, 0.2);
-
-  --chat-modal-bg: #ffffff;
-  --chat-header-bg: #f8f9fa;
-  --chat-header-border: #e9ecef;
-  --chat-header-text: #2c3e50;
-  --chat-close-bg: rgba(0, 0, 0, 0.05);
-  --chat-close-text: #6c757d;
-  --chat-close-hover-bg: rgba(0, 0, 0, 0.1);
-  --chat-bot-bubble-bg: #f1f3f5;
-  --chat-bot-bubble-text: #2c3e50;
-  --chat-bot-bubble-border: #e9ecef;
-  --chat-bot-strong: #5f9c8b;
-  --chat-user-bubble-bg: #5f9c8b;
-  --chat-user-bubble-text: #ffffff;
-  --chat-input-bg: #ffffff;
-  --chat-input-border: #dee2e6;
-  --chat-input-text: #2c3e50;
-  --chat-input-placeholder: #adb5bd;
-  --chat-input-focus-border: #5f9c8b;
-  --chat-input-focus-shadow: rgba(95, 156, 139, 0.15);
-  --chat-send-bg: #5f9c8b;
-  --chat-send-text: #ffffff;
-  --chat-send-border: #5f9c8b;
-  --chat-scrollbar-track: #f1f3f5;
-  --chat-scrollbar-thumb: #cbd5e1;
-  --chat-scrollbar-thumb-hover: #94a3b8;
 }
 
 /* ========== 2. MODO OSCURO ========== */
@@ -65,46 +36,16 @@ body.dark-mode {
   --bg-neutral-50: #222222;
   --bg-neutral-100: #2d2d2d;
   --bg-neutral-900: #0a0a0a;
-  --text-shadow-color: rgba(108, 156, 139, 0.5);
   --text-primary: #f5f5f5;
   --text-secondary: #cccccc;
-  --text-neutral-500: #a3a3a3;
-  --text-neutral-400: #888888;
   --border-light: #3d3d3d;
   --card-bg: #2d2d2d;
-  --card-shadow: rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: rgba(0, 0, 0, 0.5);
-
-  --chat-modal-bg: #1e293b;
-  --chat-header-bg: #0f172a;
-  --chat-header-border: #334155;
-  --chat-header-text: #e2e8f0;
-  --chat-close-bg: rgba(255, 255, 255, 0.06);
-  --chat-close-text: #94a3b8;
-  --chat-close-hover-bg: rgba(255, 255, 255, 0.1);
-  --chat-bot-bubble-bg: #334155;
-  --chat-bot-bubble-text: #e2e8f0;
-  --chat-bot-bubble-border: #475569;
-  --chat-bot-strong: #7ab3a0;
-  --chat-user-bubble-bg: #4a7c6e;
-  --chat-user-bubble-text: #ffffff;
-  --chat-input-bg: #0f172a;
-  --chat-input-border: #334155;
-  --chat-input-text: #e2e8f0;
-  --chat-input-placeholder: #64748b;
-  --chat-input-focus-border: #7ab3a0;
-  --chat-input-focus-shadow: rgba(122, 179, 160, 0.15);
-  --chat-send-bg: #4a7c6e;
-  --chat-send-text: #ffffff;
-  --chat-send-border: #4a7c6e;
-  --chat-scrollbar-track: #0f172a;
-  --chat-scrollbar-thumb: #475569;
-  --chat-scrollbar-thumb-hover: #64748b;
 }
 
 body.dark-mode {
   background-color: #0a0a0a;
 }
+
 /* ========== 3. NAVBAR ========== */
 .logo-nav {
   height: 36px;
@@ -127,22 +68,9 @@ nav {
   transition: opacity 0.15s;
 }
 
-/* ===== PESTAÑA ACTIVA - MODO DÍA (SOLO COLOR) ===== */
 .nav-link.active {
   color: #00BFFF !important;
   font-weight: 700;
-}
-
-/* Efecto hover para enlaces de navegación */
-nav .flex.items-center.gap-6 a {
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-nav .flex.items-center.gap-6 a:hover {
-  transform: scale(1.1);
-  opacity: 1 !important;
 }
 
 .nav-link:hover {
@@ -150,7 +78,6 @@ nav .flex.items-center.gap-6 a:hover {
   text-shadow: 0 0 4px var(--text-shadow-color);
 }
 
-/* ===== MODO OSCURO - NAVBAR ===== */
 body.dark-mode nav {
   background-color: #1a1a1a !important;
   border-bottom-color: #3d3d3d !important;
@@ -162,16 +89,6 @@ body.dark-mode nav .font-display {
   color: #ffffff !important;
 }
 
-body.dark-mode nav svg {
-  stroke: #ffffff !important;
-  color: #ffffff !important;
-}
-
-body.dark-mode .theme-toggle {
-  color: #ffffff !important;
-}
-
-/* ===== PESTAÑA ACTIVA - MODO OSCURO (SOLO COLOR) ===== */
 body.dark-mode .nav-link.active {
   color: #4DCFFF !important;
   font-weight: 700;
@@ -195,7 +112,6 @@ footer {
 
 body.dark-mode footer {
   background-color: #0a0a0a !important;
-  border-top-color: #2a2a2a;
 }
 
 body.dark-mode footer p,
@@ -239,10 +155,6 @@ body.dark-mode .back2top {
   background-color: #5f9c8b;
 }
 
-body.dark-mode .back2top:hover {
-  background-color: #4a7d6e;
-}
-
 /* ========== 6. CHAT IA - BOTÓN FLOTANTE ========== */
 .chat-fab {
   position: fixed !important;
@@ -262,64 +174,23 @@ body.dark-mode .back2top:hover {
   width: 85px !important;
   height: 85px !important;
   border: 2px solid #00BFFF !important;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5), inset 0 0 5px rgba(0, 191, 255, 0.3) !important;
-  animation: floatNeon 3s ease-in-out infinite, pulseGlow 2s infinite alternate !important;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5) !important;
+  animation: floatNeon 3s ease-in-out infinite !important;
 }
 
 @keyframes floatNeon {
-  0% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
-  50% { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0, 191, 255, 0.8); }
-  100% { transform: translateY(0px); box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
-}
-
-@keyframes pulseGlow {
-  0% { border-color: #00BFFF; box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
-  50% { border-color: #00e5ff; box-shadow: 0 0 25px rgba(0, 229, 255, 0.7); }
-  100% { border-color: #0088cc; box-shadow: 0 0 15px rgba(0, 136, 204, 0.5); }
-}
-
-@keyframes ringPulse {
-  0% { opacity: 0.7; transform: scale(0.9); }
-  70% { opacity: 0.9; transform: scale(1.1); }
-  100% { opacity: 0; transform: scale(1.2); }
-}
-
-@keyframes textGlow {
-  0%, 100% { text-shadow: 0 0 2px #00BFFF; }
-  50% { text-shadow: 0 0 8px #00BFFF, 0 0 2px white; }
-}
-
-.chat-fab::before,
-.chat-fab::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: ringPulse 2s ease-out infinite;
-}
-
-.chat-fab::before {
-  top: -8px; left: -8px; right: -8px; bottom: -8px;
-  border: 1px solid rgba(0, 191, 255, 0.6);
-  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
-}
-
-.chat-fab::after {
-  top: -16px; left: -16px; right: -16px; bottom: -16px;
-  border: 1px solid rgba(0, 191, 255, 0.35);
-  box-shadow: 0 0 18px rgba(0, 191, 255, 0.25);
-  animation-delay: 0.5s;
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
 }
 
 .chat-fab-logo {
   width: 45px !important;
   height: 45px !important;
-  filter: drop-shadow(0 0 5px #00BFFF);
 }
 
 .chat-fab-text {
   color: #00BFFF !important;
-  text-shadow: 0 0 5px #00BFFF;
   font-size: 10px !important;
   font-weight: 800;
   letter-spacing: 1.5px;
@@ -337,16 +208,12 @@ body.dark-mode .back2top:hover {
   background: linear-gradient(135deg, #0a0a0a, #0d1a2e);
   color: #00BFFF;
   border: 1px solid rgba(0, 191, 255, 0.6);
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
   padding: 14px 18px;
   font-size: 0.85rem;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(15px) scale(0.95);
-  transition: all 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transition: all 0.35s ease;
   pointer-events: none;
 }
 
@@ -354,437 +221,134 @@ body.dark-mode .back2top:hover {
 .chat-hint:hover {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translateY(0) scale(1) !important;
-  pointer-events: auto !important;
 }
 
-.chat-hint::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  right: 30px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #0d1a2e;
-}
-
-.chat-hint:hover {
-  border-color: #00e5ff;
-  box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
-}
-
-.chat-hint strong {
-  color: #00BFFF;
-  font-weight: 700;
-  animation: textGlow 2s ease-in-out infinite;
-}
-
-/* ========== 7. CHAT IA - MODAL Y MENSAJES ========== */
+/* ========== 7. CHAT IA - MODAL ========== */
 #chatOverlay .modal-card {
-  background: var(--chat-modal-bg) !important;
-  border-color: var(--border-light) !important;
-}
-
-#chatOverlay .border-b {
-  background: var(--chat-header-bg) !important;
-  border-bottom: 1px solid var(--chat-header-border) !important;
-}
-
-#chatOverlay .font-semibold {
-  color: var(--chat-header-text) !important;
+  background: var(--bg-primary) !important;
 }
 
 #chatClose {
-  background: var(--chat-close-bg) !important;
-  color: var(--chat-close-text) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
   border-radius: 50% !important;
   width: 32px !important;
   height: 32px !important;
-  transition: background 0.2s, transform 0.2s !important;
-}
-
-#chatClose:hover {
-  background: var(--chat-close-hover-bg) !important;
-  transform: scale(1.1) !important;
-}
-
-#chatMessages .bg-black {
-  background: var(--chat-user-bubble-bg) !important;
-  color: var(--chat-user-bubble-text) !important;
-  border-radius: 20px 20px 4px 20px !important;
-  padding: 10px 16px !important;
-  margin: 8px 0 8px auto !important;
-  max-width: 85% !important;
-  width: fit-content !important;
-  min-width: 60px !important;
-  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.25) !important;
-  animation: messageSlideInRight 0.3s ease-out !important;
-}
-
-#chatMessages .bg-neutral-100 {
-  background: var(--chat-bot-bubble-bg) !important;
-  color: var(--chat-bot-bubble-text) !important;
-  border-radius: 20px 20px 20px 4px !important;
-  padding: 10px 16px !important;
-  margin: 8px 0 !important;
-  max-width: 85% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-  border: 1px solid var(--chat-bot-bubble-border) !important;
-  animation: messageSlideInLeft 0.3s ease-out !important;
-}
-
-@keyframes messageSlideInRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes messageSlideInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-#chatInput {
-  background: var(--chat-input-bg) !important;
-  border: 1px solid var(--chat-input-border) !important;
-  border-radius: 24px !important;
-  padding: 12px 18px !important;
-  font-size: 0.9rem !important;
-  color: var(--chat-input-text) !important;
-  transition: border-color 0.2s, box-shadow 0.2s !important;
-}
-
-#chatInput::placeholder {
-  color: var(--chat-input-placeholder) !important;
-}
-
-#chatInput:focus {
-  border-color: var(--chat-input-focus-border) !important;
-  box-shadow: 0 0 0 3px var(--chat-input-focus-shadow) !important;
-  outline: none !important;
 }
 
 .chat-send-button {
-  background: var(--chat-send-bg) !important;
+  background: #5f9c8b !important;
   border-radius: 24px !important;
   padding: 12px 24px !important;
   font-weight: 600 !important;
-  font-family: 'Syne', sans-serif !important;
-  color: var(--chat-send-text) !important;
-  border: 1px solid var(--chat-send-border) !important;
-  transition: all 0.2s ease !important;
+  color: white !important;
   cursor: pointer !important;
 }
 
-.chat-send-button:hover {
-  transform: scale(1.02) !important;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.4) !important;
-  opacity: 0.9 !important;
+
+/* ========== 8. TARJETAS DEL IA ========== */
+.modal-card {
+  background: var(--bg-secondary);
+  border-radius: 24px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-light);
+  animation: modalFadeIn 0.2s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-#chatMessages::-webkit-scrollbar {
-  width: 6px;
-}
-
-#chatMessages::-webkit-scrollbar-track {
-  background: var(--chat-scrollbar-track);
-  border-radius: 10px;
-}
-
-#chatMessages::-webkit-scrollbar-thumb {
-  background: var(--chat-scrollbar-thumb);
-  border-radius: 10px;
-}
-
-#chatMessages::-webkit-scrollbar-thumb:hover {
-  background: var(--chat-scrollbar-thumb-hover);
-}
-
-#chatOverlay {
-  transition: opacity 0.25s ease;
-  z-index: 60 !important;
-}
-
-#productOverlay {
-  transition: opacity 0.25s ease;
-  z-index: 65 !important;
-}
-
-/* ========== 8. RESPONSIVE ========== */
-@media (max-width: 640px) {
-  .chat-fab { width: 65px !important; height: 65px !important; bottom: 20px !important; right: 20px !important; }
-  .chat-fab-logo { width: 35px !important; height: 35px !important; }
-  .chat-fab-text { font-size: 8px !important; }
-  .chat-hint { display: none !important; }
-  .back2top { width: 40px !important; height: 40px !important; bottom: 85px !important; right: 20px !important; }
-  .back2top i { font-size: 0.9rem !important; }
-}
-
-@media (max-width: 360px) {
-  .chat-fab { width: 55px !important; height: 55px !important; }
-  .chat-fab-logo { width: 30px !important; height: 30px !important; }
-  .back2top { width: 35px !important; height: 35px !important; bottom: 75px !important; }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .chat-fab { width: 75px !important; height: 75px !important; }
-  .chat-fab-logo { width: 40px !important; height: 40px !important; }
-  .back2top { width: 48px !important; height: 48px !important; }
-}
-
-/* ========== 9. CURSOR - VERSIÓN SUAVE INSPIRADA POR APP.JS========== */
-/* Ocultar el cursor original del sistema */
-* {
-  cursor: none !important;
-}
-
-/* Punto del cursor */
-#cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  background: #00BFFF;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.15s ease, height 0.15s ease;
-}
-
-/* Anillo del cursor */
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border: 2px solid #00BFFF;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-  opacity: 0.7;
-}
-
-/* Efecto hover */
-body.cursor-hover #cursor-dot {
-  width: 14px;
-  height: 14px;
-  background: #00e5ff;
-}
-
-body.cursor-hover #cursor-ring {
-  width: 52px;
-  height: 52px;
-  border-color: #00e5ff;
-  opacity: 1;
-}
-
-/* Modo blanco para hero section */
-body.cursor-white #cursor-dot {
-  background: #ffffff;
-}
-
-body.cursor-white #cursor-ring {
-  border-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Modo oscuro */
-body.dark-mode #cursor-dot {
-  background: #00BFFF
-}
-
-body.dark-mode #cursor-ring {
-  border-color: #00bfffbf;
-}
-
-body.dark-mode.cursor-hover #cursor-dot {
-  background: #00BFFF
-}
-
-body.dark-mode.cursor-hover #cursor-ring {
-  border-color: #00bfffbf;
-}
-
-/* Restaurar cursor normal en inputs */
-input, textarea, select {
-  cursor: text !important;
-}
-
-a, button {
-  cursor: pointer !important;
-}
-
-/* Deshabilitar en móviles */
-@media (max-width: 1024px) {
-  #cursor-dot, #cursor-ring {
-    display: none !important;
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  * {
-    cursor: auto !important;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* ========== 10. EFECTOS GLOW/HOVER ========== */
-
-/* 1. EFECTO DE SOMBRA GLOW en elementos con hover */
-.book-card:hover,
-.featured-card:hover,
-.team-card:hover,
-.blog-post-wrapper:hover,
-.accordion-item:hover {
-  box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+.modal-card .border-neutral-100 {
+  border-color: var(--border-light);
 }
 
-/* 2. EFECTO DE TEXTO ILUMINADO en enlaces y títulos  */
-.nav-link:hover,
-.entry-title a:hover,
-.timeline-link:hover,
-.blog_read:hover,
-.team-info h3 a:hover,
-.team-icons a:hover,
-.breadcrumb a:hover,
-/* 🔽 SELECTORES PARA INDEX.HTML */
-.card-title:hover,
-.card-price:hover,
-.ver-detalle-btn:hover,
-.ver-detalle-catalogo-btn:hover,
-.search-bar-pro button:hover,
-/* 🔽 SELECTORES PARA QUIENES SOMOS.HTML */
-.catalog-btn:hover,
-.btn-more:hover,
-.btn-badge:hover,
-.accordion-btn:hover,
-#commentBtn:hover,
-.comment-left i:hover {
-  color: #00BFFF !important;
-  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
-  transition: all 0.2s ease;
+.modal-card p,
+.modal-card input {
+  color: var(--text-primary);
 }
 
-/* 3. EFECTO EN TARJETAS DE PRODUCTOS */
-.book-card:hover .card-title,
-.featured-card:hover .card-title,
-.book-card:hover .card-price,
-.featured-card:hover .card-price {
-  color: #00BFFF;
-  transition: color 0.2s ease;
+.modal-card input {
+  background: var(--bg-primary);
+  border-color: var(--border-light);
 }
 
-/* 4. EFECTO EN BOTONES "VER DETALLES" */
-.ver-detalle-btn:hover,
-.ver-detalle-catalogo-btn:hover {
-  color: #00BFFF !important;
-  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
-  transition: all 0.2s ease;
+.modal-card input::placeholder {
+  color: var(--text-neutral-500);
 }
 
-/* 5. EFECTO EN BADGES */
-.featured-card:hover .card-badge {
-  background: rgba(0, 191, 255, 0.15);
-  border-color: #00BFFF;
-  color: #00BFFF;
-  transition: all 0.2s ease;
+.buy-button,
+.secondary-button,
+.notify-save-button {
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+  transition: opacity 0.15s, transform 0.15s;
 }
 
-/* 6. EFECTO EN BOTONES GENERALES (FONDO Y SOMBRA) */
-.hero-btn-primary:hover,
-.hero-btn-secondary:hover,
-.btn-more:hover,
-.btn-badge:hover,
-.catalog-btn:hover,
-.accordion-btn:hover,
-#commentBtn:hover {
-  background: #00BFFF;
-  color: #ffffff !important;
-  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
-  transition: all 0.2s ease;
+.buy-button,
+.notify-save-button {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  cursor: pointer;
 }
 
-/* 7. EFECTO EN CONTADORES */
-.counter-item:hover .timer {
-  text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
-  transition: text-shadow 0.2s ease;
+.buy-button:hover,
+.notify-save-button:hover {
+  opacity: 0.75;
 }
 
-/* 8. EFECTO EN IMÁGENES DE TARJETAS */
-.book-card:hover .card-img-wrap img,
-.featured-card:hover .card-img-wrap img,
-.team-card:hover img {
-  filter: brightness(1.05) contrast(1.02);
-  transition: filter 0.3s ease;
+.secondary-button {
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
 }
 
-/* 9. EFECTO EN EL BOTÓN DE CHAT */
-.chat-fab:hover {
-  box-shadow: 0 0 25px rgba(0, 191, 255, 0.8), inset 0 0 8px rgba(0, 191, 255, 0.4) !important;
-  border-color: #4DCFFF !important;
-  transition: all 0.2s ease;
+.secondary-button:hover {
+  background: var(--bg-neutral-100);
 }
 
-/* 10. EFECTO EN BACK TO TOP */
-.back2top:hover {
-  background: #00BFFF;
-  box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
-  transition: all 0.2s ease;
-}
-
-/* ========== 11. SCROLLBAR ESTILO HISTORIA (para TODAS las páginas) ========== */
-
-/* Modo DÍA */
+/* ========== 9. SCROLLBAR ========== */
 ::-webkit-scrollbar {
-  width: 14px;          /* ← Cambiado a 14px como te gusta */
+  width: 14px;
   height: 14px;
 }
 
 ::-webkit-scrollbar-track {
   background: #e0e0e0;
-  border-radius: 10px;   /* ← Esquinas más redondeadas */
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5f9c8b;    /* Color verde/azul de QUOV */
+  background: #5f9c8b;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a7d6e;    /* Más oscuro al hacer hover */
-}
-
-::-webkit-scrollbar-corner {
-  background: #e0e0e0;
-}
-
-/* Modo NOCHE */
-body.dark-mode::-webkit-scrollbar {
-  width: 30px;          /* ← Mismo ancho que modo día */
-  height: 14px;
+  background: #4a7d6e;
 }
 
 body.dark-mode::-webkit-scrollbar-track {
   background: #1a1a1a;
-  border-radius: 10px;
 }
 
 body.dark-mode::-webkit-scrollbar-thumb {
-  background: #5f9c8b;    /* ← Mismo color que modo día */
-  border-radius: 10px;
+  background: #5f9c8b;
 }
 
-body.dark-mode::-webkit-scrollbar-thumb:hover {
-  background: #4a7d6e;    /* ← Mismo hover que modo día */
-}
-
-body.dark-mode::-webkit-scrollbar-corner {
-  background: #1a1a1a;
-}
-
-/* Soporte para Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #5f9c8b #e0e0e0;
@@ -792,4 +356,105 @@ body.dark-mode::-webkit-scrollbar-corner {
 
 body.dark-mode * {
   scrollbar-color: #5f9c8b #1a1a1a;
+}
+
+/* ========== 10. EFECTOS HOVER ========== */
+.team-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
+}
+
+.nav-link:hover,
+.team-info h3 a:hover,
+.team-icons a:hover,
+.breadcrumb a:hover,
+.catalog-btn:hover {
+  color: #00BFFF !important;
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
+}
+
+.team-card:hover img {
+  filter: brightness(1.05);
+}
+
+.chat-fab:hover {
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.8) !important;
+}
+
+.back2top:hover {
+  background: #00BFFF;
+}
+
+.catalog-btn:hover {
+  background: #00BFFF !important;
+}
+
+
+/* ========== 11. CURSOR PERSONALIZADO ========== */
+@media (hover: hover) and (pointer: fine) {
+  *,
+  body {
+    cursor: none !important;
+  }
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  background: #00BFFF;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease;
+  border: 1.5px solid rgba(0, 191, 255, 0.8);
+}
+
+body.cursor-blue #cursor-dot {
+  background: #00BFFF;
+}
+
+body.cursor-blue #cursor-ring {
+  border-color: rgba(0, 191, 255, 0.8);
+}
+
+body.cursor-white #cursor-dot {
+  background: #ffffff;
+}
+
+body.cursor-white #cursor-ring {
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+body.cursor-hover #cursor-dot {
+  width: 14px;
+  height: 14px;
+}
+
+body.cursor-hover #cursor-ring {
+  width: 52px;
+  height: 52px;
+}
+
+@media (hover: none),
+(pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none !important;
+  }
 }

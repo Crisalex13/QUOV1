@@ -3,14 +3,12 @@ TABLA DE CONTENIDO - pagina_cree_y_crece.css
 ============================================ 
 1. BASE Y VARIABLES
 2. COMPONENTES GLOBALES
-3. CURSOR PERSONALIZADO
-4. HERO SECTION
-5. STATS ROW
-6. BUSCADOR
-7. BOOK CARDS
-8. MODALES
-9. FOOTER
-10. RESPONSIVE
+3. HERO SECTION
+4. STATS ROW
+5. BUSCADOR
+6. BOOK CARDS
+7. FOOTER
+8. RESPONSIVE
 ============================================ */
 
 /* ========== 1. BASE Y VARIABLES ========== */
@@ -113,78 +111,7 @@ body.dark-mode .theme-toggle {
   opacity: 1;
   transform: none;
 }
-
-/* ========== 3. CURSOR PERSONALIZADO ========== */
-@media (hover: hover) and (pointer: fine) {
-  *,
-  body {
-    cursor: none !important;
-  }
-}
-
-#cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  background: #00BFFF;
-}
-
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease;
-  border: 1.5px solid rgba(0, 191, 255, 0.8);
-}
-
-body.cursor-blue #cursor-dot {
-  background: #00BFFF;
-}
-
-body.cursor-blue #cursor-ring {
-  border-color: rgba(0, 191, 255, 0.8);
-}
-
-body.cursor-white #cursor-dot {
-  background: #ffffff;
-}
-
-body.cursor-white #cursor-ring {
-  border-color: rgba(255, 255, 255, 0.95);
-}
-
-body.cursor-hover #cursor-dot {
-  width: 14px;
-  height: 14px;
-}
-
-body.cursor-hover #cursor-ring {
-  width: 52px;
-  height: 52px;
-}
-
-@media (hover: none),
-(pointer: coarse) {
-  #cursor-dot,
-  #cursor-ring {
-    display: none !important;
-  }
-}
-
-/* ========== 4. HERO SECTION ========== */
+/* ========== 3. HERO SECTION ========== */
 .hero-section {
   position: relative;
   z-index: 1;
@@ -318,7 +245,7 @@ body.dark-mode .hero-btn-secondary:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* ========== 5. STATS ROW ========== */
+/* ========== 4. STATS ROW ========== */
 .stats-row {
   display: flex;
   align-items: center;
@@ -357,7 +284,7 @@ body.dark-mode .hero-btn-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ========== 6. BUSCADOR ========== */
+/* ========== 5. BUSCADOR ========== */
 .search-bar-pro {
   max-width: 520px;
   margin-bottom: 28px;
@@ -409,7 +336,7 @@ body.dark-mode .hero-btn-secondary:hover {
   opacity: 0.85;
 }
 
-/* ========== 7. BOOK CARDS ========== */
+/* ========== 6. BOOK CARDS ========== */
 .section-title {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
@@ -533,83 +460,8 @@ body.dark-mode .featured-card .card-img-wrap {
   background: var(--bg-primary);
 }
 
-/* ========== 8. MODALES ========== */
-.modal-card {
-  background: var(--bg-secondary);
-  border-radius: 24px;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.18);
-  border: 1px solid var(--border-light);
-  animation: modalFadeIn 0.2s ease;
-  max-height: 90vh;
-  overflow-y: auto;
-}
 
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.modal-card .border-neutral-100 {
-  border-color: var(--border-light);
-}
-
-.modal-card p,
-.modal-card input {
-  color: var(--text-primary);
-}
-
-.modal-card input {
-  background: var(--bg-primary);
-  border-color: var(--border-light);
-}
-
-.modal-card input::placeholder {
-  color: var(--text-neutral-500);
-}
-
-.buy-button,
-.secondary-button,
-.notify-save-button {
-  width: 100%;
-  border-radius: 1.5rem;
-  padding: 1rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  font-family: 'Syne', sans-serif;
-  transition: opacity 0.15s, transform 0.15s;
-}
-
-.buy-button,
-.notify-save-button {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border: none;
-  cursor: pointer;
-}
-
-.buy-button:hover,
-.notify-save-button:hover {
-  opacity: 0.75;
-}
-
-.secondary-button {
-  border: 1px solid var(--border-light);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  cursor: pointer;
-}
-
-.secondary-button:hover {
-  background: var(--bg-neutral-100);
-}
-
-/* ========== 9. FOOTER ========== */
+/* ========== 7. FOOTER ========== */
 footer {
   background-color: var(--bg-neutral-900);
 }
@@ -625,7 +477,7 @@ footer {
   letter-spacing: 0.04em;
 }
 
-/* ========== 10. RESPONSIVE ========== */
+/* ========== 8. RESPONSIVE ========== */
 @media (max-width: 360px) {
   nav {
     padding: 6px 10px !important;
