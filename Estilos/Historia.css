@@ -1,181 +1,8 @@
 /* ============================================ 
-TABLA DE CONTENIDO - Historia.html
-============================================ 
-1. RESET Y ESTILOS BASE
-2. MODO OSCURO 
-3. HERO CON VIDEO
-4. BLOG WRAPPER
-5. ARTÍCULOS
-6. SIDEBAR (LÍNEA DE TIEMPO Y HITOS)
-7. CTA FINAL
-8. RESPONSIVE
-============================================ */
+   17. HISTORIA - ESTILOS ESPECÍFICOS
+   ============================================ */
 
-/* ========== 1. RESET Y ESTILOS BASE ========== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ========== 2. MODO OSCURO ========== */
-body.dark-mode {
-  background-color: #0a0a0a !important;
-}
-
-body.dark-mode nav {
-  background-color: #111111 !important;
-  border-bottom-color: #2a2a2a !important;
-}
-
-body.dark-mode nav a {
-  color: #e0e0e0 !important;
-}
-
-body.dark-mode .nav-link {
-  color: #b0b0b0 !important;
-}
-
-body.dark-mode .nav-link:hover {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .hero-video .overlay {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-body.dark-mode .hero-video .content h1,
-body.dark-mode .hero-video .content p {
-  color: #ffffff !important;
-}
-
-body.dark-mode .blog_wrapper {
-  background-color: #0a0a0a;
-}
-
-body.dark-mode .sidebar_widget {
-  background-color: #1a1a1a;
-  border-color: #333333;
-}
-
-body.dark-mode .widget_heading h2 {
-  color: #ffffff !important;
-  border-bottom-color: #5f9c8b;
-}
-
-body.dark-mode .timeline-item {
-  border-left-color: #5f9c8b;
-}
-
-body.dark-mode .timeline-year {
-  color: #5f9c8b !important;
-  background-color: #1a1a1a;
-}
-
-body.dark-mode .timeline-link {
-  color: #ffffff !important;
-}
-
-body.dark-mode .timeline-link:hover {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .hito-item {
-  border-bottom-color: #333333;
-}
-
-body.dark-mode .hito-item i {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .hito-item span {
-  color: #ffffff !important;
-}
-
-body.dark-mode .hito-item span strong {
-  color: #5f9c8b;
-}
-
-body.dark-mode .iner_blog {
-  background-color: #1a1a1a;
-  border-color: #333333;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .blog-content {
-  background-color: #1a1a1a;
-}
-
-body.dark-mode .entry-meta ul li,
-body.dark-mode .entry-meta ul li a {
-  color: #b0b0b0 !important;
-}
-
-body.dark-mode .entry-meta ul li i {
-  color: #5f9c8b;
-}
-
-body.dark-mode .entry-meta ul li a:hover {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .entry-title a {
-  color: #ffffff !important;
-}
-
-body.dark-mode .entry-title a:hover {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .entry-content p {
-  color: #cccccc !important;
-}
-
-body.dark-mode .blog_read {
-  color: #5f9c8b !important;
-}
-
-body.dark-mode .blog_read:hover {
-  color: #ffffff !important;
-  background-color: #5f9c8b;
-}
-
-body.dark-mode .cta-final {
-  background: linear-gradient(135deg, #0a2a2a 0%, #1a3a3a 100%);
-}
-
-body.dark-mode .cta-final h2 {
-  color: #ffffff !important;
-}
-
-body.dark-mode .cta-final p {
-  color: #b0b0b0 !important;
-}
-
-body.dark-mode footer {
-  background-color: #0a0a0a !important;
-  border-top-color: #2a2a2a;
-}
-
-body.dark-mode footer p {
-  color: #888888 !important;
-}
-
-body.dark-mode .post-thumbnail img {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-
-/* ========== ELIMINADO: estilos de scrollbar (ahora están en Basico.css) ========== */
-
-/* ========== 3. HERO CON VIDEO ========== */
+/* Hero con video */
 .hero-video {
   position: relative;
   height: 50vh;
@@ -230,7 +57,7 @@ body.dark-mode .post-thumbnail img {
   margin: 0 auto;
 }
 
-/* ========== 4. BLOG WRAPPER ========== */
+/* Blog wrapper */
 .blog_wrapper {
   padding: 50px 0;
 }
@@ -257,7 +84,7 @@ body.dark-mode .post-thumbnail img {
   padding: 0 15px;
 }
 
-/* ========== 5. ARTÍCULOS ========== */
+/* Artículos */
 .blog-post-wrapper {
   background: var(--card-bg);
   border-radius: 20px;
@@ -297,7 +124,7 @@ body.dark-mode .post-thumbnail img {
 
 .entry-meta ul li i {
   margin-right: 6px;
-  color: #5f9c8b;
+  color: var(--quov-blue);
 }
 
 .entry-meta ul li a {
@@ -319,7 +146,7 @@ body.dark-mode .post-thumbnail img {
 }
 
 .entry-title a:hover {
-  color: #00BFFF;
+  color: var(--quov-blue);
 }
 
 .entry-content p {
@@ -335,17 +162,17 @@ body.dark-mode .post-thumbnail img {
   gap: 8px;
   font-weight: 600;
   font-size: 0.85rem;
-  color: #5f9c8b;
+  color: var(--quov-blue);
   text-decoration: none;
   transition: gap 0.2s;
 }
 
 .blog_read:hover {
   gap: 12px;
-  color: #00BFFF;
+  color: var(--quov-blue-dark);
 }
 
-/* ========== 6. SIDEBAR ========== */
+/* Sidebar */
 .sidebar_widget {
   background: var(--card-bg);
   border-radius: 20px;
@@ -360,10 +187,11 @@ body.dark-mode .post-thumbnail img {
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #5f9c8b;
+  border-bottom: 2px solid var(--quov-blue);
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--text-primary);
 }
 
 .timeline-item {
@@ -379,7 +207,7 @@ body.dark-mode .post-thumbnail img {
 }
 
 .timeline-year {
-  background: linear-gradient(135deg, #5f9c8b, #00BFFF);
+  background: linear-gradient(135deg, var(--quov-blue), var(--quov-blue-dark));
   color: white;
   padding: 5px 12px;
   border-radius: 20px;
@@ -400,7 +228,7 @@ body.dark-mode .post-thumbnail img {
 }
 
 .timeline-link:hover {
-  color: #00BFFF;
+  color: var(--quov-blue);
 }
 
 .hito-item {
@@ -417,7 +245,7 @@ body.dark-mode .post-thumbnail img {
 
 .hito-item i {
   width: 28px;
-  color: #5f9c8b;
+  color: var(--quov-blue);
   font-size: 1rem;
   text-align: center;
 }
@@ -425,10 +253,11 @@ body.dark-mode .post-thumbnail img {
 .hito-item span {
   font-size: 0.85rem;
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 .hito-item strong {
-  color: #00BFFF;
+  color: var(--quov-blue);
 }
 
 .sidebar-sticky {
@@ -436,21 +265,19 @@ body.dark-mode .post-thumbnail img {
   top: 100px;
 }
 
-/* ========== 7. CTA FINAL ========== */
+/* CTA final */
 .cta-final {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   padding: 50px 0;
   text-align: center;
 }
 
-/* ========== 8. RESPONSIVE ========== */
+/* Historia Responsive */
 @media (max-width: 992px) {
-
   .col-xl-8,
   .col-xl-4 {
     width: 100%;
   }
-
   .sidebar-sticky {
     position: static;
     margin-top: 30px;
@@ -462,11 +289,9 @@ body.dark-mode .post-thumbnail img {
     height: 45vh;
     min-height: 350px;
   }
-
   .hero-video h1 {
     font-size: 2.2rem;
   }
-
   .entry-title {
     font-size: 1.2rem;
   }
@@ -477,19 +302,15 @@ body.dark-mode .post-thumbnail img {
     height: 40vh;
     min-height: 300px;
   }
-
   .hero-video h1 {
     font-size: 2rem;
   }
-
   .entry-title {
     font-size: 1.1rem;
   }
-
   .blog-content {
     padding: 18px;
   }
-
   .sidebar_widget {
     padding: 20px;
   }
@@ -499,59 +320,46 @@ body.dark-mode .post-thumbnail img {
   .blog_wrapper {
     padding: 30px 0 !important;
   }
-
   .container {
     padding: 0 12px !important;
   }
-
   .blog-post-wrapper {
     margin-bottom: 20px !important;
     border-radius: 16px !important;
   }
-
   .blog-content {
     padding: 15px !important;
   }
-
   .entry-meta ul li {
     font-size: 0.65rem !important;
   }
-
   .entry-title {
     font-size: 0.95rem !important;
   }
-
   .entry-content p {
     font-size: 0.75rem !important;
   }
-
   .sidebar_widget {
     padding: 15px !important;
   }
-
   .timeline-year {
     padding: 3px 8px !important;
     font-size: 0.6rem !important;
     min-width: 45px !important;
   }
-
   .timeline-link {
     font-size: 0.7rem !important;
   }
-
   .hito-item span {
     font-size: 0.7rem !important;
   }
-
   .hero-video {
     height: 35vh !important;
     min-height: 250px !important;
   }
-
   .hero-video h1 {
     font-size: 1.6rem !important;
   }
-
   .hero-video p {
     font-size: 0.7rem !important;
   }
@@ -561,65 +369,51 @@ body.dark-mode .post-thumbnail img {
   .blog_wrapper {
     padding: 25px 0 !important;
   }
-
   .container {
     padding: 0 10px !important;
   }
-
   .blog-post-wrapper {
     margin-bottom: 15px !important;
     border-radius: 14px !important;
   }
-
   .blog-content {
     padding: 12px !important;
   }
-
   .entry-meta ul li {
     font-size: 0.6rem !important;
   }
-
   .entry-title {
     font-size: 0.85rem !important;
   }
-
   .entry-content p {
     font-size: 0.7rem !important;
   }
-
   .sidebar_widget {
     padding: 12px !important;
   }
-
   .timeline-year {
     padding: 2px 6px !important;
     font-size: 0.55rem !important;
     min-width: 38px !important;
   }
-
   .timeline-link {
     font-size: 0.65rem !important;
     margin-left: 8px !important;
   }
-
   .hito-item span {
     font-size: 0.65rem !important;
   }
-
   .hito-item i {
     width: 20px !important;
     font-size: 0.75rem !important;
   }
-
   .hero-video {
     height: 30vh !important;
     min-height: 200px !important;
   }
-
   .hero-video h1 {
     font-size: 1.4rem !important;
   }
-
   .hero-video p {
     font-size: 0.65rem !important;
   }

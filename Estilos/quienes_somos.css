@@ -8,10 +8,11 @@
    5. SECCIÓN EQUIPO
    6. MODAL DE PERFIL
    7. BOTÓN CATÁLOGO
-   8. MODO OSCURO (COMPLETO)
+   8. MODO OSCURO
    9. REDES SOCIALES EN MODAL
    10. VIDEO
    11. RESPONSIVE
+   12. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO
    ============================================ */
 
 /* ========== 1. BASE Y CONTENEDORES ========== */
@@ -34,7 +35,6 @@ body {
 }
 
 /* ========== 2. PAGE TITLE Y HERO ========== */
-
 .hero-simple {
   min-height: 40vh;
   background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
@@ -65,7 +65,7 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   font-family: 'Syne', sans-serif;
-  background: linear-gradient(135deg, #22c8ff, #00BFFF);
+  background: linear-gradient(135deg, #fff, var(--quov-blue, #00BFFF));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -73,13 +73,13 @@ body {
 }
 
 .hero-subtitle-simple {
-  font-size: 1 rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* ========== 3. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP ========== */
+/* ========== 3. SECCIÓN MVO - 3D FLIP ========== */
 .mvo-section {
   padding: 80px 0 100px;
   text-align: center;
@@ -166,12 +166,12 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #00BFFF, #08b3ec, #00BFFF);
+  background: linear-gradient(90deg, var(--quov-blue, #00BFFF), var(--quov-blue-light, #4DCFFF), var(--quov-blue, #00BFFF));
   border-radius: 28px 28px 0 0;
 }
 
 .mvo-back {
-  background: linear-gradient(135deg, #00bfffdc 0%, #00bfff7a 100%);
+  background: linear-gradient(135deg, var(--quov-blue, #00BFFF), var(--quov-blue-dark, #0099CC));
   color: white;
   transform: rotateY(180deg);
   border: 1px solid rgba(0, 191, 255, 0.5);
@@ -193,16 +193,16 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
-  color: #00BFFF;
+  color: var(--quov-blue, #00BFFF);
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
 
 .mvo-front a {
   font-family: 'Syne', sans-serif;
-  font-size: .6 rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #070909;
+  color: #333;
 }
 
 .mvo-back .mvo-icon-back {
@@ -243,6 +243,7 @@ body {
 }
 
 /* ========== 4. SECCIÓN QUOV ========== */
+/* ========== 4. SECCIÓN QUOV ========== */
 .quov-section {
   padding: 80px 0 100px;
   text-align: center;
@@ -256,7 +257,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 2rem;
   font-weight: 800;
-  color: #00BFFF;
+  color: var(--quov-blue, #00BFFF);
   margin-bottom: 10px;
   text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
 }
@@ -298,20 +299,22 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #00BFFF, #0099CC);
+  background: linear-gradient(90deg, var(--quov-blue, #00BFFF), var(--quov-blue-dark, #0099CC));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
 }
 
-.quov-card:hover::before {
+.quov-card:hover::before,
+.quov-card.active::before {
   transform: scaleX(1);
 }
 
-.quov-card:hover {
+.quov-card:hover,
+.quov-card.active {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 191, 255, 0.4);
-  border-color: #00BFFF;
+  border-color: var(--quov-blue, #00BFFF);
   background: rgba(0, 30, 50, 0.95);
 }
 
@@ -323,7 +326,8 @@ body {
   animation: floatIcon 3s ease-in-out infinite;
 }
 
-.quov-card:hover .quov-icon {
+.quov-card:hover .quov-icon,
+.quov-card.active .quov-icon {
   transform: scale(1.2) rotate(-5deg);
 }
 
@@ -331,12 +335,13 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.15rem;
   font-weight: 800;
-  color: #00BFFF;
+  color: var(--quov-blue, #00BFFF);
   margin-bottom: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
+/* Estado normal - mensaje oculto */
 .quov-msg {
   font-size: 0.88rem;
   color: #ccc;
@@ -348,11 +353,21 @@ body {
   transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
 }
 
+/* Hover en escritorio - muestra el mensaje */
 .quov-card:hover .quov-msg {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
-  color: #00BFFF;
+  color: var(--quov-blue, #00BFFF);
+  text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
+}
+
+/* Clase active para móvil (clic) - muestra el mensaje y lo mantiene */
+.quov-card.active .quov-msg {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--quov-blue, #00BFFF);
   text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
@@ -412,7 +427,7 @@ body {
 .team-card-new:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 35px -10px rgba(0, 191, 255, 0.4);
-  border-color: #00BFFF;
+  border-color: var(--quov-blue, #00BFFF);
 }
 
 .team-card-new img {
@@ -445,7 +460,7 @@ body {
 
 .card-overlay-new span {
   display: inline-block;
-  background: #0099CC;
+  background: var(--quov-blue-dark, #0099CC);
   padding: 7px 18px;
   border-radius: 30px;
   font-size: 0.78rem;
@@ -456,7 +471,7 @@ body {
 }
 
 .card-overlay-new span:hover {
-  background: #00BFFF;
+  background: var(--quov-blue, #00BFFF);
 }
 
 .team-info-new {
@@ -468,7 +483,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #006699;
+  color: var(--quov-blue-dark, #006699);
   margin-bottom: 4px;
 }
 
@@ -481,13 +496,13 @@ body {
 
 .team-info-new .icons a {
   margin: 0 7px;
-  color: #0099CC;
+  color: var(--quov-blue-dark, #0099CC);
   transition: color 0.2s, transform 0.2s;
   display: inline-block;
 }
 
 .team-info-new .icons a:hover {
-  color: #00BFFF;
+  color: var(--quov-blue, #00BFFF);
   transform: scale(1.15);
 }
 
@@ -510,7 +525,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #00bfffad;
+  color: rgba(0, 191, 255, 0.7);
   font-family: 'Syne', sans-serif;
   gap: 12px;
 }
@@ -559,56 +574,51 @@ body {
   background: rgba(0, 0, 0, 0.65);
 }
 
-/* Tamaño de la tarjeta */
 #profileCard {
   position: relative;
   z-index: 1;
   background: #fff;
-  border-radius: 20px; 
-  width: 280px;        
-  overflow: hidden;   
+  border-radius: 20px;
+  width: 280px;
+  overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   animation: profileSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Imagen más pequeña */
 #profileCard img {
   width: 100%;
-  height: 140px;       
+  height: 140px;
   object-fit: cover;
 }
 
-/* Espaciado interno más ajustado */
 .profile-body {
-  padding: 15px 20px;  
+  padding: 15px 20px;
   text-align: center;
 }
 
-/* Ajuste de fuentes */
 .profile-body h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;   
+  font-size: 1.2rem;
   font-weight: 800;
-  color: #006699;
+  color: var(--quov-blue-dark, #006699);
   margin-top: 5px;
 }
 
 .profile-body .profile-role {
   color: #aaa;
-  font-size: 0.75rem;  
+  font-size: 0.75rem;
   margin-bottom: 10px;
 }
 
 .profile-body p {
-  font-size: 0.8rem;  
+  font-size: 0.8rem;
   color: #555;
   line-height: 1.5;
   margin-bottom: 15px;
 }
 
-/* Botón más pequeño */
 #profileClose {
-  background: #0099CC;
+  background: var(--quov-blue-dark, #0099CC);
   color: white;
   border: none;
   border-radius: 30px;
@@ -619,80 +629,60 @@ body {
 }
 
 #profileClose:hover {
-  background: #00bfff52;
+  background: var(--quov-blue, #00BFFF);
   transform: scale(1.04);
 }
 
 /* ========== 7. BOTÓN CATÁLOGO ========== */
 .catalog-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #02b7f3 !important;
-    background: linear-gradient(135deg, #02b7f3 0%, #0588ca 100%) !important; 
-    padding: 16px 48px; 
-    border-radius: 50px; 
-    
-    color: #ffffff !important; 
-    z-index: 1; 
-    overflow: hidden;
-    
-    font-weight: 700;
-    font-size: 1.1rem;
-    font-family: 'Syne', sans-serif; 
-    letter-spacing: 0.5px;
-    transition: all 0.4s ease; 
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 6px 15px rgba(2, 183, 243, 0.3);
-    text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--quov-blue, #00BFFF) !important;
+  padding: 16px 48px;
+  border-radius: 50px;
+  color: #ffffff !important;
+  z-index: 1;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
+  text-decoration: none;
 }
 
 .catalog-btn:hover {
-    background: #0e0e0e !important; 
-    background-image: none !important; 
-    transform: translateY(-4px) scale(1.02); 
-    color: #ffffff !important; 
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
+  background: var(--quov-blue-dark, #0099CC) !important;
+  transform: translateY(-4px) scale(1.02);
+  color: #ffffff !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Esto asegura que el texto sea blanco y esté arriba */
 .catalog-btn, 
 .catalog-btn * {
-    color: #ffffff !important;
-    position: relative;
-    z-index: 2;
+  color: #ffffff !important;
+  position: relative;
+  z-index: 2;
 }
 
-/* EFECTO SOLO PARA LA FLECHA */
 .catalog-btn .arrow {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    margin-left: 10px; /* El espacio ahora solo afecta a la flecha */
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
 }
 
 .catalog-btn:hover .arrow {
-    transform: translateX(5px); 
+  transform: translateX(5px);
 }
 
-/* ========== 8. MODO OSCURO (COMPLETO) ========== */
+/* ========== 8. MODO OSCURO ========== */
 body.dark-mode {
   background-color: #0a0a0a;
-}
-
-/* Page Title Modo Oscuro */
-body.dark-mode .page-title-section {
-  background: linear-gradient(105deg, #0D2E3A 0%, #1A5A6E 100%);
-}
-
-body.dark-mode .page-title-section h1 {
-  color: #e0e0e0;
-}
-
-body.dark-mode .breadcrumb,
-body.dark-mode .breadcrumb a {
-  color: #4DCFFF;
 }
 
 /* MVO Modo Oscuro */
@@ -702,7 +692,7 @@ body.dark-mode .mvo-front {
 }
 
 body.dark-mode .mvo-front h4 {
-  color: #4DCFFF;
+  color: var(--quov-blue-light, #4DCFFF);
 }
 
 body.dark-mode .mvo-back {
@@ -715,11 +705,11 @@ body.dark-mode .quov-card {
 }
 
 body.dark-mode .quov-card h4 {
-  color: #4DCFFF;
+  color: var(--quov-blue-light, #4DCFFF);
 }
 
 body.dark-mode .quov-card:hover .quov-msg {
-  color: #4DCFFF;
+  color: var(--quov-blue-light, #4DCFFF);
 }
 
 /* EQUIPO Modo Oscuro */
@@ -728,7 +718,7 @@ body.dark-mode .team-card-new {
 }
 
 body.dark-mode .team-info-new h3 {
-  color: #4DCFFF;
+  color: var(--quov-blue-light, #4DCFFF);
 }
 
 body.dark-mode .team-info-new .role {
@@ -741,7 +731,7 @@ body.dark-mode #profileCard {
 }
 
 body.dark-mode .profile-body h2 {
-  color: #4DCFFF;
+  color: var(--quov-blue-light, #4DCFFF);
 }
 
 body.dark-mode .profile-body p {
@@ -804,17 +794,6 @@ body.dark-mode .social-icon:hover {
 }
 
 /* ========== 10. VIDEO ========== */
-.team-video-wrapper {
-  flex: 0 0 auto;
-  width: 460px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 191, 255, .5);
-  border: 2px solid rgba(7, 181, 239, 0.5);
-  background: #000;
-  position: relative;
-}
-
 .team-video-wrapper video,
 .team-video-wrapper iframe {
   width: 100%;
@@ -864,15 +843,6 @@ body.dark-mode .social-icon:hover {
     width: 100%;
     max-width: 220px;
     margin: 0 auto;
-  }
-
-  #cursor-dot,
-  #cursor-ring {
-    display: none !important;
-  }
-
-  * {
-    cursor: auto !important;
   }
 }
 
@@ -947,4 +917,97 @@ body.dark-mode .social-icon:hover {
   .team-card-new {
     width: 90%;
   }
+}
+
+/* ========== 12. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO ========== */
+/* Transición suave para todas las tarjetas */
+.mvo-card .mvo-card-inner {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Volteo automático (por JavaScript) */
+.mvo-card.flipped .mvo-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Hover manual - siempre funciona */
+.mvo-card:hover .mvo-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Si la tarjeta está volteada y haces hover, que regrese (para leer el frente) */
+.mvo-card.flipped:hover .mvo-card-inner {
+  transform: rotateY(0deg);
+}
+
+/* Animación del contenido del reverso */
+.mvo-card.flipped .mvo-back p,
+.mvo-card.flipped .mvo-back h4,
+.mvo-card.flipped .mvo-back .mvo-icon-back {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.mvo-card.flipped .mvo-back p { animation-delay: 0.1s; }
+.mvo-card.flipped .mvo-back h4 { animation-delay: 0.05s; }
+.mvo-card.flipped .mvo-back .mvo-icon-back { animation-delay: 0s; }
+
+/* ========== 13. BOTÓN VER PERFIL - TEXTO BLANCO ========== */
+/* ========== 14. BOTÓN VER PERFIL - AJUSTES PARA MÓVIL ========== */
+
+/* Asegurar que el botón sea táctil y visible en móviles */
+@media (max-width: 768px) {
+  .card-overlay-new span {
+    padding: 10px 20px !important;
+    font-size: 0.85rem !important;
+    min-width: 100px !important;
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  
+  /* Aumentar área táctil */
+  .team-card-new .card-overlay-new {
+    bottom: -70px !important;
+    padding: 60px 20px 20px !important;
+  }
+  
+  .team-card-new:hover .card-overlay-new {
+    bottom: 0 !important;
+  }
+}
+
+/* Forzar texto blanco en todos los estados del botón (incluyendo focus y active) */
+.card-overlay-new span,
+.card-overlay-new span:hover,
+.card-overlay-new span:active,
+.card-overlay-new span:focus,
+.card-overlay-new span:visited {
+  color: #ffffff !important;
+}
+
+/* Hover blanco con efecto suave */
+.card-overlay-new span:hover {
+  background: var(--quov-blue, #00BFFF) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
+}
+
+/* Efecto al hacer clic (táctil) */
+.card-overlay-new span:active {
+  transform: scale(0.98);
+  background: var(--quov-blue-dark, #0099CC) !important;
+}
+
+/* Modo oscuro - mantener consistencia */
+body.dark-mode .card-overlay-new span,
+body.dark-mode .card-overlay-new span:hover,
+body.dark-mode .card-overlay-new span:active {
+  color: #ffffff !important;
+}
+
+body.dark-mode .card-overlay-new span:hover {
+  background: var(--quov-blue, #00BFFF) !important;
+}
+
+body.dark-mode .card-overlay-new span:active {
+  background: var(--quov-blue-dark, #0099CC) !important;
 }

@@ -6,6 +6,8 @@ TABLA DE CONTENIDO - BASICO.JS
 3. BACK TO TOP
 4. REVEAL AL SCROLL
 5. EFECTO LATERAL AUTOMÁTICO
+6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS
+7. MENÚ HAMBURGUESA PARA MÓVILES
 ============================================ */
 
 // ============================================ 
@@ -155,19 +157,15 @@ TABLA DE CONTENIDO - BASICO.JS
       return;
     }
     
-    // Función para verificar y aplicar efecto lateral
     function aplicarEfectoLateral() {
-      // Verificar si el modal del producto está visible (no tiene hidden)
       const isProductVisible = productOverlay && 
         !productOverlay.classList.contains('hidden') && 
         productOverlay.style.display !== 'none';
       
-      // Verificar si el modal del chat está visible
       const isChatVisible = chatOverlay && 
         !chatOverlay.classList.contains('hidden') && 
         chatOverlay.style.display !== 'none';
       
-      // Aplicar clases solo si ambos están visibles y en pantalla grande
       if (isProductVisible && isChatVisible && window.innerWidth >= 1024) {
         productOverlay.classList.add('side-docked');
         chatOverlay.classList.add('chat-side-mode');
@@ -178,7 +176,6 @@ TABLA DE CONTENIDO - BASICO.JS
       }
     }
     
-    // Observar cambios en las clases de los overlays
     const observer = new MutationObserver(() => {
       setTimeout(aplicarEfectoLateral, 50);
     });
@@ -186,19 +183,138 @@ TABLA DE CONTENIDO - BASICO.JS
     observer.observe(productOverlay, { attributes: true, attributeFilter: ['class'] });
     observer.observe(chatOverlay, { attributes: true, attributeFilter: ['class'] });
     
-    // También verificar al cambiar tamaño de ventana
     window.addEventListener('resize', () => {
       setTimeout(aplicarEfectoLateral, 100);
     });
     
-    // Verificar cada vez que se hace clic (para detectar aperturas)
     document.addEventListener('click', () => {
       setTimeout(aplicarEfectoLateral, 100);
     });
     
-    // Verificar inicial
     setTimeout(aplicarEfectoLateral, 500);
     
     console.log('✅ Efecto lateral automático activado');
   }, 100);
+})();
+
+// ============================================ 
+// 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS
+// ============================================ 
+(function initActiveNavLink() {
+  const catalogoLink = document.getElementById('catalogoNavLink');
+  const destacadosLink = document.getElementById('destacadosNavLink');
+  
+  // Si no existen estos elementos, salir
+  if (!catalogoLink || !destacadosLink) return;
+  
+  // Función para activar el link correcto según la URL o scroll
+  function updateActiveLink() {
+    const hash = window.location.hash;
+    const scrollPosition = window.scrollY + 150;
+    const catalogoSection = document.getElementById('catalogo');
+    const destacadosSection = document.getElementById('destacados');
+    
+    // Primero, verificar por hash en la URL (#catalogo o #destacados)
+    if (hash === '#destacados') {
+      catalogoLink.classList.remove('active');
+      destacadosLink.classList.add('active');
+      return;
+    } else if (hash === '#catalogo') {
+      catalogoLink.classList.add('active');
+      destacadosLink.classList.remove('active');
+      return;
+    }
+    
+    // Segundo, verificar por scroll (si no hay hash)
+    if (catalogoSection && destacadosSection) {
+      const destacadosTop = destacadosSection.offsetTop;
+      const catalogoTop = catalogoSection.offsetTop;
+      
+      if (scrollPosition >= destacadosTop && scrollPosition < catalogoTop) {
+        catalogoLink.classList.remove('active');
+        destacadosLink.classList.add('active');
+      } else if (scrollPosition >= catalogoTop) {
+        catalogoLink.classList.add('active');
+        destacadosLink.classList.remove('active');
+      } else {
+        catalogoLink.classList.add('active');
+        destacadosLink.classList.remove('active');
+      }
+    }
+  }
+  
+  // Evento click: cambiar manualmente el active y guardar
+  function setActiveAndSave(activeLink) {
+    catalogoLink.classList.remove('active');
+    destacadosLink.classList.remove('active');
+    activeLink.classList.add('active');
+    localStorage.setItem('activeNavLink', activeLink.id);
+  }
+  
+  catalogoLink.addEventListener('click', function() {
+    setActiveAndSave(catalogoLink);
+  });
+  
+  destacadosLink.addEventListener('click', function() {
+    setActiveAndSave(destacadosLink);
+  });
+  
+  // Escuchar cambios en el hash
+  window.addEventListener('hashchange', updateActiveLink);
+  window.addEventListener('scroll', updateActiveLink);
+  
+  // Restaurar el último estado guardado o usar el hash actual
+  const savedActive = localStorage.getItem('activeNavLink');
+  const currentHash = window.location.hash;
+  
+  if (currentHash === '#destacados') {
+    destacadosLink.classList.add('active');
+    catalogoLink.classList.remove('active');
+  } else if (currentHash === '#catalogo') {
+    catalogoLink.classList.add('active');
+    destacadosLink.classList.remove('active');
+  } else if (savedActive === 'destacadosNavLink') {
+    destacadosLink.classList.add('active');
+    catalogoLink.classList.remove('active');
+  } else {
+    catalogoLink.classList.add('active');
+    destacadosLink.classList.remove('active');
+  }
+  
+  // Ejecutar al cargar
+  setTimeout(updateActiveLink, 100);
+  
+  console.log('✅ NavLinks de Catálogo/Destacados activados');
+})();
+
+// ============================================ 
+// 7. MENÚ HAMBURGUESA PARA MÓVILES
+// ============================================ 
+(function initMobileMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if (!menuToggle || !mobileMenu) return;
+  
+  // Abrir/cerrar menú al hacer clic
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.toggle('active');
+  });
+  
+  // Cerrar menú al hacer clic en un enlace
+  const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+    });
+  });
+  
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', function(event) {
+    if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+      mobileMenu.classList.remove('active');
+    }
+  });
+  
+  console.log('✅ Menú hamburguesa activado');
 })();
