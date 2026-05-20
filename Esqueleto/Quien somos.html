@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Quiénes Somos | QUOV</title>
@@ -9,12 +10,13 @@
   <link rel="stylesheet" href="../Estilos/quienes_somos.css" />
   <link rel="stylesheet" href="../Estilos/Basico.css" />
   
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts (AGREGA ESTO) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="icon" type="image/png" href="../img/logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
- 
 </head>
 <body class="font-sans bg-white text-neutral-900" style="overflow-x: hidden;">
 
@@ -40,6 +42,7 @@
       <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
       <a href="../Esqueleto/Quien somos.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;">¿Quiénes somos?</a>
       <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block">Historia</a>
+      <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
     </div>
     
     <!-- Iconos derecha + Botón hamburguesa -->
@@ -99,6 +102,7 @@
   <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
   <a href="../Esqueleto/Quien somos.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;">¿Quiénes somos?</a>
   <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block">Historia</a>
+  <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
 </div>
 
   <!-- ====== PAGE TITLE ====== -->
@@ -111,7 +115,7 @@
   </div>
 </div>
 
-  <!-- ====== SECCIÓN 1: MISIÓN VISIÓN OBJETIVO (3D FLIP) con fondo habitos.jpg ====== -->
+  <!-- ====== SECCIÓN 1: MISIÓN VISIÓN OBJETIVO (3D FLIP) ====== -->
   <section class="mvo-section">
     <h3 class="section-title">NUESTRA ESENCIA</h3>
     <p class="section-sub">Descubre lo que nos mueve — Pasa el mouse sobre cada tarjeta</p>
@@ -164,17 +168,17 @@
     </div>
   </section>
 
-  <!-- ====== SECCIÓN 2: QUOV con fondo hero-bg.jpg y contraste azul en hover ====== -->
+  <!-- ====== SECCIÓN 2: QUOV ====== -->
   <section class="quov-section">
     <h3 class="section-title">QUOV</h3>
-    <p class="section-sub">Descubre lo que ofrecemos — Pasa el cursor sobre cada tarjeta</p>
+    <p class="section-sub">Descubre lo que ofrecemos y cosas que podrian interesarte</p>
     <div class="quov-grid">
 
       <div class="quov-card">
         <span class="quov-icon">📦</span>
         <h4>Oferta del día</h4>
         <div class="quov-msg">
-          🎉 Hoy llévate cualquier libro de filosofía con <strong>30% de descuento</strong>. Escríbenos al WhatsApp y menciona el código <strong>QUOV-HOY</strong>.
+          🎉 Hoy llévate cualquier libro de filosofía con <a><strong>30% de descuento</strong></a>. Escríbenos al WhatsApp y menciona el código <a><strong>QUOV-HOY</strong></a>.
         </div>
       </div>
 
@@ -182,7 +186,7 @@
         <span class="quov-icon">✍️</span>
         <h4>Frase del día</h4>
         <div class="quov-msg">
-          📖 <em>"Un libro leído una vez es tuyo para siempre. No el papel, sino lo que dejó en ti."</em><br><br>— Gabriel García Márquez
+          📖 <em>"Un libro leído una vez es tuyo para siempre. No el papel, sino lo que dejó en ti."</em><br><br><a>— Gabriel García Márquez</a>
         </div>
       </div>
 
@@ -190,7 +194,7 @@
         <span class="quov-icon">🆕</span>
         <h4>Novedad QUOV</h4>
         <div class="quov-msg">
-          🚀 ¡Pronto lanzamos nuestra <strong>app móvil</strong>! Podrás explorar el catálogo, apartar libros y pagar en línea desde tu teléfono.
+          🚀 ¡Pronto lanzamos nuestra <a><strong>app móvil</strong></a>! Podrás explorar el catálogo, apartar libros y pagar en línea desde tu teléfono.
         </div>
       </div>
 
@@ -204,20 +208,19 @@
       <p>Personas apasionadas por los libros y el desarrollo personal</p>
       <div class="team-layout">
         
-        <!-- Estefano -->
+        <!-- Stefano Díaz -->
         <div class="team-card-new" 
-            data-name="Estefano" 
+            data-name="Stefano Díaz" 
             data-role="Fundador" 
             data-img="../img/desarrolladores.jpg" 
-            data-desc="Estefano fundó QUOV con la convicción de que los libros merecen una segunda vida. Con más de 8 años en el mundo editorial, selecciona cada libro con cuidado y pasión."
+            data-desc="Stefano fundó QUOV con la convicción de que los libros merecen una segunda vida. Con más de 8 años en el mundo editorial, selecciona cada libro con cuidado y pasión."
             data-facebook="https://facebook.com/Estefano"
             data-instagram="https://instagram.com/Estefano"
             data-tiktok="https://tiktok.com/@Estefano">
-          <img src="../img/desarrolladores.jpg" alt="Estefano">
+          <img src="../img/desarrolladores.jpg" alt="Stefano Díaz">
           <div class="card-overlay-new"><span>Ver perfil →</span></div>
-          <span class="arrow">Ver catálogo →</span>
           <div class="team-info-new">
-            <h3>Estefano</h3>
+            <h3>Stefano Díaz</h3>
             <p class="role">Fundador</p>
           </div>
         </div>
@@ -230,20 +233,20 @@
           </video>
         </div>
 
-        <!-- Carlos -->
+        <!-- Luis Muñoz -->
         <div class="team-card-new" 
-            data-name="Carlos " 
-            data-role="Disenador" 
+            data-name="Luis Muñoz" 
+            data-role="Fundador" 
             data-img="../img/desarrolladores.jpg" 
-            data-desc="Carlos es el responsable de elegir los mejores títulos para el catálogo. Su amor por la literatura clásica y contemporánea garantiza una selección siempre fresca y valiosa."
+            data-desc="Luis es el responsable de elegir los mejores títulos para el catálogo. Su amor por la literatura clásica y contemporánea garantiza una selección siempre fresca y valiosa."
             data-facebook="https://facebook.com/carlosruiz"
             data-instagram="https://instagram.com/carlosruiz"
             data-tiktok="https://tiktok.com/@carlosruiz">
-          <img src="../img/desarrolladores.jpg" alt="Carlos Ruiz">
+          <img src="../img/desarrolladores.jpg" alt="Luis Muñoz">
           <div class="card-overlay-new"><span>Ver perfil →</span></div>
           <div class="team-info-new">
-            <h3>Carlos </h3>
-            <p class="role">Disenador</p>
+            <h3>Luis Muñoz </h3>
+            <p class="role">Fundador</p>
           </div>
         </div>
 

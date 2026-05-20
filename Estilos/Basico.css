@@ -1,6 +1,7 @@
 /* ============================================ 
    TABLA DE CONTENIDO - BASICO.CSS
    ============================================ 
+   0. VISTAS A CONSIDERAR
    1. VARIABLES GLOBALES
    2. MODO OSCURO
    3. NAVBAR
@@ -9,28 +10,45 @@
    6. CHAT IA - BOTÓN FLOTANTE
    7. MODALES - BASE COMÚN
    8. MODAL DEL CHAT IA
-   9. MODAL DE PRODUCTO (Detalles del libro)
-   10. MODAL DE NOTIFICACIÓN (Avisarme)
-   11. MODAL LATERAL (Producto derecha - Chat centrado)
+   9. MODAL DE PRODUCTO
+   10. MODAL DE NOTIFICACIÓN
+   11. MODAL LATERAL
    12. SCROLLBAR
    13. EFECTOS HOVER
    14. CURSOR PERSONALIZADO
    15. BOTÓN DE MODO OSCURO
-   16. MENÚ HAMBURGUESA PARA MÓVILES
-   17. RESPONSIVE DESIGN
-   18. AJUSTES MODALES MÓVILES
+   16. MENÚ HAMBURGUESA
+   17. RESPONSIVE DESIGN 
+   18. MODO OSCURO - MODALES
    ============================================ */
 
-/* ========== RESPONSIVE DESIGN ========== 
+/* ========== 0. VISTAS A CONSIDERAR  ========== 
 Teléfonos pequeños	320px – 480px
 Teléfonos medianos	481px – 767px
-Teléfonos grandes	768px – 991px
-Tabletas	992px – 1199px
-Escritorios chicos	1200px – 1439px
-Escritorios grandes	1440px o más
+Tablets	768px – 1023px
+Laptops / Escritorios pequeños	1024px – 1279px
+Escritorios grandes	1280px – 1439px
+Pantallas extra grandes	1440px en adelante
 */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
@@ -76,7 +94,6 @@ body.dark-mode .nav-link.active { color: var(--quov-blue) !important; }
 .logo-nav { height: 36px; width: auto; }
 nav { background-color: var(--bg-primary) !important; border-bottom-color: var(--border-light) !important; }
 
-/* Estilos base de los enlaces del navbar */
 .nav-link {
   display: flex;
   font-family: 'Syne', sans-serif;
@@ -89,34 +106,23 @@ nav { background-color: var(--bg-primary) !important; border-bottom-color: var(-
   text-decoration: none;
 }
 
-/* Estado activo y hover */
 .nav-link.active, 
 .nav-link:hover { 
   color: var(--quov-blue) !important; 
 }
 
-.nav-link.active { 
-  font-weight: 700; 
-}
+.nav-link.active { font-weight: 700; }
 
-/* Modo oscuro para navbar */
+/* Modo oscuro navbar */
 body.dark-mode nav {
   background-color: #0a0a0a !important;
   border-bottom-color: #333333 !important;
 }
 body.dark-mode nav a, 
 body.dark-mode .nav-link, 
-body.dark-mode nav .font-display { 
-  color: #ffffff !important; 
-}
-body.dark-mode .nav-link.active {
-  color: var(--quov-blue) !important;
-  font-weight: 700;
-}
-body.dark-mode nav svg { 
-  stroke: #ffffff !important; 
-  color: #ffffff !important; 
-}
+body.dark-mode nav .font-display { color: #ffffff !important; }
+body.dark-mode .nav-link.active { color: var(--quov-blue) !important; font-weight: 700; }
+body.dark-mode nav svg { stroke: #ffffff !important; color: #ffffff !important; }
 
 /* Logo QUOV */
 nav .font-display,
@@ -128,11 +134,8 @@ nav a.font-display {
   color: var(--text-primary);
   text-decoration: none;
 }
-
 body.dark-mode nav .font-display,
-body.dark-mode nav a.font-display {
-  color: #ffffff !important;
-}
+body.dark-mode nav a.font-display { color: #ffffff !important; }
 
 /* ========== 4. FOOTER ========== */
 footer { background-color: var(--bg-neutral-900); }
@@ -221,12 +224,8 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   transition: all 0.35s ease;
   pointer-events: none;
 }
-
 .chat-fab:hover + .chat-hint,
-.chat-hint:hover {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
+.chat-hint:hover { opacity: 1 !important; visibility: visible !important; }
 
 /* ========== 7. MODALES - BASE COMÚN ========== */
 .modal-card {
@@ -346,7 +345,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 #chatMessages::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 10px; }
 #chatMessages::-webkit-scrollbar-thumb { background: var(--quov-blue); border-radius: 10px; }
 
-/* ========== 9. MODAL DE PRODUCTO (Detalles del libro) ========== */
+/* ========== 9. MODAL DE PRODUCTO ========== */
 #productOverlay { z-index: 2000 !important; }
 #productOverlay .modal-card {
   max-width: 360px !important;
@@ -371,7 +370,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 #productOverlay .buy-button:hover { background: var(--quov-blue-dark) !important; }
 #productOverlay:not(.hidden) { display: flex !important; }
 
-/* ========== 10. MODAL DE NOTIFICACIÓN (Avisarme) ========== */
+/* ========== 10. MODAL DE NOTIFICACIÓN ========== */
 #notifyOverlay .modal-card {
   max-width: 360px !important;
   width: 90% !important;
@@ -389,7 +388,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   width: 100% !important;
 }
 
-/* ========== 11. MODAL LATERAL (Producto derecha - Chat centrado) ========== */
+/* ========== 11. MODAL LATERAL ========== */
 #productOverlay.side-docked {
   z-index: 2000 !important;
   background: rgba(0, 0, 0, 0.6) !important;
@@ -423,16 +422,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   overflow-y: auto;
   border-radius: 24px;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
-}
-@media (min-width: 1200px) { 
-  #chatOverlay.chat-side-mode .modal-card { width: min(520px, calc(100vw - 80px)); max-width: 520px; } 
-}
-@media (min-width: 768px) and (max-width: 1199px) { 
-  #chatOverlay.chat-side-mode .modal-card { width: min(450px, calc(100vw - 60px)); max-width: 450px; } 
-}
-@media (max-width: 768px) {
-  #productOverlay.side-docked { justify-content: center !important; padding-right: 0 !important; }
-  #productOverlay.side-docked .modal-card { width: 90% !important; margin: auto !important; }
 }
 
 /* ========== 12. SCROLLBAR ========== */
@@ -502,100 +491,170 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring, .book-card:hover ~ #cursor-
 }
 .theme-toggle:hover { background: var(--bg-neutral-100); }
 
-/* ========== 16. MENÚ HAMBURGUESA PARA MÓVILES ========== */
-.menu-toggle { display: none; background: transparent; border: none; cursor: pointer; padding: 8px; z-index: 100; color: var(--text-primary); }
-.menu-toggle svg { width: 24px; height: 24px; stroke: var(--text-primary); stroke-width: 2; }
+/* ========== 16. MENÚ HAMBURGUESA ========== */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.menu-toggle:hover { background: rgba(0, 191, 255, 0.1); }
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-primary);
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+.menu-toggle.active svg { transform: rotate(90deg); }
+
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 70px;
+  top: 68px;
   left: 0;
   right: 0;
-  background: var(--bg-primary);
-  border-bottom: 1px solid var(--border-light);
-  padding: 20px;
-  z-index: 99;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--quov-blue);
+  padding: 12px 20px;
+  z-index: 1000;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  gap: 4px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease forwards;
 }
-.mobile-menu .nav-link { display: block; padding: 12px 0; font-size: 1rem; text-align: center; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .mobile-menu.active { display: flex; }
-@media (max-width: 768px) {
-  nav .flex.items-center[style*="gap: 2rem"] { display: none !important; }
-  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+
+.mobile-menu .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
 }
-@media (min-width: 769px) { .mobile-menu { display: none !important; } }
-body.dark-mode .mobile-menu { background-color: #0a0a0a; border-bottom-color: #333333; }
-body.dark-mode .menu-toggle svg { stroke: #ffffff; }
+.mobile-menu .nav-link::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--quov-blue);
+  border-radius: 50%;
+  margin-right: 12px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.mobile-menu .nav-link:hover::before,
+.mobile-menu .nav-link.active::before {
+  opacity: 1;
+  transform: scale(1.2);
+}
+.mobile-menu .nav-link:hover {
+  background: rgba(0, 191, 255, 0.08);
+  color: var(--quov-blue);
+  transform: translateX(4px);
+}
+.mobile-menu .nav-link.active {
+  color: var(--quov-blue);
+  font-weight: 700;
+  background: rgba(0, 191, 255, 0.05);
+  border-left: 3px solid var(--quov-blue);
+  border-radius: 12px;
+}
+
+/* Modo oscuro menú hamburguesa */
+body.dark-mode .menu-toggle svg { stroke: var(--text-primary); }
+body.dark-mode .menu-toggle:hover { background: rgba(0, 191, 255, 0.2); }
+body.dark-mode .mobile-menu {
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--quov-blue);
+}
+body.dark-mode .mobile-menu .nav-link { color: var(--text-primary); }
+body.dark-mode .mobile-menu .nav-link:hover {
+  background: rgba(0, 191, 255, 0.15);
+  color: var(--quov-blue-light);
+}
+body.dark-mode .mobile-menu .nav-link.active {
+  color: var(--quov-blue-light);
+  background: rgba(0, 191, 255, 0.1);
+}
 
 /* ========== 17. RESPONSIVE DESIGN ========== */
+
+/* Móviles pequeños (320px - 480px) */
 @media (min-width: 320px) and (max-width: 480px) {
-  nav { padding: 10px 12px !important; }
   .logo-nav { height: 28px !important; }
-  nav .font-display.font-bold.text-xl { font-size: 0.85rem !important; }
-  .nav-link { font-size: 0.68rem !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
-  nav .flex.items-center.gap-6 { gap: 6px !important; }
-  nav svg { width: 16px !important; height: 16px !important; }
-  .theme-toggle { padding: 5px !important; }
+  nav .font-display, nav a.font-display { font-size: 0.85rem !important; }
   .chat-fab { width: 65px !important; height: 65px !important; bottom: 20px !important; right: 20px !important; }
   .chat-fab-logo { width: 32px !important; height: 32px !important; }
   .chat-fab-text { font-size: 8px !important; }
   .chat-hint { bottom: 95px !important; right: 80px !important; max-width: 180px !important; font-size: 0.7rem !important; padding: 8px 12px !important; }
   .back2top { width: 44px !important; height: 44px !important; bottom: 100px !important; right: 20px !important; }
   .modal-card { border-radius: 18px !important; }
-  .modal-card .p-6 { padding: 14px !important; }
-  #chatOverlay .modal-card, #productOverlay .modal-card { max-width: 95% !important; width: 95% !important; }
   .buy-button, .secondary-button, .notify-save-button { padding: 10px 12px !important; font-size: 0.75rem !important; }
   footer { padding: 24px 16px !important; }
-  footer .mx-auto { flex-direction: column; gap: 12px; text-align: center; }
   .footer-text { font-size: 0.65rem; }
   .footer-logo { height: 28px !important; }
 }
+
+/* Móviles medianos (481px - 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-  nav { padding: 12px 16px !important; }
   .logo-nav { height: 30px !important; }
-  nav .font-display.font-bold.text-xl { font-size: 0.9rem !important; }
-  .nav-link { font-size: 0.72rem !important; }
-  nav .flex.items-center.gap-6 { gap: 8px !important; }
-  nav svg { width: 17px !important; height: 17px !important; }
+  nav .font-display, nav a.font-display { font-size: 0.9rem !important; }
   .chat-fab { width: 70px !important; height: 70px !important; }
   .chat-fab-logo { width: 36px !important; height: 36px !important; }
   .chat-fab-text { font-size: 9px !important; }
   .back2top { width: 48px !important; height: 48px !important; }
-  .modal-card { border-radius: 20px !important; }
-  .modal-card .p-6 { padding: 16px !important; }
   footer { padding: 28px 20px !important; }
-  footer .mx-auto { flex-direction: column; gap: 14px; text-align: center; }
 }
+
+/* Tabletas (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
-  nav { padding: 14px 20px !important; }
   .logo-nav { height: 32px !important; }
-  .nav-link { font-size: 0.75rem !important; }
-  nav .flex.items-center.gap-6 { gap: 10px !important; }
   .chat-fab { width: 75px !important; height: 75px !important; }
   .chat-fab-logo { width: 40px !important; height: 40px !important; }
   .back2top { width: 50px !important; height: 50px !important; }
+  /* Mostrar menú hamburguesa en tablet */
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+  nav .flex.items-center[style*="gap: 2rem"],
+  nav .hidden.sm\:block { display: none !important; }
 }
+
+/* Tabletas grandes (992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
-  nav { padding: 14px 28px !important; }
   .logo-nav { height: 34px !important; }
-  .nav-link { font-size: 0.78rem !important; }
   .chat-fab { width: 80px !important; height: 80px !important; }
   .chat-fab-logo { width: 42px !important; height: 42px !important; }
 }
+
+/* Escritorios pequeños (1200px - 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
-  nav { padding: 16px 32px !important; }
   .logo-nav { height: 36px !important; }
-  .nav-link { font-size: 0.82rem !important; }
   .chat-fab { width: 85px !important; height: 85px !important; }
   .chat-fab-logo { width: 45px !important; height: 45px !important; }
+  #chatOverlay.chat-side-mode .modal-card { width: min(520px, calc(100vw - 80px)); max-width: 520px; }
 }
+
+/* Escritorios grandes (1440px+) */
 @media (min-width: 1440px) {
   nav { padding: 18px 48px !important; }
   nav .mx-auto { max-width: 1400px !important; }
   .logo-nav { height: 38px !important; }
-  .nav-link { font-size: 0.88rem !important; }
   .chat-fab { width: 90px !important; height: 90px !important; bottom: 35px !important; right: 35px !important; }
   .chat-fab-logo { width: 48px !important; height: 48px !important; }
   .chat-fab-text { font-size: 11px !important; }
@@ -604,32 +663,31 @@ body.dark-mode .menu-toggle svg { stroke: #ffffff; }
   footer .mx-auto { max-width: 1400px !important; }
 }
 
-/* ========== 18. AJUSTES MODALES MÓVILES ========== */
-@media (max-width: 700px) {
-  #productOverlay.side-docked .modal-card {
-    position: fixed !important;
-    top: auto !important;
-    bottom: 10px !important;
-    left: 10px !important;
-    right: 10px !important;
-    transform: translateY(0) !important;
-    width: calc(100vw - 20px) !important;
-    max-height: 45vh !important;
-  }
-  #chatOverlay.chat-side-mode .modal-card {
-    position: fixed !important;
-    top: 10px !important;
-    bottom: auto !important;
-    left: 10px !important;
-    right: 10px !important;
-    transform: translateX(0) translateY(0) !important;
-    width: calc(100vw - 20px) !important;
-    max-height: 40vh !important;
-  }
+/* Mostrar menú hamburguesa en móviles (hasta 767px) */
+@media (max-width: 767px) {
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+  nav .flex.items-center[style*="gap: 2rem"],
+  nav .hidden.sm\:block { display: none !important; }
+  .mobile-menu { top: 65px; }
+  nav { position: sticky; top: 0; z-index: 1002; }
 }
-#productOverlay.side-docked.active, #chatOverlay.chat-side-mode.active { background: rgba(0, 0, 0, 0.6); pointer-events: auto; z-index: 1000; }
 
-/* ========== MODO OSCURO - MODALES ========== */
+/* Ocultar menú desktop en escritorio */
+@media (min-width: 768px) {
+  .mobile-menu { display: none !important; }
+}
+
+/* Ajustes de modales en responsive */
+@media (max-width: 768px) {
+  #productOverlay.side-docked { justify-content: center !important; padding-right: 0 !important; }
+  #productOverlay.side-docked .modal-card { width: 90% !important; margin: auto !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  #chatOverlay.chat-side-mode .modal-card { width: min(450px, calc(100vw - 60px)); max-width: 450px; }
+}
+
+/* ========== 18. MODO OSCURO - MODALES ========== */
 body.dark-mode #productOverlay .modal-card { background: #1a1a1a !important; border: 1px solid #333333 !important; }
 body.dark-mode #productOverlay .modal-card .font-semibold,
 body.dark-mode #productOverlay .modal-card #productTitle,

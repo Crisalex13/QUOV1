@@ -169,6 +169,7 @@ body.dark-mode .theme-toggle {
 }
 
 .hero-title {
+  font-family: 'Syne', sans-serif;
   font-size: clamp(3rem, 7vw, 5rem);
   line-height: 1.05;
 }

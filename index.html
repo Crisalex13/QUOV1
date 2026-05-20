@@ -8,6 +8,7 @@
   <!-- Tailwind CSS + Estilos QUOV -->
   <link rel="stylesheet" href="./dist/output.css">
   <link rel="stylesheet" href="./Estilos/Basico.css">
+  <link rel="stylesheet" href="./Estilos/inicio.css">
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,171 +18,6 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./img/logo.png">
-  
-  <style>
-    /* Estilos adicionales para el inicio */
-    .hero-simple {
-      min-height: 80vh;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-simple::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, var(--quov-blue-glow, rgba(0,191,255,0.1)) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-    }
-    
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    .hero-title-simple {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      font-family: 'Syne', sans-serif;
-      background: linear-gradient(135deg, #fff, var(--quov-blue, #00BFFF));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .feature-card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 1px solid var(--border-light);
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px var(--quov-blue-glow);
-    }
-    
-    .feature-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--quov-blue, #00BFFF), var(--quov-blue-dark, #0099CC));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
-    
-    .feature-icon i {
-      font-size: 2rem;
-      color: white;
-    }
-    
-    .btn-inicio {
-      display: inline-block;
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-family: 'Syne', sans-serif;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      margin: 0 8px;
-    }
-    
-    .btn-primary {
-      background: var(--quov-blue, #00BFFF);
-      color: white;
-      box-shadow: 0 4px 15px var(--quov-blue-glow);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px var(--quov-blue-glow-strong);
-    }
-    
-    .btn-outline {
-      border: 2px solid var(--quov-blue, #00BFFF);
-      color: var(--quov-blue, #00BFFF);
-      background: transparent;
-    }
-    
-    .btn-outline:hover {
-      background: var(--quov-blue, #00BFFF);
-      color: white;
-    }
-    
-    .stats-inicio {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding: 3rem 2rem;
-      background: var(--bg-neutral-100);
-    }
-    
-    .stat-item {
-      text-align: center;
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--quov-blue, #00BFFF);
-      font-family: 'Syne', sans-serif;
-    }
-    
-    .cta-section {
-      background: linear-gradient(135deg, #0a2a2a, #1a3a3a);
-      padding: 4rem 2rem;
-      text-align: center;
-      color: white;
-    }
-    
-    .cta-section .btn-inicio {
-      background: white;
-      color: var(--quov-blue, #00BFFF);
-    }
-    
-    .cta-section .btn-inicio:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-    
-    @media (max-width: 768px) {
-      .features-grid {
-        grid-template-columns: 1fr;
-        padding: 2rem 1rem;
-      }
-      
-      .stats-inicio {
-        gap: 1.5rem;
-      }
-      
-      .btn-inicio {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
-      }
-    }
-  </style>
 </head>
 <body class="font-sans">
 
@@ -192,7 +28,6 @@
   <!-- ====== NAVBAR ====== -->
   <nav class="sticky top-0 z-40 bg-white border-b border-neutral-100 px-6 py-4">
     <div class="mx-auto max-w-6xl flex items-center justify-between gap-4">
-      <!-- Logo -->
       <div class="flex items-center" style="gap: 3rem;">
         <a href="./index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right: 1rem;">
           <img src="./img/logo.png" alt="QUOV" class="logo-nav" />
@@ -200,16 +35,15 @@
         </a>
       </div>
       
-      <!-- Enlaces desktop -->
       <div class="flex items-center" style="gap: 2rem;">
         <a href="./index.html" class="nav-link active">INICIO</a>
         <a href="./Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
         <a href="./Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
         <a href="./Esqueleto/Quien somos.html" class="nav-link">¿QUIÉNES SOMOS?</a>
         <a href="./Esqueleto/Historia.html" class="nav-link">HISTORIA</a>
+        <a href="./Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
       </div>
       
-      <!-- Iconos derecha + Botón hamburguesa -->
       <div class="flex items-center gap-6">
         <button class="menu-toggle" id="menuToggle" aria-label="Menú">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -265,44 +99,83 @@
     <a href="./Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
     <a href="./Esqueleto/Quien somos.html" class="nav-link">¿QUIÉNES SOMOS?</a>
     <a href="./Esqueleto/Historia.html" class="nav-link">HISTORIA</a>
+    <a href="./Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
   </div>
 
-  <!-- Hero Section -->
+  <!-- ====== HERO SECTION ====== -->
   <section class="hero-simple">
-    <div style="position: relative; z-index: 2; padding: 2rem;">
+    <div class="hero-content">
       <h1 class="hero-title-simple">CREE & CRECE</h1>
-      <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 1rem auto;">
-        Los mejores libros de desarrollo personal, revisados y verificados para tu crecimiento
+      <p class="hero-description">
+        Los mejores libros de desarrollo personal para impulsar tu crecimiento personal
       </p>
+      <div class="hero-btn-wrapper">
+        <a href="./Esqueleto/Catalogo.html#catalogo" class="btn-inicio btn-primary">
+          EXPLORAR CATÁLOGO →
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- ====== FEATURES ====== -->
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">100% Calidad</h3>
-      <p style="color: var(--text-secondary);">Todos nuestros libros pasan por un riguroso proceso de calidad</p>
+      <h3>100% Calidad</h3>
+      <p>Todos nuestros libros pasan por un riguroso proceso de verificación y calidad</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-book-open"></i></div>
-      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">+500 Títulos</h3>
-      <p style="color: var(--text-secondary);">El catálogo más completo de desarrollo personal</p>
+      <h3>+500 Títulos</h3>
+      <p>El catálogo más completo de desarrollo personal, negocios y bienestar</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-truck"></i></div>
-      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Envío CDMX</h3>
-      <p style="color: var(--text-secondary);">Entregas rápidas y seguras en toda la ciudad</p>
+      <h3>Envío CDMX</h3>
+      <p>Entregas rápidas y seguras en toda la Ciudad de México</p>
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- ====== TESTIMONIOS ====== -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-title-inicio">⭐ <span>Lo que dicen nuestros lectores</span></h2>
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card" data-delay="0.1s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Los libros llegaron en perfectas condiciones, parecían nuevos. La calidad es excelente, volveré a comprar sin duda."</p>
+          <p class="testimonial-author">Ana G.</p>
+        </div>
+        
+        <div class="testimonial-card" data-delay="0.2s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"El envío fue super rápido y el libro estaba impecable. Me encanta la misión de QUOV de dar segunda vida a los libros."</p>
+          <p class="testimonial-author">Carlos M.</p>
+        </div>
+        
+        <div class="testimonial-card" data-delay="0.3s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Gran variedad de títulos y precios accesibles. El servicio al cliente es excelente, me ayudaron con mi pedido."</p>
+          <p class="testimonial-author">Laura V.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
   <footer class="bg-neutral-900 text-neutral-400 px-6 py-12">
     <div class="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-2 text-white font-bold text-lg">
-        <img src="../img/logo.png" alt="QUOV" class="footer-logo" />QUOV
+        <img src="./img/logo.png" alt="QUOV" class="footer-logo" />QUOV
       </div>
-      <p style="font-size: 0.75rem;">Libros de segunda mano verificados · Ciudad de México</p>
+      <p class="footer-text">Libros de segunda mano verificados · Ciudad de México</p>
       <div class="flex items-center gap-5">
         <a href="https://www.instagram.com/quov_oficial" target="_blank" class="hover:opacity-60 transition">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -387,6 +260,7 @@
 
   <!-- Scripts -->
   <script src="./Comportamiento/Basico.js"></script>
+  <script src="./js/inicio.js"></script>
   <script src="./js/app.js" defer></script>
 </body>
 </html>

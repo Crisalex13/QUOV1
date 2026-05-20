@@ -1,21 +1,38 @@
 /* ============================================ 
    TABLA DE CONTENIDO - QUIÉNES SOMOS
    ============================================ 
-   1. BASE Y CONTENEDORES
-   2. PAGE TITLE Y HERO
-   3. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP
-   4. SECCIÓN QUOV 
-   5. SECCIÓN EQUIPO
-   6. MODAL DE PERFIL
-   7. BOTÓN CATÁLOGO
-   8. MODO OSCURO
-   9. REDES SOCIALES EN MODAL
-   10. VIDEO
-   11. RESPONSIVE
-   12. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO
+   1. VARIABLES GLOBALES (COLORES QUOV)
+   2. BASE Y CONTENEDORES
+   3. PAGE TITLE Y HERO
+   4. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP
+   5. SECCIÓN QUOV 
+   6. SECCIÓN EQUIPO
+     6.1 TARJETAS DE EQUIPO
+     6.2 BOTÓN VER PERFIL
+     6.3 VIDEO
+   7. MODAL DE PERFIL
+     7.1 REDES SOCIALES EN MODAL
+   8. BOTÓN CATÁLOGO
+   9. MODO OSCURO
+   10. RESPONSIVE DESIGN
+   11. ANIMACIONES
    ============================================ */
 
-/* ========== 1. BASE Y CONTENEDORES ========== */
+/* ========== 1. VARIABLES GLOBALES (COLORES QUOV) ========== */
+:root {
+  --quov-blue: #00BFFF;
+  --quov-blue-dark: #0099CC;
+  --quov-blue-light: #4DCFFF;
+  --quov-black: #000000;
+  --quov-black-dark: #0a0a0a;
+  --quov-black-light: #1a1a1a;
+  --quov-white: #ffffff;
+  --quov-white-dark: #f5f5f5;
+  --quov-gray: #888888;
+  --quov-gray-light: #cccccc;
+}
+
+/* ========== 2. BASE Y CONTENEDORES ========== */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -27,6 +44,8 @@ body {
   overflow-x: hidden !important;
   width: 100% !important;
   position: relative !important;
+  background-color: var(--quov-white);
+  color: var(--quov-black);
 }
 
 * {
@@ -34,10 +53,10 @@ body {
   box-sizing: border-box;
 }
 
-/* ========== 2. PAGE TITLE Y HERO ========== */
+/* ========== 3. PAGE TITLE Y HERO ========== */
 .hero-simple {
   min-height: 40vh;
-  background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, var(--quov-black) 0%, #1a1a2e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +84,7 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   font-family: 'Syne', sans-serif;
-  background: linear-gradient(135deg, #fff, var(--quov-blue, #00BFFF));
+  background: linear-gradient(135deg, var(--quov-white), var(--quov-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -79,11 +98,11 @@ body {
   margin: 0 auto;
 }
 
-/* ========== 3. SECCIÓN MVO - 3D FLIP ========== */
+/* ========== 4. SECCIÓN MVO - 3D FLIP ========== */
 .mvo-section {
   padding: 80px 0 100px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('../img/ilusion1.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('../img/Lectura1.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -93,7 +112,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 2rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--quov-white);
   margin-bottom: 10px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -137,6 +156,14 @@ body {
   transform: rotateY(180deg);
 }
 
+.mvo-card.flipped .mvo-card-inner {
+  transform: rotateY(180deg);
+}
+
+.mvo-card.flipped:hover .mvo-card-inner {
+  transform: rotateY(0deg);
+}
+
 .mvo-front,
 .mvo-back {
   position: absolute;
@@ -155,7 +182,7 @@ body {
 .mvo-front {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(2px);
-  border: 1px solid rgba(0, 191, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   transform: rotateY(0deg);
 }
 
@@ -166,13 +193,13 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, var(--quov-blue, #00BFFF), var(--quov-blue-light, #4DCFFF), var(--quov-blue, #00BFFF));
+  background: linear-gradient(90deg, var(--quov-blue), var(--quov-blue-light), var(--quov-blue));
   border-radius: 28px 28px 0 0;
 }
 
 .mvo-back {
-  background: linear-gradient(135deg, var(--quov-blue, #00BFFF), var(--quov-blue-dark, #0099CC));
-  color: white;
+  background: linear-gradient(135deg, var(--quov-blue), var(--quov-blue-dark));
+  color: var(--quov-white);
   transform: rotateY(180deg);
   border: 1px solid rgba(0, 191, 255, 0.5);
 }
@@ -193,7 +220,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--quov-blue, #00BFFF);
+  color: var(--quov-blue);
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
@@ -215,7 +242,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--quov-black);
   margin-bottom: 20px;
 }
 
@@ -237,17 +264,26 @@ body {
 .mvo-card:hover .mvo-back h4 { animation-delay: 0.05s; }
 .mvo-card:hover .mvo-back .mvo-icon-back { animation-delay: 0s; }
 
+.mvo-card.flipped .mvo-back p,
+.mvo-card.flipped .mvo-back h4,
+.mvo-card.flipped .mvo-back .mvo-icon-back {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.mvo-card.flipped .mvo-back p { animation-delay: 0.1s; }
+.mvo-card.flipped .mvo-back h4 { animation-delay: 0.05s; }
+.mvo-card.flipped .mvo-back .mvo-icon-back { animation-delay: 0s; }
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========== 4. SECCIÓN QUOV ========== */
-/* ========== 4. SECCIÓN QUOV ========== */
+/* ========== 5. SECCIÓN QUOV ========== */
 .quov-section {
   padding: 80px 0 100px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('../img/ilusion1.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('../img/Lectura2.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -257,7 +293,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 2rem;
   font-weight: 800;
-  color: var(--quov-blue, #00BFFF);
+  color: var(--quov-blue);
   margin-bottom: 10px;
   text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
 }
@@ -299,7 +335,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--quov-blue, #00BFFF), var(--quov-blue-dark, #0099CC));
+  background: linear-gradient(90deg, var(--quov-blue), var(--quov-blue-dark));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -314,7 +350,7 @@ body {
 .quov-card.active {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 191, 255, 0.4);
-  border-color: var(--quov-blue, #00BFFF);
+  border-color: var(--quov-blue);
   background: rgba(0, 30, 50, 0.95);
 }
 
@@ -335,16 +371,15 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--quov-blue, #00BFFF);
+  color: var(--quov-blue);
   margin-bottom: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-/* Estado normal - mensaje oculto */
 .quov-msg {
   font-size: 0.88rem;
-  color: #ccc;
+  color: var(--quov-gray-light);
   line-height: 1.6;
   max-height: 0;
   overflow: hidden;
@@ -353,28 +388,30 @@ body {
   transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Hover en escritorio - muestra el mensaje */
+.quov-msg a{
+  color: var(--quov-gray-light);
+}
+
 .quov-card:hover .quov-msg {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
-  color: var(--quov-blue, #00BFFF);
+  color: var(--quov-blue);
   text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
-/* Clase active para móvil (clic) - muestra el mensaje y lo mantiene */
 .quov-card.active .quov-msg {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
-  color: var(--quov-blue, #00BFFF);
+  color: var(--quov-blue);
   text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
-/* ========== 5. SECCIÓN EQUIPO ========== */
+/* ========== 6. SECCIÓN EQUIPO ========== */
 .team-section-wrapper {
   padding: 80px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../img/ilusion1.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../img/Lectura3.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -391,7 +428,7 @@ body {
   font-size: 2rem;
   font-weight: 800;
   font-family: 'Syne', sans-serif;
-  color: #ffffff;
+  color: var(--quov-white);
   margin-bottom: 10px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -410,6 +447,7 @@ body {
   margin-top: 48px;
 }
 
+/* 6.1 TARJETAS DE EQUIPO */
 .team-card-new {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
@@ -422,12 +460,22 @@ body {
   border: 1px solid rgba(0, 191, 255, 0.3);
   cursor: pointer;
   position: relative;
+  opacity: 0;
+  animation: fadeInUp2 0.6s ease forwards;
+}
+
+.team-card-new:nth-child(1) { animation-delay: 0.1s; }
+.team-card-new:nth-child(3) { animation-delay: 0.25s; }
+
+@keyframes fadeInUp2 {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .team-card-new:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 35px -10px rgba(0, 191, 255, 0.4);
-  border-color: var(--quov-blue, #00BFFF);
+  border-color: var(--quov-blue);
 }
 
 .team-card-new img {
@@ -447,7 +495,7 @@ body {
   left: 0;
   right: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-  color: white;
+  color: var(--quov-white);
   padding: 50px 20px 20px;
   text-align: center;
   transition: bottom 0.3s ease;
@@ -456,22 +504,6 @@ body {
 
 .team-card-new:hover .card-overlay-new {
   bottom: 0;
-}
-
-.card-overlay-new span {
-  display: inline-block;
-  background: var(--quov-blue-dark, #0099CC);
-  padding: 7px 18px;
-  border-radius: 30px;
-  font-size: 0.78rem;
-  font-weight: bold;
-  pointer-events: auto;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.card-overlay-new span:hover {
-  background: var(--quov-blue, #00BFFF);
 }
 
 .team-info-new {
@@ -483,29 +515,52 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--quov-blue-dark, #006699);
+  color: var(--quov-blue-dark);
   margin-bottom: 4px;
 }
 
 .team-info-new .role {
-  color: #888;
+  color: var(--quov-gray);
   font-size: 0.8rem;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.team-info-new .icons a {
-  margin: 0 7px;
-  color: var(--quov-blue-dark, #0099CC);
-  transition: color 0.2s, transform 0.2s;
+/* 6.2 BOTÓN VER PERFIL */
+.card-overlay-new span {
   display: inline-block;
+  background: var(--quov-blue-dark);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--quov-white) !important;
+  text-decoration: none;
+  letter-spacing: 0.5px;
 }
 
-.team-info-new .icons a:hover {
-  color: var(--quov-blue, #00BFFF);
-  transform: scale(1.15);
+.card-overlay-new span:hover {
+  background: var(--quov-blue) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
+  color: var(--quov-white) !important;
 }
 
+.card-overlay-new span:active {
+  transform: scale(0.98);
+  background: var(--quov-blue-dark) !important;
+  color: var(--quov-white) !important;
+}
+
+.team-card-new:hover .card-overlay-new span {
+  color: var(--quov-white) !important;
+  background: var(--quov-blue) !important;
+}
+
+/* 6.3 VIDEO */
 .team-video-wrapper {
   flex: 0 0 auto;
   width: 360px;
@@ -513,8 +568,16 @@ body {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 191, 255, 0.3);
   border: 2px solid rgba(0, 191, 255, 0.5);
-  background: #000;
+  background: var(--quov-black);
   position: relative;
+}
+
+.team-video-wrapper video,
+.team-video-wrapper iframe {
+  width: 100%;
+  height: 280px;
+  display: block;
+  object-fit: cover;
 }
 
 .video-placeholder {
@@ -535,27 +598,7 @@ body {
   opacity: 0.7;
 }
 
-/* Animación para las tarjetas del equipo */
-.team-card-new {
-  opacity: 0;
-  animation: fadeInUp2 0.6s ease forwards;
-}
-
-.team-card-new:nth-child(1) { animation-delay: 0.1s; }
-.team-card-new:nth-child(3) { animation-delay: 0.25s; }
-
-@keyframes fadeInUp2 {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ========== 6. MODAL DE PERFIL ========== */
+/* ========== 7. MODAL DE PERFIL ========== */
 #profileModal {
   position: fixed;
   inset: 0;
@@ -577,7 +620,7 @@ body {
 #profileCard {
   position: relative;
   z-index: 1;
-  background: #fff;
+  background: var(--quov-white);
   border-radius: 20px;
   width: 280px;
   overflow: hidden;
@@ -600,12 +643,12 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.2rem;
   font-weight: 800;
-  color: var(--quov-blue-dark, #006699);
+  color: var(--quov-blue-dark);
   margin-top: 5px;
 }
 
 .profile-body .profile-role {
-  color: #aaa;
+  color: var(--quov-gray);
   font-size: 0.75rem;
   margin-bottom: 10px;
 }
@@ -618,8 +661,8 @@ body {
 }
 
 #profileClose {
-  background: var(--quov-blue-dark, #0099CC);
-  color: white;
+  background: var(--quov-blue-dark);
+  color: var(--quov-white);
   border: none;
   border-radius: 30px;
   padding: 10px 28px;
@@ -629,130 +672,11 @@ body {
 }
 
 #profileClose:hover {
-  background: var(--quov-blue, #00BFFF);
+  background: var(--quov-blue);
   transform: scale(1.04);
 }
 
-/* ========== 7. BOTÓN CATÁLOGO ========== */
-.catalog-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--quov-blue, #00BFFF) !important;
-  padding: 16px 48px;
-  border-radius: 50px;
-  color: #ffffff !important;
-  z-index: 1;
-  overflow: hidden;
-  font-weight: 700;
-  font-size: 1.1rem;
-  font-family: 'Syne', sans-serif;
-  letter-spacing: 0.5px;
-  transition: all 0.4s ease;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
-  text-decoration: none;
-}
-
-.catalog-btn:hover {
-  background: var(--quov-blue-dark, #0099CC) !important;
-  transform: translateY(-4px) scale(1.02);
-  color: #ffffff !important;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
-}
-
-.catalog-btn, 
-.catalog-btn * {
-  color: #ffffff !important;
-  position: relative;
-  z-index: 2;
-}
-
-.catalog-btn .arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  margin-left: 10px;
-}
-
-.catalog-btn:hover .arrow {
-  transform: translateX(5px);
-}
-
-/* ========== 8. MODO OSCURO ========== */
-body.dark-mode {
-  background-color: #0a0a0a;
-}
-
-/* MVO Modo Oscuro */
-body.dark-mode .mvo-front {
-  background: rgba(20, 20, 40, 0.95);
-  border-color: rgba(0, 191, 255, 0.4);
-}
-
-body.dark-mode .mvo-front h4 {
-  color: var(--quov-blue-light, #4DCFFF);
-}
-
-body.dark-mode .mvo-back {
-  background: linear-gradient(135deg, #0a1a2a 0%, #0a2a3a 100%);
-}
-
-/* QUOV Modo Oscuro */
-body.dark-mode .quov-card {
-  background: rgba(10, 10, 20, 0.95);
-}
-
-body.dark-mode .quov-card h4 {
-  color: var(--quov-blue-light, #4DCFFF);
-}
-
-body.dark-mode .quov-card:hover .quov-msg {
-  color: var(--quov-blue-light, #4DCFFF);
-}
-
-/* EQUIPO Modo Oscuro */
-body.dark-mode .team-card-new {
-  background: rgba(30, 30, 50, 0.95);
-}
-
-body.dark-mode .team-info-new h3 {
-  color: var(--quov-blue-light, #4DCFFF);
-}
-
-body.dark-mode .team-info-new .role {
-  color: #aaa;
-}
-
-/* MODAL Modo Oscuro */
-body.dark-mode #profileCard {
-  background: #1a1a1a;
-}
-
-body.dark-mode .profile-body h2 {
-  color: var(--quov-blue-light, #4DCFFF);
-}
-
-body.dark-mode .profile-body p {
-  color: #ccc;
-}
-
-body.dark-mode .profile-body .profile-role {
-  color: #888;
-}
-
-/* Redes Sociales Modo Oscuro */
-body.dark-mode .social-icon {
-  background: #2a2a2a;
-  color: #ccc;
-}
-
-body.dark-mode .social-icon:hover {
-  color: white;
-}
-
-/* ========== 9. REDES SOCIALES EN MODAL ========== */
+/* 7.1 REDES SOCIALES EN MODAL */
 .profile-social-icons {
   display: flex;
   justify-content: center;
@@ -780,30 +704,168 @@ body.dark-mode .social-icon:hover {
 
 .social-icon.facebook:hover {
   background: #1877f2;
-  color: white;
+  color: var(--quov-white);
 }
 
 .social-icon.instagram:hover {
   background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
-  color: white;
+  color: var(--quov-white);
 }
 
 .social-icon.tiktok:hover {
-  background: #000000;
+  background: var(--quov-black);
   color: #00f2ea;
 }
 
-/* ========== 10. VIDEO ========== */
-.team-video-wrapper video,
-.team-video-wrapper iframe {
-  width: 100%;
-  height: 280px;
-  display: block;
-  object-fit: cover;
+/* ========== 8. BOTÓN CATÁLOGO ========== */
+.catalog-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--quov-blue) !important;
+  padding: 16px 48px;
+  border-radius: 50px;
+  color: var(--quov-white) !important;
+  z-index: 1;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
+  text-decoration: none;
 }
 
-/* ========== 11. RESPONSIVE ========== */
-@media (max-width: 480px) {
+.catalog-btn:hover {
+  background: var(--quov-blue-dark) !important;
+  transform: translateY(-4px) scale(1.02);
+  color: var(--quov-white) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.catalog-btn, 
+.catalog-btn * {
+  color: var(--quov-white) !important;
+  position: relative;
+  z-index: 2;
+}
+
+.catalog-btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.catalog-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* ========== 9. MODO OSCURO ========== */
+body.dark-mode {
+  background-color: var(--quov-black-dark);
+}
+
+body.dark-mode .mvo-front {
+  background: rgba(20, 20, 40, 0.95);
+  border-color: rgba(0, 191, 255, 0.4);
+}
+
+body.dark-mode .mvo-front h4 {
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .mvo-front a {
+  color: var(--quov-blue-dark);
+}
+
+body.dark-mode .mvo-back {
+  background: linear-gradient(135deg, #0a1a2a 0%, #0a2a3a 100%);
+}
+
+body.dark-mode .mvo-back h4 {
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .mvo-back a {
+  color: var(--quov-white-dark);
+}
+
+body.dark-mode .quov-msg {
+  color: var(--quov-white);  
+}
+
+body.dark-mode .quov-card:hover .quov-msg {
+  color: var(--quov-gray-light) !important;  
+}
+
+body.dark-mode .quov-card a{
+  color: var(--quov-blue-dark);
+}
+
+body.dark-mode .quov-card h4 {
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .team-card-new {
+  background: rgba(30, 30, 50, 0.95);
+}
+
+body.dark-mode .team-info-new h3 {
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .team-info-new .role {
+  color: var(--quov-gray);
+}
+
+body.dark-mode .card-overlay-new span,
+body.dark-mode .card-overlay-new span:hover,
+body.dark-mode .card-overlay-new span:active,
+body.dark-mode .team-card-new:hover .card-overlay-new span {
+  color: var(--quov-white) !important;
+}
+
+body.dark-mode .card-overlay-new span:hover {
+  background: var(--quov-blue) !important;
+}
+
+body.dark-mode .card-overlay-new span:active {
+  background: var(--quov-blue-dark) !important;
+}
+
+body.dark-mode #profileCard {
+  background: var(--quov-black-light);
+}
+
+body.dark-mode .profile-body h2 {
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .profile-body p {
+  color: var(--quov-gray-light);
+}
+
+body.dark-mode .profile-body .profile-role {
+  color: var(--quov-gray);
+}
+
+body.dark-mode .social-icon {
+  background: #2a2a2a;
+  color: var(--quov-gray-light);
+}
+
+body.dark-mode .social-icon:hover {
+  color: var(--quov-white);
+}
+
+/* ========== 10. RESPONSIVE DESIGN ========== */
+
+/* 10.1 Teléfonos pequeños (320px - 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
   .container {
     padding: 0 12px;
   }
@@ -844,9 +906,33 @@ body.dark-mode .social-icon:hover {
     max-width: 220px;
     margin: 0 auto;
   }
+
+  .card-overlay-new span {
+    padding: 10px 20px !important;
+    font-size: 0.85rem !important;
+    min-width: 100px !important;
+    display: inline-block !important;
+    text-align: center !important;
+    color: var(--quov-white) !important;
+  }
+  
+  .team-card-new .card-overlay-new {
+    bottom: -70px !important;
+    padding: 60px 20px 20px !important;
+  }
+  
+  .team-card-new:hover .card-overlay-new {
+    bottom: 0 !important;
+  }
+  
+  .team-card-new:hover .card-overlay-new span {
+    color: var(--quov-white) !important;
+    background: var(--quov-blue) !important;
+  }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+/* 10.2 Teléfonos medianos (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
   .container {
     padding: 0 16px;
   }
@@ -868,9 +954,35 @@ body.dark-mode .social-icon:hover {
   .team-layout {
     gap: 20px;
   }
+
+  .mvo-card {
+    width: 280px;
+    height: 360px;
+  }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+/* 10.3 Teléfonos grandes (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .quov-card {
+    width: calc(33.33% - 20px);
+    min-width: 220px;
+  }
+
+  .team-card-new {
+    width: 200px;
+  }
+
+  .team-layout {
+    gap: 25px;
+  }
+}
+
+/* 10.4 Tabletas (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
   .container {
     padding: 0 30px;
   }
@@ -881,17 +993,23 @@ body.dark-mode .social-icon:hover {
   }
 
   .team-card-new {
-    width: 200px;
+    width: 210px;
   }
 }
 
-@media (max-width: 768px) {
+/* 10.5 Escritorios (1200px en adelante) */
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 40px;
+  }
+  
   .mvo-card {
-    width: 280px;
-    height: 360px;
+    width: 320px;
+    height: 380px;
   }
 }
 
+/* 10.6 Ajustes adicionales */
 @media (max-width: 900px) {
   .team-layout {
     flex-direction: column;
@@ -919,95 +1037,8 @@ body.dark-mode .social-icon:hover {
   }
 }
 
-/* ========== 12. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO ========== */
-/* Transición suave para todas las tarjetas */
+/* ========== 11. ANIMACIONES  ========== */
+/* Tarjetas que se voltean */
 .mvo-card .mvo-card-inner {
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* Volteo automático (por JavaScript) */
-.mvo-card.flipped .mvo-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Hover manual - siempre funciona */
-.mvo-card:hover .mvo-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Si la tarjeta está volteada y haces hover, que regrese (para leer el frente) */
-.mvo-card.flipped:hover .mvo-card-inner {
-  transform: rotateY(0deg);
-}
-
-/* Animación del contenido del reverso */
-.mvo-card.flipped .mvo-back p,
-.mvo-card.flipped .mvo-back h4,
-.mvo-card.flipped .mvo-back .mvo-icon-back {
-  animation: fadeInUp 0.4s ease forwards;
-}
-
-.mvo-card.flipped .mvo-back p { animation-delay: 0.1s; }
-.mvo-card.flipped .mvo-back h4 { animation-delay: 0.05s; }
-.mvo-card.flipped .mvo-back .mvo-icon-back { animation-delay: 0s; }
-
-/* ========== 13. BOTÓN VER PERFIL - TEXTO BLANCO ========== */
-/* ========== 14. BOTÓN VER PERFIL - AJUSTES PARA MÓVIL ========== */
-
-/* Asegurar que el botón sea táctil y visible en móviles */
-@media (max-width: 768px) {
-  .card-overlay-new span {
-    padding: 10px 20px !important;
-    font-size: 0.85rem !important;
-    min-width: 100px !important;
-    display: inline-block !important;
-    text-align: center !important;
-  }
-  
-  /* Aumentar área táctil */
-  .team-card-new .card-overlay-new {
-    bottom: -70px !important;
-    padding: 60px 20px 20px !important;
-  }
-  
-  .team-card-new:hover .card-overlay-new {
-    bottom: 0 !important;
-  }
-}
-
-/* Forzar texto blanco en todos los estados del botón (incluyendo focus y active) */
-.card-overlay-new span,
-.card-overlay-new span:hover,
-.card-overlay-new span:active,
-.card-overlay-new span:focus,
-.card-overlay-new span:visited {
-  color: #ffffff !important;
-}
-
-/* Hover blanco con efecto suave */
-.card-overlay-new span:hover {
-  background: var(--quov-blue, #00BFFF) !important;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
-}
-
-/* Efecto al hacer clic (táctil) */
-.card-overlay-new span:active {
-  transform: scale(0.98);
-  background: var(--quov-blue-dark, #0099CC) !important;
-}
-
-/* Modo oscuro - mantener consistencia */
-body.dark-mode .card-overlay-new span,
-body.dark-mode .card-overlay-new span:hover,
-body.dark-mode .card-overlay-new span:active {
-  color: #ffffff !important;
-}
-
-body.dark-mode .card-overlay-new span:hover {
-  background: var(--quov-blue, #00BFFF) !important;
-}
-
-body.dark-mode .card-overlay-new span:active {
-  background: var(--quov-blue-dark, #0099CC) !important;
 }
