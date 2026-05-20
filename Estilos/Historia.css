@@ -84,9 +84,10 @@ body.dark-mode {
   --ideas-caption-bg: rgba(0, 0, 0, 0.75);
   --ideas-caption-text: #f8fafc;
   --ideas-caption-border: #00BFFF;
-  --ideas-h4-color: #FFD700;
+  --ideas-h4-color: #00b3ff;
   --ideas-shadow: rgba(0, 0, 0, 0.08);
   --ideas-shadow-hover: rgba(0, 0, 0, 0.15);
+  --librito-color: #00bfffb5;
 }
 
 body.dark-mode {
@@ -104,9 +105,10 @@ body.dark-mode {
   --ideas-caption-bg: rgba(0, 0, 0, 0.85);
   --ideas-caption-text: #f1f5f9;
   --ideas-caption-border: #00BFFF;
-  --ideas-h4-color: #FFD700;
+  --ideas-h4-color: #006eff;
   --ideas-shadow: rgba(0, 0, 0, 0.3);
   --ideas-shadow-hover: rgba(0, 0, 0, 0.5);
+  --librito-color: #00b3ffb2;
 }
 
 /* ========== 4. HERO VIDEO ========== */
@@ -264,7 +266,7 @@ body.dark-mode {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, #5c3a1e 0%, #3e2712 100%);
+  background: linear-gradient(145deg, #1e535c 0%, #0c9fda 100%);
   border-radius: 12px 8px 8px 12px;
   box-shadow: -10px 0 20px rgba(0,0,0,0.4), 15px 15px 30px rgba(0,0,0,0.5);
   display: flex;
@@ -275,7 +277,7 @@ body.dark-mode {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: left center;
   cursor: pointer;
-  border-right: 3px solid #d4a056;
+  border-right: 3px solid #000000;
 }
 
 .cover-icon {
@@ -288,14 +290,14 @@ body.dark-mode {
   justify-content: center;
   font-size: 2.2rem;
   margin-bottom: 20px;
-  border: 2px solid #d4a056;
+  border: 2px solid var(--librito-color);;
   position: relative;
 }
 
 .book-cover h3 {
   font-family: 'Syne', sans-serif;
   font-size: 1.3rem;
-  color: #ffd700;
+  color: #000000;;
   margin-bottom: 8px;
 }
 
@@ -313,7 +315,7 @@ body.dark-mode {
   padding: 5px 12px;
   border-radius: 30px;
   font-size: 0.7rem;
-  color: #ffd700;
+  color: var(--librito-color);;
 }
 
 .pages-container {
@@ -357,7 +359,7 @@ body.dark-mode {
 .page-title {
   font-size: 1.1rem;
   color: #5c3a1e;
-  border-bottom: 2px solid #d4a056;
+  border-bottom: 2px solid var(--librito-color);;
   padding-bottom: 8px;
   margin-bottom: 15px;
   font-weight: bold;
@@ -378,7 +380,7 @@ body.dark-mode {
 
 .author-section {
   margin-top: 20px;
-  border-top: 1px solid #d4a056;
+  border-top: 1px solid var(--librito-color);;
   padding-top: 15px;
   display: flex;
   align-items: center;
@@ -413,7 +415,7 @@ body.dark-mode {
 }
 
 .book-btn {
-  background: linear-gradient(135deg, #5c3a1e, #3e2712);
+  background: linear-gradient(135deg, #009dff, #00aeffb3);
   color: white;
   border: none;
   padding: 7px 18px;
@@ -426,7 +428,7 @@ body.dark-mode {
 
 .book-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  background: #7a4a2a;
+  background: var(--librito-color);;
 }
 
 .book-btn:disabled {
@@ -960,7 +962,7 @@ body.dark-mode .page {
 }
 
 body.dark-mode .page-title {
-  color: #d4a056;
+  color: var(--librito-color);
 }
 
 body.dark-mode .page-message {
@@ -968,7 +970,7 @@ body.dark-mode .page-message {
 }
 
 body.dark-mode .author-name {
-  color: #d4a056;
+  color: var(--librito-color);
 }
 
 body.dark-mode .author-bio {
