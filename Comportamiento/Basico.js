@@ -200,9 +200,6 @@ TABLA DE CONTENIDO - BASICO.JS
 // ============================================ 
 // 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS
 // ============================================ 
-// ============================================ 
-// 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS (RESPONSIVE)
-// ============================================ 
 (function initActiveNavLink() {
   // Seleccionar TODOS los links (escritorio + móvil)
   const catalogoLinks = document.querySelectorAll('[data-section="catalogo"]');
