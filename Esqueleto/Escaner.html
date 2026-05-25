@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Mejorar Plan | QUOV</title>
+  <title>Escáner IA | QUOV</title>
 
-  <!-- Tailwind + Basico (navbar, footer, chat, modales, cursor, dark mode) -->
+  <!-- Tailwind + Basico -->
   <link rel="stylesheet" href="../dist/output.css" />
   <link rel="stylesheet" href="../Estilos/Basico.css" />
-  <link rel="stylesheet" href="../Estilos/Mejorar_plan.css" />
+  <link rel="stylesheet" href="../Estilos/Escaner.css" />
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,65 +25,48 @@
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
 
-  <!-- ====== NAVBAR ====== -->
+  <!-- NAVBAR -->
   <nav class="sticky top-0 z-40 bg-white border-b border-neutral-100 px-6 py-4">
     <div class="mx-auto max-w-6xl flex items-center justify-between gap-4">
-      <!-- Logo -->
-      <div class="flex items-center" style="gap: 3rem;">
-        <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right: 1rem;">
-          <img src="../img/logo.png" alt="QUOV" class="logo-nav" />
-          QUOV
+      <div class="flex items-center" style="gap:3rem;">
+        <a href="../index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right:1rem;">
+          <img src="../img/logo.png" alt="QUOV" class="logo-nav" /> QUOV
         </a>
       </div>
-      
-      <!-- Enlaces desktop (visibles en pantallas grandes) -->
-      <div class="flex items-center" style="gap: 2rem;">
+
+      <div class="flex items-center" style="gap:2rem;">
         <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
         <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link hidden sm:block">Catálogo</a>
         <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
-        <a href="../Esqueleto/Quien somos.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;">¿Quiénes somos?</a>
+        <a href="../Esqueleto/Quien somos.html" class="nav-link hidden sm:block">¿Quiénes somos?</a>
         <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block">Historia</a>
-        <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
+        <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block" style="color: #00BFFF; font-weight: 700;">Mejorar plan</a>
       </div>
-      
-      <!-- Iconos derecha + Botón hamburguesa -->
+
       <div class="flex items-center gap-6">
-        <!-- Botón hamburguesa (solo móvil) -->
         <button class="menu-toggle" id="menuToggle" aria-label="Menú">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="6"  x2="21" y2="6"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
-
-        <button id="darkModeToggle" class="theme-toggle" aria-label="Cambiar modo día/noche">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Modo día/noche">
           <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
           <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </button>
-        
         <a href="https://www.instagram.com/quov_oficial" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
-          </svg>
-        </a>
-        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" aria-label="TikTok" class="hover:opacity-60 transition">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
           </svg>
         </a>
         <a href="https://wa.me/525567449830" target="_blank" aria-label="WhatsApp" class="hover:opacity-60 transition">
@@ -93,127 +76,101 @@
           </svg>
         </a>
       </div>
+
+      <!-- BOTÓN VOLVER -->
+        <a href="Mejorar_plan.html" class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Volver</span>
+        </a>
+        
     </div>
   </nav>
 
-  <!-- Menú móvil (se muestra al hacer clic en hamburguesa) -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
-    <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link hidden sm:block">Catálogo</a>
-    <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
-    <a href="../Esqueleto/Quien somos.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;" >¿Quiénes somos?</a>
-    <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block" >Historia</a>
-    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block" >Mejorar plan</a>
+    <a href="../index.html" class="nav-link">Inicio</a>
+    <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">Catálogo</a>
+    <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link">Destacados</a>
+    <a href="../Esqueleto/Quien somos.html" class="nav-link">¿Quiénes somos?</a>
+    <a href="../Esqueleto/Historia.html" class="nav-link">Historia</a>
+    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link active" style="color: #00BFFF; font-weight: 700;">Mejorar plan</a>
   </div>
 
-  <!-- HERO -->
-  <section class="plans-hero">
-    <h1>Elige el <span class="accent">poder de IA</span></h1>
-    <p>Escanea contenidos y obtén respuestas inteligentes con <strong>QUOV IA</strong> adaptada a tu nivel.</p>
+  <!-- HERO DEL ESCÁNER -->
+  <section class="scanner-hero">
+    <h1>Escanea, Analiza, <br>Descubre</h1>
+    <p>Sube cualquier documento y deja que nuestra IA extraiga la información clave, responda tus preguntas y genere resúmenes precisos al instante.</p>
   </section>
 
-  <!-- GRID DE PLANES -->
-  <div class="plans-grid">
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="scanner-page">
+    <!-- DROP ZONE -->
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-zone-icon"><i class="fa-regular fa-file-lines"></i></div>
+      <p class="drop-zone-title">Arrastra tu archivo aquí</p>
+      <p class="drop-zone-sub">
+        o <span>haz clic para seleccionar</span><br>
+        PDF · JPG · PNG · TXT &nbsp;·&nbsp; Máx. 10 MB
+      </p>
+    </div>
+    <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.txt" />
 
-    <!-- BÁSICO -->
-    <div class="plan-card">
-      <span class="popular-badge">MÁS ECONÓMICO</span>
-      <div class="plan-header">
-        <span class="plan-badge">Para empezar</span>
-        <span class="plan-icon" data-plan="basico"><i class="fa-regular fa-gem"></i></span>
+    <!-- PREVIEW -->
+    <div class="file-preview" id="filePreview">
+      <div class="file-preview-icon"><i class="fa-regular fa-file" id="fileTypeIcon"></i></div>
+      <div class="file-preview-info">
+        <div class="file-preview-name" id="fileName">—</div>
+        <div class="file-preview-size" id="fileSize">—</div>
       </div>
-      <p class="plan-name">Básico</p>
-      <p class="plan-desc">Ideal para estudiantes que quieren probar QUOV IA.</p>
-      <p class="plan-price">$99 <span>/mes</span></p>
-      <div class="plan-divider"></div>
-
-      <!-- Botón toggle ventajas -->
-      <button class="btn-ventajas" onclick="toggleVentajas(this)">
-        <span><i class="fa-regular fa-lightbulb" style="margin-right:7px;"></i>Ver ventajas</span>
-        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+      <button class="file-remove-btn" id="removeBtn" aria-label="Quitar archivo">
+        <i class="fa-solid fa-xmark"></i>
       </button>
-
-      <!-- Lista inline (oculta por defecto) -->
-      <div class="ventajas-inline">
-        <ul>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>5 documentos/mes</strong> — Ideal para trabajos escolares o lecturas clave.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>OCR básico</strong> — Escanea texto desde imágenes y conviértelo en consultas.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Respuestas automáticas</strong> — QUOV IA responde preguntas sobre el contenido.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Soporte chat 24/7</strong> asistido por IA para dudas rápidas.</span></li>
-          <li><i class="fa-regular fa-clock"></i><span>Historial de 30 días de conversaciones.</span></li>
-        </ul>
-      </div>
-
-      <!-- Botón acceso → abre Escaner.html en nueva pestaña -->
-      <a href="Escaner.html" target="_blank" class="btn-access">
-        <i class="fa-solid fa-rocket"></i> Acceder a Básico
-      </a>
     </div>
 
-    <!-- PRO (popular) -->
-    <div class="plan-card popular">
-      <span class="popular-badge">MÁS POPULAR</span>
-      <div class="plan-header">
-        <span class="plan-badge">Rendimiento</span>
-        <span class="plan-icon" data-plan="pro"><i class="fa-regular fa-star"></i></span>
-      </div>
-      <p class="plan-name">Pro</p>
-      <p class="plan-desc">Para profesionales creativos y lectores avanzados.</p>
-      <p class="plan-price">$249 <span>/mes</span></p>
-      <div class="plan-divider"></div>
-
-      <button class="btn-ventajas" onclick="toggleVentajas(this)">
-        <span><i class="fa-regular fa-circle-info" style="margin-right:7px;"></i>Ver ventajas</span>
-        <i class="fa-solid fa-chevron-down arrow-icon"></i>
-      </button>
-
-      <div class="ventajas-inline">
-        <ul>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Documentos ilimitados</strong> — Subida masiva sin restricciones.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>OCR de alta precisión</strong> + escaneo inteligente de tablas e imágenes.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Resúmenes automáticos</strong> y análisis de contexto profundo.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Respuestas con citas exactas</strong> del documento original.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Exporta a PDF/TXT</strong> para compartir fácilmente.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Soporte prioritario + WhatsApp</strong> directo con agentes.</span></li>
-        </ul>
-      </div>
-
-      <a href="Escaner.html" target="_blank" class="btn-access">
-        <i class="fa-solid fa-bolt"></i> Acceder a Pro
-      </a>
+    <!-- PREGUNTA OPCIONAL -->
+    <div class="question-section">
+      <label class="question-label" for="questionInput">
+        <i class="fa-regular fa-comment-dots"></i>Pregunta específica <span style="font-weight:400;opacity:0.7;">(opcional)</span>
+      </label>
+      <textarea
+        id="questionInput"
+        class="question-textarea"
+        rows="2"
+        placeholder="Ej: ¿De qué trata este libro? ¿Cuáles son las ideas principales del capítulo 3?"
+      ></textarea>
     </div>
 
-    <!-- EXPERTO -->
-    <div class="plan-card">
-      <span class="popular-badge">MÁS ESPECIALIZADO</span>
-      <div class="plan-header">
-        <span class="plan-badge">Máxima potencia</span>
-        <span class="plan-icon" data-plan="experto"><i class="fa-regular fa-crown"></i></span>
+    <!-- ERROR -->
+    <div class="error-msg" id="errorBox">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="errorText">Error al procesar el archivo.</span>
+    </div>
+
+    <!-- BOTÓN ESCANEAR -->
+    <button class="btn-scan" id="scanBtn" disabled>
+      <i class="fa-solid fa-magnifying-glass"></i> Escanear con QUOV IA
+    </button>
+
+    <!-- LOADING -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p class="loading-label">Analizando tu documento…</p>
+      <ul class="loading-steps">
+        <li id="step1"><i class="fa-regular fa-circle"></i> Leyendo el archivo</li>
+        <li id="step2"><i class="fa-regular fa-circle"></i> Extrayendo contenido</li>
+        <li id="step3"><i class="fa-regular fa-circle"></i> Analizando con QUOV IA</li>
+        <li id="step4"><i class="fa-regular fa-circle"></i> Generando resumen</li>
+      </ul>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="result-area" id="resultArea">
+      <div class="result-header">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Resultado del análisis</h3>
+        <button class="btn-copy" id="copyBtn">
+          <i class="fa-regular fa-copy"></i> Copiar
+        </button>
       </div>
-      <p class="plan-name">Experto</p>
-      <p class="plan-desc">Equipos, investigadores y análisis profundo.</p>
-      <p class="plan-price">$499 <span>/mes</span></p>
-      <div class="plan-divider"></div>
-
-      <button class="btn-ventajas" onclick="toggleVentajas(this)">
-        <span><i class="fa-regular fa-chart-line" style="margin-right:7px;"></i>Ver ventajas</span>
-        <i class="fa-solid fa-chevron-down arrow-icon"></i>
-      </button>
-
-      <div class="ventajas-inline">
-        <ul>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Todo lo del plan Pro</strong> + funciones avanzadas.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Entrenamiento personalizado</strong> con tus propios documentos.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Análisis predictivo</strong> y rutas de estudio inteligentes.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Integración API</strong> para automatizar flujos de trabajo.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Escaneo por lotes</strong> (hasta 100 páginas) con análisis simultáneo.</span></li>
-          <li><i class="fa-regular fa-circle-check"></i><span><strong>Dashboard analítico</strong> con métricas de comprensión y rendimiento.</span></li>
-        </ul>
-      </div>
-
-      <a href="Escaner.html" target="_blank" class="btn-access">
-        <i class="fa-regular fa-message"></i> Contactar ventas
-      </a>
+      <div class="result-body" id="resultBody"></div>
     </div>
 
   </div>
@@ -232,11 +189,6 @@
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
           </svg>
         </a>
-        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" class="hover:opacity-60 transition">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-          </svg>
-        </a>
         <a href="https://wa.me/525567449830" target="_blank" class="hover:opacity-60 transition">
           <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -247,6 +199,7 @@
     </div>
   </footer>
 
+  
   <!-- CHAT IA -->
   <button id="chatFab" data-cursor="blue" type="button" class="chat-fab" aria-label="Abrir chat">
     <img src="../img/logo.png" alt="QUOV" class="chat-fab-logo" />
@@ -300,9 +253,10 @@
 
   <div class="back2top" id="back2Top"><i class="fas fa-arrow-up"></i></div>
 
-  <!-- SCRIPTS -->
+  <!-- Script -->
   <script src="../Comportamiento/Basico.js"></script>
+  <script src="../Comportamiento/Escaner.js"></script>
   <script src="../js/app.js" defer></script>
-  <script src="../Comportamiento/Mejorar_plan.js"></script>
+
 </body>
 </html>

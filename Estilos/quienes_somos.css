@@ -7,11 +7,7 @@
    4. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP
    5. SECCIÓN QUOV 
    6. SECCIÓN EQUIPO
-     6.1 TARJETAS DE EQUIPO
-     6.2 BOTÓN VER PERFIL
-     6.3 VIDEO
    7. MODAL DE PERFIL
-     7.1 REDES SOCIALES EN MODAL
    8. BOTÓN CATÁLOGO
    9. MODO OSCURO
    10. RESPONSIVE DESIGN
@@ -56,7 +52,7 @@ body {
 /* ========== 3. PAGE TITLE Y HERO ========== */
 .hero-simple {
   min-height: 40vh;
-  background: linear-gradient(135deg, var(--quov-black) 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, var(--quov-black) 0%, var(--quov-black-dark) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,20 +76,40 @@ body {
   to { transform: rotate(360deg); }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-title-simple {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.1s forwards;
+  transform: translateY(30px);
+  opacity: 0;
+
   font-family: 'Syne', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
   background: linear-gradient(135deg, var(--quov-white), var(--quov-blue));
+  margin-bottom: 12px;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
+  background-clip: text;   
 }
 
 .hero-subtitle-simple {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.2s forwards;
+  transform: translateY(30px);
+  opacity: 0;
+  
+  font-size: 1.1rem; 
+  color: var(--quov-white);
   max-width: 600px;
   margin: 0 auto;
 }

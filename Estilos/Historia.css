@@ -1,22 +1,131 @@
 /* ============================================
    HISTORIA.CSS - QUOV
    ============================================
-   1. BASE Y VARIABLES GLOBALES
-   2. ROOT EXCLUSIVO PARA SECCIÓN HISTORIA
-   3. ROOT EXCLUSIVO PARA TARJETAS (IDEAS SECTION)
-   4. HERO VIDEO
-   5. SECCIÓN HISTORIA (¿CÓMO EMPEZÓ?)
-   6. SECCIÓN POR QUÉ EXISTE
-   7. LIBRO INTERACTIVO
-   8. COPA
-   9. IDEAS (TARJETAS 2x2)
-   10. CTA FINAL
-   11. FOOTER
-   12. RESPONSIVE VIEW
-   13. MODO OSCURO
+   TABLA DE CONTENIDO
+   ============================================
+   1. VARIABLES GLOBALES 
+   2. BASE Y RESET
+   3. HERO VIDEO
+   4. SECCIÓN HISTORIA (¿CÓMO EMPEZÓ?)
+   5. SECCIÓN POR QUÉ EXISTE
+   6. LIBRO INTERACTIVO
+   7. COPA (CANVAS)
+   8. IDEAS (TARJETAS 2x2)
+   9. CTA FINAL
+   10. FOOTER
+   11. RESPONSIVE DESIGN
    ============================================ */
 
-/* ========== 1. BASE Y VARIABLES GLOBALES ========== */
+/* ============================================
+   1. VARIABLES GLOBALES 
+   ============================================ */
+:root {
+  /* Colores principales */
+  --quov-blue: #00BFFF;
+  --quov-blue-dark: #0099CC;
+  --quov-blue-light: #4DCFFF;
+  --quov-black: #000000;
+  --quov-black-dark: #0a0a0a;
+  --quov-white: #ffffff;
+  
+  /* Modo DÍA (por defecto) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-neutral-100: #f1f5f9;
+  --bg-neutral-900: #0f172a;
+  
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  --text-neutral-400: #94a3b8;
+  
+  --border-light: #e2e8f0;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: rgba(0, 0, 0, 0.15);
+  
+  /* Historia específico */
+  --historia-bg: var(--bg-primary);
+  --historia-text-primary: var(--text-primary);
+  --historia-text-secondary: var(--text-secondary);
+  --historia-accent: var(--quov-blue);
+  --historia-accent-dark: var(--quov-blue-dark);
+  --historia-accent-light: var(--quov-blue-light);
+  --historia-border: var(--border-light);
+  --historia-card-shadow: var(--card-shadow);
+  --historia-card-shadow-hover: var(--card-shadow-hover);
+  --historia-overlay: rgba(0, 0, 0, 0.55);
+  --historia-card-bg: #fefefe;
+  
+  /* Ideas section */
+  --ideas-bg: var(--bg-primary);
+  --ideas-text-primary: #0f172a;
+  --ideas-text-secondary: #334155;
+  --ideas-text-muted: #64748b;
+  --ideas-border: #e2e8f0;
+  --ideas-border-hover: var(--quov-blue);
+  --ideas-card-overlay: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+  --ideas-card-overlay-hover: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%);
+  --ideas-num-bg: rgba(0, 150, 200, 0.3);
+  --ideas-num-border: rgba(0, 150, 200, 0.5);
+  --ideas-num-hover: rgba(0, 150, 200, 0.7);
+  --ideas-caption-bg: rgba(0, 0, 0, 0.75);
+  --ideas-caption-text: #f8fafc;
+  --ideas-caption-border: var(--quov-blue);
+  --ideas-h4-color: #00b3ff;
+  --ideas-shadow: var(--card-shadow);
+  --ideas-shadow-hover: var(--card-shadow-hover);
+  
+  /* Libro interactivo */
+  --librito-color: rgba(0, 191, 255, 0.71);
+}
+
+/* Modo OSCURO */
+body.dark-mode {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-neutral-100: #1a1a1a;
+  --bg-neutral-900: #020617;
+  
+  --text-primary: #f0f0f0;
+  --text-secondary: #bbbbbb;
+  --text-neutral-400: #64748b;
+  
+  --border-light: #333333;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: rgba(0, 0, 0, 0.5);
+  
+  --historia-bg: var(--bg-primary);
+  --historia-text-primary: var(--text-primary);
+  --historia-text-secondary: var(--text-secondary);
+  --historia-border: var(--border-light);
+  --historia-card-shadow: var(--card-shadow);
+  --historia-card-shadow-hover: var(--card-shadow-hover);
+  --historia-overlay: rgba(0, 0, 0, 0.7);
+  --historia-card-bg: #1a1a1a;
+  
+  --ideas-bg: var(--bg-primary);
+  --ideas-text-primary: #f1f5f9;
+  --ideas-text-secondary: #cbd5e1;
+  --ideas-text-muted: #94a3b8;
+  --ideas-border: #334155;
+  --ideas-border-hover: var(--quov-blue);
+  --ideas-card-overlay: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+  --ideas-card-overlay-hover: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 100%);
+  --ideas-num-bg: rgba(0, 191, 255, 0.3);
+  --ideas-num-border: rgba(0, 191, 255, 0.5);
+  --ideas-num-hover: rgba(0, 191, 255, 0.7);
+  --ideas-caption-bg: rgba(0, 0, 0, 0.85);
+  --ideas-caption-text: #f1f5f9;
+  --ideas-caption-border: var(--quov-blue);
+  --ideas-h4-color: #006eff;
+  --ideas-shadow: var(--card-shadow);
+  --ideas-shadow-hover: var(--card-shadow-hover);
+  
+  --librito-color: rgba(0, 179, 255, 0.7);
+}
+
+/* ============================================
+   2. BASE Y RESET
+   ============================================ */
 *, *::before, *::after { 
   box-sizing: border-box; 
   margin: 0; 
@@ -37,81 +146,9 @@ body {
   padding: 0 28px; 
 }
 
-/* ========== 2. ROOT EXCLUSIVO PARA SECCIÓN HISTORIA ========== */
-:root {
-  /* Modo DÍA (por defecto) */
-  --historia-bg: #ffffff;
-  --historia-text-primary: #111111;
-  --historia-text-secondary: #444444;
-  --historia-accent: #00BFFF;
-  --historia-accent-dark: #0099CC;
-  --historia-accent-light: #4DCFFF;
-  --historia-border: #e5e7eb;
-  --historia-card-shadow: rgba(0, 0, 0, 0.08);
-  --historia-card-shadow-hover: rgba(0, 0, 0, 0.15);
-  --historia-overlay: rgba(0, 0, 0, 0.55);
-  --historia-card-bg: #fefefe;
-}
-
-body.dark-mode {
-  /* Modo NOCHE */
-  --historia-bg: #0a0a0a;
-  --historia-text-primary: #f0f0f0;
-  --historia-text-secondary: #bbbbbb;
-  --historia-accent: #00BFFF;
-  --historia-accent-dark: #0099CC;
-  --historia-accent-light: #4DCFFF;
-  --historia-border: #333333;
-  --historia-card-shadow: rgba(0, 0, 0, 0.3);
-  --historia-card-shadow-hover: rgba(0, 0, 0, 0.5);
-  --historia-overlay: rgba(0, 0, 0, 0.7);
-  --historia-card-bg: #1a1a1a;
-}
-
-/* ========== 3. ROOT EXCLUSIVO PARA TARJETAS (IDEAS SECTION) ========== */
-:root {
-  --ideas-bg: #ffffff;
-  --ideas-text-primary: #0f172a;
-  --ideas-text-secondary: #334155;
-  --ideas-text-muted: #64748b;
-  --ideas-border: #e2e8f0;
-  --ideas-border-hover: #38bdf8;
-  --ideas-card-overlay: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
-  --ideas-card-overlay-hover: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%);
-  --ideas-num-bg: rgba(0, 150, 200, 0.3);
-  --ideas-num-border: rgba(0, 150, 200, 0.5);
-  --ideas-num-hover: rgba(0, 150, 200, 0.7);
-  --ideas-caption-bg: rgba(0, 0, 0, 0.75);
-  --ideas-caption-text: #f8fafc;
-  --ideas-caption-border: #00BFFF;
-  --ideas-h4-color: #00b3ff;
-  --ideas-shadow: rgba(0, 0, 0, 0.08);
-  --ideas-shadow-hover: rgba(0, 0, 0, 0.15);
-  --librito-color: #00bfffb5;
-}
-
-body.dark-mode {
-  --ideas-bg: #0a0a0a;
-  --ideas-text-primary: #f1f5f9;
-  --ideas-text-secondary: #cbd5e1;
-  --ideas-text-muted: #94a3b8;
-  --ideas-border: #334155;
-  --ideas-border-hover: #00BFFF;
-  --ideas-card-overlay: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
-  --ideas-card-overlay-hover: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 100%);
-  --ideas-num-bg: rgba(0, 191, 255, 0.3);
-  --ideas-num-border: rgba(0, 191, 255, 0.5);
-  --ideas-num-hover: rgba(0, 191, 255, 0.7);
-  --ideas-caption-bg: rgba(0, 0, 0, 0.85);
-  --ideas-caption-text: #f1f5f9;
-  --ideas-caption-border: #00BFFF;
-  --ideas-h4-color: #006eff;
-  --ideas-shadow: rgba(0, 0, 0, 0.3);
-  --ideas-shadow-hover: rgba(0, 0, 0, 0.5);
-  --librito-color: #00b3ffb2;
-}
-
-/* ========== 4. HERO VIDEO ========== */
+/* ============================================
+   3. HERO VIDEO
+   ============================================ */
 .hero-video { 
   position: relative; 
   min-height: 40vh; 
@@ -139,26 +176,45 @@ body.dark-mode {
   position: relative; 
   z-index: 2; 
   text-align: center; 
-  color: #ffffff; 
+  color: var(--quov-white); 
 }
 
-.hero-video .content h1 { 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-video .content h1 {
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.1s forwards;
+  opacity: 0;
+  transform: translateY(30px);
   font-family: 'Syne', sans-serif; 
   font-size: 3.5rem; 
   font-weight: 800; 
-  margin-bottom: 12px; 
+  background: linear-gradient(135deg, var(--quov-white), var(--quov-blue));
+  margin-bottom: 12px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-video .content p { 
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.2s forwards;
+  opacity: 0;
+  transform: translateY(30px);
   font-size: 1.1rem; 
-  opacity: .75; 
+  color: var(--quov-white);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* ========== 5. SECCIÓN HISTORIA (¿CÓMO EMPEZÓ?) ========== */
+/* ============================================
+   4. SECCIÓN HISTORIA (¿CÓMO EMPEZÓ?)
+   ============================================ */
 .historia-section { 
   padding: 100px 0; 
   background: var(--historia-bg); 
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .historia-title { 
@@ -168,7 +224,6 @@ body.dark-mode {
   color: var(--historia-text-primary); 
   text-align: center; 
   margin-bottom: 70px; 
-  transition: color 0.3s ease;
 }
 
 .historia-title span { 
@@ -204,14 +259,12 @@ body.dark-mode {
   font-weight: 700; 
   color: var(--historia-accent-dark); 
   margin-bottom: 14px; 
-  transition: color 0.3s ease;
 }
 
 .historia-text p { 
   color: var(--historia-text-secondary); 
   line-height: 1.8; 
   font-size: .97rem; 
-  transition: color 0.3s ease;
 }
 
 .historia-img { 
@@ -234,11 +287,12 @@ body.dark-mode {
   transform: scale(1.04); 
 }
 
-/* ========== 6. SECCIÓN POR QUÉ EXISTE ========== */
+/* ============================================
+   5. SECCIÓN POR QUÉ EXISTE
+   ============================================ */
 .porque-section { 
   padding: 100px 0; 
   background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-neutral-100) 100%); 
-  transition: background 0.3s ease;
 }
 
 .porque-inner { 
@@ -248,7 +302,28 @@ body.dark-mode {
   flex-wrap: wrap; 
 }
 
-/* ========== 7. LIBRO INTERACTIVO ========== */
+.porque-text { 
+  flex: 1; 
+  min-width: 260px; 
+}
+
+.porque-text h2 { 
+  font-family: 'Syne', sans-serif; 
+  font-size: 2rem; 
+  font-weight: 800; 
+  color: var(--historia-accent-dark); 
+  margin-bottom: 20px; 
+}
+
+.porque-text p { 
+  color: var(--historia-text-secondary); 
+  line-height: 1.8; 
+  font-size: .97rem; 
+}
+
+/* ============================================
+   6. LIBRO INTERACTIVO
+   ============================================ */
 .book-container {
   flex: 0 0 auto;
   width: 380px;
@@ -290,14 +365,13 @@ body.dark-mode {
   justify-content: center;
   font-size: 2.2rem;
   margin-bottom: 20px;
-  border: 2px solid var(--librito-color);;
-  position: relative;
+  border: 2px solid var(--librito-color);
 }
 
 .book-cover h3 {
   font-family: 'Syne', sans-serif;
   font-size: 1.3rem;
-  color: #000000;;
+  color: #000000;
   margin-bottom: 8px;
 }
 
@@ -315,7 +389,7 @@ body.dark-mode {
   padding: 5px 12px;
   border-radius: 30px;
   font-size: 0.7rem;
-  color: var(--librito-color);;
+  color: var(--librito-color);
 }
 
 .pages-container {
@@ -359,7 +433,7 @@ body.dark-mode {
 .page-title {
   font-size: 1.1rem;
   color: #5c3a1e;
-  border-bottom: 2px solid var(--librito-color);;
+  border-bottom: 2px solid var(--librito-color);
   padding-bottom: 8px;
   margin-bottom: 15px;
   font-weight: bold;
@@ -380,7 +454,7 @@ body.dark-mode {
 
 .author-section {
   margin-top: 20px;
-  border-top: 1px solid var(--librito-color);;
+  border-top: 1px solid var(--librito-color);
   padding-top: 15px;
   display: flex;
   align-items: center;
@@ -415,7 +489,7 @@ body.dark-mode {
 }
 
 .book-btn {
-  background: linear-gradient(135deg, #009dff, #00aeffb3);
+  background: linear-gradient(135deg, var(--quov-blue), var(--quov-blue-dark));
   color: white;
   border: none;
   padding: 7px 18px;
@@ -428,7 +502,7 @@ body.dark-mode {
 
 .book-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  background: var(--librito-color);;
+  background: var(--librito-color);
 }
 
 .book-btn:disabled {
@@ -452,26 +526,42 @@ body.dark-mode {
   border-radius: 40px;
 }
 
-.porque-text { 
-  flex: 1; 
-  min-width: 260px; 
+/* Modo oscuro para el libro */
+body.dark-mode .page {
+  background: #1a1a2e;
 }
 
-.porque-text h2 { 
-  font-family: 'Syne', sans-serif; 
-  font-size: 2rem; 
-  font-weight: 800; 
-  color: var(--historia-accent-dark); 
-  margin-bottom: 20px; 
+body.dark-mode .page-title {
+  color: var(--librito-color);
 }
 
-.porque-text p { 
-  color: var(--historia-text-secondary); 
-  line-height: 1.8; 
-  font-size: .97rem; 
+body.dark-mode .page-message {
+  color: #cbd5e1;
 }
 
-/* ========== 8. COPA ========== */
+body.dark-mode .author-name {
+  color: var(--librito-color);
+}
+
+body.dark-mode .author-bio {
+  color: #94a3b8;
+}
+
+body.dark-mode .page-number {
+  color: #64748b;
+}
+
+body.dark-mode .book-btn-close {
+  background: rgba(50, 50, 50, 0.9);
+}
+
+body.dark-mode .book-btn-close:hover {
+  background: #dc2626;
+}
+
+/* ============================================
+   7. COPA (CANVAS)
+   ============================================ */
 .canvas-wrapper {
   width: 100%;
   background: linear-gradient(135deg, var(--bg-neutral-100) 0%, var(--bg-secondary) 100%);
@@ -479,7 +569,6 @@ body.dark-mode {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.3s ease;
 }
 
 canvas {
@@ -489,14 +578,18 @@ canvas {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px var(--card-shadow);
-  transition: box-shadow 0.3s ease;
 }
 
-/* ========== 9. IDEAS (TARJETAS 2x2) ========== */
+body.dark-mode canvas {
+  box-shadow: 0 20px 40px var(--card-shadow-hover), 0 0 0 1px rgba(0,191,255,0.2);
+}
+
+/* ============================================
+   8. IDEAS (TARJETAS 2x2)
+   ============================================ */
 .ideas-section { 
   padding: 80px 0; 
   background: var(--ideas-bg);
-  transition: background 0.3s ease;
 }
 
 .ideas-section h2 { 
@@ -506,7 +599,6 @@ canvas {
   color: var(--ideas-text-primary); 
   text-align: center; 
   margin-bottom: 10px; 
-  transition: color 0.3s ease;
 }
 
 .ideas-subtitle { 
@@ -514,7 +606,6 @@ canvas {
   color: var(--ideas-text-secondary); 
   margin-bottom: 50px; 
   font-size: 0.95rem; 
-  transition: color 0.3s ease;
 }
 
 .grid-2x2 {
@@ -548,7 +639,6 @@ canvas {
 
 .grid-row:hover .acc-card {
   filter: blur(2px) brightness(0.98);
-  transition: all 0.4s ease;
 }
 
 .grid-row .acc-card:hover {
@@ -582,7 +672,7 @@ canvas {
   z-index: 4;
   background: var(--ideas-num-bg);
   backdrop-filter: blur(8px);
-  color: #ffffff;
+  color: var(--quov-white);
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -611,7 +701,7 @@ canvas {
 }
 
 .acc-main-title {
-  color: var(--ideas-title-color, #ffffff);
+  color: var(--quov-white);
   font-family: 'Syne', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
@@ -623,7 +713,7 @@ canvas {
 }
 
 .acc-phrase {
-  color: var(--ideas-phrase-color, rgba(255,255,255,0.8));
+  color: rgba(255,255,255,0.8);
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
@@ -635,7 +725,6 @@ canvas {
   position: absolute;
   top: 50%;
   right: 20px;
-  left: auto;
   transform: translateY(-50%);
   width: 45%;
   z-index: 3;
@@ -712,6 +801,7 @@ canvas {
   visibility: visible;
 }
 
+/* Imágenes de fondo de las tarjetas */
 .grid-row:first-child .acc-card:nth-child(1) { 
   background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format'); 
 }
@@ -725,15 +815,17 @@ canvas {
   background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format'); 
 }
 
-/* ========== 10. CTA FINAL ========== */
+/* ============================================
+   9. CTA FINAL
+   ============================================ */
 .cta-final { 
-  background: linear-gradient(135deg, var(--historia-accent-dark) 0%, #006699 100%); 
+  background: linear-gradient(135deg, var(--quov-blue-dark) 0%, #006699 100%); 
   padding: 50px 20px; 
   text-align: center; 
 }
 
 .cta-final h2 {
-  color: #ffffff;
+  color: var(--quov-white);
   font-family: 'Syne', sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
@@ -746,8 +838,8 @@ canvas {
 }
 
 .btn-catalogo {
-  background: #ffffff;
-  color: var(--historia-accent-dark);
+  background: var(--quov-white);
+  color: var(--quov-blue-dark);
   padding: 14px 36px;
   border-radius: 40px;
   text-decoration: none;
@@ -762,7 +854,13 @@ canvas {
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* ========== 11. FOOTER ========== */
+body.dark-mode .cta-final {
+  background: linear-gradient(135deg, #0077aa 0%, #004466 100%);
+}
+
+/* ============================================
+   10. FOOTER
+   ============================================ */
 .footer {
   background: var(--bg-neutral-900);
   color: var(--text-neutral-400);
@@ -780,16 +878,14 @@ canvas {
 }
 
 @media (min-width: 640px) {
-  .footer-container {
-    flex-direction: row;
-  }
+  .footer-container { flex-direction: row; }
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #ffffff;
+  color: var(--quov-white);
   font-weight: bold;
   font-size: 1.125rem;
 }
@@ -805,12 +901,6 @@ canvas {
   text-align: center;
 }
 
-@media (min-width: 640px) {
-  .footer-text {
-    text-align: left;
-  }
-}
-
 .footer-social {
   display: flex;
   align-items: center;
@@ -822,161 +912,45 @@ canvas {
   transition: opacity 0.2s;
 }
 
-.social-link:hover {
-  opacity: 1;
-}
+.social-link:hover { opacity: 1; }
 
-/* ========== 12. RESPONSIVE VIEW ========== */
-/* Teléfonos pequeños (320px - 480px) */
-@media (min-width: 320px) and (max-width: 480px) {
+/* ============================================
+   11. RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 767px) {
   .hero-video .content h1 { font-size: 1.8rem; }
   .historia-section { padding: 50px 0; }
   .historia-title { font-size: 1.8rem; margin-bottom: 40px; }
   .historia-row, .porque-inner { flex-direction: column !important; gap: 30px; }
   .historia-img img { height: 200px; }
-  .historia-text h3 { font-size: 1.2rem; }
-  .historia-text p { font-size: 0.85rem; }
   .book-container { width: 280px; }
   .book { width: 280px; height: 380px; }
   .page-content { padding: 18px; }
-  .page-title { font-size: 1rem; }
-  .page-message { font-size: 0.75rem; }
-  .book-controls { flex-wrap: wrap; gap: 8px; }
-  .book-btn { padding: 6px 12px; font-size: 0.65rem; }
-  .canvas-wrapper { padding: 15px 0; }
-  canvas { width: 90%; border-radius: 10px; }
-  .ideas-section { padding: 40px 0; }
-  .ideas-section h2 { font-size: 1.8rem; }
   .grid-row { flex-direction: column; height: auto; gap: 15px; }
   .acc-card { min-height: 250px; }
-  .acc-main-title { font-size: 1rem; }
-  .acc-phrase { display: none; }
-  .acc-caption { padding: 10px; width: calc(100% - 30px); left: 15px; right: 15px; top: auto; bottom: 15px; transform: translateY(0); }
-  .acc-caption h4 { font-size: 0.75rem; }
-  .acc-caption p { font-size: 0.6rem; }
-  .cta-final { padding: 40px 15px; }
+  .acc-caption { width: calc(100% - 30px); left: 15px; right: 15px; top: auto; bottom: 15px; transform: translateY(0); }
   .cta-final h2 { font-size: 1.4rem; }
   .btn-catalogo { padding: 10px 24px; font-size: 0.85rem; }
 }
 
-/* Teléfonos medianos (481px - 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-  .hero-video .content h1 { font-size: 2rem; }
-  .historia-section { padding: 60px 0; }
-  .historia-title { font-size: 2rem; }
-  .historia-row, .porque-inner { flex-direction: column !important; gap: 40px; }
-  .historia-img img { height: 250px; }
-  .book-container { width: 320px; }
-  .book { width: 320px; height: 420px; }
-  .canvas-wrapper { padding: 20px 0; }
-  canvas { width: 92%; border-radius: 12px; }
-  .ideas-section { padding: 50px 0; }
-  .ideas-section h2 { font-size: 2rem; }
-  .grid-row { flex-direction: column; height: auto; gap: 15px; }
-  .acc-card { min-height: 260px; }
-  .acc-main-title { font-size: 1.1rem; }
-  .acc-caption { width: auto; left: 15px; right: 15px; top: auto; bottom: 15px; transform: translateY(0); }
-  .cta-final h2 { font-size: 1.6rem; }
-}
-
-/* Tablets (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-video .content h1 { font-size: 2.5rem; }
-  .historia-section { padding: 70px 0; }
   .historia-row, .porque-inner { gap: 40px; }
-  .canvas-wrapper { padding: 30px 0; }
-  canvas { width: 95%; border-radius: 14px; max-width: 800px; }
-  .ideas-section { padding: 60px 0; }
   .grid-row { flex-direction: column; height: auto; gap: 20px; }
   .acc-card { min-height: 280px; }
-  .acc-main-title { font-size: 1.2rem; }
   .acc-caption { width: 50%; }
-  .cta-final h2 { font-size: 1.7rem; }
 }
 
-/* Laptops (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .historia-row, .porque-inner { gap: 50px; }
-  canvas { max-width: 900px; }
   .grid-row { height: 300px; }
-  .acc-main-title { font-size: 1.3rem; }
-  .acc-caption { width: 48%; padding: 15px 18px; }
+  .acc-caption { width: 48%; }
 }
 
-/* Escritorios grandes (1280px - 1439px) */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  canvas { max-width: 1000px; }
-  .grid-row { height: 320px; }
-  .acc-main-title { font-size: 1.4rem; }
-  .acc-caption { width: 45%; padding: 18px 20px; }
-}
-
-/* Pantallas extra grandes (1440px en adelante) */
 @media (min-width: 1440px) {
   .container-qs { max-width: 1280px; }
   canvas { max-width: 1100px; }
   .grid-2x2 { max-width: 1400px; }
   .grid-row { height: 350px; gap: 25px; }
   .acc-main-title { font-size: 1.5rem; }
-  .acc-phrase { font-size: 0.9rem; }
   .acc-caption { width: 42%; padding: 20px 24px; }
-  .acc-caption h4 { font-size: 1rem; }
-  .acc-caption p { font-size: 0.8rem; }
-}
-
-/* ========== 13. MODO OSCURO - AJUSTES ADICIONALES ========== */
-body.dark-mode .hero-video .overlay {
-  background: var(--historia-overlay);
-}
-
-body.dark-mode .porque-text h2 { 
-  color: var(--historia-accent-light); 
-}
-        
-body.dark-mode .porque-text p { 
-  color: var(--historia-text-secondary); 
-}
-
-body.dark-mode .canvas-wrapper {
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-}
-
-body.dark-mode canvas {
-  box-shadow: 0 20px 40px var(--card-shadow-hover), 0 0 0 1px rgba(0,191,255,0.2);
-}
-
-body.dark-mode .cta-final {
-  background: linear-gradient(135deg, #0077aa 0%, #004466 100%);
-}
-
-body.dark-mode .book-btn-close {
-  background: rgba(50, 50, 50, 0.9);
-}
-
-body.dark-mode .book-btn-close:hover {
-  background: #dc2626;
-}
-
-body.dark-mode .page {
-  background: #1a1a2e;
-}
-
-body.dark-mode .page-title {
-  color: var(--librito-color);
-}
-
-body.dark-mode .page-message {
-  color: #cbd5e1;
-}
-
-body.dark-mode .author-name {
-  color: var(--librito-color);
-}
-
-body.dark-mode .author-bio {
-  color: #94a3b8;
-}
-
-body.dark-mode .page-number {
-  color: #64748b;
 }
