@@ -28,28 +28,27 @@
   <div id="cursor-ring"></div>
 
   <!-- ====== NAVBAR ====== -->
+<!-- ====== NAVBAR ====== -->
 <nav class="sticky top-0 z-40 bg-white border-b border-neutral-100 px-6 py-4">
   <div class="mx-auto max-w-6xl flex items-center justify-between gap-4">
     <!-- Logo -->
-    <div class="flex items-center" style="gap: 3rem;">
-      <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right: 1rem;">
-        <img src="../img/logo.png" alt="QUOV" class="logo-nav" />
-        QUOV
-      </a>
-    </div>
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight">
+      <img src="../img/logo.png" alt="QUOV" class="logo-nav" />
+      QUOV
+    </a>
     
-    <!-- Enlaces desktop (visibles en pantallas grandes) -->
-    <div class="flex items-center" style="gap: 2rem;">
-      <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
-      <a href="#catalogo" class="nav-link active hidden sm:block" id="catalogoNavLink">Catálogo</a>
-      <a href="#destacados" class="nav-link hidden sm:block" id="destacadosNavLink">Destacados</a>
-      <a href="../Esqueleto/Quien somos.html" class="nav-link hidden sm:block">¿Quiénes somos?</a>
-      <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block">Historia</a>
-      <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
+    <!-- Enlaces desktop (visibles SOLO en pantallas grandes) -->
+    <div class="hidden sm:flex items-center gap-6">
+      <a href="../index.html" class="nav-link">Inicio</a>
+      <a href="#catalogo" class="nav-link active" id="catalogoNavLink" data-section="catalogo">Catálogo</a>
+      <a href="#destacados" class="nav-link" id="destacadosNavLink" data-section="destacados">Destacados</a>
+      <a href="../Esqueleto/Quien somos.html" class="nav-link">¿Quiénes somos?</a>
+      <a href="../Esqueleto/Historia.html" class="nav-link">Historia</a>
+      <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">Mejorar plan</a>
     </div>
     
     <!-- Iconos derecha + Botón hamburguesa -->
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4">
       <!-- Botón hamburguesa (solo móvil) -->
       <button class="menu-toggle" id="menuToggle" aria-label="Menú">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -98,15 +97,15 @@
   </div>
 </nav>
 
-  <!-- Menú móvil (se muestra al hacer clic en hamburguesa) -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
-    <a href="#catalogo" class="nav-link active hidden sm:block" id="catalogoNavLink">Catálogo</a>
-    <a href="#destacados" class="nav-link hidden sm:block" id="destacadosNavLink">Destacados</a>
-    <a href="../Esqueleto/Quien somos.html" class="nav-link hidden sm:block">¿Quiénes somos?</a>
-    <a href="../Esqueleto/Historia.html" class="nav-link hidden sm:block">Historia</a>
-    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
-  </div>
+<!-- Menú móvil (se muestra al hacer clic en hamburguesa) - SIN hidden sm:block -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" class="nav-link">Inicio</a>
+  <a href="#catalogo" class="nav-link active" data-section="catalogo" id="catalogoNavLinkMobile">Catálogo</a>
+  <a href="#destacados" class="nav-link" data-section="destacados" id="destacadosNavLinkMobile">Destacados</a>
+  <a href="../Esqueleto/Quien somos.html" class="nav-link">¿Quiénes somos?</a>
+  <a href="../Esqueleto/Historia.html" class="nav-link">Historia</a>
+  <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">Mejorar plan</a>
+</div>
 
   <!-- ====== HERO ====== -->
   <section class="hero-section text-white px-6 py-16 sm:py-20">

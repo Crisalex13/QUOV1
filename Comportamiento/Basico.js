@@ -200,91 +200,117 @@ TABLA DE CONTENIDO - BASICO.JS
 // ============================================ 
 // 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS
 // ============================================ 
+// ============================================ 
+// 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS (RESPONSIVE)
+// ============================================ 
 (function initActiveNavLink() {
-  const catalogoLink = document.getElementById('catalogoNavLink');
-  const destacadosLink = document.getElementById('destacadosNavLink');
+  // Seleccionar TODOS los links (escritorio + móvil)
+  const catalogoLinks = document.querySelectorAll('[data-section="catalogo"]');
+  const destacadosLinks = document.querySelectorAll('[data-section="destacados"]');
   
   // Si no existen estos elementos, salir
-  if (!catalogoLink || !destacadosLink) return;
+  if (catalogoLinks.length === 0 || destacadosLinks.length === 0) return;
   
-  // Función para activar el link correcto según la URL o scroll
-  function updateActiveLink() {
+  // Función para activar Catálogo en TODOS los links
+  function activateCatalogo() {
+    catalogoLinks.forEach(link => link.classList.add('active'));
+    destacadosLinks.forEach(link => link.classList.remove('active'));
+    localStorage.setItem('activeSection', 'catalogo');
+  }
+  
+  // Función para activar Destacados en TODOS los links
+  function activateDestacados() {
+    destacadosLinks.forEach(link => link.classList.add('active'));
+    catalogoLinks.forEach(link => link.classList.remove('active'));
+    localStorage.setItem('activeSection', 'destacados');
+  }
+  
+  // Función para actualizar según scroll o hash
+  function updateActiveFromScroll() {
     const hash = window.location.hash;
     const scrollPosition = window.scrollY + 150;
     const catalogoSection = document.getElementById('catalogo');
     const destacadosSection = document.getElementById('destacados');
     
-    // Primero, verificar por hash en la URL (#catalogo o #destacados)
+    // Prioridad 1: Hash en URL
     if (hash === '#destacados') {
-      catalogoLink.classList.remove('active');
-      destacadosLink.classList.add('active');
+      activateDestacados();
       return;
     } else if (hash === '#catalogo') {
-      catalogoLink.classList.add('active');
-      destacadosLink.classList.remove('active');
+      activateCatalogo();
       return;
     }
     
-    // Segundo, verificar por scroll (si no hay hash)
+    // Prioridad 2: Scroll position (si no hay hash)
     if (catalogoSection && destacadosSection) {
-      const destacadosTop = destacadosSection.offsetTop;
       const catalogoTop = catalogoSection.offsetTop;
+      const destacadosTop = destacadosSection.offsetTop;
       
-      if (scrollPosition >= destacadosTop && scrollPosition < catalogoTop) {
-        catalogoLink.classList.remove('active');
-        destacadosLink.classList.add('active');
-      } else if (scrollPosition >= catalogoTop) {
-        catalogoLink.classList.add('active');
-        destacadosLink.classList.remove('active');
-      } else {
-        catalogoLink.classList.add('active');
-        destacadosLink.classList.remove('active');
+      if (scrollPosition >= destacadosTop - 100) {
+        activateDestacados();
+      } else if (scrollPosition >= catalogoTop - 100) {
+        activateCatalogo();
       }
     }
   }
   
-  // Evento click: cambiar manualmente el active y guardar
-  function setActiveAndSave(activeLink) {
-    catalogoLink.classList.remove('active');
-    destacadosLink.classList.remove('active');
-    activeLink.classList.add('active');
-    localStorage.setItem('activeNavLink', activeLink.id);
-  }
-  
-  catalogoLink.addEventListener('click', function() {
-    setActiveAndSave(catalogoLink);
+  // Evento click para CADA link de Catálogo
+  catalogoLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateCatalogo();
+      
+      const target = document.getElementById('catalogo');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      history.pushState(null, null, '#catalogo');
+      
+      // Cerrar menú móvil
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('active');
+    });
   });
   
-  destacadosLink.addEventListener('click', function() {
-    setActiveAndSave(destacadosLink);
+  // Evento click para CADA link de Destacados
+  destacadosLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateDestacados();
+      
+      const target = document.getElementById('destacados');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      history.pushState(null, null, '#destacados');
+      
+      // Cerrar menú móvil
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('active');
+    });
   });
   
-  // Escuchar cambios en el hash
-  window.addEventListener('hashchange', updateActiveLink);
-  window.addEventListener('scroll', updateActiveLink);
+  // Escuchar eventos
+  window.addEventListener('hashchange', updateActiveFromScroll);
+  window.addEventListener('scroll', updateActiveFromScroll);
   
-  // Restaurar el último estado guardado o usar el hash actual
-  const savedActive = localStorage.getItem('activeNavLink');
-  const currentHash = window.location.hash;
+  // Estado inicial
+  const initialHash = window.location.hash;
+  const savedSection = localStorage.getItem('activeSection');
   
-  if (currentHash === '#destacados') {
-    destacadosLink.classList.add('active');
-    catalogoLink.classList.remove('active');
-  } else if (currentHash === '#catalogo') {
-    catalogoLink.classList.add('active');
-    destacadosLink.classList.remove('active');
-  } else if (savedActive === 'destacadosNavLink') {
-    destacadosLink.classList.add('active');
-    catalogoLink.classList.remove('active');
+  if (initialHash === '#destacados') {
+    activateDestacados();
+  } else if (initialHash === '#catalogo') {
+    activateCatalogo();
+  } else if (savedSection === 'destacados') {
+    activateDestacados();
   } else {
-    catalogoLink.classList.add('active');
-    destacadosLink.classList.remove('active');
+    activateCatalogo();
   }
   
-  // Ejecutar al cargar
-  setTimeout(updateActiveLink, 100);
+  setTimeout(updateActiveFromScroll, 100);
   
-  console.log('✅ NavLinks de Catálogo/Destacados activados');
+  console.log('✅ NavLinks de Catálogo/Destacados activados (responsive)');
 })();
 
 // ============================================ 

@@ -664,7 +664,7 @@ body.dark-mode .mobile-menu .nav-link.active {
 }
 
 /* Mostrar menú hamburguesa en móviles (hasta 767px) */
-@media (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 767px) {
   .menu-toggle { display: flex; align-items: center; justify-content: center; }
   nav .flex.items-center[style*="gap: 2rem"],
   nav .hidden.sm\:block { display: none !important; }
