@@ -30,7 +30,7 @@ const catalog = [
     title: "El Poder del Pensamiento Positivo",
     price: 220,
     status: "available",
-    img: "../img/pensamiento-positivo.png",
+    img: "./img/pensamiento-positivo.png",
     aliases: ["pensamiento positivo", "poder pensamiento positivo"],
     pitch: "Ideal si buscas mentalidad fuerte, motivación y enfoque."
   },
@@ -39,7 +39,7 @@ const catalog = [
     title: "1984 - George Orwell",
     price: 170,
     status: "available",
-    img: "../img/1984.png",
+    img: "./img/1984.png",
     aliases: ["1984", "orwell", "george orwell"],
     pitch: "Una lectura clásica, intensa y de las que se quedan contigo."
   },
@@ -48,7 +48,7 @@ const catalog = [
     title: "Hábitos Atómicos (versión simple)",
     price: 150,
     status: "available",
-    img: "../img/habitos.png",
+    img: "./img/habitos.png",
     aliases: ["habitos atomicos simple", "habitos atomicos version simple", "hábitos atómicos simple"],
     pitch: "Perfecto para empezar a trabajar disciplina, constancia y hábitos."
   },
@@ -57,7 +57,7 @@ const catalog = [
     title: "Hábitos Atómicos (versión completa)",
     price: 350,
     status: "available",
-    img: "../img/habitos-completa.png",
+    img: "./img/habitos-completa.png",
     aliases: ["habitos atomicos completa", "habitos atomicos version completa", "hábitos atómicos completa"],
     pitch: "La versión más completa si quieres ir con todo desde el inicio."
   },
@@ -66,7 +66,7 @@ const catalog = [
     title: "Los Secretos de la Mente Millonaria",
     price: 250,
     status: "available",
-    img: "../img/secretos-mente-millonaria.png",
+    img: "./img/secretos-mente-millonaria.png",
     aliases: ["mente millonaria", "secretos mente millonaria"],
     pitch: "Muy bueno si te interesa dinero, mentalidad y crecimiento financiero."
   },
@@ -75,7 +75,7 @@ const catalog = [
     title: "Piense y Hágase Rico",
     price: 250,
     status: "available",
-    img: "../img/piense.png",
+    img: "./img/piense.png",
     aliases: ["piense y hagase rico", "piensa y hagase rico", "hagase rico"],
     pitch: "Un clásico de finanzas personales y mentalidad de éxito."
   },
@@ -84,7 +84,7 @@ const catalog = [
     title: "Padre Rico, Padre Pobre",
     price: 250,
     status: "available",
-    img: "../img/padre-rico.png",
+    img: "./img/padre-rico.png",
     aliases: ["padre rico padre pobre", "padre rico", "robert kiyosaki"],
     pitch: "De los más buscados para empezar en educación financiera."
   },
@@ -93,7 +93,7 @@ const catalog = [
     title: "El Poder del Ahora",
     price: 180,
     status: "available",
-    img: "../img/poder-ahora.png",
+    img: "./img/poder-ahora.png",
     aliases: ["poder del ahora", "el ahora"],
     pitch: "Excelente si buscas paz mental, presencia y claridad."
   },
@@ -102,7 +102,7 @@ const catalog = [
     title: "Inteligencia Emocional",
     price: 300,
     status: "available",
-    img: "../img/inteligencia-emocional.png",
+    img: "./img/inteligencia-emocional.png",
     aliases: ["inteligencia emocional", "daniel goleman", "goleman"],
     pitch: "Muy buena opción si quieres trabajar emociones, relaciones y autocontrol."
   },
@@ -111,7 +111,7 @@ const catalog = [
     title: "Si lo Crees lo Creas",
     price: 200,
     status: "available",
-    img: "../img/si-lo-crees.png",
+    img: "./img/si-lo-crees.png",
     aliases: ["si lo crees lo creas"],
     pitch: "Una opción muy buena para motivación y crecimiento personal."
   },
@@ -120,7 +120,7 @@ const catalog = [
     title: "La Levedad del Ser",
     price: 200,
     status: "available",
-    img: "../img/levedad-ser.png",
+    img: "./img/levedad-ser.png",
     aliases: ["levedad del ser", "la levedad del ser"],
     pitch: "Ideal si quieres algo más profundo, reflexivo y distinto."
   },
@@ -129,7 +129,7 @@ const catalog = [
     title: "El Hombre Más Rico de Babilonia",
     price: 150,
     status: "available",
-    img: "../img/hombre-babilonia.png",
+    img: "./img/hombre-babilonia.png",
     aliases: ["hombre mas rico de babilonia", "rico de babilonia", "babilonia"],
     pitch: "Muy recomendado si quieres empezar fácil en finanzas personales."
   },
