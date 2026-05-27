@@ -106,9 +106,9 @@ nav { background-color: var(--bg-primary) !important; border-bottom-color: var(-
   text-decoration: none;
 }
 
-.nav-link.active, 
-.nav-link:hover { 
-  color: var(--quov-blue) !important; 
+.nav-link.active,
+.nav-link:hover {
+  color: var(--quov-blue) !important;
 }
 
 .nav-link.active { font-weight: 700; }
@@ -118,8 +118,8 @@ body.dark-mode nav {
   background-color: #0a0a0a !important;
   border-bottom-color: #333333 !important;
 }
-body.dark-mode nav a, 
-body.dark-mode .nav-link, 
+body.dark-mode nav a,
+body.dark-mode .nav-link,
 body.dark-mode nav .font-display { color: #ffffff !important; }
 body.dark-mode .nav-link.active { color: var(--quov-blue) !important; font-weight: 700; }
 body.dark-mode nav svg { stroke: #ffffff !important; color: #ffffff !important; }
@@ -181,20 +181,25 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   align-items: center !important;
   justify-content: center !important;
   gap: 4px !important;
-  border: none !important;
   cursor: pointer !important;
-  background: #0a0a0a !important;
-  width: 85px !important;
-  height: 85px !important;
-  border: 2px solid #00BFFF !important;
+  background: #0a0a0a8a !important;
+  width: 100px !important;
+  height: 100px !important;
+  border: 2px solid #0000001c !important;
   box-shadow: 0 0 15px rgba(0, 191, 255, 0.5) !important;
   animation: floatNeon 3s ease-in-out infinite !important;
 }
 
 @keyframes floatNeon {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
   100% { transform: translateY(0px); }
+}
+
+.chat-fab-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
 }
 
 .chat-fab-text {
@@ -233,14 +238,16 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   border-radius: 24px;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.18);
   border: 1px solid var(--border-light);
-  animation: modalFadeIn 0.2s ease;
+  animation: modalFadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   max-height: 90vh;
   overflow-y: auto;
 }
+
 @keyframes modalFadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
+
 .buy-button, .notify-save-button {
   width: 100%;
   border-radius: 1.5rem;
@@ -278,11 +285,18 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   margin-bottom: 12px !important;
   overflow-y: auto !important;
 }
+
+/* Chat más ancho en desktop */
 #chatOverlay .modal-card {
-  max-width: 400px !important;
-  width: 90% !important;
+  max-width: 520px !important;
+  width: 92% !important;
   background: var(--bg-primary) !important;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease !important;
 }
+
+/* Mensajes del usuario (derecha, azul) */
 #chatMessages .bg-black {
   background: var(--quov-blue) !important;
   color: white !important;
@@ -293,6 +307,8 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   margin: 8px 0 8px auto !important;
   box-shadow: 0 2px 8px var(--quov-blue-glow) !important;
 }
+
+/* Mensajes del bot (izquierda) - modo claro */
 body:not(.dark-mode) #chatMessages .bg-neutral-100 {
   background: #ffffff !important;
   color: #333333 !important;
@@ -302,6 +318,8 @@ body:not(.dark-mode) #chatMessages .bg-neutral-100 {
   max-width: 80% !important;
   border: 1px solid var(--quov-blue) !important;
 }
+
+/* Mensajes del bot (izquierda) - modo oscuro */
 body.dark-mode #chatMessages .bg-neutral-100 {
   background: #2d2d2d !important;
   color: #e0e0e0 !important;
@@ -311,7 +329,9 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   max-width: 80% !important;
   border: 1px solid var(--quov-blue) !important;
 }
+
 #chatMessages a { color: var(--quov-blue) !important; text-decoration: underline !important; }
+
 #chatInput {
   background: var(--bg-primary) !important;
   border: 2px solid var(--quov-blue) !important;
@@ -320,6 +340,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   font-size: 0.85rem !important;
   color: var(--text-primary) !important;
 }
+
 .chat-send-button {
   background: var(--quov-blue) !important;
   border-radius: 30px !important;
@@ -329,24 +350,42 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   border: none !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
+  white-space: nowrap !important;
 }
-.chat-send-button:hover { background: var(--quov-blue-dark) !important; transform: scale(1.02) !important; }
-#chatOverlay .border-b { background: var(--quov-blue) !important; border-radius: 20px 20px 0 0 !important; }
+.chat-send-button:hover {
+  background: var(--quov-blue-dark) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Header del chat con fondo azul */
+#chatOverlay .border-b {
+  background: var(--quov-blue) !important;
+  border-radius: 24px 24px 0 0 !important;
+}
 #chatOverlay .font-semibold { color: white !important; }
+
 #chatClose {
   background: rgba(255, 255, 255, 0.3) !important;
   color: white !important;
   border-radius: 50% !important;
   width: 32px !important;
   height: 32px !important;
+  transition: background 0.2s, transform 0.2s !important;
 }
-#chatClose:hover { background: rgba(255, 255, 255, 0.5) !important; transform: scale(1.05) !important; }
+#chatClose:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Scrollbar dentro del chat */
 #chatMessages::-webkit-scrollbar { width: 6px; }
 #chatMessages::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 10px; }
 #chatMessages::-webkit-scrollbar-thumb { background: var(--quov-blue); border-radius: 10px; }
 
 /* ========== 9. MODAL DE PRODUCTO ========== */
 #productOverlay { z-index: 2000 !important; }
+#productOverlay:not(.hidden):not(.side-docked) { display: flex !important; }
+
 #productOverlay .modal-card {
   max-width: 360px !important;
   width: 90% !important;
@@ -364,11 +403,10 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 #productOverlay .modal-card .p-6 { padding: 16px !important; }
 #productTitle, #productName { font-size: 1rem !important; }
 #productPrice { font-size: 1.2rem !important; }
-#productOverlay .buy-button, 
+#productOverlay .buy-button,
 #productOverlay .secondary-button { padding: 8px 16px !important; font-size: 0.75rem !important; }
 #productOverlay .buy-button { background: var(--quov-blue) !important; color: white !important; }
 #productOverlay .buy-button:hover { background: var(--quov-blue-dark) !important; }
-#productOverlay:not(.hidden) { display: flex !important; }
 
 /* ========== 10. MODAL DE NOTIFICACIÓN ========== */
 #notifyOverlay .modal-card {
@@ -389,39 +427,72 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 }
 
 /* ========== 11. MODAL LATERAL ========== */
+
+/* --- BOOK: entra deslizando desde la derecha, pegado al borde --- */
 #productOverlay.side-docked {
   z-index: 2000 !important;
-  background: rgba(0, 0, 0, 0.6) !important;
+  background: transparent !important;
+  pointer-events: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important;
-  padding-right: 20px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
+
 #productOverlay.side-docked .modal-card {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
-  transform: none !important;
+  position: fixed !important;
+  top: 50% !important;
+  right: 0 !important;
+  left: auto !important;
   margin: 0 !important;
-  max-width: 360px !important;
   width: 360px !important;
+  max-width: 360px !important;
+  max-height: 90vh !important;
+  pointer-events: auto !important;
+  z-index: 2001 !important;
+  /* Esquinas redondeadas solo a la izquierda: visualmente "sale" del borde derecho */
+  border-radius: 24px 0 0 24px !important;
+  /* Animación: entra desde translateX(100%) hasta translateX(0) */
+  animation: slideInFromRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
-#chatOverlay.chat-side-mode { background: transparent; pointer-events: none; }
-#chatOverlay.chat-side-mode.active { background: rgba(0, 0, 0, 0.5); pointer-events: auto; }
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* --- CHAT: se desplaza suavemente a la izquierda cuando aparece el libro --- */
+#chatOverlay.chat-side-mode {
+  background: transparent !important;
+  pointer-events: none !important;
+  display: flex !important;
+}
+
 #chatOverlay.chat-side-mode .modal-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%) translateY(-50%);
-  width: min(480px, calc(100vw - 40px));
-  max-width: 480px;
-  max-height: 85vh;
-  pointer-events: auto;
-  z-index: 61;
-  overflow-y: auto;
-  border-radius: 24px;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
+  position: fixed !important;
+  top: 50% !important;
+  /* Desplazado hacia la izquierda del centro para dejar espacio al libro */
+  left: calc(50% - 500px) !important;
+  right: auto !important;
+  transform: translateY(-50%) translateX(-50%) !important;
+  width: min(520px, calc(100vw - 420px)) !important;
+  max-width: 520px !important;
+  max-height: 85vh !important;
+  pointer-events: auto !important;
+  z-index: 2001 !important;
+  overflow-y: auto !important;
+  border-radius: 24px !important;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25) !important;
+  /* Transición suave al desplazarse */
+  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 /* ========== 12. SCROLLBAR ========== */
@@ -441,6 +512,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 
 /* ========== 14. CURSOR PERSONALIZADO ========== */
 * { cursor: none !important; }
+
 #cursor-dot {
   position: fixed;
   top: 0;
@@ -454,6 +526,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s;
 }
+
 #cursor-ring {
   position: fixed;
   top: 0;
@@ -468,13 +541,21 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   transition: width 0.2s, height 0.2s;
   opacity: 0.7;
 }
-a:hover ~ #cursor-dot, button:hover ~ #cursor-dot, .book-card:hover ~ #cursor-dot,
-.featured-card:hover ~ #cursor-dot, .catalog-btn:hover ~ #cursor-dot, .nav-link:hover ~ #cursor-dot,
+
+a:hover ~ #cursor-dot, button:hover ~ #cursor-dot,
+.book-card:hover ~ #cursor-dot, .featured-card:hover ~ #cursor-dot,
+.catalog-btn:hover ~ #cursor-dot, .nav-link:hover ~ #cursor-dot,
 .team-card-new:hover ~ #cursor-dot { width: 14px; height: 14px; }
-a:hover ~ #cursor-ring, button:hover ~ #cursor-ring, .book-card:hover ~ #cursor-ring,
-.featured-card:hover ~ #cursor-ring, .catalog-btn:hover ~ #cursor-ring, .nav-link:hover ~ #cursor-ring,
+
+a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
+.book-card:hover ~ #cursor-ring, .featured-card:hover ~ #cursor-ring,
+.catalog-btn:hover ~ #cursor-ring, .nav-link:hover ~ #cursor-ring,
 .team-card-new:hover ~ #cursor-ring { width: 52px; height: 52px; }
-@media (max-width: 1024px) { * { cursor: auto !important; } #cursor-dot, #cursor-ring { display: none !important; } }
+
+@media (max-width: 1024px) {
+  * { cursor: auto !important; }
+  #cursor-dot, #cursor-ring { display: none !important; }
+}
 
 /* ========== 15. BOTÓN DE MODO OSCURO ========== */
 .theme-toggle {
@@ -528,10 +609,12 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring, .book-card:hover ~ #cursor-
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.3s ease forwards;
 }
+
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 .mobile-menu.active { display: flex; }
 
 .mobile-menu .nav-link {
@@ -547,6 +630,7 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring, .book-card:hover ~ #cursor-
   transition: all 0.25s ease;
   letter-spacing: 0.3px;
 }
+
 .mobile-menu .nav-link::before {
   content: '';
   display: inline-block;
@@ -558,16 +642,19 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring, .book-card:hover ~ #cursor-
   opacity: 0;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
 .mobile-menu .nav-link:hover::before,
 .mobile-menu .nav-link.active::before {
   opacity: 1;
   transform: scale(1.2);
 }
+
 .mobile-menu .nav-link:hover {
   background: rgba(0, 191, 255, 0.08);
   color: var(--quov-blue);
   transform: translateX(4px);
 }
+
 .mobile-menu .nav-link.active {
   color: var(--quov-blue);
   font-weight: 700;
@@ -596,13 +683,15 @@ body.dark-mode .mobile-menu .nav-link.active {
 
 /* ========== 17. RESPONSIVE DESIGN ========== */
 
-/* Móviles pequeños (320px - 480px) */
+/* ========== 17. RESPONSIVE DESIGN ========== */
+
+/* Móviles pequeños (320px – 480px) */
 @media (min-width: 320px) and (max-width: 480px) {
   .logo-nav { height: 28px !important; }
   nav .font-display, nav a.font-display { font-size: 0.85rem !important; }
-  .chat-fab { width: 65px !important; height: 65px !important; bottom: 20px !important; right: 20px !important; }
-  .chat-fab-logo { width: 32px !important; height: 32px !important; }
-  .chat-fab-text { font-size: 8px !important; }
+  .chat-fab { width: 80px !important; height: 80px !important; bottom: 20px !important; right: 20px !important; }
+  .chat-fab-logo { width: 42px !important; height: 42px !important; }
+  .chat-fab-text { font-size: 9px !important; }
   .chat-hint { bottom: 95px !important; right: 80px !important; max-width: 180px !important; font-size: 0.7rem !important; padding: 8px 12px !important; }
   .back2top { width: 44px !important; height: 44px !important; bottom: 100px !important; right: 20px !important; }
   .modal-card { border-radius: 18px !important; }
@@ -610,44 +699,171 @@ body.dark-mode .mobile-menu .nav-link.active {
   footer { padding: 24px 16px !important; }
   .footer-text { font-size: 0.65rem; }
   .footer-logo { height: 28px !important; }
+
+  #productOverlay.side-docked {
+    background: rgba(0, 0, 0, 0.6) !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+  #productOverlay.side-docked .modal-card {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 92% !important;
+    max-width: 340px !important;
+    margin: auto !important;
+    border-radius: 20px !important;
+    animation: modalFadeIn 0.25s ease forwards !important;
+    transform: none !important;
+  }
+  #chatOverlay.chat-side-mode {
+    background: rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+  }
+  #chatOverlay.chat-side-mode .modal-card {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 92% !important;
+    max-width: 400px !important;
+  }
 }
 
-/* Móviles medianos (481px - 767px) */
+/* Móviles medianos (481px – 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
   .logo-nav { height: 30px !important; }
   nav .font-display, nav a.font-display { font-size: 0.9rem !important; }
-  .chat-fab { width: 70px !important; height: 70px !important; }
-  .chat-fab-logo { width: 36px !important; height: 36px !important; }
-  .chat-fab-text { font-size: 9px !important; }
+  .chat-fab { width: 90px !important; height: 90px !important; }
+  .chat-fab-logo { width: 46px !important; height: 46px !important; }
+  .chat-fab-text { font-size: 10px !important; }
   .back2top { width: 48px !important; height: 48px !important; }
   footer { padding: 28px 20px !important; }
+
+  #productOverlay.side-docked {
+    background: rgba(0, 0, 0, 0.6) !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+  #productOverlay.side-docked .modal-card {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 90% !important;
+    max-width: 360px !important;
+    margin: auto !important;
+    border-radius: 20px !important;
+    animation: modalFadeIn 0.25s ease forwards !important;
+    transform: none !important;
+  }
+  #chatOverlay.chat-side-mode {
+    background: rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+  }
+  #chatOverlay.chat-side-mode .modal-card {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 440px !important;
+  }
 }
 
-/* Tabletas (768px - 991px) */
+/* Tabletas (768px – 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .logo-nav { height: 32px !important; }
-  .chat-fab { width: 75px !important; height: 75px !important; }
-  .chat-fab-logo { width: 40px !important; height: 40px !important; }
+  .chat-fab { width: 95px !important; height: 95px !important; }
+  .chat-fab-logo { width: 50px !important; height: 50px !important; }
+  .chat-fab-text { font-size: 10px !important; }
   .back2top { width: 50px !important; height: 50px !important; }
-  /* Mostrar menú hamburguesa en tablet */
   .menu-toggle { display: flex; align-items: center; justify-content: center; }
   nav .flex.items-center[style*="gap: 2rem"],
   nav .hidden.sm\:block { display: none !important; }
+
+  #productOverlay.side-docked {
+    background: rgba(0, 0, 0, 0.6) !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+  #productOverlay.side-docked .modal-card {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 90% !important;
+    max-width: 360px !important;
+    margin: auto !important;
+    border-radius: 24px !important;
+    animation: modalFadeIn 0.25s ease forwards !important;
+    transform: none !important;
+  }
+  #chatOverlay.chat-side-mode {
+    background: rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+  }
+  #chatOverlay.chat-side-mode .modal-card {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 480px !important;
+  }
 }
 
-/* Tabletas grandes (992px - 1199px) */
+/* Tabletas grandes (992px – 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
   .logo-nav { height: 34px !important; }
-  .chat-fab { width: 80px !important; height: 80px !important; }
-  .chat-fab-logo { width: 42px !important; height: 42px !important; }
+  .chat-fab { width: 100px !important; height: 100px !important; }
+  .chat-fab-logo { width: 52px !important; height: 52px !important; }
+  .chat-fab-text { font-size: 10px !important; }
+
+  #productOverlay.side-docked {
+    background: rgba(0, 0, 0, 0.6) !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+  #productOverlay.side-docked .modal-card {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 90% !important;
+    max-width: 360px !important;
+    margin: auto !important;
+    border-radius: 24px !important;
+    animation: modalFadeIn 0.25s ease forwards !important;
+    transform: none !important;
+  }
+  #chatOverlay.chat-side-mode {
+    background: rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+  }
+  #chatOverlay.chat-side-mode .modal-card {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 480px !important;
+  }
 }
 
-/* Escritorios pequeños (1200px - 1439px) */
+/* Escritorios pequeños (1200px – 1439px) — AQUÍ SÍ hay side-by-side */
 @media (min-width: 1200px) and (max-width: 1439px) {
   .logo-nav { height: 36px !important; }
-  .chat-fab { width: 85px !important; height: 85px !important; }
-  .chat-fab-logo { width: 45px !important; height: 45px !important; }
-  #chatOverlay.chat-side-mode .modal-card { width: min(520px, calc(100vw - 80px)); max-width: 520px; }
+  .chat-fab { width: 100px !important; height: 100px !important; }
+  .chat-fab-logo { width: 52px !important; height: 52px !important; }
+  .chat-fab-text { font-size: 10px !important; }
+
+  #chatOverlay.chat-side-mode .modal-card {
+    left: calc(50% - 190px) !important;
+    width: min(500px, calc(100vw - 400px)) !important;
+    max-width: 500px !important;
+  }
 }
 
 /* Escritorios grandes (1440px+) */
@@ -655,15 +871,25 @@ body.dark-mode .mobile-menu .nav-link.active {
   nav { padding: 18px 48px !important; }
   nav .mx-auto { max-width: 1400px !important; }
   .logo-nav { height: 38px !important; }
-  .chat-fab { width: 90px !important; height: 90px !important; bottom: 35px !important; right: 35px !important; }
-  .chat-fab-logo { width: 48px !important; height: 48px !important; }
+  .chat-fab { width: 110px !important; height: 110px !important; bottom: 35px !important; right: 35px !important; }
+  .chat-fab-logo { width: 58px !important; height: 58px !important; }
   .chat-fab-text { font-size: 11px !important; }
   .chat-hint { bottom: 130px !important; right: 110px !important; max-width: 260px !important; font-size: 0.9rem !important; }
   .back2top { width: 60px !important; height: 60px !important; bottom: 160px !important; right: 40px !important; }
   footer .mx-auto { max-width: 1400px !important; }
+
+  #productOverlay.side-docked .modal-card {
+    width: 400px !important;
+    max-width: 400px !important;
+  }
+  #chatOverlay.chat-side-mode .modal-card {
+    left: calc(50% - 120px) !important;
+    width: min(560px, calc(100vw - 460px)) !important;
+    max-width: 560px !important;
+  }
 }
 
-/* Mostrar menú hamburguesa en móviles (hasta 767px) */
+/* Menú hamburguesa en móviles hasta 767px */
 @media (min-width: 320px) and (max-width: 767px) {
   .menu-toggle { display: flex; align-items: center; justify-content: center; }
   nav .flex.items-center[style*="gap: 2rem"],
@@ -672,19 +898,9 @@ body.dark-mode .mobile-menu .nav-link.active {
   nav { position: sticky; top: 0; z-index: 1002; }
 }
 
-/* Ocultar menú desktop en escritorio */
+/* Ocultar menú mobile en desktop */
 @media (min-width: 768px) {
   .mobile-menu { display: none !important; }
-}
-
-/* Ajustes de modales en responsive */
-@media (max-width: 768px) {
-  #productOverlay.side-docked { justify-content: center !important; padding-right: 0 !important; }
-  #productOverlay.side-docked .modal-card { width: 90% !important; margin: auto !important; }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  #chatOverlay.chat-side-mode .modal-card { width: min(450px, calc(100vw - 60px)); max-width: 450px; }
 }
 
 /* ========== 18. MODO OSCURO - MODALES ========== */
