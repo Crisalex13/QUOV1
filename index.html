@@ -200,22 +200,31 @@
   </footer>
 
   <!-- ====== MODALES ====== -->
-  <div id="productOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
-    <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
-      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
-        <p class="font-semibold" id="productTitle">Detalle</p>
-        <button id="productClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
-      </div>
-      <div class="p-6 space-y-4">
-        <div id="productImage" class="rounded-2xl overflow-hidden bg-neutral-100"></div>
-        <div class="flex items-start justify-between gap-4">
-          <div><p class="text-lg font-semibold" id="productName">—</p><p class="text-sm text-neutral-500 mt-1" id="productMeta">Segunda mano verificada</p></div>
-          <div class="text-right"><p class="text-xl font-bold" id="productPrice">—</p><span class="text-xs rounded-full border border-neutral-200 px-3 py-1 text-neutral-500 mt-1 inline-block" id="productBadge"></span></div>
+  <div id="productOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+  <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+      <p class="font-semibold" id="productTitle">Detalle</p>
+      <button id="productClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
+    </div>
+    <div class="p-6 space-y-4">
+      <div id="productImage" class="rounded-2xl overflow-hidden bg-neutral-100"></div>
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-lg font-semibold" id="productName">—</p>
+          <p class="text-sm text-neutral-500 mt-1" id="productMeta">Segunda mano verificada</p>
         </div>
-        <div class="flex gap-3"><button id="buyBtn" type="button" class="buy-button">Comprar por WhatsApp</button><button id="secondaryBtn" type="button" class="secondary-button">Cerrar</button></div>
+        <div class="text-right">
+          <p class="text-xl font-bold" id="productPrice">—</p>
+          <span class="text-xs rounded-full border border-neutral-200 px-3 py-1 text-neutral-500 mt-1 inline-block" id="productBadge"></span>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <button id="buyBtn" type="button" class="buy-button">Comprar por WhatsApp</button>
+        <button id="secondaryBtn" type="button" class="secondary-button">Cerrar</button>
       </div>
     </div>
   </div>
+</div>
 
   <div id="notifyOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
     <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
@@ -223,29 +232,20 @@
       <div class="p-6 space-y-4"><p class="text-sm text-neutral-600">Déjanos tu WhatsApp o email y te avisamos cuando esté disponible:</p><p class="text-sm font-semibold" id="notifyBook">—</p><input id="notifyInput" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-base outline-none focus:ring-2 focus:ring-black/10" placeholder="WhatsApp o email" /><button id="notifySave" type="button" class="notify-save-button">Guardar</button></div>
     </div>
   </div>
-  
+
   <!-- ====== CHAT IA ====== -->
   <button id="chatFab" data-cursor="blue" type="button" class="chat-fab" aria-label="Abrir chat">
-    <img src="./img/logo.png" alt="QUOV" class="chat-fab-logo" />
+    <img src="../img/logo.png" alt="QUOV" class="chat-fab-logo" />
     <span class="chat-fab-text">QUOV IA</span>
   </button>
-
-  <div id="chatHint" data-cursor="blue" class="chat-hint">
-    Hola 👋 Soy <strong>QUOV IA</strong>. Tu asistente virtual.
-  </div>
-
+  <div id="chatHint" data-cursor="blue" class="chat-hint">Hola 👋 Soy <strong>QUOV IA</strong>. Tu asistente virtual.</div>
   <div id="chatOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
     <div class="modal-card w-full sm:max-w-2xl" data-cursor="blue">
-      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
-        <p class="font-semibold">QUOV IA</p>
-        <button id="chatClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
-      </div>
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100"><p class="font-semibold">QUOV IA</p><button id="chatClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button></div>
       <div class="chat-header-divider"></div>
       <div class="p-6 space-y-4">
         <div class="space-y-3 text-sm max-h-[50vh] overflow-y-auto pr-1" id="chatMessages">
-          <div class="max-w-[85%] rounded-2xl bg-neutral-100 px-5 py-4">
-            Hola 👋 Soy QUOV IA. Puedo decirte si un libro está disponible, cuánto cuesta y ayudarte a comprar por WhatsApp.
-          </div>
+          <div class="max-w-[85%] rounded-2xl bg-neutral-100 px-5 py-4">Hola 👋 Soy QUOV IA. Puedo decirte si un libro está disponible, cuánto cuesta y ayudarte a comprar por WhatsApp.</div>
         </div>
         <div class="flex gap-2">
           <textarea id="chatInput" rows="1" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-black/10 resize-none" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); enviarMensaje();}"></textarea>
