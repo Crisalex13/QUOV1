@@ -179,7 +179,7 @@ body.dark-mode .social-icon:hover {
 
 /* ========== 2. BASE Y CONTENEDORES ========== */
 .container {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -239,7 +239,7 @@ body {
   transform: translateY(30px);
   opacity: 0;
   font-family: 'Syne', sans-serif;
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
   margin-bottom: 12px;
@@ -253,15 +253,15 @@ body {
   transform: translateY(30px);
   opacity: 0;
   font-family: 'Syne', sans-serif;
-  font-size: 1.1rem; 
+  font-size: 1.3rem; 
   color: var(--quov-white);
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 /* ========== 4. SECCIÓN MVO - 3D FLIP ========== */
 .mvo-section {
-  padding: 80px 0 100px;
+  padding: 100px 0 120px;
   text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('../img/Lectura1.png');
   background-size: cover;
@@ -272,7 +272,7 @@ body {
 
 .mvo-section .section-title {
   font-family: 'Syne', sans-serif;
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: var(--quov-white);
   margin-bottom: 10px;
@@ -282,25 +282,25 @@ body {
 .mvo-section .section-sub {
   font-family: 'Syne', sans-serif;
   color: #ddeeff;
-  margin-bottom: 48px;
-  font-size: 0.95rem;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .mvo-grid {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 24px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .mvo-card {
   background: transparent;
-  width: 320px;
-  height: 380px;
+  width: 380px;
+  height: 450px;
   perspective: 1500px;
   cursor: pointer;
 }
@@ -334,7 +334,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 28px;
-  padding: 32px 24px;
+  padding: 40px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -368,8 +368,8 @@ body {
 }
 
 .mvo-front .mvo-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+  font-size: 4rem;
+  margin-bottom: 25px;
   display: inline-block;
   animation: floatIcon 3s ease-in-out infinite;
 }
@@ -381,7 +381,7 @@ body {
 
 .mvo-front h4 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 800;
   color: var(--quov-blue);
   margin-bottom: 12px;
@@ -390,20 +390,20 @@ body {
 
 .mvo-front a {
   font-family: 'Syne', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-secondary);
 }
 
 .mvo-back .mvo-icon-back {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
   opacity: 0.8;
 }
 
 .mvo-back h4 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--quov-black);
   margin-bottom: 20px;
@@ -411,7 +411,7 @@ body {
 
 .mvo-back p {
   font-family: 'Syne', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: #d0e8f0;
   margin-bottom: 25px;
@@ -440,7 +440,7 @@ body {
 
 /* ========== 5. SECCIÓN QUOV ========== */
 .quov-section {
-  padding: 80px 0 100px;
+  padding: 100px 0 120px;
   text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('../img/Lectura2.png');
   background-size: cover;
@@ -451,7 +451,7 @@ body {
 
 .quov-section .section-title {
   font-family: 'Syne', sans-serif;
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: var(--quov-blue);
   margin-bottom: 10px;
@@ -461,17 +461,17 @@ body {
 .quov-section .section-sub {
   font-family: 'Syne', sans-serif;
   color: #aaddff;
-  margin-bottom: 48px;
-  font-size: 0.95rem;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
 }
 
 .quov-grid {
   display: flex;
-  gap: 28px;
+  gap: 35px;
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 24px;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -479,8 +479,8 @@ body {
   background: rgba(17, 17, 17, 0.9);
   backdrop-filter: blur(4px);
   border-radius: 24px;
-  width: 300px;
-  padding: 40px 28px 32px;
+  width: 350px;
+  padding: 50px 35px 40px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 191, 255, 0.3);
   cursor: pointer;
@@ -516,8 +516,8 @@ body {
 }
 
 .quov-icon {
-  font-size: 2.4rem;
-  margin-bottom: 18px;
+  font-size: 2.8rem;
+  margin-bottom: 22px;
   display: inline-block;
   transition: transform 0.3s ease;
   animation: floatIcon 3s ease-in-out infinite;
@@ -530,7 +530,7 @@ body {
 
 .quov-card h4 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--quov-blue);
   margin-bottom: 14px;
@@ -540,7 +540,7 @@ body {
 
 .quov-msg {
   font-family: 'Syne', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--quov-gray-light);
   line-height: 1.6;
   max-height: 0;
@@ -573,7 +573,7 @@ body {
 
 /* ========== 6. SECCIÓN EQUIPO ========== */
 .team-section-wrapper {
-  padding: 80px 0;
+  padding: 100px 0;
   background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../img/Lectura3.png');
   background-size: cover;
   background-position: center;
@@ -582,14 +582,14 @@ body {
 }
 
 .team-section-new {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
   text-align: center;
 }
 
 .team-section-new > h3 {
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 800;
   font-family: 'Syne', sans-serif;
   color: var(--quov-white);
@@ -600,14 +600,15 @@ body {
 .team-section-new > p {
   font-family: 'Syne', sans-serif;
   color: #ddeeff;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
 }
 
 .team-layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 40px;
   flex-wrap: wrap;
   margin-top: 48px;
 }
@@ -619,7 +620,7 @@ body {
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 12px 28px var(--shadow-color);
-  width: 220px;
+  width: 280px;
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(0, 191, 255, 0.3);
@@ -645,7 +646,7 @@ body {
 
 .team-card-new img {
   width: 100%;
-  height: 240px;
+  height: 280px;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
@@ -661,7 +662,7 @@ body {
   right: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
   color: var(--quov-white);
-  padding: 50px 20px 20px;
+  padding: 60px 20px 20px;
   text-align: center;
   transition: bottom 0.3s ease;
   pointer-events: none;
@@ -672,13 +673,13 @@ body {
 }
 
 .team-info-new {
-  padding: 18px;
+  padding: 22px;
   text-align: center;
 }
 
 .team-info-new h3 {
   font-family: 'Syne', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--quov-blue-dark);
   margin-bottom: 4px;
@@ -687,7 +688,7 @@ body {
 .team-info-new .role {
   font-family: 'Syne', sans-serif;
   color: var(--quov-gray);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -696,9 +697,9 @@ body {
 .card-overlay-new span {
   display: inline-block;
   background: var(--quov-blue-dark);
-  padding: 7px 18px;
+  padding: 9px 22px;
   border-radius: 30px;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: bold;
   font-family: 'Syne', sans-serif;
   pointer-events: auto;
@@ -730,7 +731,7 @@ body {
 /* 6.3 VIDEO */
 .team-video-wrapper {
   flex: 0 0 auto;
-  width: 360px;
+  width: 420px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 191, 255, 0.3);
@@ -742,14 +743,14 @@ body {
 .team-video-wrapper video,
 .team-video-wrapper iframe {
   width: 100%;
-  height: 280px;
+  height: 320px;
   display: block;
   object-fit: cover;
 }
 
 .video-placeholder {
   width: 100%;
-  height: 280px;
+  height: 320px;
   background: var(--video-placeholder-bg);
   display: flex;
   flex-direction: column;
@@ -761,7 +762,7 @@ body {
 }
 
 .video-placeholder i {
-  font-size: 3rem;
+  font-size: 3.5rem;
   opacity: 0.7;
 }
 
@@ -789,7 +790,7 @@ body {
   z-index: 1;
   background: var(--profile-card-bg);
   border-radius: 20px;
-  width: 280px;
+  width: 320px;
   overflow: hidden;
   box-shadow: 0 15px 40px var(--shadow-color);
   animation: profileSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -797,18 +798,18 @@ body {
 
 #profileCard img {
   width: 100%;
-  height: 140px;
+  height: 160px;
   object-fit: cover;
 }
 
 .profile-body {
-  padding: 15px 20px;
+  padding: 20px 24px;
   text-align: center;
 }
 
 .profile-body h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--quov-blue-dark);
   margin-top: 5px;
@@ -817,13 +818,13 @@ body {
 .profile-body .profile-role {
   font-family: 'Syne', sans-serif;
   color: var(--quov-gray);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   margin-bottom: 10px;
 }
 
 .profile-body p {
   font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 15px;
@@ -834,7 +835,7 @@ body {
   color: var(--quov-white);
   border: none;
   border-radius: 30px;
-  padding: 10px 28px;
+  padding: 12px 32px;
   font-weight: 700;
   font-family: 'Syne', sans-serif;
   cursor: pointer;
@@ -858,12 +859,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--social-icon-bg);
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -894,13 +895,13 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--quov-blue) !important;
-  padding: 16px 48px;
+  padding: 20px 60px;
   border-radius: 50px;
   color: var(--quov-white) !important;
   z-index: 1;
   overflow: hidden;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-family: 'Syne', sans-serif;
   letter-spacing: 0.5px;
   transition: all 0.4s ease;
@@ -933,8 +934,6 @@ body {
 .catalog-btn:hover .arrow {
   transform: translateX(5px);
 }
-
-/* ========== 9. RESPONSIVE DESIGN ========== */
 
 /* ========== 9. RESPONSIVE DESIGN ========== */
 
@@ -1293,47 +1292,8 @@ body {
 /* 9.5 Escritorios pequeños (1200px - 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
   .container {
+    max-width: 1300px;
     padding: 0 40px;
-  }
-  
-  .mvo-card {
-    width: 320px;
-    height: 380px;
-  }
-  
-  .quov-card {
-    width: 300px;
-  }
-  
-  .team-card-new {
-    width: 230px;
-  }
-  
-  .team-video-wrapper {
-    width: 360px;
-  }
-}
-
-/* 9.6 Escritorios grandes (1440px en adelante) */
-@media (min-width: 1440px) {
-  .container {
-    max-width: 1400px;
-    padding: 0 60px;
-  }
-  
-  .hero-title-simple {
-    font-size: 4rem;
-  }
-  
-  .hero-subtitle-simple {
-    font-size: 1.3rem;
-    max-width: 700px;
-  }
-  
-  .mvo-section .section-title,
-  .quov-section .section-title,
-  .team-section-new > h3 {
-    font-size: 2.5rem;
   }
   
   .mvo-card {
@@ -1342,31 +1302,169 @@ body {
   }
   
   .quov-card {
-    width: 330px;
-    padding: 45px 32px 35px;
+    width: 320px;
   }
   
   .team-card-new {
     width: 250px;
   }
   
-  .team-card-new img {
-    height: 260px;
+  .team-video-wrapper {
+    width: 380px;
+  }
+}
+
+/* 9.6 Escritorios grandes (1440px en adelante) - TAMAÑOS AUMENTADOS */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 60px;
   }
   
+  /* Hero */
+  .hero-title-simple {
+    font-size: 5rem;
+  }
+  
+  .hero-subtitle-simple {
+    font-size: 1.5rem;
+    max-width: 800px;
+  }
+  
+  /* Títulos de sección */
+  .mvo-section .section-title,
+  .quov-section .section-title,
+  .team-section-new > h3 {
+    font-size: 3rem;
+  }
+  
+  .mvo-section .section-sub,
+  .quov-section .section-sub,
+  .team-section-new > p {
+    font-size: 1.2rem;
+  }
+  
+  /* MVO Cards */
+  .mvo-card {
+    width: 420px;
+    height: 500px;
+  }
+  
+  .mvo-front h4 {
+    font-size: 2rem;
+  }
+  
+  .mvo-front .mvo-icon {
+    font-size: 4.5rem;
+  }
+  
+  .mvo-back h4 {
+    font-size: 1.8rem;
+  }
+  
+  .mvo-back p {
+    font-size: 1.05rem;
+  }
+  
+  /* QUOV Cards */
+  .quov-grid {
+    max-width: 1500px;
+    gap: 40px;
+  }
+  
+  .quov-card {
+    width: 380px;
+    padding: 55px 40px 45px;
+  }
+  
+  .quov-card h4 {
+    font-size: 1.5rem;
+  }
+  
+  .quov-icon {
+    font-size: 3rem;
+  }
+  
+  .quov-msg {
+    font-size: 1rem;
+  }
+  
+  /* Team Cards */
+  .team-section-new {
+    max-width: 1600px;
+  }
+  
+  .team-layout {
+    gap: 50px;
+  }
+  
+  .team-card-new {
+    width: 300px;
+  }
+  
+  .team-card-new img {
+    height: 320px;
+  }
+  
+  .team-info-new h3 {
+    font-size: 1.3rem;
+  }
+  
+  .team-info-new .role {
+    font-size: 1rem;
+  }
+  
+  /* Video */
   .team-video-wrapper {
-    width: 400px;
+    width: 480px;
   }
   
   .team-video-wrapper video,
   .team-video-wrapper iframe,
   .video-placeholder {
-    height: 300px;
+    height: 360px;
   }
   
+  .video-placeholder i {
+    font-size: 4rem;
+  }
+  
+  /* Botón */
   .catalog-btn {
-    padding: 18px 56px;
-    font-size: 1.2rem;
+    padding: 22px 70px;
+    font-size: 1.4rem;
+  }
+  
+  /* Modal */
+  #profileCard {
+    width: 380px;
+  }
+  
+  #profileCard img {
+    height: 180px;
+  }
+  
+  .profile-body h2 {
+    font-size: 1.6rem;
+  }
+  
+  .profile-body .profile-role {
+    font-size: 0.95rem;
+  }
+  
+  .profile-body p {
+    font-size: 1rem;
+  }
+  
+  .social-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+  
+  #profileClose {
+    padding: 14px 36px;
+    font-size: 1rem;
   }
 }
 
