@@ -1,7 +1,5 @@
 /* ============================================
-   HISTORIA.CSS - QUOV
-   ============================================
-   TABLA DE CONTENIDO
+   TABLA DE CONTENIDO - HISTORIA.CSS - QUOV
    ============================================
    1. VARIABLES GLOBALES 
    2. BASE Y RESET
@@ -19,7 +17,21 @@
 /* ============================================
    1. VARIABLES GLOBALES 
    ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Syne', sans-serif;
+}
+
 :root {
+  /* Colores Hero */
+  --hero-start: #ffffff;
+  --hero-end: #ffffffa5;
+
   /* Colores principales */
   --quov-blue: #00BFFF;
   --quov-blue-dark: #0099CC;
@@ -132,14 +144,6 @@ body.dark-mode {
   padding: 0; 
 }
 
-body { 
-  font-family: 'Inter', sans-serif; 
-  background-color: var(--bg-primary); 
-  color: var(--text-primary); 
-  overflow-x: hidden; 
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .container-qs { 
   max-width: 1160px; 
   margin: 0 auto; 
@@ -151,7 +155,7 @@ body {
    ============================================ */
 .hero-video { 
   position: relative; 
-  min-height: 40vh; 
+  min-height: 100vh; 
   overflow: hidden; 
   display: flex; 
   align-items: center; 
@@ -191,7 +195,7 @@ body {
   font-family: 'Syne', sans-serif; 
   font-size: 3.5rem; 
   font-weight: 800; 
-  background: linear-gradient(135deg, var(--quov-white), var(--quov-blue));
+  background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
   margin-bottom: 12px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -203,6 +207,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   font-size: 1.1rem; 
+  font-family: 'Syne', sans-serif;
   color: var(--quov-white);
   max-width: 600px;
   margin: 0 auto;
@@ -262,6 +267,7 @@ body {
 }
 
 .historia-text p { 
+  font-family: 'Syne', sans-serif;
   color: var(--historia-text-secondary); 
   line-height: 1.8; 
   font-size: .97rem; 
@@ -316,6 +322,7 @@ body {
 }
 
 .porque-text p { 
+  font-family: 'Syne', sans-serif;
   color: var(--historia-text-secondary); 
   line-height: 1.8; 
   font-size: .97rem; 
@@ -376,6 +383,7 @@ body {
 }
 
 .book-cover .subtitle {
+  font-family: 'Syne', sans-serif;
   font-size: 0.8rem;
   color: #e8d5b7;
   font-style: italic;
@@ -389,6 +397,7 @@ body {
   padding: 5px 12px;
   border-radius: 30px;
   font-size: 0.7rem;
+  font-family: 'Syne', sans-serif;
   color: var(--librito-color);
 }
 
@@ -427,6 +436,7 @@ body {
   text-align: center;
   margin-top: 15px;
   font-size: 0.65rem;
+  font-family: 'Syne', sans-serif;
   color: #bbb;
 }
 
@@ -446,6 +456,7 @@ body {
   color: #333;
   text-align: justify;
   flex: 1;
+  font-family: 'Syne', sans-serif;
 }
 
 .page-message p {
@@ -465,10 +476,12 @@ body {
   font-weight: bold;
   color: #5c3a1e;
   font-size: 0.8rem;
+  font-family: 'Syne', sans-serif;
 }
 
 .author-bio {
   font-size: 0.7rem;
+  font-family: 'Syne', sans-serif;
   color: #777;
 }
 
@@ -496,6 +509,7 @@ body {
   border-radius: 40px;
   font-size: 0.75rem;
   font-weight: 600;
+  font-family: 'Syne', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -520,6 +534,7 @@ body {
 
 .page-indicator {
   font-size: 0.75rem;
+  font-family: 'Syne', sans-serif;
   color: #e8d5b7;
   background: rgba(0,0,0,0.6);
   padding: 6px 15px;
@@ -603,6 +618,7 @@ body.dark-mode canvas {
 
 .ideas-subtitle { 
   text-align: center; 
+  font-family: 'Syne', sans-serif;
   color: var(--ideas-text-secondary); 
   margin-bottom: 50px; 
   font-size: 0.95rem; 
@@ -714,7 +730,7 @@ body.dark-mode canvas {
 
 .acc-phrase {
   color: rgba(255,255,255,0.8);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -756,6 +772,7 @@ body.dark-mode canvas {
   line-height: 1.5;
   opacity: 0.9;
   margin-bottom: 12px;
+  font-family: 'Syne', sans-serif;
   color: var(--ideas-caption-text);
 }
 
@@ -768,6 +785,7 @@ body.dark-mode canvas {
   font-size: 0.7rem;
   line-height: 1.4;
   margin-bottom: 4px;
+  font-family: 'Syne', sans-serif;
   color: var(--ideas-caption-text);
 }
 
@@ -833,6 +851,7 @@ body.dark-mode canvas {
 }
 
 .cta-final p {
+  font-family: 'Syne', sans-serif;
   color: rgba(255,255,255,.75);
   margin-bottom: 28px;
 }
@@ -845,6 +864,7 @@ body.dark-mode canvas {
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
+  font-family: 'Syne', sans-serif;
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -888,6 +908,7 @@ body.dark-mode .cta-final {
   color: var(--quov-white);
   font-weight: bold;
   font-size: 1.125rem;
+  font-family: 'Syne', sans-serif;
 }
 
 .footer-logo {
@@ -898,6 +919,7 @@ body.dark-mode .cta-final {
 
 .footer-text {
   font-size: 0.75rem;
+  font-family: 'Syne', sans-serif;
   text-align: center;
 }
 

@@ -14,48 +14,125 @@
 /* ============================================
    1. VARIABLES GLOBALES 
    ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Syne', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 :root {
-  /* Colores principales */
-  --quov-blue: #00BFFF;
-  --quov-blue-dark: #0099CC;
-  --quov-blue-light: #4DCFFF;
-  --quov-black: #000000;
-  --quov-black-dark: #0a0a0a;
-  --quov-white: #ffffff;
+  /* Negro y sus variantes  */
+  --black-solid: #000000;
+  --black-95: rgba(0, 0, 0, 0.95);
+  --black-90: rgba(0, 0, 0, 0.90);
+  --black-85: rgba(0, 0, 0, 0.85);
+  --black-80: rgba(0, 0, 0, 0.80);
+  --black-75: rgba(0, 0, 0, 0.75);
+  --black-70: rgba(0, 0, 0, 0.70);
+  --black-60: rgba(0, 0, 0, 0.60);
+  --black-50: rgba(0, 0, 0, 0.50);
+  --black-40: rgba(0, 0, 0, 0.40);
+  --black-30: rgba(0, 0, 0, 0.30);
+  --black-20: rgba(0, 0, 0, 0.20);
+  --black-10: rgba(0, 0, 0, 0.10);
+  --black-05: rgba(0, 0, 0, 0.05);
   
-  /* Colores para textos en hero */
-  --hero-text-gradient-start: #ffffff;
-  --hero-text-gradient-end: #00BFFF;
-  --hero-subtitle-color: #ffffff;
+  /* Blanco y sus variantes */
+  --white-solid: #ffffff;
+  --white-95: rgba(255, 255, 255, 0.95);
+  --white-90: rgba(255, 255, 255, 0.90);
+  --white-85: rgba(255, 255, 255, 0.85);
+  --white-80: rgba(255, 255, 255, 0.80);
+  --white-75: rgba(255, 255, 255, 0.75);
+  --white-70: rgba(255, 255, 255, 0.70);
+  --white-60: rgba(255, 255, 255, 0.60);
+  --white-50: rgba(255, 255, 255, 0.50);
+  --white-40: rgba(255, 255, 255, 0.40);
+  --white-30: rgba(255, 255, 255, 0.30);
+  --white-20: rgba(255, 255, 255, 0.20);
+  --white-10: rgba(255, 255, 255, 0.10);
+  --white-05: rgba(255, 255, 255, 0.05);
   
-  /* Modo DÍA (por defecto) */
-  --bg-primary: #ffffff;
+  /* Azul #00BFFF y sus variantes */
+  --blue-solid: #00BFFF;
+  --blue-dark: #0099CC;
+  --blue-light: #4DCFFF;
+  --blue-95: rgba(0, 191, 255, 0.95);
+  --blue-90: rgba(0, 191, 255, 0.90);
+  --blue-85: rgba(0, 191, 255, 0.85);
+  --blue-80: rgba(0, 191, 255, 0.80);
+  --blue-75: rgba(0, 191, 255, 0.75);
+  --blue-70: rgba(0, 191, 255, 0.70);
+  --blue-60: rgba(0, 191, 255, 0.60);
+  --blue-50: rgba(0, 191, 255, 0.50);
+  --blue-40: rgba(0, 191, 255, 0.40);
+  --blue-30: rgba(0, 191, 255, 0.30);
+  --blue-25: rgba(0, 191, 255, 0.25);
+  --blue-20: rgba(0, 191, 255, 0.20);
+  --blue-15: rgba(0, 191, 255, 0.15);
+  --blue-10: rgba(0, 191, 255, 0.10);
+  --blue-05: rgba(0, 191, 255, 0.05);
+  
+/* ========== MODO DIA ========== */
+  
+  /* Hero */
+  --hero-start: var(--white-solid);
+  --hero-end: var(--white-85);
+  --hero-text-gradient-start: var(--white-solid);
+  --hero-text-gradient-end: var(--blue-solid);
+  --hero-subtitle-color: var(--white-solid);
+  --hero-fondo: var(--black-70);
+  
+  /* Fondos */
+  --bg-primary: var(--white-solid);
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
-  --bg-neutral-900: #000000;
-
-  --hero-fondo: rgba(0, 0, 0, 0.7);
+  --bg-neutral-900: var(--black-solid);
   
+  /* Textos */
   --text-primary: #111111;
   --text-secondary: #444444;
   --text-neutral-400: #94a3b8;
   
-  --border-light: #00b3ff98;
-  --card-bg: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: rgba(0, 0, 0, 0.15);
+  /* Bordes y sombras */
+  --border-light: var(--blue-25);
+  --card-bg: var(--white-solid);
+  --card-shadow: var(--black-08);
+  --card-shadow-hover: var(--black-15);
   
   /* Planes específico */
-  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, var(--border-light) 100%);
-  --plan-card-border-hover: rgba(0, 191, 255, 0.35);
-  --plan-popular-shadow: rgba(0, 191, 255, 0.2);
-  --btn-ventajas-hover-bg: rgba(0, 191, 255, 0.06);
-  --btn-access-shadow: rgba(0, 191, 255, 0.3);
+  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, var(--blue-50) 100%);
+  --plan-card-border-hover: var(--blue-35);
+  --plan-popular-shadow: var(--blue-20);
+  --btn-ventajas-hover-bg: var(--blue-06);
+  --btn-access-shadow: var(--blue-30);
+  
+  /* Scrollbar */
+  --scrollbar-track: var(--black-10);
+  --scrollbar-thumb: var(--blue-solid);
+  
+  /* Colores adicionales */
+  --quov-blue: var(--blue-solid);
+  --quov-blue-dark: var(--blue-dark);
+  --quov-blue-light: var(--blue-light);
+  --quov-black: var(--black-solid);
+  --quov-black-dark: #0a0a0a;
+  --quov-white: var(--white-solid);
+  --contraste: var(--blue-30);
 }
 
-/* Modo OSCURO */
+/* ========== MODO OSCURO ========== */
 body.dark-mode {
   /* Colores para textos en hero en modo oscuro */
+  --hero-start: #e0e0e0;
+  --hero-end: #e0e0e0a5;
   --hero-text-gradient-start: #e0e0e0;
   --hero-text-gradient-end: #00BFFF;
   --hero-subtitle-color: #cccccc;
@@ -76,11 +153,15 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
   
-  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, var(--border-light) 100%);
+  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, #1a1a3a 100%);
   --plan-card-border-hover: rgba(0, 191, 255, 0.5);
   --plan-popular-shadow: rgba(0, 191, 255, 0.3);
   --btn-ventajas-hover-bg: rgba(0, 191, 255, 0.12);
   --btn-access-shadow: rgba(0, 191, 255, 0.4);
+  
+  /* Colores de scrollbar en modo oscuro */
+  --scrollbar-track: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb: var(--quov-blue);
 }
 
 /* ============================================
@@ -94,7 +175,7 @@ body.modal-open {
    3. HERO SECTION
    ============================================ */
 .plans-hero {
-  min-height: 40vh;
+  min-height: 100vh;
   background: var(--plans-hero-bg);
   display: flex;
   flex-direction: column;
@@ -162,7 +243,7 @@ body.modal-open {
   font-family: 'Syne', sans-serif;
   font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--hero-text-gradient-start), var(--hero-text-gradient-end));
+  background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
   margin-bottom: 16px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -174,6 +255,7 @@ body.modal-open {
   opacity: 0;
   transform: translateY(30px);
   font-size: 1.1rem;
+  font-family: 'Syne', sans-serif;
   color: var(--hero-subtitle-color);
   max-width: 600px;
   margin: 0 auto;
@@ -181,7 +263,7 @@ body.modal-open {
 }
 
 .plans-hero h1 .accent {
-  background: linear-gradient(135deg, var(--hero-text-gradient-start), var(--hero-text-gradient-end));
+  background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -210,7 +292,7 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 28px var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -284,6 +366,7 @@ body.modal-open {
   color: var(--text-secondary);
   font-size: 0.68rem;
   font-weight: 600;
+  font-family: 'Syne', sans-serif;
   padding: 4px 12px;
   border-radius: 40px;
   letter-spacing: 0.04em;
@@ -319,6 +402,7 @@ body.modal-open {
 }
 
 .plan-desc {
+  font-family: 'Syne', sans-serif;
   font-size: 0.83rem;
   color: var(--text-secondary);
   line-height: 1.5;
@@ -336,6 +420,7 @@ body.modal-open {
 }
 
 .plan-price span {
+  font-family: 'Syne', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-secondary);
@@ -424,6 +509,7 @@ body.modal-open {
   display: flex;
   gap: 10px;
   font-size: 0.83rem;
+  font-family: 'Syne', sans-serif;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -445,12 +531,12 @@ body.modal-open {
 }
 
 .ventajas-inline::-webkit-scrollbar-track {
-  background: var(--border-light);
+  background: var(--scrollbar-track);
   border-radius: 4px;
 }
 
 .ventajas-inline::-webkit-scrollbar-thumb {
-  background: var(--quov-blue);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
