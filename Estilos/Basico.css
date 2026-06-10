@@ -4,7 +4,7 @@
    0. VISTAS A CONSIDERAR
    1. VARIABLES GLOBALES
    2. MODO OSCURO
-   3. NAVBAR
+   3. NAVBAR (UNIFICADO)
    4. FOOTER
    5. BACK TO TOP
    6. CHAT IA - BOTÓN FLOTANTE
@@ -18,11 +18,11 @@
    14. CURSOR PERSONALIZADO
    15. BOTÓN DE MODO OSCURO
    16. MENÚ HAMBURGUESA
-   17. RESPONSIVE DESIGN 
+   17. RESPONSIVE DESIGN (TODAS LAS PANTALLAS)
    18. MODO OSCURO - MODALES
    ============================================ */
 
-/* ========== 0. VISTAS A CONSIDERAR  ========== 
+/* ========== 0. VISTAS A CONSIDERAR ========== 
 Teléfonos pequeños	320px – 480px
 Teléfonos medianos	481px – 767px
 Tablets	768px – 1023px
@@ -87,12 +87,52 @@ body.dark-mode {
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
 }
 body.dark-mode { background-color: #0a0a0a; }
-body.dark-mode .nav-link:hover,
-body.dark-mode .nav-link.active { color: var(--quov-blue) !important; }
 
-/* ========== 3. NAVBAR ========== */
-.logo-nav { height: 36px; width: auto; }
-nav { background-color: var(--bg-primary) !important; border-bottom-color: var(--border-light) !important; }
+/* ========== 3. NAVBAR - UNIFICADO Y RESPONSIVO ========== */
+
+/* 3.1 ESTILOS BASE DEL NAVBAR */
+nav {
+  background-color: var(--bg-primary) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+nav .mx-auto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Logo y marca */
+.logo-nav {
+  height: 36px;
+  width: auto;
+}
+
+nav .font-display,
+nav a.font-display {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* Navegación desktop */
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
 .nav-link {
   display: flex;
@@ -111,31 +151,187 @@ nav { background-color: var(--bg-primary) !important; border-bottom-color: var(-
   color: var(--quov-blue) !important;
 }
 
-.nav-link.active { font-weight: 700; }
+.nav-link.active {
+  font-weight: 700;
+}
+
+/* Botones de acción (modo oscuro + theme toggle) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-neutral-100);
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 191, 255, 0.1);
+}
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-primary);
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle.active svg {
+  transform: rotate(90deg);
+}
+
+/* Menú móvil (oculto por defecto) */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--quov-blue);
+  padding: 12px 20px;
+  z-index: 1000;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.mobile-menu .nav-link::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--quov-blue);
+  border-radius: 50%;
+  margin-right: 12px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.mobile-menu .nav-link:hover::before,
+.mobile-menu .nav-link.active::before {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.mobile-menu .nav-link:hover {
+  background: rgba(0, 191, 255, 0.08);
+  color: var(--quov-blue);
+  transform: translateX(4px);
+}
+
+.mobile-menu .nav-link.active {
+  color: var(--quov-blue);
+  font-weight: 700;
+  background: rgba(0, 191, 255, 0.05);
+  border-left: 3px solid var(--quov-blue);
+  border-radius: 12px;
+}
 
 /* Modo oscuro navbar */
 body.dark-mode nav {
   background-color: #0a0a0a !important;
   border-bottom-color: #333333 !important;
 }
+
 body.dark-mode nav a,
 body.dark-mode .nav-link,
-body.dark-mode nav .font-display { color: #ffffff !important; }
-body.dark-mode .nav-link.active { color: var(--quov-blue) !important; font-weight: 700; }
-body.dark-mode nav svg { stroke: #ffffff !important; color: #ffffff !important; }
-
-/* Logo QUOV */
-nav .font-display,
-nav a.font-display {
-  font-family: 'Syne', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 1.25rem !important;
-  letter-spacing: -0.02em !important;
-  color: var(--text-primary);
-  text-decoration: none;
+body.dark-mode nav .font-display {
+  color: #ffffff !important;
 }
+
+body.dark-mode .nav-link.active {
+  color: var(--quov-blue) !important;
+  font-weight: 700;
+}
+
+body.dark-mode nav svg {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
 body.dark-mode nav .font-display,
-body.dark-mode nav a.font-display { color: #ffffff !important; }
+body.dark-mode nav a.font-display {
+  color: #ffffff !important;
+}
+
+body.dark-mode .mobile-menu {
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--quov-blue);
+}
+
+body.dark-mode .mobile-menu .nav-link {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mobile-menu .nav-link:hover {
+  background: rgba(0, 191, 255, 0.15);
+  color: var(--quov-blue-light);
+}
+
+body.dark-mode .mobile-menu .nav-link.active {
+  color: var(--quov-blue-light);
+  background: rgba(0, 191, 255, 0.1);
+}
 
 /* ========== 4. FOOTER ========== */
 footer { background-color: var(--bg-neutral-900); }
@@ -286,7 +482,6 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   overflow-y: auto !important;
 }
 
-/* Chat más ancho en desktop */
 #chatOverlay .modal-card {
   max-width: 520px !important;
   width: 92% !important;
@@ -296,7 +491,6 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
               opacity 0.3s ease !important;
 }
 
-/* Mensajes del usuario (derecha, azul) */
 #chatMessages .bg-black {
   background: var(--quov-blue) !important;
   color: white !important;
@@ -308,7 +502,6 @@ body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important
   box-shadow: 0 2px 8px var(--quov-blue-glow) !important;
 }
 
-/* Mensajes del bot (izquierda) - modo claro */
 body:not(.dark-mode) #chatMessages .bg-neutral-100 {
   background: #ffffff !important;
   color: #333333 !important;
@@ -319,7 +512,6 @@ body:not(.dark-mode) #chatMessages .bg-neutral-100 {
   border: 1px solid var(--quov-blue) !important;
 }
 
-/* Mensajes del bot (izquierda) - modo oscuro */
 body.dark-mode #chatMessages .bg-neutral-100 {
   background: #2d2d2d !important;
   color: #e0e0e0 !important;
@@ -357,7 +549,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   transform: scale(1.02) !important;
 }
 
-/* Header del chat con fondo azul */
 #chatOverlay .border-b {
   background: var(--quov-blue) !important;
   border-radius: 24px 24px 0 0 !important;
@@ -377,7 +568,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   transform: scale(1.05) !important;
 }
 
-/* Scrollbar dentro del chat */
 #chatMessages::-webkit-scrollbar { width: 6px; }
 #chatMessages::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 10px; }
 #chatMessages::-webkit-scrollbar-thumb { background: var(--quov-blue); border-radius: 10px; }
@@ -427,8 +617,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 }
 
 /* ========== 11. MODAL LATERAL ========== */
-
-/* --- BOOK: entra deslizando desde la derecha, pegado al borde --- */
 #productOverlay.side-docked {
   z-index: 2000 !important;
   background: transparent !important;
@@ -451,9 +639,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   max-height: 90vh !important;
   pointer-events: auto !important;
   z-index: 2001 !important;
-  /* Esquinas redondeadas solo a la izquierda: visualmente "sale" del borde derecho */
   border-radius: 24px 0 0 24px !important;
-  /* Animación: entra desde translateX(100%) hasta translateX(0) */
   animation: slideInFromRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
 
@@ -468,7 +654,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   }
 }
 
-/* --- CHAT: se desplaza suavemente a la izquierda cuando aparece el libro --- */
 #chatOverlay.chat-side-mode {
   background: transparent !important;
   pointer-events: none !important;
@@ -478,7 +663,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 #chatOverlay.chat-side-mode .modal-card {
   position: fixed !important;
   top: 50% !important;
-  /* Desplazado hacia la izquierda del centro para dejar espacio al libro */
   left: calc(50% - 500px) !important;
   right: auto !important;
   transform: translateY(-50%) translateX(-50%) !important;
@@ -490,7 +674,6 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   overflow-y: auto !important;
   border-radius: 24px !important;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25) !important;
-  /* Transición suave al desplazarse */
   transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
@@ -557,138 +740,20 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
   #cursor-dot, #cursor-ring { display: none !important; }
 }
 
-/* ========== 15. BOTÓN DE MODO OSCURO ========== */
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  color: var(--text-primary);
-}
-.theme-toggle:hover { background: var(--bg-neutral-100); }
+/* ========== 17. RESPONSIVE DESIGN COMPLETO ========== */
 
-/* ========== 16. MENÚ HAMBURGUESA ========== */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-.menu-toggle:hover { background: rgba(0, 191, 255, 0.1); }
-.menu-toggle svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--text-primary);
-  stroke-width: 2;
-  transition: transform 0.3s ease;
-}
-.menu-toggle.active svg { transform: rotate(90deg); }
-
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 68px;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--quov-blue);
-  padding: 12px 20px;
-  z-index: 1000;
-  flex-direction: column;
-  gap: 4px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.3s ease forwards;
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.mobile-menu.active { display: flex; }
-
-.mobile-menu .nav-link {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  font-family: 'Syne', sans-serif;
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: 12px;
-  transition: all 0.25s ease;
-  letter-spacing: 0.3px;
-}
-
-.mobile-menu .nav-link::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--quov-blue);
-  border-radius: 50%;
-  margin-right: 12px;
-  opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.mobile-menu .nav-link:hover::before,
-.mobile-menu .nav-link.active::before {
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-.mobile-menu .nav-link:hover {
-  background: rgba(0, 191, 255, 0.08);
-  color: var(--quov-blue);
-  transform: translateX(4px);
-}
-
-.mobile-menu .nav-link.active {
-  color: var(--quov-blue);
-  font-weight: 700;
-  background: rgba(0, 191, 255, 0.05);
-  border-left: 3px solid var(--quov-blue);
-  border-radius: 12px;
-}
-
-/* Modo oscuro menú hamburguesa */
-body.dark-mode .menu-toggle svg { stroke: var(--text-primary); }
-body.dark-mode .menu-toggle:hover { background: rgba(0, 191, 255, 0.2); }
-body.dark-mode .mobile-menu {
-  background: rgba(10, 10, 10, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom-color: var(--quov-blue);
-}
-body.dark-mode .mobile-menu .nav-link { color: var(--text-primary); }
-body.dark-mode .mobile-menu .nav-link:hover {
-  background: rgba(0, 191, 255, 0.15);
-  color: var(--quov-blue-light);
-}
-body.dark-mode .mobile-menu .nav-link.active {
-  color: var(--quov-blue-light);
-  background: rgba(0, 191, 255, 0.1);
-}
-
-/* ========== 17. RESPONSIVE DESIGN ========== */
-
-/* ========== 17. RESPONSIVE DESIGN ========== */
-
-/* Móviles pequeños (320px – 480px) */
+/* Teléfonos pequeños (320px – 480px) */
 @media (min-width: 320px) and (max-width: 480px) {
+  nav .mx-auto { padding: 0 16px; }
   .logo-nav { height: 28px !important; }
   nav .font-display, nav a.font-display { font-size: 0.85rem !important; }
+  .nav-links-desktop { display: none !important; }
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+  .mobile-menu { top: 60px; }
+  .nav-actions { gap: 0.25rem; }
+  .theme-toggle { padding: 6px; }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  
   .chat-fab { width: 80px !important; height: 80px !important; bottom: 20px !important; right: 20px !important; }
   .chat-fab-logo { width: 42px !important; height: 42px !important; }
   .chat-fab-text { font-size: 9px !important; }
@@ -731,10 +796,15 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Móviles medianos (481px – 767px) */
+/* Teléfonos medianos (481px – 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
+  nav .mx-auto { padding: 0 20px; }
   .logo-nav { height: 30px !important; }
   nav .font-display, nav a.font-display { font-size: 0.9rem !important; }
+  .nav-links-desktop { display: none !important; }
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+  .mobile-menu { top: 64px; }
+  
   .chat-fab { width: 90px !important; height: 90px !important; }
   .chat-fab-logo { width: 46px !important; height: 46px !important; }
   .chat-fab-text { font-size: 10px !important; }
@@ -772,16 +842,19 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Tabletas (768px – 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
+/* Tablets (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  nav .mx-auto { padding: 0 24px; }
   .logo-nav { height: 32px !important; }
+  .nav-links-desktop { display: flex !important; gap: 1.5rem; }
+  .menu-toggle { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .nav-link { font-size: 0.75rem; }
+  
   .chat-fab { width: 95px !important; height: 95px !important; }
   .chat-fab-logo { width: 50px !important; height: 50px !important; }
   .chat-fab-text { font-size: 10px !important; }
   .back2top { width: 50px !important; height: 50px !important; }
-  .menu-toggle { display: flex; align-items: center; justify-content: center; }
-  nav .flex.items-center[style*="gap: 2rem"],
-  nav .hidden.sm\:block { display: none !important; }
 
   #productOverlay.side-docked {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -814,9 +887,15 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Tabletas grandes (992px – 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
+/* Laptops / Escritorios pequeños (1024px – 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  nav .mx-auto { padding: 0 32px; }
   .logo-nav { height: 34px !important; }
+  .nav-links-desktop { display: flex !important; gap: 1.8rem; }
+  .menu-toggle { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .nav-link { font-size: 0.8rem; }
+  
   .chat-fab { width: 100px !important; height: 100px !important; }
   .chat-fab-logo { width: 52px !important; height: 52px !important; }
   .chat-fab-text { font-size: 10px !important; }
@@ -852,9 +931,15 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Escritorios pequeños (1200px – 1439px) — AQUÍ SÍ hay side-by-side */
-@media (min-width: 1200px) and (max-width: 1439px) {
+/* Escritorios grandes (1280px – 1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  nav .mx-auto { padding: 0 40px; max-width: 1300px; }
   .logo-nav { height: 36px !important; }
+  .nav-links-desktop { display: flex !important; gap: 2rem; }
+  .menu-toggle { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .nav-link { font-size: 0.85rem; }
+  
   .chat-fab { width: 100px !important; height: 100px !important; }
   .chat-fab-logo { width: 52px !important; height: 52px !important; }
   .chat-fab-text { font-size: 10px !important; }
@@ -866,11 +951,17 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Escritorios grandes (1440px+) */
+/* Pantallas extra grandes (1440px en adelante) */
 @media (min-width: 1440px) {
-  nav { padding: 18px 48px !important; }
-  nav .mx-auto { max-width: 1400px !important; }
+  nav { padding: 18px 0 !important; }
+  nav .mx-auto { padding: 0 60px; max-width: 1600px; }
   .logo-nav { height: 38px !important; }
+  nav .font-display, nav a.font-display { font-size: 1.35rem !important; }
+  .nav-links-desktop { display: flex !important; gap: 2.5rem; }
+  .menu-toggle { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .nav-link { font-size: 0.9rem; }
+  
   .chat-fab { width: 110px !important; height: 110px !important; bottom: 35px !important; right: 35px !important; }
   .chat-fab-logo { width: 58px !important; height: 58px !important; }
   .chat-fab-text { font-size: 11px !important; }
@@ -887,20 +978,6 @@ body.dark-mode .mobile-menu .nav-link.active {
     width: min(560px, calc(100vw - 460px)) !important;
     max-width: 560px !important;
   }
-}
-
-/* Menú hamburguesa en móviles hasta 767px */
-@media (min-width: 320px) and (max-width: 767px) {
-  .menu-toggle { display: flex; align-items: center; justify-content: center; }
-  nav .flex.items-center[style*="gap: 2rem"],
-  nav .hidden.sm\:block { display: none !important; }
-  .mobile-menu { top: 65px; }
-  nav { position: sticky; top: 0; z-index: 1002; }
-}
-
-/* Ocultar menú mobile en desktop */
-@media (min-width: 768px) {
-  .mobile-menu { display: none !important; }
 }
 
 /* ========== 18. MODO OSCURO - MODALES ========== */

@@ -28,11 +28,9 @@ body {
 }
 
 :root {
-  /* Colores Hero */
   --hero-start: #ffffff;
   --hero-end: #ffffffa5;
 
-  /* Colores principales */
   --quov-blue: #00BFFF;
   --quov-blue-dark: #0099CC;
   --quov-blue-light: #4DCFFF;
@@ -44,7 +42,6 @@ body {
   --quov-gray: #888888;
   --quov-gray-light: #cccccc;
 
-  /* Modo DÍA (por defecto) */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --text-primary: #111111;
@@ -67,7 +64,6 @@ body {
   --video-placeholder-bg: linear-gradient(135deg, #0d1a2e, #1a3a5c);
 }
 
-/* ========== MODO OSCURO ========== */
 body.dark-mode {
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
@@ -84,7 +80,6 @@ body.dark-mode {
   --social-icon-bg: #2a2a2a;
 }
 
-/* Estilos específicos del modo oscuro */
 body.dark-mode .mvo-front {
   border-color: rgba(0, 191, 255, 0.4);
 }
@@ -613,7 +608,6 @@ body {
   margin-top: 48px;
 }
 
-/* 6.1 TARJETAS DE EQUIPO */
 .team-card-new {
   background: var(--card-bg);
   backdrop-filter: blur(4px);
@@ -693,7 +687,6 @@ body {
   text-align: center;
 }
 
-/* 6.2 BOTÓN VER PERFIL */
 .card-overlay-new span {
   display: inline-block;
   background: var(--quov-blue-dark);
@@ -728,7 +721,6 @@ body {
   background: var(--quov-blue) !important;
 }
 
-/* 6.3 VIDEO */
 .team-video-wrapper {
   flex: 0 0 auto;
   width: 420px;
@@ -847,7 +839,6 @@ body {
   transform: scale(1.04);
 }
 
-/* 7.1 REDES SOCIALES EN MODAL */
 .profile-social-icons {
   display: flex;
   justify-content: center;
@@ -936,663 +927,167 @@ body {
 }
 
 /* ========== 9. RESPONSIVE DESIGN ========== */
-
-/* 9.1 Teléfonos pequeños (320px - 480px) */
 @media (min-width: 320px) and (max-width: 480px) {
-  .container {
-    padding: 0 16px;
-  }
-  
-  /* Hero Section */
-  .hero-simple {
-    min-height: 70vh;
-  }
-  
-  .hero-title-simple {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle-simple {
-    font-size: 0.85rem;
-    padding: 0 16px;
-  }
-  
-  /* MVO Section */
-  .mvo-section {
-    padding: 40px 0 60px;
-    min-height: auto;
-  }
-  
-  .mvo-section .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .mvo-section .section-sub {
-    font-size: 0.8rem;
-    padding: 0 16px;
-  }
-  
-  .mvo-grid {
-    gap: 20px;
-    padding: 0 16px;
-  }
-  
-  .mvo-card {
-    width: 280px;
-    height: 340px;
-  }
-  
-  .mvo-front h4 {
-    font-size: 1.3rem;
-  }
-  
-  .mvo-front .mvo-icon {
-    font-size: 2.5rem;
-  }
-  
-  .mvo-front a {
-    font-size: 0.65rem;
-  }
-  
-  .mvo-back p {
-    font-size: 0.8rem;
-  }
-  
-  .mvo-back h4 {
-    font-size: 1.2rem;
-  }
-  
-  /* QUOV Section */
-  .quov-section {
-    padding: 40px 0 60px;
-    min-height: auto;
-  }
-  
-  .quov-section .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .quov-section .section-sub {
-    font-size: 0.8rem;
-    padding: 0 16px;
-  }
-  
-  .quov-grid {
-    gap: 20px;
-    padding: 0 16px;
-  }
-  
-  .quov-card {
-    width: 100%;
-    max-width: 300px;
-    padding: 28px 20px;
-  }
-  
-  .quov-card h4 {
-    font-size: 1rem;
-  }
-  
-  .quov-icon {
-    font-size: 2rem;
-  }
-  
-  /* Team Section */
-  .team-section-wrapper {
-    padding: 40px 0;
-    min-height: auto;
-  }
-  
-  .team-section-new > h3 {
-    font-size: 1.5rem;
-  }
-  
-  .team-section-new > p {
-    font-size: 0.8rem;
-    padding: 0 16px;
-  }
-  
-  .team-layout {
-    gap: 24px;
-    margin-top: 32px;
-  }
-  
-  .team-card-new {
-    width: 100%;
-    max-width: 260px;
-  }
-  
-  .team-card-new img {
-    height: 200px;
-  }
-  
-  .team-video-wrapper {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .team-video-wrapper video,
-  .team-video-wrapper iframe {
-    height: 200px;
-  }
-  
-  .video-placeholder {
-    height: 200px;
-  }
-  
-  .video-placeholder i {
-    font-size: 2rem;
-  }
-  
-  .video-placeholder span {
-    font-size: 0.8rem;
-  }
-  
-  /* Botón Catálogo */
-  .catalog-btn {
-    padding: 10px 24px;
-    font-size: 0.85rem;
-  }
-  
-  /* Modal */
-  #profileCard {
-    width: 260px;
-  }
-  
-  #profileCard img {
-    height: 120px;
-  }
-  
-  .profile-body {
-    padding: 12px 16px;
-  }
-  
-  .profile-body h2 {
-    font-size: 1rem;
-  }
-  
-  .profile-body p {
-    font-size: 0.7rem;
-  }
-  
-  .profile-social-icons {
-    gap: 15px;
-    margin: 15px 0 20px;
-  }
-  
-  .social-icon {
-    width: 38px;
-    height: 38px;
-    font-size: 1rem;
-  }
-  
-  #profileClose {
-    padding: 8px 20px;
-    font-size: 0.8rem;
-  }
-  
-  /* Overlay de tarjetas de equipo */
-  .card-overlay-new span {
-    padding: 6px 16px !important;
-    font-size: 0.7rem !important;
-    min-width: 90px !important;
-  }
-  
-  .team-card-new .card-overlay-new {
-    bottom: -65px !important;
-    padding: 55px 15px 15px !important;
-  }
+  .container { padding: 0 16px; }
+  .hero-simple { min-height: 70vh; }
+  .hero-title-simple { font-size: 2rem; }
+  .hero-subtitle-simple { font-size: 0.85rem; padding: 0 16px; }
+  .mvo-section { padding: 40px 0 60px; min-height: auto; }
+  .mvo-section .section-title { font-size: 1.5rem; }
+  .mvo-section .section-sub { font-size: 0.8rem; padding: 0 16px; }
+  .mvo-grid { gap: 20px; padding: 0 16px; }
+  .mvo-card { width: 280px; height: 340px; }
+  .mvo-front h4 { font-size: 1.3rem; }
+  .mvo-front .mvo-icon { font-size: 2.5rem; }
+  .mvo-front a { font-size: 0.65rem; }
+  .mvo-back p { font-size: 0.8rem; }
+  .mvo-back h4 { font-size: 1.2rem; }
+  .quov-section { padding: 40px 0 60px; min-height: auto; }
+  .quov-section .section-title { font-size: 1.5rem; }
+  .quov-section .section-sub { font-size: 0.8rem; padding: 0 16px; }
+  .quov-grid { gap: 20px; padding: 0 16px; }
+  .quov-card { width: 100%; max-width: 300px; padding: 28px 20px; }
+  .quov-card h4 { font-size: 1rem; }
+  .quov-icon { font-size: 2rem; }
+  .team-section-wrapper { padding: 40px 0; min-height: auto; }
+  .team-section-new > h3 { font-size: 1.5rem; }
+  .team-section-new > p { font-size: 0.8rem; padding: 0 16px; }
+  .team-layout { gap: 24px; margin-top: 32px; }
+  .team-card-new { width: 100%; max-width: 260px; }
+  .team-card-new img { height: 200px; }
+  .team-video-wrapper { width: 100%; max-width: 300px; }
+  .team-video-wrapper video, .team-video-wrapper iframe { height: 200px; }
+  .video-placeholder { height: 200px; }
+  .video-placeholder i { font-size: 2rem; }
+  .video-placeholder span { font-size: 0.8rem; }
+  .catalog-btn { padding: 10px 24px; font-size: 0.85rem; }
+  #profileCard { width: 260px; }
+  #profileCard img { height: 120px; }
+  .profile-body { padding: 12px 16px; }
+  .profile-body h2 { font-size: 1rem; }
+  .profile-body p { font-size: 0.7rem; }
+  .profile-social-icons { gap: 15px; margin: 15px 0 20px; }
+  .social-icon { width: 38px; height: 38px; font-size: 1rem; }
+  #profileClose { padding: 8px 20px; font-size: 0.8rem; }
+  .card-overlay-new span { padding: 6px 16px !important; font-size: 0.7rem !important; min-width: 90px !important; }
+  .team-card-new .card-overlay-new { bottom: -65px !important; padding: 55px 15px 15px !important; }
 }
 
-/* 9.2 Teléfonos medianos (481px - 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-  .container {
-    padding: 0 20px;
-  }
-  
-  /* Hero */
-  .hero-title-simple {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle-simple {
-    font-size: 0.95rem;
-  }
-  
-  /* MVO Section */
-  .mvo-section {
-    min-height: auto;
-  }
-  
-  .mvo-grid {
-    gap: 24px;
-  }
-  
-  .mvo-card {
-    width: 300px;
-    height: 360px;
-  }
-  
-  /* QUOV Section */
-  .quov-section {
-    min-height: auto;
-  }
-  
-  .quov-grid {
-    gap: 24px;
-  }
-  
-  .quov-card {
-    width: calc(50% - 12px);
-    min-width: 200px;
-  }
-  
-  /* Team Section */
-  .team-section-wrapper {
-    min-height: auto;
-  }
-  
-  .team-layout {
-    gap: 28px;
-  }
-  
-  .team-card-new {
-    width: calc(50% - 14px);
-    min-width: 200px;
-  }
-  
-  .team-video-wrapper {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  /* Botón */
-  .catalog-btn {
-    padding: 12px 32px;
-    font-size: 0.95rem;
-  }
+  .container { padding: 0 20px; }
+  .hero-title-simple { font-size: 2.5rem; }
+  .hero-subtitle-simple { font-size: 0.95rem; }
+  .mvo-section { min-height: auto; }
+  .mvo-grid { gap: 24px; }
+  .mvo-card { width: 300px; height: 360px; }
+  .quov-section { min-height: auto; }
+  .quov-grid { gap: 24px; }
+  .quov-card { width: calc(50% - 12px); min-width: 200px; }
+  .team-section-wrapper { min-height: auto; }
+  .team-layout { gap: 28px; }
+  .team-card-new { width: calc(50% - 14px); min-width: 200px; }
+  .team-video-wrapper { width: 100%; max-width: 400px; }
+  .catalog-btn { padding: 12px 32px; font-size: 0.95rem; }
 }
 
-/* 9.3 Teléfonos grandes / Tablets pequeñas (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
-  .container {
-    padding: 0 24px;
-  }
-  
-  /* Hero */
-  .hero-title-simple {
-    font-size: 3rem;
-  }
-  
-  /* MVO Section */
-  .mvo-section {
-    min-height: auto;
-  }
-  
-  .mvo-grid {
-    gap: 28px;
-  }
-  
-  .mvo-card {
-    width: 300px;
-    height: 370px;
-  }
-  
-  /* QUOV Section */
-  .quov-section {
-    min-height: auto;
-  }
-  
-  .quov-card {
-    width: calc(33.33% - 19px);
-    min-width: 220px;
-  }
-  
-  /* Team Section */
-  .team-section-wrapper {
-    min-height: auto;
-  }
-  
-  .team-card-new {
-    width: 210px;
-  }
-  
-  .team-video-wrapper {
-    width: 320px;
-  }
+  .container { padding: 0 24px; }
+  .hero-title-simple { font-size: 3rem; }
+  .mvo-section { min-height: auto; }
+  .mvo-grid { gap: 28px; }
+  .mvo-card { width: 300px; height: 370px; }
+  .quov-section { min-height: auto; }
+  .quov-card { width: calc(33.33% - 19px); min-width: 220px; }
+  .team-section-wrapper { min-height: auto; }
+  .team-card-new { width: 210px; }
+  .team-video-wrapper { width: 320px; }
 }
 
-/* 9.4 Tabletas (992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
-  .container {
-    padding: 0 32px;
-  }
-  
-  /* MVO */
-  .mvo-card {
-    width: 310px;
-    height: 380px;
-  }
-  
-  /* QUOV */
-  .quov-card {
-    width: calc(33.33% - 19px);
-    min-width: 260px;
-  }
-  
-  /* Team */
-  .team-card-new {
-    width: 220px;
-  }
-  
-  .team-video-wrapper {
-    width: 340px;
-  }
+  .container { padding: 0 32px; }
+  .mvo-card { width: 310px; height: 380px; }
+  .quov-card { width: calc(33.33% - 19px); min-width: 260px; }
+  .team-card-new { width: 220px; }
+  .team-video-wrapper { width: 340px; }
 }
 
-/* 9.5 Escritorios pequeños (1200px - 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
-  .container {
-    max-width: 1300px;
-    padding: 0 40px;
-  }
-  
-  .mvo-card {
-    width: 350px;
-    height: 420px;
-  }
-  
-  .quov-card {
-    width: 320px;
-  }
-  
-  .team-card-new {
-    width: 250px;
-  }
-  
-  .team-video-wrapper {
-    width: 380px;
-  }
+  .container { max-width: 1300px; padding: 0 40px; }
+  .mvo-card { width: 350px; height: 420px; }
+  .quov-card { width: 320px; }
+  .team-card-new { width: 250px; }
+  .team-video-wrapper { width: 380px; }
 }
 
-/* 9.6 Escritorios grandes (1440px en adelante) - TAMAÑOS AUMENTADOS */
 @media (min-width: 1440px) {
-  .container {
-    max-width: 1600px;
-    padding: 0 60px;
-  }
-  
-  /* Hero */
-  .hero-title-simple {
-    font-size: 5rem;
-  }
-  
-  .hero-subtitle-simple {
-    font-size: 1.5rem;
-    max-width: 800px;
-  }
-  
-  /* Títulos de sección */
-  .mvo-section .section-title,
-  .quov-section .section-title,
-  .team-section-new > h3 {
-    font-size: 3rem;
-  }
-  
-  .mvo-section .section-sub,
-  .quov-section .section-sub,
-  .team-section-new > p {
-    font-size: 1.2rem;
-  }
-  
-  /* MVO Cards */
-  .mvo-card {
-    width: 420px;
-    height: 500px;
-  }
-  
-  .mvo-front h4 {
-    font-size: 2rem;
-  }
-  
-  .mvo-front .mvo-icon {
-    font-size: 4.5rem;
-  }
-  
-  .mvo-back h4 {
-    font-size: 1.8rem;
-  }
-  
-  .mvo-back p {
-    font-size: 1.05rem;
-  }
-  
-  /* QUOV Cards */
-  .quov-grid {
-    max-width: 1500px;
-    gap: 40px;
-  }
-  
-  .quov-card {
-    width: 380px;
-    padding: 55px 40px 45px;
-  }
-  
-  .quov-card h4 {
-    font-size: 1.5rem;
-  }
-  
-  .quov-icon {
-    font-size: 3rem;
-  }
-  
-  .quov-msg {
-    font-size: 1rem;
-  }
-  
-  /* Team Cards */
-  .team-section-new {
-    max-width: 1600px;
-  }
-  
-  .team-layout {
-    gap: 50px;
-  }
-  
-  .team-card-new {
-    width: 300px;
-  }
-  
-  .team-card-new img {
-    height: 320px;
-  }
-  
-  .team-info-new h3 {
-    font-size: 1.3rem;
-  }
-  
-  .team-info-new .role {
-    font-size: 1rem;
-  }
-  
-  /* Video */
-  .team-video-wrapper {
-    width: 480px;
-  }
-  
-  .team-video-wrapper video,
-  .team-video-wrapper iframe,
-  .video-placeholder {
-    height: 360px;
-  }
-  
-  .video-placeholder i {
-    font-size: 4rem;
-  }
-  
-  /* Botón */
-  .catalog-btn {
-    padding: 22px 70px;
-    font-size: 1.4rem;
-  }
-  
-  /* Modal */
-  #profileCard {
-    width: 380px;
-  }
-  
-  #profileCard img {
-    height: 180px;
-  }
-  
-  .profile-body h2 {
-    font-size: 1.6rem;
-  }
-  
-  .profile-body .profile-role {
-    font-size: 0.95rem;
-  }
-  
-  .profile-body p {
-    font-size: 1rem;
-  }
-  
-  .social-icon {
-    width: 55px;
-    height: 55px;
-    font-size: 1.4rem;
-  }
-  
-  #profileClose {
-    padding: 14px 36px;
-    font-size: 1rem;
-  }
+  .container { max-width: 1600px; padding: 0 60px; }
+  .hero-title-simple { font-size: 5rem; }
+  .hero-subtitle-simple { font-size: 1.5rem; max-width: 800px; }
+  .mvo-section .section-title, .quov-section .section-title, .team-section-new > h3 { font-size: 3rem; }
+  .mvo-section .section-sub, .quov-section .section-sub, .team-section-new > p { font-size: 1.2rem; }
+  .mvo-card { width: 420px; height: 500px; }
+  .mvo-front h4 { font-size: 2rem; }
+  .mvo-front .mvo-icon { font-size: 4.5rem; }
+  .mvo-back h4 { font-size: 1.8rem; }
+  .mvo-back p { font-size: 1.05rem; }
+  .quov-grid { max-width: 1500px; gap: 40px; }
+  .quov-card { width: 380px; padding: 55px 40px 45px; }
+  .quov-card h4 { font-size: 1.5rem; }
+  .quov-icon { font-size: 3rem; }
+  .quov-msg { font-size: 1rem; }
+  .team-section-new { max-width: 1600px; }
+  .team-layout { gap: 50px; }
+  .team-card-new { width: 300px; }
+  .team-card-new img { height: 320px; }
+  .team-info-new h3 { font-size: 1.3rem; }
+  .team-info-new .role { font-size: 1rem; }
+  .team-video-wrapper { width: 480px; }
+  .team-video-wrapper video, .team-video-wrapper iframe, .video-placeholder { height: 360px; }
+  .video-placeholder i { font-size: 4rem; }
+  .catalog-btn { padding: 22px 70px; font-size: 1.4rem; }
+  #profileCard { width: 380px; }
+  #profileCard img { height: 180px; }
+  .profile-body h2 { font-size: 1.6rem; }
+  .profile-body .profile-role { font-size: 0.95rem; }
+  .profile-body p { font-size: 1rem; }
+  .social-icon { width: 55px; height: 55px; font-size: 1.4rem; }
+  #profileClose { padding: 14px 36px; font-size: 1rem; }
 }
 
-/* 9.7 Ajustes adicionales para orientación landscape en móviles */
 @media (max-width: 767px) and (orientation: landscape) {
-  .hero-simple {
-    min-height: 100vh;
-  }
-  
-  .mvo-card {
-    height: 320px;
-  }
-  
-  .mvo-front .mvo-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .mvo-front h4 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-  }
-  
-  .mvo-front a {
-    font-size: 0.6rem;
-  }
-  
-  .mvo-back p {
-    font-size: 0.7rem;
-    margin-bottom: 10px;
-  }
-  
-  .mvo-back h4 {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  
-  .quov-card {
-    padding: 20px 16px;
-  }
-  
-  .quov-icon {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-  }
-  
-  .quov-card h4 {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-  }
-  
-  .team-card-new img {
-    height: 160px;
-  }
-  
-  .team-info-new {
-    padding: 12px;
-  }
-  
-  .team-info-new h3 {
-    font-size: 0.85rem;
-  }
+  .hero-simple { min-height: 100vh; }
+  .mvo-card { height: 320px; }
+  .mvo-front .mvo-icon { font-size: 2rem; margin-bottom: 10px; }
+  .mvo-front h4 { font-size: 1.1rem; margin-bottom: 6px; }
+  .mvo-front a { font-size: 0.6rem; }
+  .mvo-back p { font-size: 0.7rem; margin-bottom: 10px; }
+  .mvo-back h4 { font-size: 1rem; margin-bottom: 10px; }
+  .quov-card { padding: 20px 16px; }
+  .quov-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .quov-card h4 { font-size: 0.9rem; margin-bottom: 8px; }
+  .team-card-new img { height: 160px; }
+  .team-info-new { padding: 12px; }
+  .team-info-new h3 { font-size: 0.85rem; }
 }
 
-/* 9.8 Ajustes para pantallas muy pequeñas (menos de 320px) */
 @media (max-width: 319px) {
-  .container {
-    padding: 0 12px;
-  }
-  
-  .hero-title-simple {
-    font-size: 1.6rem;
-  }
-  
-  .hero-subtitle-simple {
-    font-size: 0.75rem;
-  }
-  
-  .mvo-card {
-    width: 260px;
-    height: 320px;
-  }
-  
-  .mvo-front {
-    padding: 20px 16px;
-  }
-  
-  .mvo-front .mvo-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .mvo-front h4 {
-    font-size: 1.1rem;
-  }
-  
-  .mvo-back {
-    padding: 20px 16px;
-  }
-  
-  .mvo-back p {
-    font-size: 0.7rem;
-  }
-  
-  .quov-card {
-    padding: 20px 16px;
-  }
-  
-  .quov-card h4 {
-    font-size: 0.9rem;
-  }
-  
-  .quov-msg {
-    font-size: 0.75rem;
-  }
-  
-  .team-card-new {
-    max-width: 240px;
-  }
-  
-  .catalog-btn {
-    padding: 8px 20px;
-    font-size: 0.75rem;
-  }
+  .container { padding: 0 12px; }
+  .hero-title-simple { font-size: 1.6rem; }
+  .hero-subtitle-simple { font-size: 0.75rem; }
+  .mvo-card { width: 260px; height: 320px; }
+  .mvo-front { padding: 20px 16px; }
+  .mvo-front .mvo-icon { font-size: 2rem; margin-bottom: 10px; }
+  .mvo-front h4 { font-size: 1.1rem; }
+  .mvo-back { padding: 20px 16px; }
+  .mvo-back p { font-size: 0.7rem; }
+  .quov-card { padding: 20px 16px; }
+  .quov-card h4 { font-size: 0.9rem; }
+  .quov-msg { font-size: 0.75rem; }
+  .team-card-new { max-width: 240px; }
+  .catalog-btn { padding: 8px 20px; font-size: 0.75rem; }
 }
 
-/* ========== 10. ANIMACIONES  ========== */
-/* Tarjetas que se voltean */
+/* ========== 10. ANIMACIONES ========== */
 .mvo-card .mvo-card-inner {
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }

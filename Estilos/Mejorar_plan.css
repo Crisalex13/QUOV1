@@ -28,7 +28,6 @@ body {
 }
 
 :root {
-  /* Negro y sus variantes  */
   --black-solid: #000000;
   --black-95: rgba(0, 0, 0, 0.95);
   --black-90: rgba(0, 0, 0, 0.90);
@@ -44,7 +43,6 @@ body {
   --black-10: rgba(0, 0, 0, 0.10);
   --black-05: rgba(0, 0, 0, 0.05);
   
-  /* Blanco y sus variantes */
   --white-solid: #ffffff;
   --white-95: rgba(255, 255, 255, 0.95);
   --white-90: rgba(255, 255, 255, 0.90);
@@ -60,7 +58,6 @@ body {
   --white-10: rgba(255, 255, 255, 0.10);
   --white-05: rgba(255, 255, 255, 0.05);
   
-  /* Azul #00BFFF y sus variantes */
   --blue-solid: #00BFFF;
   --blue-dark: #0099CC;
   --blue-light: #4DCFFF;
@@ -80,9 +77,6 @@ body {
   --blue-10: rgba(0, 191, 255, 0.10);
   --blue-05: rgba(0, 191, 255, 0.05);
   
-/* ========== MODO DIA ========== */
-  
-  /* Hero */
   --hero-start: var(--white-solid);
   --hero-end: var(--white-85);
   --hero-text-gradient-start: var(--white-solid);
@@ -90,35 +84,29 @@ body {
   --hero-subtitle-color: var(--white-solid);
   --hero-fondo: var(--black-70);
   
-  /* Fondos */
   --bg-primary: var(--white-solid);
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
   --bg-neutral-900: var(--black-solid);
   
-  /* Textos */
   --text-primary: #111111;
   --text-secondary: #444444;
   --text-neutral-400: #94a3b8;
   
-  /* Bordes y sombras */
   --border-light: var(--blue-25);
   --card-bg: var(--white-solid);
   --card-shadow: var(--black-08);
   --card-shadow-hover: var(--black-15);
   
-  /* Planes específico */
   --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, var(--blue-50) 100%);
   --plan-card-border-hover: var(--blue-35);
   --plan-popular-shadow: var(--blue-20);
   --btn-ventajas-hover-bg: var(--blue-06);
   --btn-access-shadow: var(--blue-30);
   
-  /* Scrollbar */
   --scrollbar-track: var(--black-10);
   --scrollbar-thumb: var(--blue-solid);
   
-  /* Colores adicionales */
   --quov-blue: var(--blue-solid);
   --quov-blue-dark: var(--blue-dark);
   --quov-blue-light: var(--blue-light);
@@ -128,9 +116,7 @@ body {
   --contraste: var(--blue-30);
 }
 
-/* ========== MODO OSCURO ========== */
 body.dark-mode {
-  /* Colores para textos en hero en modo oscuro */
   --hero-start: #e0e0e0;
   --hero-end: #e0e0e0a5;
   --hero-text-gradient-start: #e0e0e0;
@@ -159,7 +145,6 @@ body.dark-mode {
   --btn-ventajas-hover-bg: rgba(0, 191, 255, 0.12);
   --btn-access-shadow: rgba(0, 191, 255, 0.4);
   
-  /* Colores de scrollbar en modo oscuro */
   --scrollbar-track: rgba(255, 255, 255, 0.1);
   --scrollbar-thumb: var(--quov-blue);
 }
@@ -186,43 +171,6 @@ body.modal-open {
   overflow: hidden;
   animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
   transition: background 0.3s ease;
-}
-
-.plans-hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, var(--hero-fondo), transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: ripple 4s ease-out infinite;
-  pointer-events: none;
-}
-
-@keyframes ripple {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: 0.5;
-  }
-  25% {
-    width: 50vw;
-    height: 50vw;
-    opacity: 0.7;
-  }
-  50% {
-    width: 200vw;
-    height: 200vw;
-    opacity: 0;
-  }
-  100% {
-    width: 0px;
-    height: 0px;
-    opacity: 0.5;
-  }
 }
 
 @keyframes fadeInUp {
@@ -272,8 +220,6 @@ body.modal-open {
 /* ============================================
    4. TARJETAS DE PLANES (GRID)
    ============================================ */
-
-/* 4.1 GRID PRINCIPAL */
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -283,7 +229,6 @@ body.modal-open {
   padding: 48px 24px 80px;
 }
 
-/* 4.2 TARJETA BASE */
 .plan-card {
   background: var(--card-bg);
   border: 1px solid var(--border-light);
@@ -320,7 +265,6 @@ body.modal-open {
   background: linear-gradient(90deg, var(--quov-blue), var(--quov-blue-light));
 }
 
-/* 4.3 TARJETA POPULAR */
 .plan-card.popular {
   border-color: var(--quov-blue);
   box-shadow: 0 12px 36px var(--plan-popular-shadow);
@@ -347,12 +291,10 @@ body.modal-open {
   z-index: 2;
 }
 
-/* 4.4 CONTENIDO INTERNO DE LA TARJETA */
 .plan-card > * {
   flex-shrink: 0;
 }
 
-/* 4.5 HEADER DE LA TARJETA */
 .plan-header {
   display: flex;
   justify-content: space-between;
@@ -372,7 +314,6 @@ body.modal-open {
   letter-spacing: 0.04em;
 }
 
-/* ICONOS DE PLANES */
 .plan-icon {
   font-size: 1.5rem;
 }
@@ -392,7 +333,6 @@ body.modal-open {
   opacity: 1;
 }
 
-/* 4.6 NOMBRE Y DESCRIPCIÓN */
 .plan-name {
   font-family: 'Syne', sans-serif;
   font-size: 1.5rem;
@@ -410,7 +350,6 @@ body.modal-open {
   min-height: 60px;
 }
 
-/* 4.7 PRECIO */
 .plan-price {
   font-family: 'Syne', sans-serif;
   font-size: 2.2rem;
@@ -435,8 +374,6 @@ body.modal-open {
 /* ============================================
    5. MODALES (VENTAJAS + ACCESO)
    ============================================ */
-
-/* 5.1 BOTÓN TOGGLE VENTAJAS */
 .btn-ventajas {
   display: flex;
   align-items: center;
@@ -479,7 +416,6 @@ body.modal-open {
   transform: rotate(180deg);
 }
 
-/* 5.2 LISTA DE VENTAJAS INLINE */
 .ventajas-inline {
   max-height: 0;
   overflow-y: auto;
@@ -525,7 +461,6 @@ body.modal-open {
   color: var(--text-primary);
 }
 
-/* 5.3 SCROLLBAR PERSONALIZADA */
 .ventajas-inline::-webkit-scrollbar {
   width: 4px;
 }
@@ -540,7 +475,6 @@ body.modal-open {
   border-radius: 4px;
 }
 
-/* 5.4 BOTÓN DE ACCESO */
 .btn-access {
   display: flex;
   align-items: center;
@@ -571,192 +505,56 @@ body.modal-open {
 /* ============================================
    6. RESPONSIVE DESIGN
    ============================================ */
-
-/* 6.1 MÓVILES PEQUEÑOS (320px - 480px) */
 @media (max-width: 480px) {
-  .plans-hero {
-    padding: 40px 16px 32px;
-  }
-  
-  .plans-hero h1 {
-    font-size: 1.8rem;
-  }
-  
-  .plans-hero p {
-    font-size: 0.85rem;
-  }
-  
-  .plans-grid {
-    grid-template-columns: 1fr;
-    padding: 24px 16px 48px;
-    gap: 20px;
-  }
-  
-  .plan-card {
-    padding: 24px 20px;
-    min-height: 520px;
-  }
-  
-  .plan-name {
-    font-size: 1.3rem;
-  }
-  
-  .plan-price {
-    font-size: 1.8rem;
-  }
-  
-  .plan-desc {
-    min-height: 50px;
-  }
-  
-  .btn-ventajas,
-  .btn-access {
-    padding: 10px 16px;
-    font-size: 0.75rem;
-  }
-  
-  .ventajas-inline.abierto {
-    max-height: 280px;
-  }
+  .plans-hero { padding: 40px 16px 32px; }
+  .plans-hero h1 { font-size: 1.8rem; }
+  .plans-hero p { font-size: 0.85rem; }
+  .plans-grid { grid-template-columns: 1fr; padding: 24px 16px 48px; gap: 20px; }
+  .plan-card { padding: 24px 20px; min-height: 520px; }
+  .plan-name { font-size: 1.3rem; }
+  .plan-price { font-size: 1.8rem; }
+  .plan-desc { min-height: 50px; }
+  .btn-ventajas, .btn-access { padding: 10px 16px; font-size: 0.75rem; }
+  .ventajas-inline.abierto { max-height: 280px; }
 }
 
-/* 6.2 MÓVILES MEDIANOS (481px - 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-  .plans-hero {
-    padding: 50px 20px 40px;
-  }
-  
-  .plans-hero h1 {
-    font-size: 2rem;
-  }
-  
-  .plans-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    padding: 32px 20px 60px;
-    margin: 0 auto;
-  }
-  
-  .plan-card {
-    padding: 28px 24px;
-    min-height: 540px;
-  }
+  .plans-hero { padding: 50px 20px 40px; }
+  .plans-hero h1 { font-size: 2rem; }
+  .plans-grid { grid-template-columns: 1fr; max-width: 400px; padding: 32px 20px 60px; margin: 0 auto; }
+  .plan-card { padding: 28px 24px; min-height: 540px; }
 }
 
-/* 6.3 TABLETS (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .plans-hero {
-    padding: 60px 24px 45px;
-  }
-  
-  .plans-hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .plans-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 700px;
-    padding: 40px 24px 70px;
-  }
-  
-  .plan-card.popular {
-    grid-column: 1 / -1;
-    max-width: 450px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  .plan-card {
-    padding: 28px 24px;
-    min-height: 560px;
-  }
+  .plans-hero { padding: 60px 24px 45px; }
+  .plans-hero h1 { font-size: 2.5rem; }
+  .plans-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 700px; padding: 40px 24px 70px; }
+  .plan-card.popular { grid-column: 1 / -1; max-width: 450px; margin: 0 auto; width: 100%; }
+  .plan-card { padding: 28px 24px; min-height: 560px; }
 }
 
-/* 6.4 ESCRITORIO PEQUEÑO (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .plans-grid {
-    gap: 20px;
-    padding: 48px 24px 80px;
-  }
-  
-  .plan-card {
-    padding: 28px 24px;
-    min-height: 580px;
-  }
-  
-  .plan-name {
-    font-size: 1.4rem;
-  }
-  
-  .plan-price {
-    font-size: 2rem;
-  }
+  .plans-grid { gap: 20px; padding: 48px 24px 80px; }
+  .plan-card { padding: 28px 24px; min-height: 580px; }
+  .plan-name { font-size: 1.4rem; }
+  .plan-price { font-size: 2rem; }
 }
 
-/* 6.5 ESCRITORIO MEDIANO (1280px - 1439px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
-  .plans-grid {
-    max-width: 1100px;
-    gap: 28px;
-  }
-  
-  .plan-card {
-    padding: 32px 28px;
-    min-height: 600px;
-  }
+  .plans-grid { max-width: 1100px; gap: 28px; }
+  .plan-card { padding: 32px 28px; min-height: 600px; }
 }
 
-/* 6.6 PANTALLAS GRANDES (1440px en adelante) */
 @media (min-width: 1440px) {
-  .plans-hero {
-    padding: 90px 24px 60px;
-  }
-  
-  .plans-hero h1 {
-    font-size: 4rem;
-  }
-  
-  .plans-hero p {
-    font-size: 1.3rem;
-    max-width: 650px;
-  }
-  
-  .plans-grid {
-    max-width: 1300px;
-    gap: 32px;
-    padding: 60px 24px 100px;
-  }
-  
-  .plan-card {
-    padding: 40px 32px;
-    min-height: 640px;
-  }
-  
-  .plan-name {
-    font-size: 1.7rem;
-  }
-  
-  .plan-price {
-    font-size: 2.5rem;
-  }
-  
-  .plan-desc {
-    font-size: 0.9rem;
-    min-height: 70px;
-  }
-  
-  .btn-ventajas,
-  .btn-access {
-    padding: 14px 24px;
-    font-size: 0.9rem;
-  }
-  
-  .ventajas-inline li {
-    font-size: 0.92rem;
-  }
-  
-  .ventajas-inline.abierto {
-    max-height: 360px;
-  }
+  .plans-hero { padding: 90px 24px 60px; }
+  .plans-hero h1 { font-size: 4rem; }
+  .plans-hero p { font-size: 1.3rem; max-width: 650px; }
+  .plans-grid { max-width: 1300px; gap: 32px; padding: 60px 24px 100px; }
+  .plan-card { padding: 40px 32px; min-height: 640px; }
+  .plan-name { font-size: 1.7rem; }
+  .plan-price { font-size: 2.5rem; }
+  .plan-desc { font-size: 0.9rem; min-height: 70px; }
+  .btn-ventajas, .btn-access { padding: 14px 24px; font-size: 0.9rem; }
+  .ventajas-inline li { font-size: 0.92rem; }
+  .ventajas-inline.abierto { max-height: 360px; }
 }

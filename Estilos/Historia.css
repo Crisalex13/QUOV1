@@ -28,11 +28,9 @@ body {
 }
 
 :root {
-  /* Colores Hero */
   --hero-start: #ffffff;
   --hero-end: #ffffffa5;
 
-  /* Colores principales */
   --quov-blue: #00BFFF;
   --quov-blue-dark: #0099CC;
   --quov-blue-light: #4DCFFF;
@@ -40,7 +38,6 @@ body {
   --quov-black-dark: #0a0a0a;
   --quov-white: #ffffff;
   
-  /* Modo DÍA (por defecto) */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
@@ -54,7 +51,6 @@ body {
   --card-shadow: rgba(0, 0, 0, 0.08);
   --card-shadow-hover: rgba(0, 0, 0, 0.15);
   
-  /* Historia específico */
   --historia-bg: var(--bg-primary);
   --historia-text-primary: var(--text-primary);
   --historia-text-secondary: var(--text-secondary);
@@ -67,7 +63,6 @@ body {
   --historia-overlay: rgba(0, 0, 0, 0.55);
   --historia-card-bg: #fefefe;
   
-  /* Ideas section */
   --ideas-bg: var(--bg-primary);
   --ideas-text-primary: #0f172a;
   --ideas-text-secondary: #334155;
@@ -86,11 +81,9 @@ body {
   --ideas-shadow: var(--card-shadow);
   --ideas-shadow-hover: var(--card-shadow-hover);
   
-  /* Libro interactivo */
   --librito-color: rgba(0, 191, 255, 0.71);
 }
 
-/* Modo OSCURO */
 body.dark-mode {
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
@@ -541,7 +534,6 @@ body.dark-mode {
   border-radius: 40px;
 }
 
-/* Modo oscuro para el libro */
 body.dark-mode .page {
   background: #1a1a2e;
 }
@@ -819,7 +811,6 @@ body.dark-mode canvas {
   visibility: visible;
 }
 
-/* Imágenes de fondo de las tarjetas */
 .grid-row:first-child .acc-card:nth-child(1) { 
   background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format'); 
 }

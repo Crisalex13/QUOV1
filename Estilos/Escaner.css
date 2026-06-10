@@ -21,14 +21,12 @@
    1. VARIABLES ESCÁNER 
    ============================================ */
 :root {
-  /* Colores principales */
   --quov-blue: #00BFFF;
   --quov-blue-dark: #0099CC;
   --quov-blue-light: #4DCFFF;
   --quov-white: #ffffff;
   --quov-black: #000000;
   
-  /* Modo DÍA (por defecto) */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
@@ -43,15 +41,10 @@
   --card-shadow: rgba(0, 0, 0, 0.08);
   --card-shadow-hover: rgba(0, 0, 0, 0.15);
   
-  /* Scanner específico */
   --scanner-gradient-start: rgba(0, 191, 255, 0.05);
   --scanner-gradient-end: rgba(0, 191, 255, 0.02);
   --scanner-ripple-color: rgba(0, 191, 255, 0.12);
-  --scanner-sweep-gradient: linear-gradient(90deg, 
-    transparent, 
-    rgba(0, 191, 255, 0.15), 
-    rgba(0, 191, 255, 0.08), 
-    transparent);
+  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.15), rgba(0, 191, 255, 0.08), transparent);
   --dropzone-hover-bg: rgba(0, 191, 255, 0.04);
   --btn-access-shadow: rgba(0, 191, 255, 0.32);
   --btn-back-bg: rgba(0, 191, 255, 0.08);
@@ -63,7 +56,6 @@
   --error-color: #ef4444;
 }
 
-/* Modo OSCURO */
 body.dark-mode {
   --bg-primary: #0a0a0a;
   --bg-secondary: #0f0f1a;
@@ -79,15 +71,10 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
   
-  /* Scanner específico - modo oscuro */
   --scanner-gradient-start: rgba(0, 191, 255, 0.08);
   --scanner-gradient-end: rgba(0, 191, 255, 0.03);
   --scanner-ripple-color: rgba(0, 191, 255, 0.2);
-  --scanner-sweep-gradient: linear-gradient(90deg, 
-    transparent, 
-    rgba(0, 191, 255, 0.25), 
-    rgba(0, 191, 255, 0.15), 
-    transparent);
+  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.25), rgba(0, 191, 255, 0.15), transparent);
   --dropzone-hover-bg: rgba(0, 191, 255, 0.08);
   --btn-access-shadow: rgba(0, 191, 255, 0.4);
   --btn-back-bg: rgba(0, 191, 255, 0.12);
@@ -109,30 +96,6 @@ body.dark-mode {
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.scanner-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--scanner-sweep-gradient);
-  animation: lightSweep 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes lightSweep {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
 }
 
 .scanner-hero h1 {
@@ -208,9 +171,7 @@ body.dark-mode {
   font-weight: 600;
 }
 
-input[type="file"] { 
-  display: none; 
-}
+input[type="file"] { display: none; }
 
 /* ============================================
    5. PREVIEW ARCHIVO
@@ -226,9 +187,7 @@ input[type="file"] {
   margin-bottom: 20px;
 }
 
-.file-preview.show { 
-  display: flex; 
-}
+.file-preview.show { display: flex; }
 
 .file-preview-icon { 
   font-size: 2rem; 
@@ -276,9 +235,7 @@ input[type="file"] {
 /* ============================================
    6. PREGUNTA OPCIONAL
    ============================================ */
-.question-section { 
-  margin-bottom: 20px; 
-}
+.question-section { margin-bottom: 20px; }
 
 .question-label {
   display: block;
@@ -308,13 +265,8 @@ input[type="file"] {
   line-height: 1.6;
 }
 
-.question-textarea:focus { 
-  border-color: var(--quov-blue); 
-}
-
-.question-textarea::placeholder { 
-  color: var(--text-secondary); 
-}
+.question-textarea:focus { border-color: var(--quov-blue); }
+.question-textarea::placeholder { color: var(--text-secondary); }
 
 /* ============================================
    7. MENSAJES DE ERROR
@@ -332,9 +284,7 @@ input[type="file"] {
   color: var(--error-color);
 }
 
-.error-msg.show { 
-  display: flex; 
-}
+.error-msg.show { display: flex; }
 
 /* ============================================
    8. BOTÓN ESCANEAR
@@ -380,9 +330,7 @@ input[type="file"] {
   padding: 36px 24px;
 }
 
-.loading-state.show { 
-  display: block; 
-}
+.loading-state.show { display: block; }
 
 .spinner {
   width: 46px;
@@ -423,13 +371,8 @@ input[type="file"] {
   transition: color 0.3s;
 }
 
-.loading-steps li.done { 
-  color: var(--quov-blue); 
-}
-
-.loading-steps li i { 
-  font-size: 0.85rem; 
-}
+.loading-steps li.done { color: var(--quov-blue); }
+.loading-steps li i { font-size: 0.85rem; }
 
 /* ============================================
    10. ÁREA DE RESULTADO
@@ -442,9 +385,7 @@ input[type="file"] {
   background: var(--bg-secondary);
 }
 
-.result-area.show { 
-  display: block; 
-}
+.result-area.show { display: block; }
 
 .result-header {
   display: flex;
@@ -464,9 +405,7 @@ input[type="file"] {
   gap: 9px;
 }
 
-.result-header h3 i { 
-  color: var(--quov-blue); 
-}
+.result-header h3 i { color: var(--quov-blue); }
 
 .btn-copy {
   display: flex;
@@ -495,17 +434,9 @@ input[type="file"] {
   line-height: 1.75;
 }
 
-.result-body p { 
-  margin-bottom: 12px; 
-}
-
-.result-body strong { 
-  color: var(--quov-blue); 
-}
-
-.result-section { 
-  margin-bottom: 22px; 
-}
+.result-body p { margin-bottom: 12px; }
+.result-body strong { color: var(--quov-blue); }
+.result-section { margin-bottom: 22px; }
 
 .result-section-label {
   font-family: 'Syne', sans-serif;
@@ -569,344 +500,97 @@ input[type="file"] {
   transition: transform 0.3s ease;
 }
 
-.btn-back:hover i {
-  transform: translateX(-3px);
-}
+.btn-back:hover i { transform: translateX(-3px); }
 
 /* ============================================
    12. RESPONSIVE DESIGN
    ============================================ */
-
-/* 12.1 TELÉFONOS PEQUEÑOS (320px - 480px) */
 @media (max-width: 480px) {
-  .scanner-hero {
-    padding: 28px 16px 24px;
-  }
-  
-  .scanner-hero h1 {
-    font-size: 1.6rem;
-    margin-bottom: 12px;
-  }
-  
-  .scanner-hero p {
-    font-size: 0.85rem;
-  }
-  
-  .scanner-page {
-    padding: 28px 16px 48px;
-  }
-  
-  .drop-zone {
-    padding: 32px 16px;
-  }
-  
-  .drop-zone-icon {
-    font-size: 2rem;
-  }
-  
-  .drop-zone-title {
-    font-size: 0.9rem;
-  }
-  
-  .drop-zone-sub {
-    font-size: 0.75rem;
-  }
-  
-  .file-preview {
-    padding: 12px 16px;
-  }
-  
-  .file-preview-icon {
-    font-size: 1.6rem;
-  }
-  
-  .file-preview-name {
-    font-size: 0.8rem;
-  }
-  
-  .question-textarea {
-    padding: 11px 14px;
-    font-size: 0.82rem;
-  }
-  
-  .btn-scan {
-    padding: 12px 20px;
-    font-size: 0.85rem;
-  }
-  
-  .loading-state {
-    padding: 28px 16px;
-  }
-  
-  .loading-label {
-    font-size: 0.85rem;
-  }
-  
-  .loading-steps li {
-    font-size: 0.75rem;
-  }
-  
-  .result-header {
-    padding: 14px 18px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .result-header h3 {
-    font-size: 0.85rem;
-  }
-  
-  .btn-copy {
-    padding: 5px 12px;
-    font-size: 0.7rem;
-  }
-  
-  .result-body {
-    padding: 18px 16px;
-    font-size: 0.82rem;
-  }
-  
-  .result-section-label {
-    font-size: 0.6rem;
-  }
-  
-  .result-tag {
-    font-size: 0.68rem;
-    padding: 2px 10px;
-  }
-  
-  .result-highlight {
-    padding: 12px 14px;
-  }
-  
-  /* Botón volver en móviles pequeños */
-  .btn-back span {
-    display: none;
-  }
-  
-  .btn-back {
-    padding: 8px 10px;
-    gap: 0;
-  }
-  
-  .btn-back i {
-    font-size: 0.9rem;
-  }
+  .scanner-hero { padding: 28px 16px 24px; }
+  .scanner-hero h1 { font-size: 1.6rem; margin-bottom: 12px; }
+  .scanner-hero p { font-size: 0.85rem; }
+  .scanner-page { padding: 28px 16px 48px; }
+  .drop-zone { padding: 32px 16px; }
+  .drop-zone-icon { font-size: 2rem; }
+  .drop-zone-title { font-size: 0.9rem; }
+  .drop-zone-sub { font-size: 0.75rem; }
+  .file-preview { padding: 12px 16px; }
+  .file-preview-icon { font-size: 1.6rem; }
+  .file-preview-name { font-size: 0.8rem; }
+  .question-textarea { padding: 11px 14px; font-size: 0.82rem; }
+  .btn-scan { padding: 12px 20px; font-size: 0.85rem; }
+  .loading-state { padding: 28px 16px; }
+  .loading-label { font-size: 0.85rem; }
+  .loading-steps li { font-size: 0.75rem; }
+  .result-header { padding: 14px 18px; flex-wrap: wrap; gap: 10px; }
+  .result-header h3 { font-size: 0.85rem; }
+  .btn-copy { padding: 5px 12px; font-size: 0.7rem; }
+  .result-body { padding: 18px 16px; font-size: 0.82rem; }
+  .result-section-label { font-size: 0.6rem; }
+  .result-tag { font-size: 0.68rem; padding: 2px 10px; }
+  .result-highlight { padding: 12px 14px; }
+  .btn-back span { display: none; }
+  .btn-back { padding: 8px 10px; gap: 0; }
+  .btn-back i { font-size: 0.9rem; }
 }
 
-/* 12.2 TELÉFONOS MEDIANOS (481px - 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-  .scanner-hero {
-    padding: 36px 20px 30px;
-  }
-  
-  .scanner-hero h1 {
-    font-size: 2rem;
-  }
-  
-  .scanner-hero p {
-    font-size: 0.9rem;
-  }
-  
-  .scanner-page {
-    padding: 40px 20px 60px;
-    max-width: 90%;
-  }
-  
-  .drop-zone {
-    padding: 40px 24px;
-  }
-  
-  .result-header {
-    padding: 16px 20px;
-  }
-  
-  .result-body {
-    padding: 22px 20px;
-  }
-  
-  /* Botón volver en móviles medianos */
-  .btn-back {
-    padding: 7px 14px;
-    font-size: 0.75rem;
-  }
-  
-  .btn-back span {
-    display: inline;
-  }
+  .scanner-hero { padding: 36px 20px 30px; }
+  .scanner-hero h1 { font-size: 2rem; }
+  .scanner-hero p { font-size: 0.9rem; }
+  .scanner-page { padding: 40px 20px 60px; max-width: 90%; }
+  .drop-zone { padding: 40px 24px; }
+  .result-header { padding: 16px 20px; }
+  .result-body { padding: 22px 20px; }
+  .btn-back { padding: 7px 14px; font-size: 0.75rem; }
+  .btn-back span { display: inline; }
 }
 
-/* 12.3 TABLETS (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .scanner-hero {
-    padding: 42px 24px 36px;
-  }
-  
-  .scanner-hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .scanner-page {
-    max-width: 85%;
-    padding: 50px 24px 80px;
-  }
-  
-  .drop-zone {
-    padding: 48px 28px;
-  }
-  
-  .result-header {
-    padding: 18px 24px;
-  }
-  
-  .result-body {
-    padding: 24px;
-  }
+  .scanner-hero { padding: 42px 24px 36px; }
+  .scanner-hero h1 { font-size: 2.5rem; }
+  .scanner-page { max-width: 85%; padding: 50px 24px 80px; }
+  .drop-zone { padding: 48px 28px; }
+  .result-header { padding: 18px 24px; }
+  .result-body { padding: 24px; }
 }
 
-/* 12.4 LAPTOPS / ESCRITORIOS PEQUEÑOS (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .scanner-hero h1 {
-    font-size: 2.8rem;
-  }
-  
-  .scanner-page {
-    max-width: 720px;
-    padding: 55px 24px 90px;
-  }
-  
-  .drop-zone {
-    transition: all 0.3s ease;
-  }
-  
-  .drop-zone:hover {
-    transform: scale(1.01);
-  }
+  .scanner-hero h1 { font-size: 2.8rem; }
+  .scanner-page { max-width: 720px; padding: 55px 24px 90px; }
+  .drop-zone { transition: all 0.3s ease; }
+  .drop-zone:hover { transform: scale(1.01); }
 }
 
-/* 12.5 ESCRITORIOS GRANDES (1280px - 1439px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
-  .scanner-page {
-    max-width: 800px;
-    padding: 60px 24px 100px;
-  }
-  
-  .scanner-hero h1 {
-    font-size: 3rem;
-  }
-  
-  .drop-zone {
-    padding: 56px 36px;
-  }
-  
-  .drop-zone-icon {
-    font-size: 2.8rem;
-  }
-  
-  .btn-scan {
-    padding: 16px 28px;
-    font-size: 1rem;
-  }
+  .scanner-page { max-width: 800px; padding: 60px 24px 100px; }
+  .scanner-hero h1 { font-size: 3rem; }
+  .drop-zone { padding: 56px 36px; }
+  .drop-zone-icon { font-size: 2.8rem; }
+  .btn-scan { padding: 16px 28px; font-size: 1rem; }
 }
 
-/* 12.6 PANTALLAS EXTRA GRANDES (1440px en adelante) */
 @media (min-width: 1440px) {
-  .scanner-page {
-    max-width: 880px;
-    padding: 70px 24px 120px;
-  }
-  
-  .scanner-hero {
-    padding: 60px 24px 50px;
-  }
-  
-  .scanner-hero h1 {
-    font-size: 3.5rem;
-  }
-  
-  .scanner-hero p {
-    font-size: 1.1rem;
-    max-width: 600px;
-  }
-  
-  .drop-zone {
-    padding: 64px 40px;
-    border-radius: 28px;
-  }
-  
-  .drop-zone-icon {
-    font-size: 3rem;
-  }
-  
-  .drop-zone-title {
-    font-size: 1.1rem;
-  }
-  
-  .drop-zone-sub {
-    font-size: 0.9rem;
-  }
-  
-  .file-preview {
-    padding: 18px 24px;
-    border-radius: 20px;
-  }
-  
-  .file-preview-icon {
-    font-size: 2.2rem;
-  }
-  
-  .file-preview-name {
-    font-size: 1rem;
-  }
-  
-  .question-textarea {
-    padding: 15px 20px;
-    font-size: 0.95rem;
-  }
-  
-  .btn-scan {
-    padding: 18px 32px;
-    font-size: 1.05rem;
-    margin-bottom: 32px;
-  }
-  
-  .loading-state {
-    padding: 48px 32px;
-  }
-  
-  .result-header {
-    padding: 22px 28px;
-  }
-  
-  .result-header h3 {
-    font-size: 1.1rem;
-  }
-  
-  .result-body {
-    padding: 32px 28px;
-    font-size: 1rem;
-  }
-  
-  .result-section-label {
-    font-size: 0.75rem;
-  }
-  
-  .result-tag {
-    font-size: 0.8rem;
-    padding: 4px 14px;
-  }
-  
-  .result-highlight {
-    padding: 18px 22px;
-  }
-  
-  /* Botón volver en pantallas grandes */
-  .btn-back {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  .btn-back i {
-    font-size: 0.85rem;
-  }
+  .scanner-page { max-width: 880px; padding: 70px 24px 120px; }
+  .scanner-hero { padding: 60px 24px 50px; }
+  .scanner-hero h1 { font-size: 3.5rem; }
+  .scanner-hero p { font-size: 1.1rem; max-width: 600px; }
+  .drop-zone { padding: 64px 40px; border-radius: 28px; }
+  .drop-zone-icon { font-size: 3rem; }
+  .drop-zone-title { font-size: 1.1rem; }
+  .drop-zone-sub { font-size: 0.9rem; }
+  .file-preview { padding: 18px 24px; border-radius: 20px; }
+  .file-preview-icon { font-size: 2.2rem; }
+  .file-preview-name { font-size: 1rem; }
+  .question-textarea { padding: 15px 20px; font-size: 0.95rem; }
+  .btn-scan { padding: 18px 32px; font-size: 1.05rem; margin-bottom: 32px; }
+  .loading-state { padding: 48px 32px; }
+  .result-header { padding: 22px 28px; }
+  .result-header h3 { font-size: 1.1rem; }
+  .result-body { padding: 32px 28px; font-size: 1rem; }
+  .result-section-label { font-size: 0.75rem; }
+  .result-tag { font-size: 0.8rem; padding: 4px 14px; }
+  .result-highlight { padding: 18px 22px; }
+  .btn-back { padding: 10px 20px; font-size: 0.9rem; }
+  .btn-back i { font-size: 0.85rem; }
 }
