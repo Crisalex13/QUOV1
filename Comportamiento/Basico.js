@@ -198,15 +198,15 @@ TABLA DE CONTENIDO - BASICO.JS
 })();
 
 // ============================================ 
-// 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS
+// 6. NAVLINK ACTIVO PARA CATÁLOGO Y DESTACADOS (CORREGIDO)
 // ============================================ 
 (function initActiveNavLink() {
-  // Seleccionar TODOS los links (escritorio + móvil)
-  const catalogoLinks = document.querySelectorAll('[data-section="catalogo"]');
-  const destacadosLinks = document.querySelectorAll('[data-section="destacados"]');
+  // Buscar links de Catálogo (por data-section O por href)
+  const catalogoLinks = document.querySelectorAll('[data-section="catalogo"], a[href="#catalogo"]');
+  const destacadosLinks = document.querySelectorAll('[data-section="destacados"], a[href="#destacados"]');
   
   // Si no existen estos elementos, salir
-  if (catalogoLinks.length === 0 || destacadosLinks.length === 0) return;
+  if (catalogoLinks.length === 0 && destacadosLinks.length === 0) return;
   
   // Función para activar Catálogo en TODOS los links
   function activateCatalogo() {
@@ -307,7 +307,7 @@ TABLA DE CONTENIDO - BASICO.JS
   
   setTimeout(updateActiveFromScroll, 100);
   
-  console.log('✅ NavLinks de Catálogo/Destacados activados (responsive)');
+  console.log('✅ NavLinks de Catálogo/Destacados activados (corregido)');
 })();
 
 // ============================================ 
@@ -320,8 +320,10 @@ TABLA DE CONTENIDO - BASICO.JS
   if (!menuToggle || !mobileMenu) return;
   
   // Abrir/cerrar menú al hacer clic
-  menuToggle.addEventListener('click', function() {
+  menuToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
     mobileMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
   });
   
   // Cerrar menú al hacer clic en un enlace
@@ -329,6 +331,7 @@ TABLA DE CONTENIDO - BASICO.JS
   mobileLinks.forEach(link => {
     link.addEventListener('click', function() {
       mobileMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
     });
   });
   
@@ -336,6 +339,7 @@ TABLA DE CONTENIDO - BASICO.JS
   document.addEventListener('click', function(event) {
     if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
       mobileMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
     }
   });
   
