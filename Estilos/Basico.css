@@ -718,6 +718,8 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 }
 
 /* ========== 11. MODAL LATERAL ========== */
+
+/* --- BOOK: entra deslizando desde la derecha, pegado al borde --- */
 #productOverlay.side-docked {
   z-index: 2000 !important;
   background: transparent !important;
@@ -755,6 +757,7 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   }
 }
 
+/* --- CHAT: se desplaza suavemente a la izquierda cuando aparece el libro --- */
 #chatOverlay.chat-side-mode {
   background: transparent !important;
   pointer-events: none !important;
@@ -775,7 +778,8 @@ body.dark-mode #chatMessages .bg-neutral-100 {
   overflow-y: auto !important;
   border-radius: 24px !important;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25) !important;
-  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 /* ========== 12. SCROLLBAR ========== */
@@ -995,6 +999,7 @@ button:hover~#cursor-ring,
     height: 28px !important;
   }
 
+  /* modal lateral se convierte en modal centrado */
   #productOverlay.side-docked {
     background: rgba(0, 0, 0, 0.6) !important;
     justify-content: center !important;
@@ -1014,6 +1019,7 @@ button:hover~#cursor-ring,
     transform: none !important;
   }
 
+  /* El chat también se centra */
   #chatOverlay.chat-side-mode {
     background: rgba(0, 0, 0, 0.5) !important;
     pointer-events: auto !important;
@@ -1029,7 +1035,7 @@ button:hover~#cursor-ring,
   }
 }
 
-/* TABLETS (768px - 1023px) - Mostrar menú desktop */
+/* TABLETS (768px - 1023px) - Menú desktop */
 @media (min-width: 768px) and (max-width: 1023px) {
   .nav-links-desktop {
     display: flex !important;
@@ -1071,37 +1077,17 @@ button:hover~#cursor-ring,
     height: 50px !important;
   }
 
-  #productOverlay.side-docked {
-    background: rgba(0, 0, 0, 0.6) !important;
-    justify-content: center !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
-  }
-
+  /* El libro sigue siendo lateral */
   #productOverlay.side-docked .modal-card {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    width: 90% !important;
-    max-width: 360px !important;
-    margin: auto !important;
-    border-radius: 24px !important;
-    animation: modalFadeIn 0.25s ease forwards !important;
-    transform: none !important;
+    width: 320px !important;
+    max-width: 320px !important;
   }
 
-  #chatOverlay.chat-side-mode {
-    background: rgba(0, 0, 0, 0.5) !important;
-    pointer-events: auto !important;
-  }
-
+  /* El chat se desplaza menos */
   #chatOverlay.chat-side-mode .modal-card {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90% !important;
-    max-width: 480px !important;
+    left: calc(50% - 180px) !important;
+    width: min(450px, calc(100vw - 360px)) !important;
+    max-width: 450px !important;
   }
 }
 
@@ -1142,36 +1128,16 @@ button:hover~#cursor-ring,
     font-size: 10px !important;
   }
 
-  #productOverlay.side-docked {
-    background: rgba(0, 0, 0, 0.6) !important;
-    justify-content: center !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
-  }
-
+  /* El libro lateral */
   #productOverlay.side-docked .modal-card {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    width: 90% !important;
+    width: 360px !important;
     max-width: 360px !important;
-    margin: auto !important;
-    border-radius: 24px !important;
-    animation: modalFadeIn 0.25s ease forwards !important;
-    transform: none !important;
   }
 
-  #chatOverlay.chat-side-mode {
-    background: rgba(0, 0, 0, 0.5) !important;
-    pointer-events: auto !important;
-  }
-
+  /* El chat se desplaza */
   #chatOverlay.chat-side-mode .modal-card {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90% !important;
+    left: calc(50% - 200px) !important;
+    width: min(480px, calc(100vw - 400px)) !important;
     max-width: 480px !important;
   }
 }
@@ -1213,9 +1179,10 @@ button:hover~#cursor-ring,
     font-size: 10px !important;
   }
 
+  /* Chat y libro lateral con más espacio */
   #chatOverlay.chat-side-mode .modal-card {
-    left: calc(50% - 190px) !important;
-    width: min(500px, calc(100vw - 400px)) !important;
+    left: calc(50% - 220px) !important;
+    width: min(500px, calc(100vw - 420px)) !important;
     max-width: 500px !important;
   }
 }
@@ -1297,8 +1264,8 @@ button:hover~#cursor-ring,
   }
 
   #chatOverlay.chat-side-mode .modal-card {
-    left: calc(50% - 120px) !important;
-    width: min(560px, calc(100vw - 460px)) !important;
+    left: calc(50% - 160px) !important;
+    width: min(560px, calc(100vw - 500px)) !important;
     max-width: 560px !important;
   }
 }
