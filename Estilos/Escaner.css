@@ -102,7 +102,7 @@ body.dark-mode {
   font-family: 'Syne', sans-serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--text-primary), var(--quov-blue));
+  background: linear-gradient(135deg, var(--text-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
