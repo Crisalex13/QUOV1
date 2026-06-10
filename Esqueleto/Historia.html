@@ -23,38 +23,24 @@
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
 
-<!-- ====== NAVBAR ====== -->
-  <nav class="sticky top-0 z-40 bg-white border-b border-neutral-100 px-6 py-4">
-    <div class="mx-auto max-w-6xl flex items-center justify-between gap-4">
+  <!-- ====== NAVBAR ====== -->
+  <nav>
+    <div class="mx-auto">
       <!-- Logo -->
-      <div class="flex items-center" style="gap: 3rem;">
-        <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight" style="margin-right: 1rem;">
-          <img src="../img/logo.png" alt="QUOV" class="logo-nav" />
-          QUOV
-        </a>
-      </div>
-      
-      <!-- Enlaces desktop (visibles en pantallas grandes) -->
-      <div class="flex items-center" style="gap: 2rem;">
-        <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
-        <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link hidden sm:block">Catálogo</a>
-        <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
-        <a href="../Esqueleto/Quien somos.html" class="nav-link hidden sm:block" >¿Quiénes somos?</a>
-        <a href="../Esqueleto/Historia.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;" >Historia</a>
-        <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block">Mejorar plan</a>
-      </div>
-      
-      <!-- Iconos derecha + Botón hamburguesa -->
-      <div class="flex items-center gap-6">
-        <!-- Botón hamburguesa (solo móvil) -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
+      <a href="../index.html" class="font-display">QUOV</a>
 
+      <!-- Enlaces de escritorio (visibles en tablet/desktop) -->
+      <div class="nav-links-desktop">
+        <a href="../index.html" class="nav-link">INICIO</a>
+        <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+        <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+        <a href="../Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+        <a href="../Esqueleto/Historia.html" class="nav-link active">HISTORIA</a>
+        <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
+      </div>
+
+      <!-- Acciones derecha -->
+      <div class="nav-actions">
         <button id="darkModeToggle" class="theme-toggle" aria-label="Cambiar modo día/noche">
           <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/>
@@ -72,6 +58,14 @@
           </svg>
         </button>
         
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
         <a href="https://www.instagram.com/quov_oficial" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -94,14 +88,14 @@
     </div>
   </nav>
 
-  <!-- Menú móvil (se muestra al hacer clic en hamburguesa) -->
+  <!-- Menú móvil -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" class="nav-link hidden sm:block">Inicio</a>
-    <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link hidden sm:block">Catálogo</a>
-    <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link hidden sm:block">Destacados</a>
-    <a href="../Esqueleto/Quien somos.html" class="nav-link hidden sm:block" >¿Quiénes somos?</a>
-    <a href="../Esqueleto/Historia.html" class="nav-link active hidden sm:block" style="color: #00BFFF; font-weight: 700;" >Historia</a>
-    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link hidden sm:block" >Mejorar plan</a>
+    <a href="../index.html" class="nav-link">INICIO</a>
+    <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+    <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+    <a href="../Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+    <a href="../Esqueleto/Historia.html" class="nav-link active">HISTORIA</a>
+    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
   </div>
 
   <!-- ========== HERO VIDEO ========== -->

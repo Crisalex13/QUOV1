@@ -4,7 +4,7 @@
    0. VISTAS A CONSIDERAR
    1. VARIABLES GLOBALES
    2. MODO OSCURO
-   3. NAVBAR
+   3. NAVBAR (UNIFICADO)
    4. FOOTER
    5. BACK TO TOP
    6. CHAT IA - BOTÓN FLOTANTE
@@ -18,18 +18,17 @@
    14. CURSOR PERSONALIZADO
    15. BOTÓN DE MODO OSCURO
    16. MENÚ HAMBURGUESA
-   17. RESPONSIVE DESIGN 
+   17. RESPONSIVE DESIGN
    18. MODO OSCURO - MODALES
    ============================================ */
 
-/* ========== 0. VISTAS A CONSIDERAR  ========== 
-Teléfonos pequeños	320px – 480px
-Teléfonos medianos	481px – 767px
-Tablets	768px – 1023px
-Laptops / Escritorios pequeños	1024px – 1279px
-Escritorios grandes	1280px – 1439px
-Pantallas extra grandes	1440px en adelante
-*/
+/* ========== 0. VISTAS A CONSIDERAR ========== */
+/* Teléfonos pequeños 320px – 480px */
+/* Teléfonos medianos 481px – 767px */
+/* Tablets 768px – 1023px */
+/* Laptops / Escritorios pequeños 1024px – 1279px */
+/* Escritorios grandes 1280px – 1439px */
+/* Pantallas extra grandes 1440px en adelante */
 
 /* ========== 1. VARIABLES GLOBALES ========== */
 * {
@@ -86,13 +85,56 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
 }
-body.dark-mode { background-color: #0a0a0a; }
-body.dark-mode .nav-link:hover,
-body.dark-mode .nav-link.active { color: var(--quov-blue) !important; }
+body.dark-mode {
+  background-color: #0a0a0a;
+}
 
-/* ========== 3. NAVBAR ========== */
-.logo-nav { height: 36px; width: auto; }
-nav { background-color: var(--bg-primary) !important; border-bottom-color: var(--border-light) !important; }
+/* ========== 3. NAVBAR (UNIFICADO) ========== */
+
+/* Estilos base del navbar */
+nav {
+  background-color: var(--bg-primary) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+nav .mx-auto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 70px;
+}
+
+/* Logo */
+.logo-nav {
+  height: 36px;
+  width: auto;
+}
+
+nav .font-display,
+nav a.font-display {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* Enlaces de escritorio - ESTA ES LA CLASE IMPORTANTE */
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
 .nav-link {
   display: flex;
@@ -111,453 +153,18 @@ nav { background-color: var(--bg-primary) !important; border-bottom-color: var(-
   color: var(--quov-blue) !important;
 }
 
-.nav-link.active { font-weight: 700; }
-
-/* Modo oscuro navbar */
-body.dark-mode nav {
-  background-color: #0a0a0a !important;
-  border-bottom-color: #333333 !important;
+.nav-link.active {
+  font-weight: 700;
 }
-body.dark-mode nav a,
-body.dark-mode .nav-link,
-body.dark-mode nav .font-display { color: #ffffff !important; }
-body.dark-mode .nav-link.active { color: var(--quov-blue) !important; font-weight: 700; }
-body.dark-mode nav svg { stroke: #ffffff !important; color: #ffffff !important; }
 
-/* Logo QUOV */
-nav .font-display,
-nav a.font-display {
-  font-family: 'Syne', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 1.25rem !important;
-  letter-spacing: -0.02em !important;
-  color: var(--text-primary);
-  text-decoration: none;
-}
-body.dark-mode nav .font-display,
-body.dark-mode nav a.font-display { color: #ffffff !important; }
-
-/* ========== 4. FOOTER ========== */
-footer { background-color: var(--bg-neutral-900); }
-.footer-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
-.footer-text { font-size: 0.75rem; letter-spacing: 0.04em; }
-body.dark-mode footer { background-color: #050505 !important; }
-body.dark-mode footer p, body.dark-mode .footer-text { color: #888888 !important; }
-
-/* ========== 5. BACK TO TOP ========== */
-.back2top {
-  position: fixed;
-  bottom: 150px;
-  right: 30px;
-  background: var(--quov-blue);
-  color: white;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+/* Acciones derecha */
+.nav-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
-  z-index: 99;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-.back2top.show { opacity: 1; visibility: visible; }
-.back2top:hover { background: var(--quov-blue-dark); transform: translateY(-3px); }
-
-/* ========== 6. CHAT IA - BOTÓN FLOTANTE ========== */
-.chat-fab {
-  position: fixed !important;
-  bottom: 30px !important;
-  right: 30px !important;
-  left: auto !important;
-  z-index: 50 !important;
-  border-radius: 9999px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 4px !important;
-  cursor: pointer !important;
-  background: #0a0a0a8a !important;
-  width: 100px !important;
-  height: 100px !important;
-  border: 2px solid #0000001c !important;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5) !important;
-  animation: floatNeon 3s ease-in-out infinite !important;
+  gap: 0.5rem;
 }
 
-@keyframes floatNeon {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-}
-
-.chat-fab-logo {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
-}
-
-.chat-fab-text {
-  color: #00BFFF !important;
-  font-size: 10px !important;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  font-family: 'Syne', sans-serif;
-}
-
-.chat-hint {
-  position: fixed !important;
-  bottom: 120px !important;
-  right: 100px !important;
-  left: auto !important;
-  z-index: 99 !important;
-  max-width: 240px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #0a0a0a, #0d1a2e);
-  color: #00BFFF;
-  border: 1px solid rgba(0, 191, 255, 0.6);
-  padding: 14px 18px;
-  font-size: 0.85rem;
-  font-family: 'Inter', sans-serif;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.35s ease;
-  pointer-events: none;
-}
-.chat-fab:hover + .chat-hint,
-.chat-hint:hover { opacity: 1 !important; visibility: visible !important; }
-
-/* ========== 7. MODALES - BASE COMÚN ========== */
-.modal-card {
-  background: var(--bg-secondary);
-  border-radius: 24px;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.18);
-  border: 1px solid var(--border-light);
-  animation: modalFadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: scale(0.95) translateY(8px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.buy-button, .notify-save-button {
-  width: 100%;
-  border-radius: 1.5rem;
-  padding: 1rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  font-family: 'Syne', sans-serif;
-  transition: opacity 0.15s, transform 0.15s;
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border: none;
-  cursor: pointer;
-}
-.secondary-button {
-  border: 1px solid var(--border-light);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  cursor: pointer;
-  border-radius: 1.5rem;
-  padding: 1rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  font-family: 'Syne', sans-serif;
-}
-.buy-button:hover, .notify-save-button:hover { opacity: 0.75; }
-.secondary-button:hover { background: var(--bg-neutral-100); }
-
-/* ========== 8. MODAL DEL CHAT IA ========== */
-#chatMessages {
-  max-height: 40vh !important;
-  min-height: 200px !important;
-  background: var(--bg-secondary) !important;
-  border-radius: 20px !important;
-  padding: 16px !important;
-  margin-bottom: 12px !important;
-  overflow-y: auto !important;
-}
-
-/* Chat más ancho en desktop */
-#chatOverlay .modal-card {
-  max-width: 520px !important;
-  width: 92% !important;
-  background: var(--bg-primary) !important;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.3s ease !important;
-}
-
-/* Mensajes del usuario (derecha, azul) */
-#chatMessages .bg-black {
-  background: var(--quov-blue) !important;
-  color: white !important;
-  border-radius: 20px 20px 4px 20px !important;
-  max-width: 80% !important;
-  width: fit-content !important;
-  padding: 10px 16px !important;
-  margin: 8px 0 8px auto !important;
-  box-shadow: 0 2px 8px var(--quov-blue-glow) !important;
-}
-
-/* Mensajes del bot (izquierda) - modo claro */
-body:not(.dark-mode) #chatMessages .bg-neutral-100 {
-  background: #ffffff !important;
-  color: #333333 !important;
-  border-radius: 20px 20px 20px 4px !important;
-  padding: 10px 16px !important;
-  margin: 8px 0 !important;
-  max-width: 80% !important;
-  border: 1px solid var(--quov-blue) !important;
-}
-
-/* Mensajes del bot (izquierda) - modo oscuro */
-body.dark-mode #chatMessages .bg-neutral-100 {
-  background: #2d2d2d !important;
-  color: #e0e0e0 !important;
-  border-radius: 20px 20px 20px 4px !important;
-  padding: 10px 16px !important;
-  margin: 8px 0 !important;
-  max-width: 80% !important;
-  border: 1px solid var(--quov-blue) !important;
-}
-
-#chatMessages a { color: var(--quov-blue) !important; text-decoration: underline !important; }
-
-#chatInput {
-  background: var(--bg-primary) !important;
-  border: 2px solid var(--quov-blue) !important;
-  border-radius: 30px !important;
-  padding: 12px 18px !important;
-  font-size: 0.85rem !important;
-  color: var(--text-primary) !important;
-}
-
-.chat-send-button {
-  background: var(--quov-blue) !important;
-  border-radius: 30px !important;
-  padding: 12px 24px !important;
-  font-weight: 600 !important;
-  color: white !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  white-space: nowrap !important;
-}
-.chat-send-button:hover {
-  background: var(--quov-blue-dark) !important;
-  transform: scale(1.02) !important;
-}
-
-/* Header del chat con fondo azul */
-#chatOverlay .border-b {
-  background: var(--quov-blue) !important;
-  border-radius: 24px 24px 0 0 !important;
-}
-#chatOverlay .font-semibold { color: white !important; }
-
-#chatClose {
-  background: rgba(255, 255, 255, 0.3) !important;
-  color: white !important;
-  border-radius: 50% !important;
-  width: 32px !important;
-  height: 32px !important;
-  transition: background 0.2s, transform 0.2s !important;
-}
-#chatClose:hover {
-  background: rgba(255, 255, 255, 0.5) !important;
-  transform: scale(1.05) !important;
-}
-
-/* Scrollbar dentro del chat */
-#chatMessages::-webkit-scrollbar { width: 6px; }
-#chatMessages::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 10px; }
-#chatMessages::-webkit-scrollbar-thumb { background: var(--quov-blue); border-radius: 10px; }
-
-/* ========== 9. MODAL DE PRODUCTO ========== */
-#productOverlay { z-index: 2000 !important; }
-#productOverlay:not(.hidden):not(.side-docked) { display: flex !important; }
-
-#productOverlay .modal-card {
-  max-width: 360px !important;
-  width: 90% !important;
-  border-radius: 24px !important;
-  background: var(--bg-primary) !important;
-  margin: auto !important;
-}
-#productOverlay .modal-card img {
-  max-height: 200px !important;
-  width: auto !important;
-  margin: 0 auto !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-#productOverlay .modal-card .p-6 { padding: 16px !important; }
-#productTitle, #productName { font-size: 1rem !important; }
-#productPrice { font-size: 1.2rem !important; }
-#productOverlay .buy-button,
-#productOverlay .secondary-button { padding: 8px 16px !important; font-size: 0.75rem !important; }
-#productOverlay .buy-button { background: var(--quov-blue) !important; color: white !important; }
-#productOverlay .buy-button:hover { background: var(--quov-blue-dark) !important; }
-
-/* ========== 10. MODAL DE NOTIFICACIÓN ========== */
-#notifyOverlay .modal-card {
-  max-width: 360px !important;
-  width: 90% !important;
-  border-radius: 24px !important;
-  margin: auto !important;
-}
-#notifyOverlay .modal-card .p-6 { padding: 16px !important; }
-#notifyOverlay .modal-card #notifyInput {
-  background: var(--bg-primary) !important;
-  border: 1px solid var(--border-light) !important;
-  border-radius: 30px !important;
-  padding: 12px 18px !important;
-  font-size: 0.85rem !important;
-  color: var(--text-primary) !important;
-  width: 100% !important;
-}
-
-/* ========== 11. MODAL LATERAL ========== */
-
-/* --- BOOK: entra deslizando desde la derecha, pegado al borde --- */
-#productOverlay.side-docked {
-  z-index: 2000 !important;
-  background: transparent !important;
-  pointer-events: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-#productOverlay.side-docked .modal-card {
-  position: fixed !important;
-  top: 50% !important;
-  right: 0 !important;
-  left: auto !important;
-  margin: 0 !important;
-  width: 360px !important;
-  max-width: 360px !important;
-  max-height: 90vh !important;
-  pointer-events: auto !important;
-  z-index: 2001 !important;
-  /* Esquinas redondeadas solo a la izquierda: visualmente "sale" del borde derecho */
-  border-radius: 24px 0 0 24px !important;
-  /* Animación: entra desde translateX(100%) hasta translateX(0) */
-  animation: slideInFromRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-}
-
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
-}
-
-/* --- CHAT: se desplaza suavemente a la izquierda cuando aparece el libro --- */
-#chatOverlay.chat-side-mode {
-  background: transparent !important;
-  pointer-events: none !important;
-  display: flex !important;
-}
-
-#chatOverlay.chat-side-mode .modal-card {
-  position: fixed !important;
-  top: 50% !important;
-  /* Desplazado hacia la izquierda del centro para dejar espacio al libro */
-  left: calc(50% - 500px) !important;
-  right: auto !important;
-  transform: translateY(-50%) translateX(-50%) !important;
-  width: min(520px, calc(100vw - 420px)) !important;
-  max-width: 520px !important;
-  max-height: 85vh !important;
-  pointer-events: auto !important;
-  z-index: 2001 !important;
-  overflow-y: auto !important;
-  border-radius: 24px !important;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25) !important;
-  /* Transición suave al desplazarse */
-  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-/* ========== 12. SCROLLBAR ========== */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: var(--quov-blue); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--quov-blue-dark); }
-* { scrollbar-width: thin; scrollbar-color: var(--quov-blue) var(--bg-secondary); }
-#productOverlay .modal-card::-webkit-scrollbar,
-#chatOverlay .modal-card::-webkit-scrollbar,
-#notifyOverlay .modal-card::-webkit-scrollbar { width: 6px; }
-
-/* ========== 13. EFECTOS HOVER ========== */
-.nav-link:hover, .catalog-btn:hover, .team-card-new:hover .card-overlay-new span { color: var(--quov-blue) !important; }
-.chat-fab:hover { box-shadow: 0 0 25px var(--quov-blue-glow-strong) !important; }
-.back2top:hover { background: var(--quov-blue-dark); }
-
-/* ========== 14. CURSOR PERSONALIZADO ========== */
-* { cursor: none !important; }
-
-#cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  background: var(--quov-blue);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-}
-
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--quov-blue);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-  opacity: 0.7;
-}
-
-a:hover ~ #cursor-dot, button:hover ~ #cursor-dot,
-.book-card:hover ~ #cursor-dot, .featured-card:hover ~ #cursor-dot,
-.catalog-btn:hover ~ #cursor-dot, .nav-link:hover ~ #cursor-dot,
-.team-card-new:hover ~ #cursor-dot { width: 14px; height: 14px; }
-
-a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
-.book-card:hover ~ #cursor-ring, .featured-card:hover ~ #cursor-ring,
-.catalog-btn:hover ~ #cursor-ring, .nav-link:hover ~ #cursor-ring,
-.team-card-new:hover ~ #cursor-ring { width: 52px; height: 52px; }
-
-@media (max-width: 1024px) {
-  * { cursor: auto !important; }
-  #cursor-dot, #cursor-ring { display: none !important; }
-}
-
-/* ========== 15. BOTÓN DE MODO OSCURO ========== */
+/* Botón tema oscuro */
 .theme-toggle {
   background: transparent;
   border: none;
@@ -570,9 +177,12 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
   transition: background 0.2s;
   color: var(--text-primary);
 }
-.theme-toggle:hover { background: var(--bg-neutral-100); }
 
-/* ========== 16. MENÚ HAMBURGUESA ========== */
+.theme-toggle:hover {
+  background: var(--bg-neutral-100);
+}
+
+/* Botón hamburguesa - OCULTO POR DEFECTO */
 .menu-toggle {
   display: none;
   background: transparent;
@@ -583,7 +193,11 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-.menu-toggle:hover { background: rgba(0, 191, 255, 0.1); }
+
+.menu-toggle:hover {
+  background: rgba(0, 191, 255, 0.1);
+}
+
 .menu-toggle svg {
   width: 24px;
   height: 24px;
@@ -591,12 +205,16 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
   stroke-width: 2;
   transition: transform 0.3s ease;
 }
-.menu-toggle.active svg { transform: rotate(90deg); }
 
+.menu-toggle.active svg {
+  transform: rotate(90deg);
+}
+
+/* Menú móvil - OCULTO POR DEFECTO */
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 68px;
+  top: 70px;
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.98);
@@ -611,11 +229,19 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.mobile-menu.active { display: flex; }
+.mobile-menu.active {
+  display: flex;
+}
 
 .mobile-menu .nav-link {
   display: flex;
@@ -663,42 +289,711 @@ a:hover ~ #cursor-ring, button:hover ~ #cursor-ring,
   border-radius: 12px;
 }
 
-/* Modo oscuro menú hamburguesa */
-body.dark-mode .menu-toggle svg { stroke: var(--text-primary); }
-body.dark-mode .menu-toggle:hover { background: rgba(0, 191, 255, 0.2); }
+/* Modo oscuro navbar */
+body.dark-mode nav {
+  background-color: #0a0a0a !important;
+  border-bottom-color: #333333 !important;
+}
+
+body.dark-mode nav a,
+body.dark-mode .nav-link,
+body.dark-mode nav .font-display {
+  color: #ffffff !important;
+}
+
+body.dark-mode .nav-link.active {
+  color: var(--quov-blue) !important;
+  font-weight: 700;
+}
+
+body.dark-mode nav svg {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode nav .font-display,
+body.dark-mode nav a.font-display {
+  color: #ffffff !important;
+}
+
 body.dark-mode .mobile-menu {
   background: rgba(10, 10, 10, 0.98);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--quov-blue);
 }
-body.dark-mode .mobile-menu .nav-link { color: var(--text-primary); }
+
+body.dark-mode .mobile-menu .nav-link {
+  color: var(--text-primary);
+}
+
 body.dark-mode .mobile-menu .nav-link:hover {
   background: rgba(0, 191, 255, 0.15);
   color: var(--quov-blue-light);
 }
+
 body.dark-mode .mobile-menu .nav-link.active {
   color: var(--quov-blue-light);
   background: rgba(0, 191, 255, 0.1);
 }
 
-/* ========== 17. RESPONSIVE DESIGN ========== */
+/* ========== 4. FOOTER ========== */
+footer {
+  background-color: var(--bg-neutral-900);
+}
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+body.dark-mode footer {
+  background-color: #050505 !important;
+}
+
+body.dark-mode footer p,
+body.dark-mode .footer-text {
+  color: #888888 !important;
+}
+
+/* ========== 5. BACK TO TOP ========== */
+.back2top {
+  position: fixed;
+  bottom: 150px;
+  right: 30px;
+  background: var(--quov-blue);
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+  z-index: 99;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back2top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back2top:hover {
+  background: var(--quov-blue-dark);
+  transform: translateY(-3px);
+}
+
+/* ========== 6. CHAT IA - BOTÓN FLOTANTE ========== */
+.chat-fab {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  left: auto !important;
+  z-index: 50 !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+  background: #0a0a0a8a !important;
+  width: 100px !important;
+  height: 100px !important;
+  border: 2px solid #0000001c !important;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5) !important;
+  animation: floatNeon 3s ease-in-out infinite !important;
+}
+
+@keyframes floatNeon {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.chat-fab-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.chat-fab-text {
+  color: #00BFFF !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  font-family: 'Syne', sans-serif;
+}
+
+.chat-hint {
+  position: fixed !important;
+  bottom: 120px !important;
+  right: 100px !important;
+  left: auto !important;
+  z-index: 99 !important;
+  max-width: 240px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0a0a0a, #0d1a2e);
+  color: #00BFFF;
+  border: 1px solid rgba(0, 191, 255, 0.6);
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.chat-fab:hover+.chat-hint,
+.chat-hint:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ========== 7. MODALES - BASE COMÚN ========== */
+.modal-card {
+  background: var(--bg-secondary);
+  border-radius: 24px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-light);
+  animation: modalFadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.buy-button,
+.notify-save-button {
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+  transition: opacity 0.15s, transform 0.15s;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  cursor: pointer;
+}
+
+.secondary-button {
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+}
+
+.buy-button:hover,
+.notify-save-button:hover {
+  opacity: 0.75;
+}
+
+.secondary-button:hover {
+  background: var(--bg-neutral-100);
+}
+
+/* ========== 8. MODAL DEL CHAT IA ========== */
+#chatMessages {
+  max-height: 40vh !important;
+  min-height: 200px !important;
+  background: var(--bg-secondary) !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  overflow-y: auto !important;
+}
+
+#chatOverlay .modal-card {
+  max-width: 520px !important;
+  width: 92% !important;
+  background: var(--bg-primary) !important;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), left 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease !important;
+}
+
+#chatMessages .bg-black {
+  background: var(--quov-blue) !important;
+  color: white !important;
+  border-radius: 20px 20px 4px 20px !important;
+  max-width: 80% !important;
+  width: fit-content !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 8px auto !important;
+  box-shadow: 0 2px 8px var(--quov-blue-glow) !important;
+}
+
+body:not(.dark-mode) #chatMessages .bg-neutral-100 {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border-radius: 20px 20px 20px 4px !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 !important;
+  max-width: 80% !important;
+  border: 1px solid var(--quov-blue) !important;
+}
+
+body.dark-mode #chatMessages .bg-neutral-100 {
+  background: #2d2d2d !important;
+  color: #e0e0e0 !important;
+  border-radius: 20px 20px 20px 4px !important;
+  padding: 10px 16px !important;
+  margin: 8px 0 !important;
+  max-width: 80% !important;
+  border: 1px solid var(--quov-blue) !important;
+}
+
+#chatMessages a {
+  color: var(--quov-blue) !important;
+  text-decoration: underline !important;
+}
+
+#chatInput {
+  background: var(--bg-primary) !important;
+  border: 2px solid var(--quov-blue) !important;
+  border-radius: 30px !important;
+  padding: 12px 18px !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+}
+
+.chat-send-button {
+  background: var(--quov-blue) !important;
+  border-radius: 30px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.chat-send-button:hover {
+  background: var(--quov-blue-dark) !important;
+  transform: scale(1.02) !important;
+}
+
+#chatOverlay .border-b {
+  background: var(--quov-blue) !important;
+  border-radius: 24px 24px 0 0 !important;
+}
+
+#chatOverlay .font-semibold {
+  color: white !important;
+}
+
+#chatClose {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+#chatClose:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.05) !important;
+}
+
+#chatMessages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+  background: var(--quov-blue);
+  border-radius: 10px;
+}
+
+/* ========== 9. MODAL DE PRODUCTO ========== */
+#productOverlay {
+  z-index: 2000 !important;
+}
+
+#productOverlay:not(.hidden):not(.side-docked) {
+  display: flex !important;
+}
+
+#productOverlay .modal-card {
+  max-width: 360px !important;
+  width: 90% !important;
+  border-radius: 24px !important;
+  background: var(--bg-primary) !important;
+  margin: auto !important;
+}
+
+#productOverlay .modal-card img {
+  max-height: 200px !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+#productOverlay .modal-card .p-6 {
+  padding: 16px !important;
+}
+
+#productTitle,
+#productName {
+  font-size: 1rem !important;
+}
+
+#productPrice {
+  font-size: 1.2rem !important;
+}
+
+#productOverlay .buy-button,
+#productOverlay .secondary-button {
+  padding: 8px 16px !important;
+  font-size: 0.75rem !important;
+}
+
+#productOverlay .buy-button {
+  background: var(--quov-blue) !important;
+  color: white !important;
+}
+
+#productOverlay .buy-button:hover {
+  background: var(--quov-blue-dark) !important;
+}
+
+/* ========== 10. MODAL DE NOTIFICACIÓN ========== */
+#notifyOverlay .modal-card {
+  max-width: 360px !important;
+  width: 90% !important;
+  border-radius: 24px !important;
+  margin: auto !important;
+}
+
+#notifyOverlay .modal-card .p-6 {
+  padding: 16px !important;
+}
+
+#notifyOverlay .modal-card #notifyInput {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 30px !important;
+  padding: 12px 18px !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+  width: 100% !important;
+}
+
+/* ========== 11. MODAL LATERAL ========== */
+#productOverlay.side-docked {
+  z-index: 2000 !important;
+  background: transparent !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+#productOverlay.side-docked .modal-card {
+  position: fixed !important;
+  top: 50% !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  width: 360px !important;
+  max-width: 360px !important;
+  max-height: 90vh !important;
+  pointer-events: auto !important;
+  z-index: 2001 !important;
+  border-radius: 24px 0 0 24px !important;
+  animation: slideInFromRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+#chatOverlay.chat-side-mode {
+  background: transparent !important;
+  pointer-events: none !important;
+  display: flex !important;
+}
+
+#chatOverlay.chat-side-mode .modal-card {
+  position: fixed !important;
+  top: 50% !important;
+  left: calc(50% - 500px) !important;
+  right: auto !important;
+  transform: translateY(-50%) translateX(-50%) !important;
+  width: min(520px, calc(100vw - 420px)) !important;
+  max-width: 520px !important;
+  max-height: 85vh !important;
+  pointer-events: auto !important;
+  z-index: 2001 !important;
+  overflow-y: auto !important;
+  border-radius: 24px !important;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25) !important;
+  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* ========== 12. SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--quov-blue);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--quov-blue-dark);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--quov-blue) var(--bg-secondary);
+}
+
+#productOverlay .modal-card::-webkit-scrollbar,
+#chatOverlay .modal-card::-webkit-scrollbar,
+#notifyOverlay .modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* ========== 13. EFECTOS HOVER ========== */
+.nav-link:hover,
+.catalog-btn:hover,
+.team-card-new:hover .card-overlay-new span {
+  color: var(--quov-blue) !important;
+}
+
+.chat-fab:hover {
+  box-shadow: 0 0 25px var(--quov-blue-glow-strong) !important;
+}
+
+.back2top:hover {
+  background: var(--quov-blue-dark);
+}
+
+/* ========== 14. CURSOR PERSONALIZADO ========== */
+* {
+  cursor: none !important;
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--quov-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--quov-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  opacity: 0.7;
+}
+
+a:hover~#cursor-dot,
+button:hover~#cursor-dot,
+.book-card:hover~#cursor-dot,
+.featured-card:hover~#cursor-dot,
+.catalog-btn:hover~#cursor-dot,
+.nav-link:hover~#cursor-dot,
+.team-card-new:hover~#cursor-dot {
+  width: 14px;
+  height: 14px;
+}
+
+a:hover~#cursor-ring,
+button:hover~#cursor-ring,
+.book-card:hover~#cursor-ring,
+.featured-card:hover~#cursor-ring,
+.catalog-btn:hover~#cursor-ring,
+.nav-link:hover~#cursor-ring,
+.team-card-new:hover~#cursor-ring {
+  width: 52px;
+  height: 52px;
+}
+
+@media (max-width: 1024px) {
+  * {
+    cursor: auto !important;
+  }
+
+  #cursor-dot,
+  #cursor-ring {
+    display: none !important;
+  }
+}
 
 /* ========== 17. RESPONSIVE DESIGN ========== */
 
-/* Móviles pequeños (320px – 480px) */
-@media (min-width: 320px) and (max-width: 480px) {
-  .logo-nav { height: 28px !important; }
-  nav .font-display, nav a.font-display { font-size: 0.85rem !important; }
-  .chat-fab { width: 80px !important; height: 80px !important; bottom: 20px !important; right: 20px !important; }
-  .chat-fab-logo { width: 42px !important; height: 42px !important; }
-  .chat-fab-text { font-size: 9px !important; }
-  .chat-hint { bottom: 95px !important; right: 80px !important; max-width: 180px !important; font-size: 0.7rem !important; padding: 8px 12px !important; }
-  .back2top { width: 44px !important; height: 44px !important; bottom: 100px !important; right: 20px !important; }
-  .modal-card { border-radius: 18px !important; }
-  .buy-button, .secondary-button, .notify-save-button { padding: 10px 12px !important; font-size: 0.75rem !important; }
-  footer { padding: 24px 16px !important; }
-  .footer-text { font-size: 0.65rem; }
-  .footer-logo { height: 28px !important; }
+/* MÓVILES (320px - 767px) - Mostrar menú hamburguesa */
+@media (max-width: 767px) {
+
+  /* Ocultar menú desktop */
+  .nav-links-desktop {
+    display: none !important;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ajustes de navbar */
+  nav .mx-auto {
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  .logo-nav {
+    height: 28px !important;
+  }
+
+  nav .font-display,
+  nav a.font-display {
+    font-size: 0.85rem !important;
+  }
+
+  .mobile-menu {
+    top: 60px;
+  }
+
+  .nav-actions {
+    gap: 0.25rem;
+  }
+
+  .theme-toggle {
+    padding: 6px;
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Chat y otros elementos */
+  .chat-fab {
+    width: 80px !important;
+    height: 80px !important;
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+
+  .chat-fab-logo {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .chat-fab-text {
+    font-size: 9px !important;
+  }
+
+  .chat-hint {
+    bottom: 95px !important;
+    right: 80px !important;
+    max-width: 180px !important;
+    font-size: 0.7rem !important;
+    padding: 8px 12px !important;
+  }
+
+  .back2top {
+    width: 44px !important;
+    height: 44px !important;
+    bottom: 100px !important;
+    right: 20px !important;
+  }
+
+  .modal-card {
+    border-radius: 18px !important;
+  }
+
+  .buy-button,
+  .secondary-button,
+  .notify-save-button {
+    padding: 10px 12px !important;
+    font-size: 0.75rem !important;
+  }
+
+  footer {
+    padding: 24px 16px !important;
+  }
+
+  .footer-text {
+    font-size: 0.65rem;
+  }
+
+  .footer-logo {
+    height: 28px !important;
+  }
 
   #productOverlay.side-docked {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -706,6 +1001,7 @@ body.dark-mode .mobile-menu .nav-link.active {
     pointer-events: auto !important;
     overflow: visible !important;
   }
+
   #productOverlay.side-docked .modal-card {
     position: relative !important;
     top: auto !important;
@@ -717,10 +1013,12 @@ body.dark-mode .mobile-menu .nav-link.active {
     animation: modalFadeIn 0.25s ease forwards !important;
     transform: none !important;
   }
+
   #chatOverlay.chat-side-mode {
     background: rgba(0, 0, 0, 0.5) !important;
     pointer-events: auto !important;
   }
+
   #chatOverlay.chat-side-mode .modal-card {
     position: fixed !important;
     top: 50% !important;
@@ -731,15 +1029,47 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Móviles medianos (481px – 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-  .logo-nav { height: 30px !important; }
-  nav .font-display, nav a.font-display { font-size: 0.9rem !important; }
-  .chat-fab { width: 90px !important; height: 90px !important; }
-  .chat-fab-logo { width: 46px !important; height: 46px !important; }
-  .chat-fab-text { font-size: 10px !important; }
-  .back2top { width: 48px !important; height: 48px !important; }
-  footer { padding: 28px 20px !important; }
+/* TABLETS (768px - 1023px) - Mostrar menú desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-links-desktop {
+    display: flex !important;
+    gap: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .logo-nav {
+    height: 32px !important;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+  }
+
+  .chat-fab {
+    width: 95px !important;
+    height: 95px !important;
+  }
+
+  .chat-fab-logo {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .chat-fab-text {
+    font-size: 10px !important;
+  }
+
+  .back2top {
+    width: 50px !important;
+    height: 50px !important;
+  }
 
   #productOverlay.side-docked {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -747,48 +1077,7 @@ body.dark-mode .mobile-menu .nav-link.active {
     pointer-events: auto !important;
     overflow: visible !important;
   }
-  #productOverlay.side-docked .modal-card {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    width: 90% !important;
-    max-width: 360px !important;
-    margin: auto !important;
-    border-radius: 20px !important;
-    animation: modalFadeIn 0.25s ease forwards !important;
-    transform: none !important;
-  }
-  #chatOverlay.chat-side-mode {
-    background: rgba(0, 0, 0, 0.5) !important;
-    pointer-events: auto !important;
-  }
-  #chatOverlay.chat-side-mode .modal-card {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90% !important;
-    max-width: 440px !important;
-  }
-}
 
-/* Tabletas (768px – 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .logo-nav { height: 32px !important; }
-  .chat-fab { width: 95px !important; height: 95px !important; }
-  .chat-fab-logo { width: 50px !important; height: 50px !important; }
-  .chat-fab-text { font-size: 10px !important; }
-  .back2top { width: 50px !important; height: 50px !important; }
-  .menu-toggle { display: flex; align-items: center; justify-content: center; }
-  nav .flex.items-center[style*="gap: 2rem"],
-  nav .hidden.sm\:block { display: none !important; }
-
-  #productOverlay.side-docked {
-    background: rgba(0, 0, 0, 0.6) !important;
-    justify-content: center !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
-  }
   #productOverlay.side-docked .modal-card {
     position: relative !important;
     top: auto !important;
@@ -800,10 +1089,12 @@ body.dark-mode .mobile-menu .nav-link.active {
     animation: modalFadeIn 0.25s ease forwards !important;
     transform: none !important;
   }
+
   #chatOverlay.chat-side-mode {
     background: rgba(0, 0, 0, 0.5) !important;
     pointer-events: auto !important;
   }
+
   #chatOverlay.chat-side-mode .modal-card {
     position: fixed !important;
     top: 50% !important;
@@ -814,12 +1105,42 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Tabletas grandes (992px – 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .logo-nav { height: 34px !important; }
-  .chat-fab { width: 100px !important; height: 100px !important; }
-  .chat-fab-logo { width: 52px !important; height: 52px !important; }
-  .chat-fab-text { font-size: 10px !important; }
+/* LAPTOPS / ESCRITORIOS PEQUEÑOS (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-links-desktop {
+    display: flex !important;
+    gap: 1.8rem;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .logo-nav {
+    height: 34px !important;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .chat-fab {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .chat-fab-logo {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .chat-fab-text {
+    font-size: 10px !important;
+  }
 
   #productOverlay.side-docked {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -827,6 +1148,7 @@ body.dark-mode .mobile-menu .nav-link.active {
     pointer-events: auto !important;
     overflow: visible !important;
   }
+
   #productOverlay.side-docked .modal-card {
     position: relative !important;
     top: auto !important;
@@ -838,10 +1160,12 @@ body.dark-mode .mobile-menu .nav-link.active {
     animation: modalFadeIn 0.25s ease forwards !important;
     transform: none !important;
   }
+
   #chatOverlay.chat-side-mode {
     background: rgba(0, 0, 0, 0.5) !important;
     pointer-events: auto !important;
   }
+
   #chatOverlay.chat-side-mode .modal-card {
     position: fixed !important;
     top: 50% !important;
@@ -852,12 +1176,42 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Escritorios pequeños (1200px – 1439px) — AQUÍ SÍ hay side-by-side */
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .logo-nav { height: 36px !important; }
-  .chat-fab { width: 100px !important; height: 100px !important; }
-  .chat-fab-logo { width: 52px !important; height: 52px !important; }
-  .chat-fab-text { font-size: 10px !important; }
+/* ESCRITORIOS GRANDES (1280px - 1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .nav-links-desktop {
+    display: flex !important;
+    gap: 2rem;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .logo-nav {
+    height: 36px !important;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .chat-fab {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .chat-fab-logo {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .chat-fab-text {
+    font-size: 10px !important;
+  }
 
   #chatOverlay.chat-side-mode .modal-card {
     left: calc(50% - 190px) !important;
@@ -866,22 +1220,82 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Escritorios grandes (1440px+) */
+/* PANTALLAS EXTRA GRANDES (1440px+) */
 @media (min-width: 1440px) {
-  nav { padding: 18px 48px !important; }
-  nav .mx-auto { max-width: 1400px !important; }
-  .logo-nav { height: 38px !important; }
-  .chat-fab { width: 110px !important; height: 110px !important; bottom: 35px !important; right: 35px !important; }
-  .chat-fab-logo { width: 58px !important; height: 58px !important; }
-  .chat-fab-text { font-size: 11px !important; }
-  .chat-hint { bottom: 130px !important; right: 110px !important; max-width: 260px !important; font-size: 0.9rem !important; }
-  .back2top { width: 60px !important; height: 60px !important; bottom: 160px !important; right: 40px !important; }
-  footer .mx-auto { max-width: 1400px !important; }
+  .nav-links-desktop {
+    display: flex !important;
+    gap: 2.5rem;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  nav {
+    padding: 18px 0 !important;
+  }
+
+  nav .mx-auto {
+    max-width: 1600px !important;
+    padding: 0 60px;
+  }
+
+  .logo-nav {
+    height: 38px !important;
+  }
+
+  nav .font-display,
+  nav a.font-display {
+    font-size: 1.35rem !important;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .chat-fab {
+    width: 110px !important;
+    height: 110px !important;
+    bottom: 35px !important;
+    right: 35px !important;
+  }
+
+  .chat-fab-logo {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .chat-fab-text {
+    font-size: 11px !important;
+  }
+
+  .chat-hint {
+    bottom: 130px !important;
+    right: 110px !important;
+    max-width: 260px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .back2top {
+    width: 60px !important;
+    height: 60px !important;
+    bottom: 160px !important;
+    right: 40px !important;
+  }
+
+  footer .mx-auto {
+    max-width: 1400px !important;
+  }
 
   #productOverlay.side-docked .modal-card {
     width: 400px !important;
     max-width: 400px !important;
   }
+
   #chatOverlay.chat-side-mode .modal-card {
     left: calc(50% - 120px) !important;
     width: min(560px, calc(100vw - 460px)) !important;
@@ -889,41 +1303,92 @@ body.dark-mode .mobile-menu .nav-link.active {
   }
 }
 
-/* Menú hamburguesa en móviles hasta 767px */
-@media (min-width: 320px) and (max-width: 767px) {
-  .menu-toggle { display: flex; align-items: center; justify-content: center; }
-  nav .flex.items-center[style*="gap: 2rem"],
-  nav .hidden.sm\:block { display: none !important; }
-  .mobile-menu { top: 65px; }
-  nav { position: sticky; top: 0; z-index: 1002; }
-}
-
-/* Ocultar menú mobile en desktop */
-@media (min-width: 768px) {
-  .mobile-menu { display: none !important; }
-}
-
 /* ========== 18. MODO OSCURO - MODALES ========== */
-body.dark-mode #productOverlay .modal-card { background: #1a1a1a !important; border: 1px solid #333333 !important; }
+body.dark-mode #productOverlay .modal-card {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+}
+
 body.dark-mode #productOverlay .modal-card .font-semibold,
 body.dark-mode #productOverlay .modal-card #productTitle,
-body.dark-mode #productOverlay .modal-card #productName { color: #ffffff !important; }
-body.dark-mode #productOverlay .modal-card #productMeta { color: #aaaaaa !important; }
-body.dark-mode #productOverlay .modal-card #productPrice { color: var(--quov-blue) !important; font-weight: 700 !important; }
-body.dark-mode #productOverlay .modal-card #productBadge { background: #2a2a2a !important; border-color: #444444 !important; color: #cccccc !important; }
-body.dark-mode #productOverlay .modal-card #productClose { color: #ffffff !important; background: rgba(255, 255, 255, 0.1) !important; }
-body.dark-mode #productOverlay .secondary-button { background: #2a2a2a !important; border-color: #444444 !important; color: #ffffff !important; }
+body.dark-mode #productOverlay .modal-card #productName {
+  color: #ffffff !important;
+}
 
-body.dark-mode #notifyOverlay .modal-card { background: #1a1a1a !important; border: 1px solid #333333 !important; }
-body.dark-mode #notifyOverlay .modal-card .font-semibold { color: #ffffff !important; }
-body.dark-mode #notifyOverlay .modal-card .text-neutral-600 { color: #cccccc !important; }
-body.dark-mode #notifyOverlay .modal-card #notifyBook { color: var(--quov-blue) !important; }
-body.dark-mode #notifyOverlay .modal-card #notifyInput { background: #2a2a2a !important; border-color: #444444 !important; color: #ffffff !important; }
-body.dark-mode #notifyOverlay #notifyClose { color: #ffffff !important; background: rgba(255, 255, 255, 0.1) !important; }
+body.dark-mode #productOverlay .modal-card #productMeta {
+  color: #aaaaaa !important;
+}
 
-body.dark-mode #chatOverlay .modal-card { background: #1a1a1a !important; border: 1px solid #333333 !important; }
-body.dark-mode #chatOverlay .modal-card .font-semibold { color: #ffffff !important; }
-body.dark-mode #chatInput { background: #2a2a2a !important; border-color: var(--quov-blue) !important; color: #ffffff !important; }
-body.dark-mode .chat-send-button { background: var(--quov-blue) !important; color: #ffffff !important; }
-body.dark-mode .chat-send-button:hover { background: var(--quov-blue-dark) !important; }
+body.dark-mode #productOverlay .modal-card #productPrice {
+  color: var(--quov-blue) !important;
+  font-weight: 700 !important;
+}
 
+body.dark-mode #productOverlay .modal-card #productBadge {
+  background: #2a2a2a !important;
+  border-color: #444444 !important;
+  color: #cccccc !important;
+}
+
+body.dark-mode #productOverlay .modal-card #productClose {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode #productOverlay .secondary-button {
+  background: #2a2a2a !important;
+  border-color: #444444 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode #notifyOverlay .modal-card {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+}
+
+body.dark-mode #notifyOverlay .modal-card .font-semibold {
+  color: #ffffff !important;
+}
+
+body.dark-mode #notifyOverlay .modal-card .text-neutral-600 {
+  color: #cccccc !important;
+}
+
+body.dark-mode #notifyOverlay .modal-card #notifyBook {
+  color: var(--quov-blue) !important;
+}
+
+body.dark-mode #notifyOverlay .modal-card #notifyInput {
+  background: #2a2a2a !important;
+  border-color: #444444 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode #notifyOverlay #notifyClose {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode #chatOverlay .modal-card {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+}
+
+body.dark-mode #chatOverlay .modal-card .font-semibold {
+  color: #ffffff !important;
+}
+
+body.dark-mode #chatInput {
+  background: #2a2a2a !important;
+  border-color: var(--quov-blue) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .chat-send-button {
+  background: var(--quov-blue) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .chat-send-button:hover {
+  background: var(--quov-blue-dark) !important;
+}
