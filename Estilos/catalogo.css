@@ -2,13 +2,13 @@
 TABLA DE CONTENIDO - CATALOGO.CSS
 ============================================ 
 1. BASE Y VARIABLES
-2. COMPONENTES GLOBALES (solo específicos)
+2. COMPONENTES GLOBALES 
 3. HERO SECTION
 4. STATS ROW
 5. BUSCADOR
 6. BOOK CARDS
-7. FOOTER (solo específico)
-8. RESPONSIVE (solo del catálogo)
+7. FOOTER 
+8. RESPONSIVE 
 ============================================ */
 
 /* ========== 1. BASE Y VARIABLES ========== */
@@ -395,7 +395,7 @@ footer { background-color: var(--bg-neutral-900); }
 .footer-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
 .footer-text { font-size: 0.75rem; letter-spacing: 0.04em; }
 
-/* ========== 8. RESPONSIVE (SOLO DEL CATÁLOGO) ========== */
+/* ========== 8. RESPONSIVE ========== */
 @media (max-width: 360px) {
   .hero-section { padding: 20px 14px 32px !important; }
   .hero-logo { height: 38px !important; }
