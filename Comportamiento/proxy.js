@@ -13,7 +13,7 @@ const app  = express();
 const PORT = 3001;
 
 // API KEY 
-const ANTHROPIC_API_KEY = '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';
+const ANTHROPIC_API_KEY = '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';
 
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
