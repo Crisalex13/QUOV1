@@ -82,6 +82,18 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Agregar esta ruta para la raíz
+app.get('/', (req, res) => {
+  res.json({
+    message: '✅ QUOV Proxy funcionando correctamente',
+    endpoints: {
+      health: '/health',
+      scan: '/escanear (POST)'
+    },
+    status: 'OK'
+  });
+});
+
 app.listen(PORT, () => {
   console.log('========================================');
   console.log(`✅ QUOV Proxy en http://localhost:${PORT}`);
