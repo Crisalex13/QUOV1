@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUOV - Inicio | QUOV</title>
+  
+  <!-- Tailwind CSS + Estilos QUOV -->
+  <link rel="stylesheet" href="./dist/output.css">
+  <link rel="stylesheet" href="./Estilos/Basico.css">
+  <link rel="stylesheet" href="./Estilos/index.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./img/logo.png">
+</head>
+<body class="font-sans">
+
+  <!-- Cursor personalizado -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav>
+    <div class="mx-auto">
+      <!-- Logo -->
+      <a href="./index.html" class="font-display">QUOV</a>
+
+      <!-- Enlaces de escritorio (visibles en tablet/desktop) -->
+      <div class="nav-links-desktop">
+        <a href="./index.html" class="nav-link active">INICIO</a>
+        <a href="./Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+        <a href="./Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+        <a href="./Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+        <a href="./Esqueleto/Historia.html" class="nav-link">HISTORIA</a>
+        <a href="./Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
+      </div>
+
+      <!-- Acciones derecha -->
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Cambiar modo día/noche">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" aria-label="TikTok" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/525567449830" target="_blank" aria-label="WhatsApp" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.124 1.527 5.855L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.366l-.358-.214-3.724.977.997-3.645-.234-.374A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" class="nav-link active">INICIO</a>
+    <a href="./Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+    <a href="./Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+    <a href="./Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+    <a href="./Esqueleto/Historia.html" class="nav-link">HISTORIA</a>
+    <a href="./Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
+  </div>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section class="hero-simple">
+    <div class="hero-content">
+      <h1 class="hero-title-simple">CREE & CRECE</h1>
+      <p class="hero-description">
+        Los mejores libros de desarrollo personal para impulsar tu crecimiento personal
+      </p>
+      <div class="hero-btn-wrapper">
+        <a href="./Esqueleto/Catalogo.html#catalogo" class="btn-inicio btn-primary">
+          EXPLORAR CATÁLOGO →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURES ====== -->
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+      <h3>100% Calidad</h3>
+      <p>Todos nuestros libros pasan por un riguroso proceso de verificación y calidad</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+      <h3>+500 Títulos</h3>
+      <p>El catálogo más completo de desarrollo personal, negocios y bienestar</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-truck"></i></div>
+      <h3>Envío CDMX</h3>
+      <p>Entregas rápidas y seguras en toda la Ciudad de México</p>
+    </div>
+  </div>
+
+  <!-- ====== TESTIMONIOS ====== -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-title-inicio">⭐ <span>Lo que dicen nuestros lectores</span></h2>
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card" data-delay="0.1s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Los libros llegaron en perfectas condiciones, parecían nuevos. La calidad es excelente, volveré a comprar sin duda."</p>
+          <p class="testimonial-author">Ana G.</p>
+        </div>
+        
+        <div class="testimonial-card" data-delay="0.2s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"El envío fue super rápido y el libro estaba impecable. Me encanta la misión de QUOV de dar segunda vida a los libros."</p>
+          <p class="testimonial-author">Carlos M.</p>
+        </div>
+        
+        <div class="testimonial-card" data-delay="0.3s">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Gran variedad de títulos y precios accesibles. El servicio al cliente es excelente, me ayudaron con mi pedido."</p>
+          <p class="testimonial-author">Laura V.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="bg-neutral-900 text-neutral-400 px-6 py-12">
+    <div class="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2 text-white font-bold text-lg">
+        <img src="./img/logo.png" alt="QUOV" class="footer-logo" />QUOV
+      </div>
+      <p class="footer-text">Libros de segunda mano verificados · Ciudad de México</p>
+      <div class="flex items-center gap-5">
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" class="hover:opacity-60 transition">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" class="hover:opacity-60 transition">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/525567449830" target="_blank" class="hover:opacity-60 transition">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.124 1.527 5.855L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.366l-.358-.214-3.724.977.997-3.645-.234-.374A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== MODALES ====== -->
+  <div id="productOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+        <p class="font-semibold" id="productTitle">Detalle</p>
+        <button id="productClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div id="productImage" class="rounded-2xl overflow-hidden bg-neutral-100"></div>
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-lg font-semibold" id="productName">—</p>
+            <p class="text-sm text-neutral-500 mt-1" id="productMeta">Segunda mano verificada</p>
+          </div>
+          <div class="text-right">
+            <p class="text-xl font-bold" id="productPrice">—</p>
+            <span class="text-xs rounded-full border border-neutral-200 px-3 py-1 text-neutral-500 mt-1 inline-block" id="productBadge"></span>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button id="buyBtn" type="button" class="buy-button">Comprar por WhatsApp</button>
+          <button id="secondaryBtn" type="button" class="secondary-button">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notifyOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100"><p class="font-semibold">Avisarme</p><button id="notifyClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button></div>
+      <div class="p-6 space-y-4"><p class="text-sm text-neutral-600">Déjanos tu WhatsApp o email y te avisamos cuando esté disponible:</p><p class="text-sm font-semibold" id="notifyBook">—</p><input id="notifyInput" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-base outline-none focus:ring-2 focus:ring-black/10" placeholder="WhatsApp o email" /><button id="notifySave" type="button" class="notify-save-button">Guardar</button></div>
+    </div>
+  </div>
+
+  <!-- ====== CHAT IA ====== -->
+  <button id="chatFab" data-cursor="blue" type="button" class="chat-fab" aria-label="Abrir chat">
+    <img src="./img/logo.png" alt="QUOV" class="chat-fab-logo" />
+    <span class="chat-fab-text">QUOV IA</span>
+  </button>
+  <div id="chatHint" data-cursor="blue" class="chat-hint">Hola 👋 Soy <strong>QUOV IA</strong>. Tu asistente virtual.</div>
+  <div id="chatOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-2xl" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100"><p class="font-semibold">QUOV IA</p><button id="chatClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button></div>
+      <div class="chat-header-divider"></div>
+      <div class="p-6 space-y-4">
+        <div class="space-y-3 text-sm max-h-[50vh] overflow-y-auto pr-1" id="chatMessages">
+          <div class="max-w-[85%] rounded-2xl bg-neutral-100 px-5 py-4">Hola 👋 Soy QUOV IA. Puedo decirte si un libro está disponible, cuánto cuesta y ayudarte a comprar por WhatsApp.</div>
+        </div>
+        <div class="flex gap-2">
+          <textarea id="chatInput" rows="1" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-black/10 resize-none" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); enviarMensaje();}"></textarea>
+          <button onclick="enviarMensaje()" type="button" class="chat-send-button">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== BACK TO TOP ====== -->
+  <div class="back2top" id="back2Top"><i class="fas fa-arrow-up"></i></div>
+
+  <!-- Scripts -->
+  <script src="./Comportamiento/Basico.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/app.js" defer></script>
+</body>
+</html>

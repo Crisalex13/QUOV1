@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Nuestra Historia | QUOV</title>
+  
+  <!-- ========== ESTILOS ========== -->
+  <link rel="stylesheet" href="../dist/output.css" />
+  <link rel="stylesheet" href="../Estilos/Basico.css" />
+  <link rel="stylesheet" href="../Estilos/Historia.css" />
+  <link rel="stylesheet" href="../Estilos/copa.css" />
+
+  <!-- ========== FUENTES ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- ========== ICONOS ========== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" href="../img/logo.png" />
+</head>
+<body>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav>
+    <div class="mx-auto">
+      <!-- Logo -->
+      <a href="../index.html" class="font-display">QUOV</a>
+
+      <!-- Enlaces de escritorio (visibles en tablet/desktop) -->
+      <div class="nav-links-desktop">
+        <a href="../index.html" class="nav-link">INICIO</a>
+        <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+        <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+        <a href="../Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+        <a href="../Esqueleto/Historia.html" class="nav-link active">HISTORIA</a>
+        <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
+      </div>
+
+      <!-- Acciones derecha -->
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Cambiar modo día/noche">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" aria-label="Instagram" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" aria-label="TikTok" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/525567449830" target="_blank" aria-label="WhatsApp" class="hover:opacity-60 transition">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.124 1.527 5.855L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.366l-.358-.214-3.724.977.997-3.645-.234-.374A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" class="nav-link">INICIO</a>
+    <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
+    <a href="../Esqueleto/Catalogo.html#destacados" class="nav-link">DESTACADOS</a>
+    <a href="../Esqueleto/Quien somos.html" class="nav-link">QUIÉNES SOMOS</a>
+    <a href="../Esqueleto/Historia.html" class="nav-link active">HISTORIA</a>
+    <a href="../Esqueleto/Mejorar_plan.html" class="nav-link">MEJORAR PLAN</a>
+  </div>
+
+  <!-- ========== HERO VIDEO ========== -->
+  <section class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="../video/mp4.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Nuestra Historia</h1>
+      <p>Descubre cómo QUOV nació y ha crecido</p>
+    </div>
+  </section>
+
+  <!-- S1: ¿CÓMO EMPEZÓ? -->
+  <section class="historia-section">
+    <div class="container-qs">
+      <h2 class="historia-title">¿Cómo empezó <span>QUOV</span>?</h2>
+      <div class="historia-row" data-reveal>
+        <div class="historia-text">
+          <h3>Una idea entre cajas de libros</h3>
+          <p>Todo comenzó en 2019, cuando x persona, rodeada de cajas llenas de libros olvidados, se preguntó: ¿por qué estos libros no pueden encontrar nuevos lectores? Con una mesa plegable y mucha ilusión, comenzó a verificar, clasificar y vender libros de segunda mano en el mercado local de Ciudad de México.</p>
+        </div>
+        <div class="historia-img">
+          <img src="https://placehold.co/600x300/dfe8ec/2c5f6e?text=2019+Inicio" alt="Inicio QUOV 2019">
+        </div>
+      </div>
+      <div class="historia-row reverse" data-reveal>
+        <div class="historia-text">
+          <h3>El primer catálogo digital</h3>
+          <p>En 2021, con la ayuda de x persona, QUOV lanzó su primera página web. Lo que comenzó como una hoja de cálculo se convirtió en un catálogo digital que permitió llegar a cientos de lectores en toda la CDMX.</p>
+        </div>
+        <div class="historia-img">
+          <img src="https://placehold.co/600x300/c8d0da/1f4e5c?text=2021+Catálogo" alt="Catálogo QUOV 2021">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 2: ¿POR QUÉ EXISTE QUOV? ========== -->
+  <section class="porque-section">
+    <div class="container-qs">
+      <div class="porque-inner">
+
+        <div class="book-container">
+          <div class="book" id="interactiveBook">
+            <!-- PORTADA -->
+            <div class="book-cover" id="bookCover">
+              <div class="cover-icon" style="position: relative;">
+                <img src="../img/logo.png" alt="Libro" style="width: 45px; height: 45px; object-fit: contain;">
+                <span style="position: absolute; bottom: -5px; right: -5px; font-size: 1.2rem;">✨</span>
+              </div>
+              <h3>El libro de QUOV</h3>
+              <div class="subtitle">Nuestra filosofía en 6 páginas</div>
+              <div class="open-hint">✨ Haz clic para abrir ✨</div>
+            </div>
+
+            <!-- CONTENEDOR DE PÁGINAS -->
+            <div class="pages-container">
+              <!-- Página 1 -->
+              <div class="page" data-page="0">
+                <div class="page-content">
+                  <div class="page-title">💡 El origen de la idea</div>
+                  <div class="page-message">
+                    <p>Cada libro tiene al menos dos historias: la que cuenta y la que vivió antes de llegar a ti. QUOV existe para honrar ambas.</p>
+                    <p style="margin-top: 15px;">Todo comenzó en 2019, x persona, rodeada de cajas llenas de libros olvidados, se preguntó: ¿por qué estos libros no pueden encontrar nuevos lectores?</p>
+                    <p style="margin-top: 15px;"><i>"Un libro que no se lee es una historia que se apaga."</i></p>
+                  </div>
+                  <div class="page-number">Página 1 de 6</div>
+                </div>
+              </div>
+
+              <!-- Página 2 -->
+              <div class="page" data-page="1">
+                <div class="page-content">
+                  <div class="page-title">📚 La brecha lectora</div>
+                  <div class="page-message">
+                    <p>En México, el precio de un libro nuevo equivale al 8% del salario mínimo diario. QUOV ofrece los mismos títulos verificados a hasta un 70% menos.</p>
+                    <p style="margin-top: 15px;">Millones de libros terminan en bodegas o basureros cada año mientras miles de personas quieren leer pero no pueden costear libros nuevos.</p>
+                    <p style="margin-top: 15px;">La lectura no debería ser un lujo, sino un derecho accesible para todos.</p>
+                  </div>
+                  <div class="page-number">Página 2 de 6</div>
+                </div>
+              </div>
+
+              <!-- Página 3 -->
+              <div class="page" data-page="2">
+                <div class="page-content">
+                  <div class="page-title">🌱 Nuestro compromiso</div>
+                  <div class="page-message">
+                    <p>Por cada 10 libros que circulamos, evitamos la producción de uno nuevo. QUOV construye un hábito de consumo consciente y responsable con el planeta.</p>
+                    <p style="margin-top: 15px;">Cada libro reutilizado es un árbol que sigue en pie, una huella de carbono que se reduce, una oportunidad de consumo sostenible.</p>
+                    <p style="margin-top: 15px;"><i>"Leer no solo transforma mentes, también puede salvar el planeta."</i></p>
+                  </div>
+                  <div class="page-number">Página 3 de 6</div>
+                </div>
+              </div>
+
+              <!-- Página 4 -->
+              <div class="page" data-page="3">
+                <div class="page-content">
+                  <div class="page-title">🌟 Comunidad de lectores</div>
+                  <div class="page-message">
+                    <p>Más de 5,000 libros han encontrado un nuevo hogar gracias a nuestra comunidad. Cada lector se convierte en parte de una red que valora el conocimiento y la sostenibilidad.</p>
+                    <p style="margin-top: 15px;">Compartimos reseñas, recomendaciones y la magia de descubrir tesoros escondidos entre páginas amarillentas.</p>
+                    <p style="margin-top: 15px;">Juntos estamos construyendo una cultura de consumo consciente.</p>
+                  </div>
+                  <div class="page-number">Página 4 de 6</div>
+                </div>
+              </div>
+
+              <!-- Página 5 -->
+              <div class="page" data-page="4">
+                <div class="page-content">
+                  <div class="page-title">🚀 El futuro de QUOV</div>
+                  <div class="page-message">
+                    <p>Queremos llegar a más ciudades, conectar más lectores y seguir demostrando que lo usado puede ser valioso.</p>
+                    <p style="margin-top: 15px;">Pronto: clubes de lectura, intercambios comunitarios y alianzas con escuelas para fomentar el hábito de la lectura desde pequeños.</p>
+                    <p style="margin-top: 15px;">El futuro es compartir, es reutilizar, es construir juntos una red de conocimiento accesible.</p>
+                  </div>
+                  <div class="page-number">Página 5 de 6</div>
+                </div>
+              </div>
+
+              <!-- Página 6 - Con autor -->
+              <div class="page" data-page="5">
+                <div class="page-content">
+                  <div class="page-title">✍️ Sobre QUOV</div>
+                  <div class="page-message">
+                    <p>QUOV nació de la pasión por los libros y la convicción de que el conocimiento debe fluir sin barreras.</p>
+                    <p style="margin-top: 15px;">Detrás de cada libro vendido hay un equipo que cree en el poder transformador de la lectura y en un futuro más sostenible.</p>
+                  </div>
+                  <div class="author-section">
+                    <div>
+                      <div class="author-name">Equipo QUOV</div>
+                      <div class="author-bio">Transformando la forma de leer, compartir y cuidar el planeta desde 2019</div>
+                    </div>
+                  </div>
+                  <div class="page-number">Página 6 de 6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTROLES -->
+          <div class="book-controls" id="bookControls">
+            <button class="book-btn" id="btnPrev" disabled>← Anterior</button>
+            <span class="page-indicator" id="pageIndicator">Cerrado</span>
+            <button class="book-btn" id="btnNext" disabled>Siguiente →</button>
+            <button class="book-btn book-btn-close" id="btnCloseBook" disabled>✕ Cerrar</button>
+          </div>
+        </div>
+
+        <!-- TEXTO DERECHA -->
+        <div class="porque-text">
+          <h2>¿Por qué existe QUOV?</h2>
+          <p>Millones de libros terminan en bodegas o basureros cada año mientras miles de personas quieren leer pero no pueden costear libros nuevos. QUOV nació para cerrar esa brecha: conectar libros con lectores, hacer la cultura accesible y cuidar el planeta en el camino.</p>
+          <p style="margin-top:16px;">Abre el libro para descubrir nuestra filosofía página por página.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 3: COPA ========== -->
+  <div class="canvas-wrapper">
+    <canvas id="c"></canvas>
+  </div>
+
+  <!-- ========== SECCIÓN 4: IDEAS - TARJETAS INTERACTIVAS ========== -->
+  <section class="ideas-section">
+    <div class="container-qs">
+      <h2>Ideas</h2>
+      <p class="ideas-subtitle">Pasa el cursor sobre cada imagen para explorar</p>
+      
+      <div class="grid-2x2">
+        <div class="grid-row">
+          <div class="acc-card">
+            <span class="acc-num">01</span>
+            <div class="acc-title-wrapper">
+              <div class="acc-main-title">INNOVACIÓN</div>
+              <div class="acc-phrase">Transforma industrias</div>
+            </div>
+            <div class="acc-caption">
+              <h4><i class="fas fa-rocket"></i> Innovación disruptiva</h4>
+              <p>La innovación no es solo tecnología, es una mentalidad que transforma industrias enteras y crea nuevos mercados.</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Metodologías ágiles</li>
+                <li><i class="fas fa-check"></i> Design thinking</li>
+                <li><i class="fas fa-check"></i> Cultura de experimentación</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-card">
+            <span class="acc-num">02</span>
+            <div class="acc-title-wrapper">
+              <div class="acc-main-title">CREATIVIDAD</div>
+              <div class="acc-phrase">Despierta tu imaginación</div>
+            </div>
+            <div class="acc-caption">
+              <h4><i class="fas fa-palette"></i> Creatividad sin límites</h4>
+              <p>Despierta tu imaginación con técnicas creativas avanzadas que te permitirán encontrar soluciones innovadoras.</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Brainstorming estructurado</li>
+                <li><i class="fas fa-check"></i> Mapas mentales</li>
+                <li><i class="fas fa-check"></i> Pensamiento lateral</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grid-row">
+          <div class="acc-card">
+            <span class="acc-num">03</span>
+            <div class="acc-title-wrapper">
+              <div class="acc-main-title">ESTRATEGIA</div>
+              <div class="acc-phrase">Planifica el éxito</div>
+            </div>
+            <div class="acc-caption">
+              <h4><i class="fas fa-chart-line"></i> Planificación estratégica</h4>
+              <p>Planifica el éxito con metodologías probadas que te ayudarán a alcanzar tus objetivos de manera eficiente.</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Análisis FODA</li>
+                <li><i class="fas fa-check"></i> OKRs y KPIs</li>
+                <li><i class="fas fa-check"></i> Roadmaps de producto</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-card">
+            <span class="acc-num">04</span>
+            <div class="acc-title-wrapper">
+              <div class="acc-main-title">TECNOLOGÍA</div>
+              <div class="acc-phrase">Vanguardia digital</div>
+            </div>
+            <div class="acc-caption">
+              <h4><i class="fas fa-microchip"></i> Tecnología de vanguardia</h4>
+              <p>Las últimas herramientas para potenciar tu negocio, desde inteligencia artificial hasta soluciones cloud.</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Cloud computing</li>
+                <li><i class="fas fa-check"></i> Inteligencia Artificial</li>
+                <li><i class="fas fa-check"></i> Automatización inteligente</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <div class="cta-final">
+    <div class="container-qs">
+      <h2>¿Quieres ser parte de nuestra historia?</h2>
+      <p>Explora nuestro catálogo y comienza tu viaje de transformación personal</p>
+      <a href="../index.html#catalogo" class="btn-catalogo">Ver catálogo →</a>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="../img/logo.png" alt="QUOV" class="footer-logo" />QUOV
+      </div>
+      <p class="footer-text">Libros de segunda mano verificados · Ciudad de México</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/quov_oficial" target="_blank" class="social-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@quov_oficial" target="_blank" class="social-link">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/525567449830" target="_blank" class="social-link">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.124 1.527 5.855L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.366l-.358-.214-3.724.977.997-3.645-.234-.374A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+    <!-- ====== MODALES ====== -->
+  <div id="productOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+        <p class="font-semibold" id="productTitle">Detalle</p>
+        <button id="productClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div id="productImage" class="rounded-2xl overflow-hidden bg-neutral-100"></div>
+        <div class="flex items-start justify-between gap-4">
+          <div><p class="text-lg font-semibold" id="productName">—</p><p class="text-sm text-neutral-500 mt-1" id="productMeta">Segunda mano verificada</p></div>
+          <div class="text-right"><p class="text-xl font-bold" id="productPrice">—</p><span class="text-xs rounded-full border border-neutral-200 px-3 py-1 text-neutral-500 mt-1 inline-block" id="productBadge"></span></div>
+        </div>
+        <div class="flex gap-3"><button id="buyBtn" type="button" class="buy-button">Comprar por WhatsApp</button><button id="secondaryBtn" type="button" class="secondary-button">Cerrar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notifyOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-md" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100"><p class="font-semibold">Avisarme</p><button id="notifyClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button></div>
+      <div class="p-6 space-y-4"><p class="text-sm text-neutral-600">Déjanos tu WhatsApp o email y te avisamos cuando esté disponible:</p><p class="text-sm font-semibold" id="notifyBook">—</p><input id="notifyInput" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-base outline-none focus:ring-2 focus:ring-black/10" placeholder="WhatsApp o email" /><button id="notifySave" type="button" class="notify-save-button">Guardar</button></div>
+    </div>
+  </div>
+  
+  <!-- ====== CHAT IA ====== -->
+  <button id="chatFab" data-cursor="blue" type="button" class="chat-fab" aria-label="Abrir chat">
+    <img src="../img/logo.png" alt="QUOV" class="chat-fab-logo" />
+    <span class="chat-fab-text">QUOV IA</span>
+  </button>
+
+  <div id="chatHint" data-cursor="blue" class="chat-hint">
+    Hola 👋 Soy <strong>QUOV IA</strong>. Tu asistente virtual.
+  </div>
+
+  <div id="chatOverlay" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 p-4">
+    <div class="modal-card w-full sm:max-w-2xl" data-cursor="blue">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+        <p class="font-semibold">QUOV IA</p>
+        <button id="chatClose" type="button" class="rounded-xl px-3 py-2 hover:bg-neutral-100 transition text-sm">✕</button>
+      </div>
+      <div class="chat-header-divider"></div>
+      <div class="p-6 space-y-4">
+        <div class="space-y-3 text-sm max-h-[50vh] overflow-y-auto pr-1" id="chatMessages">
+          <div class="max-w-[85%] rounded-2xl bg-neutral-100 px-5 py-4">
+            Hola 👋 Soy QUOV IA. Puedo decirte si un libro está disponible, cuánto cuesta y ayudarte a comprar por WhatsApp.
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <textarea id="chatInput" rows="1" class="w-full rounded-2xl border border-neutral-200 px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-black/10 resize-none" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); enviarMensaje();}"></textarea>
+          <button onclick="enviarMensaje()" type="button" class="chat-send-button">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== BACK TO TOP ====== -->
+  <div class="back2top" id="back2Top"><i class="fas fa-arrow-up"></i></div>
+ 
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../Comportamiento/Basico.js"></script>
+  <script src="../js/app.js" defer></script>
+  <script src="../Comportamiento/Historia.js"></script>
+  <script src="../Comportamiento/copa.js"></script>
+</body>
+</html>
