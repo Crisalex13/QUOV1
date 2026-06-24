@@ -264,7 +264,7 @@ Menciona 2-3 títulos que un lector de este libro también podría disfrutar.`;
     }
 
     // Llamada a la API
-    const respuesta = await fetch('http://localhost:3001/escanear', {
+    const respuesta = await fetch(CONFIG.API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
