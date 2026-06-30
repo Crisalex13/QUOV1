@@ -5,12 +5,14 @@
    2. HERO
    3. CONTENEDOR PRINCIPAL
    4. PANEL PDF
-   5. DROP ZONE
-   6. VISOR PDF
-   7. PANEL CHAT
-   8. MENSAJES
-   9. INPUT Y SUGERENCIAS
-   10. RESPONSIVE
+   5. TOOLBAR DEL PDF (cambiar / quitar)
+   6. DROP ZONE
+   7. VISOR PDF + CAPA DE SUBRAYADO
+   8. PANEL CHAT
+   9. MENSAJES
+   10. ADJUNTAR IMAGEN
+   11. INPUT Y SUGERENCIAS
+   12. RESPONSIVE
    ============================================ */
 
 /* ============================================
@@ -22,22 +24,27 @@
   --quov-blue-light: #4DCFFF;
   --quov-white: #ffffff;
   --quov-black: #000000;
-  
+
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
   --bg-neutral-900: #0f172a;
-  
+
   --text-primary: #111111;
   --text-secondary: #444444;
   --text-neutral-400: #94a3b8;
-  
+
   --border-light: #e2e8f0;
   --border-light-rgb: 226, 232, 240;
   --card-shadow: rgba(0, 0, 0, 0.08);
-  
+
   --message-user-bg: #e8f4fd;
   --message-ia-bg: #f1f5f9;
+
+  --highlight-color: rgba(255, 209, 0, 0.55);
+  --highlight-color-active: rgba(255, 176, 0, 0.75);
+  --error-color: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.08);
 }
 
 body.dark-mode {
@@ -50,6 +57,8 @@ body.dark-mode {
   --border-light: #333333;
   --message-user-bg: #1a2a3a;
   --message-ia-bg: #1a1a1a;
+  --highlight-color: rgba(255, 209, 0, 0.4);
+  --highlight-color-active: rgba(255, 176, 0, 0.6);
 }
 
 /* ============================================
@@ -73,7 +82,7 @@ body.dark-mode {
 .lector-hero p {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -106,7 +115,89 @@ body.dark-mode {
 }
 
 /* ============================================
-   5. DROP ZONE
+   5. TOOLBAR DEL PDF (cambiar / quitar)
+   ============================================ */
+.pdf-toolbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.pdf-toolbar.show { display: flex; }
+
+.pdf-toolbar-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.pdf-toolbar-info > i {
+  color: var(--quov-blue);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.pdf-toolbar-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pdf-toolbar-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-toolbar-meta {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.pdf-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pdf-toolbar-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pdf-toolbar-actions button:hover {
+  border-color: var(--quov-blue);
+  color: var(--quov-blue);
+}
+
+.pdf-toolbar-actions button.danger:hover {
+  border-color: var(--error-color);
+  color: var(--error-color);
+  background: var(--error-bg);
+}
+
+/* ============================================
+   6. DROP ZONE
    ============================================ */
 .drop-zone {
   border: 2px dashed var(--border-light);
@@ -153,7 +244,7 @@ body.dark-mode {
 input[type="file"] { display: none; }
 
 /* ============================================
-   6. VISOR PDF
+   7. VISOR PDF + CAPA DE SUBRAYADO
    ============================================ */
 .pdf-viewer {
   display: none;
@@ -180,11 +271,37 @@ body.dark-mode #pdfContainer {
   background: #1a1a1a;
 }
 
+.pdf-page-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
 #pdfContainer canvas {
   max-width: 100%;
   height: auto !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   border-radius: 4px;
+  display: block;
+}
+
+.highlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.highlight-mark {
+  position: absolute;
+  background: var(--highlight-color);
+  border-radius: 3px;
+  animation: highlightAppear 0.5s ease;
+}
+
+@keyframes highlightAppear {
+  0% { background: var(--highlight-color-active); transform: scaleY(0.4); opacity: 0; }
+  60% { background: var(--highlight-color-active); }
+  100% { background: var(--highlight-color); transform: scaleY(1); opacity: 1; }
 }
 
 .pdf-controls {
@@ -248,7 +365,7 @@ body.dark-mode #pdfContainer {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ============================================
-   7. PANEL CHAT
+   8. PANEL CHAT
    ============================================ */
 .chat-panel {
   flex: 0.8;
@@ -321,7 +438,7 @@ body.dark-mode #pdfContainer {
 }
 
 /* ============================================
-   8. MENSAJES
+   9. MENSAJES
    ============================================ */
 .chat-messages {
   flex: 1;
@@ -390,16 +507,129 @@ body.dark-mode #pdfContainer {
   border-radius: 4px;
 }
 
+.message-bubble .msg-image {
+  max-width: 180px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  display: block;
+  border: 1px solid var(--border-light);
+}
+
+/* Mensaje de confirmación de capítulo ("¿estás seguro?") */
+.message-bubble.confirm-msg {
+  border-left: 3px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+/* Etiqueta de acción de subrayado realizado */
+.action-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--quov-blue-dark);
+  background: rgba(0,191,255,0.12);
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+body.dark-mode .action-tag { color: var(--quov-blue-light); }
+
+.action-tag:hover { background: rgba(0,191,255,0.22); }
+
 /* ============================================
-   9. INPUT Y SUGERENCIAS
+   10. ADJUNTAR IMAGEN
+   ============================================ */
+.attachment-preview {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.attachment-preview.show { display: flex; }
+
+.attachment-preview img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+}
+
+.attachment-name {
+  flex: 1;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#removeAttachmentBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+#removeAttachmentBtn:hover {
+  color: var(--error-color);
+  background: var(--error-bg);
+}
+
+/* ============================================
+   11. INPUT Y SUGERENCIAS
    ============================================ */
 .chat-input-area {
   display: flex;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 8px;
   padding: 12px 16px;
   border-top: 1px solid var(--border-light);
   background: var(--bg-primary);
   flex-shrink: 0;
+}
+
+.attach-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.attach-btn:hover:not(:disabled) {
+  border-color: var(--quov-blue);
+  color: var(--quov-blue);
+}
+
+.attach-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.attach-btn.active {
+  background: var(--quov-blue);
+  border-color: var(--quov-blue);
+  color: white;
 }
 
 .chat-input-area textarea {
@@ -427,7 +657,7 @@ body.dark-mode #pdfContainer {
   cursor: not-allowed;
 }
 
-.chat-input-area button {
+.chat-input-area button#sendBtn {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -443,12 +673,12 @@ body.dark-mode #pdfContainer {
   justify-content: center;
 }
 
-.chat-input-area button:hover:not(:disabled) {
+.chat-input-area button#sendBtn:hover:not(:disabled) {
   background: var(--quov-blue-dark);
   transform: scale(1.05);
 }
 
-.chat-input-area button:disabled {
+.chat-input-area button#sendBtn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none;
@@ -492,21 +722,21 @@ body.dark-mode #pdfContainer {
 }
 
 /* ============================================
-   10. RESPONSIVE
+   12. RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
   .lector-container {
     flex-direction: column;
     padding: 20px 16px 40px;
   }
-  
+
   .chat-panel {
     flex: none;
     max-width: none;
     height: 55vh;
     max-height: 500px;
   }
-  
+
   .pdf-panel {
     min-height: 400px;
   }
@@ -516,24 +746,29 @@ body.dark-mode #pdfContainer {
   .lector-hero { padding: 24px 16px 20px; }
   .lector-hero h1 { font-size: 1.5rem; }
   .lector-hero p { font-size: 0.82rem; }
-  
+
   .lector-container { padding: 12px 12px 32px; gap: 16px; }
-  
+
+  .pdf-toolbar { padding: 10px 12px; flex-wrap: wrap; }
+  .pdf-toolbar-actions button span { display: none; }
+  .pdf-toolbar-actions button { padding: 6px 10px; }
+
   .drop-zone { padding: 20px 16px; margin: 12px; }
   .drop-zone-icon { font-size: 1.8rem; }
   .drop-zone-title { font-size: 0.82rem; }
-  
+
   #pdfContainer { min-height: 250px; padding: 8px; }
   .pdf-controls { padding: 8px 12px; gap: 10px; }
   .pdf-controls button { padding: 4px 10px; font-size: 0.8rem; }
-  
+
   .chat-panel { height: 50vh; max-height: 450px; }
   .chat-header { padding: 10px 14px; }
   .chat-messages { padding: 12px 14px; gap: 10px; }
   .message-bubble { font-size: 0.8rem; padding: 8px 12px; max-width: 92%; }
-  .chat-input-area { padding: 8px 12px; gap: 8px; }
+  .chat-input-area { padding: 8px 12px; gap: 6px; }
   .chat-input-area textarea { font-size: 0.78rem; padding: 8px 12px; min-height: 36px; }
-  .chat-input-area button { width: 38px; height: 38px; font-size: 0.85rem; }
+  .chat-input-area button#sendBtn { width: 38px; height: 38px; font-size: 0.85rem; }
+  .attach-btn { width: 36px; height: 36px; }
   .chat-suggestions { padding: 6px 12px 10px; gap: 4px; }
   .suggestion-chip { font-size: 0.65rem; padding: 3px 10px; }
   .chat-suggestions span { font-size: 0.65rem; }

@@ -73,7 +73,7 @@
         </a>
         <a href="https://www.tiktok.com/@quov_oficial" target="_blank" aria-label="TikTok" class="hover:opacity-60 transition">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 0 006.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
           </svg>
         </a>
         <a href="https://wa.me/525567449830" target="_blank" aria-label="WhatsApp" class="hover:opacity-60 transition">
@@ -103,7 +103,7 @@
   <!-- HERO DEL LECTOR -->
   <section class="lector-hero">
     <h1>Lector Inteligente <br>con IA</h1>
-    <p>Sube tu PDF y nuestro asistente leerá todo el libro, detectará patrones, <br>subrayará ideas clave y te responderá preguntas con contexto completo.</p>
+    <p>Sube tu PDF y QUOV IA leerá todo el libro: detecta capítulos, subraya las ideas que le pidas directamente sobre la página, y responde tus preguntas con el contexto completo de la obra.</p>
   </section>
 
   <!-- CONTENIDO PRINCIPAL: LECTOR + CHAT -->
@@ -111,6 +111,26 @@
 
     <!-- PANEL IZQUIERDO: VISOR PDF -->
     <div class="pdf-panel">
+
+      <!-- Barra superior: solo visible con PDF cargado -->
+      <div class="pdf-toolbar" id="pdfToolbar">
+        <div class="pdf-toolbar-info">
+          <i class="fa-solid fa-book-open"></i>
+          <div class="pdf-toolbar-text">
+            <span class="pdf-toolbar-name" id="pdfToolbarName">archivo.pdf</span>
+            <span class="pdf-toolbar-meta" id="pdfToolbarMeta">0 páginas</span>
+          </div>
+        </div>
+        <div class="pdf-toolbar-actions">
+          <button id="changePdfBtn" title="Cambiar de libro">
+            <i class="fa-solid fa-rotate"></i><span>Cambiar</span>
+          </button>
+          <button id="removePdfBtn" title="Quitar PDF" class="danger">
+            <i class="fa-solid fa-xmark"></i><span>Quitar</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Drop Zone para subir PDF -->
       <div class="drop-zone" id="dropZone">
         <div class="drop-zone-icon"><i class="fa-regular fa-file-pdf"></i></div>
@@ -120,10 +140,7 @@
           PDF · Máx. 50 MB
         </p>
       </div>
-      <input type="file" id="fileInput" accept=".pdf" multiple />
-
-      <!-- Lista de archivos cargados -->
-      <div class="file-list" id="fileList"></div>
+      <input type="file" id="fileInput" accept=".pdf" />
 
       <!-- Visor PDF -->
       <div class="pdf-viewer" id="pdfViewer">
@@ -138,7 +155,7 @@
       <!-- Estado de carga del PDF -->
       <div class="pdf-loading" id="pdfLoading">
         <div class="spinner"></div>
-        <p>Cargando libro...</p>
+        <p id="pdfLoadingText">Cargando libro...</p>
       </div>
     </div>
 
@@ -166,21 +183,32 @@
             <p style="margin-top:8px;">Sube un PDF y podré:</p>
             <ul style="margin-top:6px;padding-left:20px;list-style:disc;">
               <li>Leer todo el libro completo</li>
-              <li>Subrayar patrones y temas clave</li>
-              <li>Hacer resúmenes por capítulos</li>
-              <li>Responder preguntas con contexto</li>
+              <li>Subrayar ideas clave directamente en la página cuando te lo pida</li>
+              <li>Hacer resúmenes por capítulos (avisándote si aún no vas tan lejos)</li>
+              <li>Responder preguntas con contexto, incluso sobre una imagen que le envíes</li>
             </ul>
             <p style="margin-top:8px;font-style:italic;">📖 ¡Empieza subiendo tu libro!</p>
           </div>
         </div>
       </div>
 
+      <!-- Vista previa de imagen adjunta -->
+      <div class="attachment-preview" id="attachmentPreview">
+        <img id="attachmentThumb" src="" alt="Imagen adjunta" />
+        <span class="attachment-name" id="attachmentName">imagen.jpg</span>
+        <button id="removeAttachmentBtn" title="Quitar imagen"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
       <!-- Input del chat -->
       <div class="chat-input-area">
-        <textarea 
-          id="chatInput" 
-          rows="2" 
-          placeholder="Pregúntale a QUOV IA sobre el libro..." 
+        <button id="attachImageBtn" class="attach-btn" title="Adjuntar imagen" disabled>
+          <i class="fa-solid fa-paperclip"></i>
+        </button>
+        <input type="file" id="imageInput" accept="image/*" style="display:none;" />
+        <textarea
+          id="chatInput"
+          rows="2"
+          placeholder="Pregúntale a QUOV IA sobre el libro..."
           disabled
         ></textarea>
         <button id="sendBtn" disabled>
@@ -191,7 +219,7 @@
         <span>💡 Sugerencias:</span>
         <button class="suggestion-chip" data-text="Hazme un resumen del capítulo 1">📝 Resumen Capítulo 1</button>
         <button class="suggestion-chip" data-text="¿De qué trata este libro?">📖 ¿De qué trata?</button>
-        <button class="suggestion-chip" data-text="¿Cuáles son los temas principales?">🎯 Temas principales</button>
+        <button class="suggestion-chip" data-text="Subraya la idea principal de esta página">🖍️ Subraya esta página</button>
       </div>
     </div>
 
@@ -226,570 +254,7 @@
   <!-- Scripts -->
   <script src="../js/config.js"></script>
   <script src="../Comportamiento/Basico.js"></script>
-  
-  <!-- Lector JS Mejorado -->
-  <script>
-    // ============================================
-    // 1. CONFIGURACIÓN DE PDF.JS
-    // ============================================
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    // ============================================
-    // 2. VARIABLES GLOBALES
-    // ============================================
-    let pdfDoc = null;
-    let currentPage = 1;
-    let totalPages = 0;
-    let fullText = '';
-    let currentFileName = '';
-    let isProcessing = false;
-    
-    // Gestión de archivos
-    let filesList = []; // Array de { name, data, fullText, pages }
-    let currentFileIndex = -1;
-
-    // Elementos DOM
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    const pdfViewer = document.getElementById('pdfViewer');
-    const pdfContainer = document.getElementById('pdfContainer');
-    const pdfLoading = document.getElementById('pdfLoading');
-    const prevPage = document.getElementById('prevPage');
-    const nextPage = document.getElementById('nextPage');
-    const pageInfo = document.getElementById('pageInfo');
-    const chatMessages = document.getElementById('chatMessages');
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const clearChatBtn = document.getElementById('clearChatBtn');
-    const currentBookName = document.getElementById('currentBookName');
-    const suggestions = document.getElementById('suggestions');
-    const fileList = document.getElementById('fileList');
-
-    // ============================================
-    // 3. DROP ZONE Y CARGA DE PDF
-    // ============================================
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    dropZone.addEventListener('dragover', e => {
-      e.preventDefault();
-      dropZone.classList.add('drag-over');
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('drag-over');
-    });
-
-    dropZone.addEventListener('drop', e => {
-      e.preventDefault();
-      dropZone.classList.remove('drag-over');
-      if (e.dataTransfer.files.length > 0) {
-        handleFiles(e.dataTransfer.files);
-      }
-    });
-
-    fileInput.addEventListener('change', e => {
-      if (e.target.files.length > 0) {
-        handleFiles(e.target.files);
-      }
-      fileInput.value = '';
-    });
-
-    function handleFiles(fileListFromInput) {
-      const validFiles = Array.from(fileListFromInput).filter(file => {
-        if (file.type !== 'application/pdf') {
-          mostrarMensaje('error', `❌ "${file.name}" no es un PDF.`);
-          return false;
-        }
-        if (file.size > 50 * 1024 * 1024) {
-          mostrarMensaje('error', `❌ "${file.name}" supera los 50 MB.`);
-          return false;
-        }
-        return true;
-      });
-
-      if (validFiles.length === 0) return;
-
-      // Procesar cada archivo
-      validFiles.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = async function(e) {
-          const arrayBuffer = e.target.result;
-          try {
-            const doc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-            const text = await extractFullText(doc);
-            
-            // Guardar en la lista
-            filesList.push({
-              name: file.name,
-              data: arrayBuffer,
-              fullText: text,
-              pages: doc.numPages,
-              doc: doc
-            });
-
-            // Si es el primer archivo, cargarlo automáticamente
-            if (filesList.length === 1) {
-              currentFileIndex = 0;
-              await loadFile(0);
-            } else {
-              // Si ya hay archivos, solo actualizar la lista
-              renderFileList();
-              mostrarMensaje('ia', `✅ "${file.name}" cargado correctamente. (${filesList.length} archivos en total)`);
-            }
-            
-          } catch (error) {
-            console.error('Error al cargar PDF:', error);
-            mostrarMensaje('error', `❌ No se pudo cargar "${file.name}". Verifica que no esté dañado.`);
-          }
-        };
-        reader.readAsArrayBuffer(file);
-      });
-    }
-
-    async function loadFile(index) {
-      if (index < 0 || index >= filesList.length) return;
-      
-      currentFileIndex = index;
-      const fileData = filesList[index];
-      currentFileName = fileData.name;
-      fullText = fileData.fullText;
-      totalPages = fileData.pages;
-      currentPage = 1;
-      
-      currentBookName.textContent = currentFileName;
-      
-      // Mostrar loading
-      pdfLoading.classList.add('show');
-      pdfViewer.classList.remove('show');
-      dropZone.style.display = 'none';
-      
-      // Renderizar primera página
-      pdfDoc = await pdfjsLib.getDocument({ data: fileData.data }).promise;
-      await renderPage(1);
-      
-      // Actualizar controles
-      pdfLoading.classList.remove('show');
-      pdfViewer.classList.add('show');
-      updateControls();
-      
-      // Habilitar chat
-      chatInput.disabled = false;
-      sendBtn.disabled = false;
-      
-      // Limpiar mensajes anteriores y mostrar nuevo contexto
-      chatMessages.innerHTML = '';
-      agregarMensaje('ia', `📚 Cambiando a "${currentFileName}". El libro tiene ${totalPages} páginas.\n\n¿Qué te gustaría saber sobre este libro?`);
-      
-      renderFileList();
-    }
-
-    // ============================================
-    // 4. RENDERIZADO DE PDF
-    // ============================================
-    async function renderPage(pageNum) {
-      if (!pdfDoc) return;
-      
-      const page = await pdfDoc.getPage(pageNum);
-      const viewport = page.getViewport({ scale: 1.5 });
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      
-      await page.render({ canvasContext: context, viewport: viewport }).promise;
-      
-      pdfContainer.innerHTML = '';
-      pdfContainer.appendChild(canvas);
-      
-      currentPage = pageNum;
-      pageInfo.textContent = `Página ${pageNum} de ${totalPages}`;
-      updateControls();
-    }
-
-    function updateControls() {
-      prevPage.disabled = currentPage <= 1;
-      nextPage.disabled = currentPage >= totalPages;
-    }
-
-    prevPage.addEventListener('click', () => {
-      if (currentPage > 1) renderPage(currentPage - 1);
-    });
-
-    nextPage.addEventListener('click', () => {
-      if (currentPage < totalPages) renderPage(currentPage + 1);
-    });
-
-    // ============================================
-    // 5. EXTRACCIÓN DE TEXTO COMPLETO
-    // ============================================
-    async function extractFullText(doc) {
-      let text = '';
-      for (let i = 1; i <= doc.numPages; i++) {
-        const page = await doc.getPage(i);
-        const content = await page.getTextContent();
-        const pageText = content.items.map(item => item.str).join(' ');
-        text += `\n--- PÁGINA ${i} ---\n${pageText}\n`;
-      }
-      return text;
-    }
-
-    // ============================================
-    // 6. LISTA DE ARCHIVOS
-    // ============================================
-    function renderFileList() {
-      if (filesList.length === 0) {
-        fileList.innerHTML = '';
-        return;
-      }
-
-      fileList.innerHTML = filesList.map((file, index) => `
-        <div class="file-item ${index === currentFileIndex ? 'active' : ''}">
-          <div class="file-item-info" onclick="switchFile(${index})">
-            <i class="fa-regular fa-file-pdf"></i>
-            <span class="file-item-name">${file.name}</span>
-            <span class="file-item-pages">${file.pages} págs</span>
-          </div>
-          <button class="file-item-remove" onclick="removeFile(${index})" title="Eliminar archivo">
-            <i class="fa-regular fa-trash-can"></i>
-          </button>
-        </div>
-      `).join('');
-    }
-
-    window.switchFile = function(index) {
-      if (index === currentFileIndex) return;
-      if (index >= 0 && index < filesList.length) {
-        loadFile(index);
-      }
-    };
-
-    window.removeFile = function(index) {
-      if (filesList.length === 1) {
-        // Si es el único archivo, resetear todo
-        filesList = [];
-        currentFileIndex = -1;
-        resetLector();
-        renderFileList();
-        dropZone.style.display = 'block';
-        currentBookName.textContent = 'ningún libro';
-        chatInput.disabled = true;
-        sendBtn.disabled = true;
-        chatMessages.innerHTML = '';
-        agregarMensaje('ia', '📚 Archivo eliminado. Sube un nuevo PDF para comenzar.');
-        return;
-      }
-
-      // Eliminar el archivo
-      filesList.splice(index, 1);
-      
-      if (index === currentFileIndex) {
-        // Si eliminamos el archivo actual, cargar el primero
-        currentFileIndex = 0;
-        loadFile(0);
-      } else if (index < currentFileIndex) {
-        // Si eliminamos uno antes del actual, ajustar índice
-        currentFileIndex--;
-      }
-      
-      renderFileList();
-      mostrarMensaje('ia', `🗑️ Archivo eliminado.`);
-    };
-
-    // ============================================
-    // 7. CHAT CON IA
-    // ============================================
-    sendBtn.addEventListener('click', enviarMensaje);
-    chatInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        enviarMensaje();
-      }
-    });
-
-    document.querySelectorAll('.suggestion-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        chatInput.value = chip.dataset.text;
-        enviarMensaje();
-      });
-    });
-
-    async function enviarMensaje() {
-      const texto = chatInput.value.trim();
-      if (!texto || isProcessing || !fullText) return;
-      
-      chatInput.value = '';
-      isProcessing = true;
-      sendBtn.disabled = true;
-      
-      agregarMensaje('user', texto);
-      
-      const loadingId = agregarMensajeLoading();
-      
-      try {
-        const respuesta = await consultarIA(texto);
-        removerMensajeLoading(loadingId);
-        agregarMensaje('ia', respuesta);
-      } catch (error) {
-        console.error('Error en IA:', error);
-        removerMensajeLoading(loadingId);
-        agregarMensaje('ia', '❌ Lo siento, hubo un error al procesar tu pregunta. Inténtalo de nuevo.');
-      }
-      
-      isProcessing = false;
-      sendBtn.disabled = false;
-      chatInput.focus();
-      scrollChat();
-    }
-
-    async function consultarIA(pregunta) {
-      const esResumenCapitulo = /resumen del capítulo (\d+)/i.exec(pregunta);
-      if (esResumenCapitulo) {
-        const capitulo = parseInt(esResumenCapitulo[1]);
-        const capituloActual = Math.ceil(currentPage / 10);
-        if (capitulo > capituloActual + 1) {
-          return `⚠️ ¿Estás seguro? Apenas vas en la página ${currentPage} (aproximadamente capítulo ${capituloActual}). 
-          
-  Te recomiendo leer primero hasta el capítulo ${capitulo} para que el resumen tenga más sentido.
-  
-  ¿Quieres que te haga un resumen del capítulo ${capituloActual} en su lugar?`;
-        }
-      }
-      
-      const systemPrompt = `Eres QUOV IA, un asistente especializado en análisis literario. 
-  Has leído completamente el libro "${currentFileName}". 
-  Tienes acceso a todo el texto del libro.
-  Puedes identificar patrones, temas, personajes, estructura narrativa y estilo del autor.
-  
-  REGLAS:
-  1. Responde siempre en español.
-  2. Usa el contexto completo del libro para responder.
-  3. Si preguntan por un capítulo específico, usa el texto de ese capítulo.
-  4. Sé detallado y preciso.
-  5. Destaca patrones literarios, simbolismos y temas recurrentes.`;
-
-      const userPrompt = `Pregunta del usuario: "${pregunta}"
-
-  Texto completo del libro:
-  ${fullText}
-
-  Responde a la pregunta del usuario basándote en el texto del libro.`;
-
-      try {
-        const response = await fetch(CONFIG.API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-sonnet-4-6',
-            max_tokens: 800,
-            system: systemPrompt,
-            messages: [{ role: 'user', content: userPrompt }]
-          })
-        });
-        
-        const data = await response.json();
-        if (data.error) throw new Error(data.error.message);
-        
-        return (data.content || []).map(b => b.text || '').join('') || 'No pude generar una respuesta.';
-        
-      } catch (error) {
-        console.error('Error en API:', error);
-        throw error;
-      }
-    }
-
-    // ============================================
-    // 8. FUNCIONES DE MENSAJES
-    // ============================================
-    function agregarMensaje(tipo, texto) {
-      const div = document.createElement('div');
-      div.className = `message ${tipo}`;
-      
-      let contenido = texto
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br>');
-      
-      div.innerHTML = `
-        <div class="message-avatar">${tipo === 'user' ? '👤' : '🤖'}</div>
-        <div class="message-bubble">${contenido}</div>
-      `;
-      
-      chatMessages.appendChild(div);
-      scrollChat();
-      return div;
-    }
-
-    function mostrarMensaje(tipo, texto) {
-      agregarMensaje('ia', texto);
-    }
-
-    function agregarMensajeLoading() {
-      const div = document.createElement('div');
-      div.className = 'message ia loading-message';
-      div.id = 'loadingMsg';
-      div.innerHTML = `
-        <div class="message-avatar">🤖</div>
-        <div class="message-bubble">
-          <span class="loading-dots">Pensando<span>.</span><span>.</span><span>.</span></span>
-        </div>
-      `;
-      chatMessages.appendChild(div);
-      scrollChat();
-      return 'loadingMsg';
-    }
-
-    function removerMensajeLoading(id) {
-      const el = document.getElementById(id);
-      if (el) el.remove();
-    }
-
-    function scrollChat() {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // ============================================
-    // 9. LIMPIEZA Y RESET
-    // ============================================
-    clearChatBtn.addEventListener('click', () => {
-      if (confirm('¿Limpiar toda la conversación?')) {
-        chatMessages.innerHTML = '';
-        agregarMensaje('ia', '💬 Conversación reiniciada. ¿En qué más puedo ayudarte?');
-      }
-    });
-
-    function resetLector() {
-      pdfDoc = null;
-      fullText = '';
-      currentFileName = '';
-      pdfViewer.classList.remove('show');
-      pdfLoading.classList.remove('show');
-      dropZone.style.display = 'block';
-      pdfContainer.innerHTML = '';
-      currentBookName.textContent = 'ningún libro';
-      chatInput.disabled = true;
-      sendBtn.disabled = true;
-      pageInfo.textContent = 'Página 0 de 0';
-      prevPage.disabled = true;
-      nextPage.disabled = true;
-    }
-
-    // ============================================
-    // 10. ESTILOS DINÁMICOS
-    // ============================================
-    const style = document.createElement('style');
-    style.textContent = `
-      .loading-dots span {
-        animation: dotPulse 1.4s infinite;
-        opacity: 0;
-      }
-      .loading-dots span:nth-child(1) { animation-delay: 0s; }
-      .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-      .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
-      @keyframes dotPulse {
-        0%, 60%, 100% { opacity: 0; }
-        30% { opacity: 1; }
-      }
-      .loading-message .message-bubble {
-        background: var(--message-ia-bg);
-        border: 1px solid var(--border-light);
-      }
-      
-      /* File List Styles */
-      .file-list {
-        padding: 8px 16px;
-        border-bottom: 1px solid var(--border-light);
-        background: var(--bg-secondary);
-        max-height: 150px;
-        overflow-y: auto;
-      }
-      
-      .file-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 6px 10px;
-        margin: 4px 0;
-        border-radius: 8px;
-        background: var(--bg-primary);
-        border: 1px solid var(--border-light);
-        transition: all 0.2s;
-        cursor: pointer;
-      }
-      
-      .file-item:hover {
-        border-color: var(--quov-blue);
-      }
-      
-      .file-item.active {
-        border-color: var(--quov-blue);
-        background: rgba(0, 191, 255, 0.08);
-      }
-      
-      .file-item-info {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex: 1;
-        min-width: 0;
-      }
-      
-      .file-item-info i {
-        color: var(--quov-blue);
-        font-size: 1rem;
-      }
-      
-      .file-item-name {
-        font-size: 0.78rem;
-        color: var(--text-primary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .file-item-pages {
-        font-size: 0.65rem;
-        color: var(--text-secondary);
-        background: var(--bg-neutral-100);
-        padding: 1px 8px;
-        border-radius: 10px;
-        white-space: nowrap;
-      }
-      
-      .file-item-remove {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 4px 6px;
-        border-radius: 4px;
-        transition: all 0.2s;
-        font-size: 0.8rem;
-      }
-      
-      .file-item-remove:hover {
-        color: #ef4444;
-        background: rgba(239, 68, 68, 0.1);
-      }
-      
-      /* Responsive */
-      @media (max-width: 640px) {
-        .file-list {
-          max-height: 100px;
-          padding: 4px 10px;
-        }
-        .file-item {
-          padding: 4px 8px;
-        }
-        .file-item-name {
-          font-size: 0.7rem;
-        }
-        .file-item-pages {
-          font-size: 0.6rem;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+  <script src="../Comportamiento/Lector.js"></script>
 
 </body>
 </html>
