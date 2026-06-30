@@ -87,7 +87,7 @@ body {
   --bg-primary: var(--white-solid);
   --bg-secondary: #f8fafc;
   --bg-neutral-100: #f1f5f9;
-  --bg-neutral-900: var(--black-solid);
+  --bg-neutral-900: rgba(0, 225, 255, 0.5);
   
   --text-primary: #111111;
   --text-secondary: #444444;
@@ -98,7 +98,7 @@ body {
   --card-shadow: var(--black-08);
   --card-shadow-hover: var(--black-15);
   
-  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, var(--blue-50) 100%);
+  --plans-hero-bg: linear-gradient(180deg , var(--blue-solid) 0%, var(--blue-50) );
   --plan-card-border-hover: var(--blue-35);
   --plan-popular-shadow: var(--blue-20);
   --btn-ventajas-hover-bg: var(--blue-06);
@@ -126,9 +126,9 @@ body.dark-mode {
   --bg-primary: #0a0a0a;
   --bg-secondary: #0f0f1a;
   --bg-neutral-100: #1a1a1a;
-  --bg-neutral-900: #020617;
+  --bg-neutral-900: #00bfff63;
 
-  --hero-fondo: rgba(0, 191, 255, 0.308);
+  --hero-fondo: rgba(0, 191, 255, 0.854);
   
   --text-primary: #f0f0f0;
   --text-secondary: #bbbbbb;
@@ -139,14 +139,14 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
   
-  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, #1a1a3a 100%);
-  --plan-card-border-hover: rgba(0, 191, 255, 0.5);
-  --plan-popular-shadow: rgba(0, 191, 255, 0.3);
-  --btn-ventajas-hover-bg: rgba(0, 191, 255, 0.12);
-  --btn-access-shadow: rgba(0, 191, 255, 0.4);
+  --plans-hero-bg: linear-gradient(180deg, var(--bg-neutral-900) 0%, #00BFFF 100%);
+  --plan-card-border-hover: rgba(0, 191, 255, 0.66);
+  --plan-popular-shadow: rgba(0, 191, 255, 0.708);
+  --btn-ventajas-hover-bg: rgba(0, 191, 255, 0.779);
+  --btn-access-shadow: rgba(0, 191, 255, 0.954);
   
   --scrollbar-track: rgba(255, 255, 255, 0.1);
-  --scrollbar-thumb: var(--quov-blue);
+  --scrollbar-thumb: var(--blue-60);
 }
 
 /* ============================================

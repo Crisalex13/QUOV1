@@ -407,11 +407,11 @@ body.dark-mode .footer-text {
   justify-content: center !important;
   gap: 4px !important;
   cursor: pointer !important;
-  background: #0a0a0a8a !important;
+  background: #fffffff5 !important;
   width: 100px !important;
   height: 100px !important;
-  border: 2px solid #0000001c !important;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5) !important;
+  border: 2px solid #00000006 !important;
+  box-shadow: 0 0 15px rgb(0, 0, 0) !important;
   animation: floatNeon 3s ease-in-out infinite !important;
 }
 
@@ -450,7 +450,7 @@ body.dark-mode .footer-text {
   max-width: 240px;
   border-radius: 16px;
   background: linear-gradient(135deg, #0a0a0a, #0d1a2e);
-  color: #00BFFF;
+  color: #0cbbf6;
   border: 1px solid rgba(0, 191, 255, 0.6);
   padding: 14px 18px;
   font-size: 0.85rem;
@@ -767,9 +767,9 @@ body.dark-mode #chatMessages .bg-neutral-100 {
 #chatOverlay.chat-side-mode .modal-card {
   position: fixed !important;
   top: 50% !important;
-  left: calc(50% - 500px) !important;
+  left: calc(50% - 400px) !important;
   right: auto !important;
-  transform: translateY(-50%) translateX(-50%) !important;
+  transform: translateY(-55%) translateX(-10%) !important;
   width: min(520px, calc(100vw - 420px)) !important;
   max-width: 520px !important;
   max-height: 85vh !important;

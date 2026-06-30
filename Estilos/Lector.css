@@ -1,0 +1,540 @@
+/* ============================================ 
+   LECTOR.CSS - QUOV IA
+   ============================================ 
+   1. VARIABLES
+   2. HERO
+   3. CONTENEDOR PRINCIPAL
+   4. PANEL PDF
+   5. DROP ZONE
+   6. VISOR PDF
+   7. PANEL CHAT
+   8. MENSAJES
+   9. INPUT Y SUGERENCIAS
+   10. RESPONSIVE
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES
+   ============================================ */
+:root {
+  --quov-blue: #00BFFF;
+  --quov-blue-dark: #0099CC;
+  --quov-blue-light: #4DCFFF;
+  --quov-white: #ffffff;
+  --quov-black: #000000;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-neutral-100: #f1f5f9;
+  --bg-neutral-900: #0f172a;
+  
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  --text-neutral-400: #94a3b8;
+  
+  --border-light: #e2e8f0;
+  --border-light-rgb: 226, 232, 240;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  
+  --message-user-bg: #e8f4fd;
+  --message-ia-bg: #f1f5f9;
+}
+
+body.dark-mode {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #0f0f1a;
+  --bg-neutral-100: #1a1a1a;
+  --bg-neutral-900: #020617;
+  --text-primary: #f0f0f0;
+  --text-secondary: #bbbbbb;
+  --border-light: #333333;
+  --message-user-bg: #1a2a3a;
+  --message-ia-bg: #1a1a1a;
+}
+
+/* ============================================
+   2. HERO
+   ============================================ */
+.lector-hero {
+  background: linear-gradient(135deg, rgba(0,191,255,0.15), rgba(0,191,255,0.05));
+  border-bottom: 1px solid var(--border-light);
+  padding: 40px 24px 32px;
+  text-align: center;
+}
+
+.lector-hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.lector-hero p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ============================================
+   3. CONTENEDOR PRINCIPAL
+   ============================================ */
+.lector-container {
+  display: flex;
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+  min-height: 70vh;
+}
+
+/* ============================================
+   4. PANEL PDF
+   ============================================ */
+.pdf-panel {
+  flex: 1.2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ============================================
+   5. DROP ZONE
+   ============================================ */
+.drop-zone {
+  border: 2px dashed var(--border-light);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  background: var(--bg-primary);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  margin: 16px;
+}
+
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--quov-blue);
+  background: rgba(0,191,255,0.04);
+}
+
+.drop-zone-icon {
+  font-size: 2.4rem;
+  color: var(--quov-blue);
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.drop-zone-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.drop-zone-sub {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.drop-zone-sub span {
+  color: var(--quov-blue);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+input[type="file"] { display: none; }
+
+/* ============================================
+   6. VISOR PDF
+   ============================================ */
+.pdf-viewer {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  background: var(--bg-primary);
+  min-height: 400px;
+}
+
+.pdf-viewer.show { display: flex; }
+
+#pdfContainer {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #e8e8e8;
+  min-height: 350px;
+}
+
+body.dark-mode #pdfContainer {
+  background: #1a1a1a;
+}
+
+#pdfContainer canvas {
+  max-width: 100%;
+  height: auto !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
+
+.pdf-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.pdf-controls button {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.pdf-controls button:hover:not(:disabled) {
+  border-color: var(--quov-blue);
+  color: var(--quov-blue);
+}
+
+.pdf-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#pageInfo {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  min-width: 80px;
+  text-align: center;
+}
+
+.pdf-loading {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.pdf-loading.show { display: flex; }
+
+.pdf-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--quov-blue);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================
+   7. PANEL CHAT
+   ============================================ */
+.chat-panel {
+  flex: 0.8;
+  min-width: 300px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  height: 70vh;
+  max-height: 800px;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.chat-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.chat-subtitle span {
+  color: var(--quov-blue);
+  font-weight: 600;
+}
+
+.chat-clear-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.chat-clear-btn:hover {
+  background: rgba(239,68,68,0.1);
+  color: #ef4444;
+}
+
+/* ============================================
+   8. MENSAJES
+   ============================================ */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user { flex-direction: row-reverse; }
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  background: var(--bg-neutral-100);
+}
+
+.message.user .message-avatar {
+  background: var(--quov-blue);
+  color: white;
+}
+
+.message-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: var(--message-ia-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.message.user .message-bubble {
+  background: var(--message-user-bg);
+  border-color: var(--quov-blue);
+}
+
+.message-bubble p { margin-bottom: 4px; }
+.message-bubble ul { margin: 4px 0; }
+.message-bubble li { margin-bottom: 2px; }
+.message-bubble strong { color: var(--quov-blue); }
+
+.message-bubble .highlight {
+  background: rgba(0,191,255,0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   9. INPUT Y SUGERENCIAS
+   ============================================ */
+.chat-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+.chat-input-area textarea {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+  min-height: 44px;
+  max-height: 80px;
+}
+
+.chat-input-area textarea:focus {
+  border-color: var(--quov-blue);
+}
+
+.chat-input-area textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-input-area button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--quov-blue);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-input-area button:hover:not(:disabled) {
+  background: var(--quov-blue-dark);
+  transform: scale(1.05);
+}
+
+.chat-input-area button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 16px 12px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.chat-suggestions span {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.suggestion-chip {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+.suggestion-chip:hover {
+  border-color: var(--quov-blue);
+  color: var(--quov-blue);
+  background: rgba(0,191,255,0.05);
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .lector-container {
+    flex-direction: column;
+    padding: 20px 16px 40px;
+  }
+  
+  .chat-panel {
+    flex: none;
+    max-width: none;
+    height: 55vh;
+    max-height: 500px;
+  }
+  
+  .pdf-panel {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lector-hero { padding: 24px 16px 20px; }
+  .lector-hero h1 { font-size: 1.5rem; }
+  .lector-hero p { font-size: 0.82rem; }
+  
+  .lector-container { padding: 12px 12px 32px; gap: 16px; }
+  
+  .drop-zone { padding: 20px 16px; margin: 12px; }
+  .drop-zone-icon { font-size: 1.8rem; }
+  .drop-zone-title { font-size: 0.82rem; }
+  
+  #pdfContainer { min-height: 250px; padding: 8px; }
+  .pdf-controls { padding: 8px 12px; gap: 10px; }
+  .pdf-controls button { padding: 4px 10px; font-size: 0.8rem; }
+  
+  .chat-panel { height: 50vh; max-height: 450px; }
+  .chat-header { padding: 10px 14px; }
+  .chat-messages { padding: 12px 14px; gap: 10px; }
+  .message-bubble { font-size: 0.8rem; padding: 8px 12px; max-width: 92%; }
+  .chat-input-area { padding: 8px 12px; gap: 8px; }
+  .chat-input-area textarea { font-size: 0.78rem; padding: 8px 12px; min-height: 36px; }
+  .chat-input-area button { width: 38px; height: 38px; font-size: 0.85rem; }
+  .chat-suggestions { padding: 6px 12px 10px; gap: 4px; }
+  .suggestion-chip { font-size: 0.65rem; padding: 3px 10px; }
+  .chat-suggestions span { font-size: 0.65rem; }
+}

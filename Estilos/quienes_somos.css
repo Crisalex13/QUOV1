@@ -1,23 +1,35 @@
 /* ============================================ 
    TABLA DE CONTENIDO - QUIÉNES SOMOS
    ============================================ 
-   1. VARIABLES GLOBALES (COLORES QUOV)
-   2. BASE Y CONTENEDORES
-   3. PAGE TITLE Y HERO
-   4. SECCIÓN MVO (Misión, Visión, Objetivo) - 3D FLIP
-   5. SECCIÓN QUOV 
-   6. SECCIÓN EQUIPO
-   7. MODAL DE PERFIL
-   8. BOTÓN CATÁLOGO
-   9. RESPONSIVE DESIGN
-   10. ANIMACIONES
+   1. RESET Y VARIABLES GLOBALES
+   2. DARK MODE (todas las variables)
+   3. BASE Y CONTENEDORES
+   4. HERO / PAGE TITLE
+   5. SECCIÓN MVO (3D FLIP)
+   6. SECCIÓN QUOV
+   7. SECCIÓN EQUIPO
+   8. MODAL DE PERFIL
+   9. BOTÓN CATÁLOGO
+   10. ANIMACIONES GLOBALES
+   11. RESPONSIVE DESIGN
    ============================================ */
 
-/* ========== 1. VARIABLES GLOBALES ========== */
+/* ============================================
+   1. RESET Y VARIABLES GLOBALES (MODO DÍA)
+   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  position: relative !important;
 }
 
 body {
@@ -28,205 +40,183 @@ body {
 }
 
 :root {
-  --hero-start: #ffffff;
-  --hero-end: #ffffffa5;
-
+  /* ---- COLORES PRINCIPALES ---- */
   --quov-blue: #00BFFF;
-  --quov-blue-dark: #0099CC;
+  --quov-blue-dark: #007ecc;
   --quov-blue-light: #4DCFFF;
   --quov-black: #000000;
   --quov-black-dark: #0a0a0a;
   --quov-black-light: #1a1a1a;
   --quov-white: #ffffff;
   --quov-white-dark: #f5f5f5;
-  --quov-gray: #888888;
-  --quov-gray-light: #cccccc;
+  --quov-gray: #0059ff; /* Fundador */
+  --quov-gray-light: #00d9ff; /* QUOV letras fuertes*/
+  --borde-seccion: 2px solid #00bfff78;
 
+  /* ---- FONDOS Y TEXTOS ---- */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --text-primary: #111111;
   --text-secondary: #444444;
   --text-muted: #666666;
   --border-color: #e2e8f0;
+
+  /* ---- TARJETAS Y SOMBRAS ---- */
   --card-bg: rgba(255, 255, 255, 0.95);
-  --card-bg-dark-mode: rgba(30, 30, 50, 0.95);
-  --overlay-light: rgba(0, 0, 0, 0.1);
-  --overlay-dark: rgba(0, 0, 0, 0.3);
   --shadow-color: rgba(0, 0, 0, 0.08);
   --shadow-hover: rgba(0, 0, 0, 0.15);
+  --overlay-light: rgba(0, 0, 0, 0.1);
+  --overlay-dark: rgba(0, 0, 0, 0.3);
+
+  /* ---- HERO  ---- */
+  --hero-start: #ffffff;
+  --hero-end: #ffffffef;
+  --hero: linear-gradient(135deg, #000000 0%, #40cfff 20%, #00BFFF 50%, #40cfff 80%, #000000 100%);
+  --hero-text-color: var(--quov-white);
+
+  /* ---- FONDO DE SECCIONES ---- */
+  --section-bg: radial-gradient(circle at top left, #ffffff, transparent 45%),
+                linear-gradient(135deg, #ffffff, #ffffffe3, #ffffffce);
+
+  /* ---- TEXTOS DE SECCIONES ---- */
+  --head: #000000df;
+  --subtema: #000000db;
+  --head-shadow: 0 0 20px rgba(147, 235, 255, 0.847);
+
+  /* ---- TARJETAS QUOV ---- */
+  --quov-card-bg: rgb(255, 255, 255);
+  --quov-card-border: rgba(0, 217, 255, 0.3);
+  --quov-card-shadow: rgba(0, 0, 0, 0.3);
+  --quov-card-hover-bg: rgba(148, 237, 255, 0.936);
+  --quov-card-hover-shadow: rgba(0, 191, 255, 0.4);
+  --quov-card-line: linear-gradient(90deg, #4DCFFF, #00BFFF);
+  --quov-msg-color: var(--quov-gray-light);
+  --quov-msg-hover-color: var(--quov-blue);
+  --quov-icon-color: var(--quov-blue);
+
+  /* ---- MVO (3D FLIP) ---- */
   --mvo-front-bg: rgba(255, 255, 255, 0.95);
   --mvo-back-bg: linear-gradient(135deg, var(--quov-blue), var(--quov-blue-dark));
   --mvo-back-bg-dark: linear-gradient(135deg, #0a1a2a 0%, #0a2a3a 100%);
+  --mvo-front-border: var(--border-color);
+  --mvo-back-text: #d0e8f0;
+  --mvo-back-title: var(--quov-black);
+
+  /* ---- PERFIL ---- */
   --profile-card-bg: var(--quov-white);
-  --profile-card-bg-dark: var(--quov-black-light);
+  --profile-card-shadow: var(--shadow-color);
   --social-icon-bg: #f0f0f0;
-  --social-icon-bg-dark: #2a2a2a;
+  --social-icon-color: #333333;
+
+  /* ---- VIDEO ---- */
   --video-placeholder-bg: linear-gradient(135deg, #0d1a2e, #1a3a5c);
+
+  /* ---- BOTÓN CATÁLOGO ---- */
+  --catalog-btn-bg: var(--quov-blue);
+  --catalog-btn-hover-bg: var(--quov-blue-dark);
+  --catalog-btn-shadow: rgba(0, 191, 255, 0.3);
+  --catalog-btn-text: var(--quov-white);
+
+  /* ---- EQUIPO ---- */
+  --team-card-bg: var(--card-bg);
+  --team-card-shadow: var(--shadow-color);
+  --team-card-border: rgba(0, 191, 255, 0.3);
+  --team-card-hover-shadow: rgba(0, 191, 255, 0.4);
+  --team-name-color: var(--quov-blue-dark);
+  --team-role-color: var(--quov-gray);
+  --team-overlay-bg: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  --team-overlay-text: var(--quov-white);
 }
 
+/* ============================================
+   2. VARIABLES - MODO NOCHE (DARK MODE)
+   ============================================ */
+
 body.dark-mode {
+  /* ---- COLORES PRINCIPALES ---- */
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
   --text-primary: #f0f0f0;
   --text-secondary: #bbbbbb;
   --text-muted: #999999;
   --border-color: #333333;
+
+  /* ---- TARJETAS Y SOMBRAS ---- */
   --card-bg: rgba(30, 30, 50, 0.95);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
+
+  /* ---- HERO  ---- */
+  --hero: linear-gradient(135deg, #000000 0%, #40cfffd3 20%, #00bfffa5 50%, #40cfffd3 80%, #000000 100%);
+  --hero-text-color: var(--quov-white);
+
+  /* ---- FONDO DE SECCIONES ---- */
+  --section-bg: radial-gradient(circle at top left, rgba(0, 191, 255, 0.35), transparent 45%),
+                linear-gradient(135deg, #000000, #0d1b2a, #111111);
+
+  /* ---- TEXTOS DE SECCIONES ---- */
+  --head: #ffffffe6;
+  --subtema: #ddeeff;
+  --head-shadow: 0 0 20px rgba(110, 228, 255, 0.598);
+
+  /* ---- TARJETAS QUOV ---- */
+  --quov-card-bg: rgba(255, 255, 255, 0.9);
+  --quov-card-border: rgba(0, 191, 255, 0.3);
+  --quov-card-shadow: rgba(0, 0, 0, 0.3);
+  --quov-card-hover-bg: rgba(118, 216, 235, 0.783);
+  --quov-card-hover-shadow: rgba(0, 191, 255, 0.4);
+  --quov-card-line: linear-gradient(90deg, #4DCFFF, #00BFFF);
+  --quov-msg-color: var(--quov-white);
+  --quov-msg-hover-color: var(--quov-gray-light);
+  --quov-icon-color: var(--quov-blue-light);
+
+  /* ---- MVO (3D FLIP) ---- */
   --mvo-front-bg: rgba(20, 20, 40, 0.95);
   --mvo-back-bg: linear-gradient(135deg, #0a1a2a 0%, #0a2a3a 100%);
+  --mvo-front-border: rgba(0, 191, 255, 0.4);
+  --mvo-back-text: var(--quov-white-dark);
+  --mvo-back-title: var(--quov-blue-light);
+
+  /* ---- PERFIL ---- */
   --profile-card-bg: var(--quov-black-light);
+  --profile-card-shadow: var(--shadow-color);
   --social-icon-bg: #2a2a2a;
+  --social-icon-color: var(--quov-gray-light);
+
+  /* ---- EQUIPO ---- */
+  --team-card-bg: var(--card-bg);
+  --team-card-shadow: var(--shadow-color);
+  --team-card-border: rgba(0, 191, 255, 0.3);
+  --team-card-hover-shadow: rgba(0, 191, 255, 0.4);
+  --team-name-color: var(--quov-blue-light);
+  --team-role-color: var(--quov-gray);
+  --team-overlay-bg: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  --team-overlay-text: var(--quov-white);
 }
 
-body.dark-mode .mvo-front {
-  border-color: rgba(0, 191, 255, 0.4);
-}
+/* ============================================
+   3. BASE Y CONTENEDORES
+   ============================================ */
 
-body.dark-mode .mvo-front h4 {
-  color: var(--quov-blue-light);
-}
-
-body.dark-mode .mvo-front a {
-  color: var(--quov-blue-dark);
-}
-
-body.dark-mode .mvo-back {
-  background: var(--mvo-back-bg-dark);
-}
-
-body.dark-mode .mvo-back h4 {
-  color: var(--quov-blue-light);
-}
-
-body.dark-mode .mvo-back a {
-  color: var(--quov-white-dark);
-}
-
-body.dark-mode .quov-msg {
-  color: var(--quov-white);  
-}
-
-body.dark-mode .quov-card:hover .quov-msg {
-  color: var(--quov-gray-light) !important;  
-}
-
-body.dark-mode .quov-card a {
-  color: var(--quov-blue-dark);
-}
-
-body.dark-mode .quov-card h4 {
-  color: var(--quov-blue-light);
-}
-
-body.dark-mode .team-card-new {
-  background: var(--card-bg);
-}
-
-body.dark-mode .team-info-new h3 {
-  color: var(--quov-blue-light);
-}
-
-body.dark-mode .team-info-new .role {
-  color: var(--quov-gray);
-}
-
-body.dark-mode .card-overlay-new span,
-body.dark-mode .card-overlay-new span:hover,
-body.dark-mode .card-overlay-new span:active,
-body.dark-mode .team-card-new:hover .card-overlay-new span {
-  color: var(--quov-white) !important;
-}
-
-body.dark-mode .card-overlay-new span:hover {
-  background: var(--quov-blue) !important;
-}
-
-body.dark-mode .card-overlay-new span:active {
-  background: var(--quov-blue-dark) !important;
-}
-
-body.dark-mode #profileCard {
-  background: var(--profile-card-bg-dark);
-}
-
-body.dark-mode .profile-body h2 {
-  color: var(--quov-blue-light);
-}
-
-body.dark-mode .profile-body p {
-  color: var(--quov-gray-light);
-}
-
-body.dark-mode .profile-body .profile-role {
-  color: var(--quov-gray);
-}
-
-body.dark-mode .social-icon {
-  background: var(--social-icon-bg-dark);
-  color: var(--quov-gray-light);
-}
-
-body.dark-mode .social-icon:hover {
-  color: var(--quov-white);
-}
-
-/* ========== 2. BASE Y CONTENEDORES ========== */
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-html,
-body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  position: relative !important;
-}
+/* ============================================
+   4. HERO / PAGE TITLE
+   ============================================ */
 
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* ========== 3. PAGE TITLE Y HERO ========== */
 .hero-simple {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--quov-black) 0%, var(--quov-black-dark) 100%);
+  background: var(--hero);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.hero-simple::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 191, 255, 0.3), transparent 70%);
-  animation: rotate 20s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero-title-simple {
@@ -240,7 +230,7 @@ body {
   margin-bottom: 12px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;   
+  background-clip: text;
 }
 
 .hero-subtitle-simple {
@@ -248,35 +238,39 @@ body {
   transform: translateY(30px);
   opacity: 0;
   font-family: 'Syne', sans-serif;
-  font-size: 1.3rem; 
-  color: var(--quov-white);
+  font-size: 1.3rem;
+  color: var(--hero-text-color);
   max-width: 700px;
   margin: 0 auto;
 }
 
-/* ========== 4. SECCIÓN MVO - 3D FLIP ========== */
+/* ============================================
+   5. SECCIÓN MVO - 3D FLIP
+   ============================================ */
+
 .mvo-section {
   padding: 100px 0 120px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('../img/Lectura1.png');
+  background: var(--section-bg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
+  border: var(--borde-seccion);
 }
 
 .mvo-section .section-title {
   font-family: 'Syne', sans-serif;
   font-size: 2.8rem;
   font-weight: 800;
-  color: var(--quov-white);
+  color: var(--head);
   margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--head-shadow);
 }
 
 .mvo-section .section-sub {
   font-family: 'Syne', sans-serif;
-  color: #ddeeff;
+  color: var(--subtema);
   margin-bottom: 60px;
   font-size: 1.1rem;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
@@ -308,6 +302,7 @@ body {
   transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   transform-style: preserve-3d;
   border-radius: 28px;
+  background-color: var(--quov-card-bg);
 }
 
 .mvo-card:hover .mvo-card-inner {
@@ -340,7 +335,7 @@ body {
 .mvo-front {
   background: var(--mvo-front-bg);
   backdrop-filter: blur(2px);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--mvo-front-border);
   transform: rotateY(0deg);
 }
 
@@ -355,23 +350,11 @@ body {
   border-radius: 28px 28px 0 0;
 }
 
-.mvo-back {
-  background: var(--mvo-back-bg);
-  color: var(--quov-white);
-  transform: rotateY(180deg);
-  border: 1px solid rgba(0, 191, 255, 0.5);
-}
-
 .mvo-front .mvo-icon {
   font-size: 4rem;
   margin-bottom: 25px;
   display: inline-block;
   animation: floatIcon 3s ease-in-out infinite;
-}
-
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
 }
 
 .mvo-front h4 {
@@ -390,6 +373,13 @@ body {
   color: var(--text-secondary);
 }
 
+.mvo-back {
+  background: var(--mvo-back-bg);
+  color: var(--quov-white);
+  transform: rotateY(180deg);
+  border: 1px solid rgba(0, 191, 255, 0.5);
+}
+
 .mvo-back .mvo-icon-back {
   font-size: 2.5rem;
   margin-bottom: 25px;
@@ -400,7 +390,7 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.7rem;
   font-weight: 700;
-  color: var(--quov-black);
+  color: var(--mvo-back-title);
   margin-bottom: 20px;
 }
 
@@ -408,54 +398,57 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
-  color: #d0e8f0;
+  color: var(--mvo-back-text);
   margin-bottom: 25px;
 }
 
-.mvo-back p,
-.mvo-back h4,
-.mvo-back .mvo-icon-back {
+/* Animaciones del back al hacer hover */
+.mvo-card:hover .mvo-back p,
+.mvo-card:hover .mvo-back h4,
+.mvo-card:hover .mvo-back .mvo-icon-back {
   animation: fadeInUp 0.4s ease forwards;
   opacity: 0;
 }
 
-.mvo-card:hover .mvo-back p { animation-delay: 0.1s; }
-.mvo-card:hover .mvo-back h4 { animation-delay: 0.05s; }
-.mvo-card:hover .mvo-back .mvo-icon-back { animation-delay: 0s; }
-
-.mvo-card.flipped .mvo-back p,
-.mvo-card.flipped .mvo-back h4,
-.mvo-card.flipped .mvo-back .mvo-icon-back {
-  animation: fadeInUp 0.4s ease forwards;
+.mvo-card:hover .mvo-back p {
+  animation-delay: 0.1s;
 }
 
-.mvo-card.flipped .mvo-back p { animation-delay: 0.1s; }
-.mvo-card.flipped .mvo-back h4 { animation-delay: 0.05s; }
-.mvo-card.flipped .mvo-back .mvo-icon-back { animation-delay: 0s; }
+.mvo-card:hover .mvo-back h4 {
+  animation-delay: 0.05s;
+}
 
-/* ========== 5. SECCIÓN QUOV ========== */
+.mvo-card:hover .mvo-back .mvo-icon-back {
+  animation-delay: 0s;
+}
+
+/* ============================================
+   6. SECCIÓN QUOV
+   ============================================ */
+
 .quov-section {
   padding: 100px 0 120px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('../img/Lectura2.png');
+  background: var(--section-bg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
+  border: var(--borde-seccion);
 }
 
 .quov-section .section-title {
   font-family: 'Syne', sans-serif;
   font-size: 2.8rem;
   font-weight: 800;
-  color: var(--quov-blue);
+  color: var(--head);
   margin-bottom: 10px;
-  text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+  text-shadow: var(--head-shadow);
 }
 
 .quov-section .section-sub {
   font-family: 'Syne', sans-serif;
-  color: #aaddff;
+  color: var(--subtema);
   margin-bottom: 60px;
   font-size: 1.1rem;
 }
@@ -471,19 +464,20 @@ body {
 }
 
 .quov-card {
-  background: rgba(17, 17, 17, 0.9);
+  background-color: var(--quov-card-bg);
   backdrop-filter: blur(4px);
   border-radius: 24px;
   width: 350px;
   padding: 50px 35px 40px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 191, 255, 0.3);
+  box-shadow: 0 8px 30px var(--quov-card-shadow);
+  border: 1px solid var(--quov-card-border);
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
 }
 
+/* Línea superior */
 .quov-card::before {
   content: '';
   position: absolute;
@@ -491,7 +485,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--quov-blue), var(--quov-blue-dark));
+  background: var(--quov-card-line);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -505,9 +499,9 @@ body {
 .quov-card:hover,
 .quov-card.active {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 191, 255, 0.4);
+  box-shadow: 0 20px 40px var(--quov-card-hover-shadow);
   border-color: var(--quov-blue);
-  background: rgba(0, 30, 50, 0.95);
+  background: var(--quov-card-hover-bg);
 }
 
 .quov-icon {
@@ -516,6 +510,7 @@ body {
   display: inline-block;
   transition: transform 0.3s ease;
   animation: floatIcon 3s ease-in-out infinite;
+  color: var(--quov-icon-color);
 }
 
 .quov-card:hover .quov-icon,
@@ -536,7 +531,7 @@ body {
 .quov-msg {
   font-family: 'Syne', sans-serif;
   font-size: 0.95rem;
-  color: var(--quov-gray-light);
+  color: var(--quov-msg-color);
   line-height: 1.6;
   max-height: 0;
   overflow: hidden;
@@ -547,33 +542,30 @@ body {
 
 .quov-msg a {
   font-family: 'Syne', sans-serif;
-  color: var(--quov-gray-light);
+  color: var(--quov-msg-color);
 }
 
-.quov-card:hover .quov-msg {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
-  color: var(--quov-blue);
-  text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
-}
-
+.quov-card:hover .quov-msg,
 .quov-card.active .quov-msg {
   max-height: 200px;
   opacity: 1;
   transform: translateY(0);
-  color: var(--quov-blue);
+  color: var(--quov-msg-hover-color);
   text-shadow: 0 0 4px rgba(0, 191, 255, 0.3);
 }
 
-/* ========== 6. SECCIÓN EQUIPO ========== */
+/* ============================================
+   7. SECCIÓN EQUIPO
+   ============================================ */
+
 .team-section-wrapper {
   padding: 100px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../img/Lectura3.png');
+  background: var(--section-bg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
+  border: var(--borde-seccion);
 }
 
 .team-section-new {
@@ -587,14 +579,14 @@ body {
   font-size: 2.8rem;
   font-weight: 800;
   font-family: 'Syne', sans-serif;
-  color: var(--quov-white);
+  color: var(--head);
   margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--head-shadow);
 }
 
 .team-section-new > p {
   font-family: 'Syne', sans-serif;
-  color: #ddeeff;
+  color: var(--subtema);
   margin-bottom: 60px;
   font-size: 1.1rem;
 }
@@ -609,32 +601,32 @@ body {
 }
 
 .team-card-new {
-  background: var(--card-bg);
+  background: var(--team-card-bg);
   backdrop-filter: blur(4px);
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 12px 28px var(--shadow-color);
+  box-shadow: 0 12px 28px var(--team-card-shadow);
   width: 280px;
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 191, 255, 0.3);
+  border: 1px solid var(--team-card-border);
   cursor: pointer;
   position: relative;
   opacity: 0;
   animation: fadeInUp2 0.6s ease forwards;
 }
 
-.team-card-new:nth-child(1) { animation-delay: 0.1s; }
-.team-card-new:nth-child(3) { animation-delay: 0.25s; }
+.team-card-new:nth-child(1) {
+  animation-delay: 0.1s;
+}
 
-@keyframes fadeInUp2 {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.team-card-new:nth-child(3) {
+  animation-delay: 0.25s;
 }
 
 .team-card-new:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 35px -10px rgba(0, 191, 255, 0.4);
+  box-shadow: 0 20px 35px -10px var(--team-card-hover-shadow);
   border-color: var(--quov-blue);
 }
 
@@ -654,11 +646,11 @@ body {
   bottom: -60px;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-  color: var(--quov-white);
+  background: var(--team-overlay-bg);
+  color: var(--team-overlay-text);
   padding: 60px 20px 20px;
   text-align: center;
-  transition: bottom 0.3s ease;
+    transition: bottom 0.3s ease;
   pointer-events: none;
 }
 
@@ -675,18 +667,19 @@ body {
   font-family: 'Syne', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--quov-blue-dark);
+  color: var(--team-name-color);
   margin-bottom: 4px;
 }
 
 .team-info-new .role {
   font-family: 'Syne', sans-serif;
-  color: var(--quov-gray);
+  color: var(--team-role-color);
   font-size: 0.9rem;
   margin-bottom: 10px;
   text-align: center;
 }
 
+/* Botón "Ver perfil" */
 .card-overlay-new span {
   display: inline-block;
   background: var(--quov-blue-dark);
@@ -721,6 +714,7 @@ body {
   background: var(--quov-blue) !important;
 }
 
+/* Video wrapper */
 .team-video-wrapper {
   flex: 0 0 auto;
   width: 420px;
@@ -758,7 +752,10 @@ body {
   opacity: 0.7;
 }
 
-/* ========== 7. MODAL DE PERFIL ========== */
+/* ============================================
+   8. MODAL DE PERFIL
+   ============================================ */
+
 #profileModal {
   position: fixed;
   inset: 0;
@@ -768,7 +765,9 @@ body {
   justify-content: center;
 }
 
-#profileModal.active { display: flex; }
+#profileModal.active {
+  display: flex;
+}
 
 #profileBlur {
   position: absolute;
@@ -784,7 +783,7 @@ body {
   border-radius: 20px;
   width: 320px;
   overflow: hidden;
-  box-shadow: 0 15px 40px var(--shadow-color);
+  box-shadow: 0 15px 40px var(--profile-card-shadow);
   animation: profileSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -822,23 +821,7 @@ body {
   margin-bottom: 15px;
 }
 
-#profileClose {
-  background: var(--quov-blue-dark);
-  color: var(--quov-white);
-  border: none;
-  border-radius: 30px;
-  padding: 12px 32px;
-  font-weight: 700;
-  font-family: 'Syne', sans-serif;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-
-#profileClose:hover {
-  background: var(--quov-blue);
-  transform: scale(1.04);
-}
-
+/* Redes sociales */
 .profile-social-icons {
   display: flex;
   justify-content: center;
@@ -854,7 +837,7 @@ body {
   height: 50px;
   border-radius: 50%;
   background: var(--social-icon-bg);
-  color: #333;
+  color: var(--social-icon-color);
   font-size: 1.3rem;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -879,16 +862,37 @@ body {
   color: #00f2ea;
 }
 
-/* ========== 8. BOTÓN CATÁLOGO ========== */
+/* Botón cerrar */
+#profileClose {
+  background: var(--quov-blue-dark);
+  color: var(--quov-white);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#profileClose:hover {
+  background: var(--quov-blue);
+  transform: scale(1.04);
+}
+
+/* ============================================
+   9. BOTÓN CATÁLOGO
+   ============================================ */
+
 .catalog-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--quov-blue) !important;
+  background: var(--catalog-btn-bg) !important;
   padding: 20px 60px;
   border-radius: 50px;
-  color: var(--quov-white) !important;
+  color: var(--catalog-btn-text) !important;
   z-index: 1;
   overflow: hidden;
   font-weight: 700;
@@ -898,20 +902,20 @@ body {
   transition: all 0.4s ease;
   cursor: pointer;
   border: none;
-  box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 6px 15px var(--catalog-btn-shadow);
   text-decoration: none;
 }
 
 .catalog-btn:hover {
-  background: var(--quov-blue-dark) !important;
+  background: var(--catalog-btn-hover-bg) !important;
   transform: translateY(-4px) scale(1.02);
-  color: var(--quov-white) !important;
+  color: var(--catalog-btn-text) !important;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
-.catalog-btn, 
+.catalog-btn,
 .catalog-btn * {
-  color: var(--quov-white) !important;
+  color: var(--catalog-btn-text) !important;
   position: relative;
   z-index: 2;
 }
@@ -926,168 +930,632 @@ body {
   transform: translateX(5px);
 }
 
-/* ========== 9. RESPONSIVE DESIGN ========== */
-@media (min-width: 320px) and (max-width: 480px) {
-  .container { padding: 0 16px; }
-  .hero-simple { min-height: 70vh; }
-  .hero-title-simple { font-size: 2rem; }
-  .hero-subtitle-simple { font-size: 0.85rem; padding: 0 16px; }
-  .mvo-section { padding: 40px 0 60px; min-height: auto; }
-  .mvo-section .section-title { font-size: 1.5rem; }
-  .mvo-section .section-sub { font-size: 0.8rem; padding: 0 16px; }
-  .mvo-grid { gap: 20px; padding: 0 16px; }
-  .mvo-card { width: 280px; height: 340px; }
-  .mvo-front h4 { font-size: 1.3rem; }
-  .mvo-front .mvo-icon { font-size: 2.5rem; }
-  .mvo-front a { font-size: 0.65rem; }
-  .mvo-back p { font-size: 0.8rem; }
-  .mvo-back h4 { font-size: 1.2rem; }
-  .quov-section { padding: 40px 0 60px; min-height: auto; }
-  .quov-section .section-title { font-size: 1.5rem; }
-  .quov-section .section-sub { font-size: 0.8rem; padding: 0 16px; }
-  .quov-grid { gap: 20px; padding: 0 16px; }
-  .quov-card { width: 100%; max-width: 300px; padding: 28px 20px; }
-  .quov-card h4 { font-size: 1rem; }
-  .quov-icon { font-size: 2rem; }
-  .team-section-wrapper { padding: 40px 0; min-height: auto; }
-  .team-section-new > h3 { font-size: 1.5rem; }
-  .team-section-new > p { font-size: 0.8rem; padding: 0 16px; }
-  .team-layout { gap: 24px; margin-top: 32px; }
-  .team-card-new { width: 100%; max-width: 260px; }
-  .team-card-new img { height: 200px; }
-  .team-video-wrapper { width: 100%; max-width: 300px; }
-  .team-video-wrapper video, .team-video-wrapper iframe { height: 200px; }
-  .video-placeholder { height: 200px; }
-  .video-placeholder i { font-size: 2rem; }
-  .video-placeholder span { font-size: 0.8rem; }
-  .catalog-btn { padding: 10px 24px; font-size: 0.85rem; }
-  #profileCard { width: 260px; }
-  #profileCard img { height: 120px; }
-  .profile-body { padding: 12px 16px; }
-  .profile-body h2 { font-size: 1rem; }
-  .profile-body p { font-size: 0.7rem; }
-  .profile-social-icons { gap: 15px; margin: 15px 0 20px; }
-  .social-icon { width: 38px; height: 38px; font-size: 1rem; }
-  #profileClose { padding: 8px 20px; font-size: 0.8rem; }
-  .card-overlay-new span { padding: 6px 16px !important; font-size: 0.7rem !important; min-width: 90px !important; }
-  .team-card-new .card-overlay-new { bottom: -65px !important; padding: 55px 15px 15px !important; }
+/* ============================================
+   10. ANIMACIONES GLOBALES
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
-  .container { padding: 0 20px; }
-  .hero-title-simple { font-size: 2.5rem; }
-  .hero-subtitle-simple { font-size: 0.95rem; }
-  .mvo-section { min-height: auto; }
-  .mvo-grid { gap: 24px; }
-  .mvo-card { width: 300px; height: 360px; }
-  .quov-section { min-height: auto; }
-  .quov-grid { gap: 24px; }
-  .quov-card { width: calc(50% - 12px); min-width: 200px; }
-  .team-section-wrapper { min-height: auto; }
-  .team-layout { gap: 28px; }
-  .team-card-new { width: calc(50% - 14px); min-width: 200px; }
-  .team-video-wrapper { width: 100%; max-width: 400px; }
-  .catalog-btn { padding: 12px 32px; font-size: 0.95rem; }
+@keyframes fadeInUp2 {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .container { padding: 0 24px; }
-  .hero-title-simple { font-size: 3rem; }
-  .mvo-section { min-height: auto; }
-  .mvo-grid { gap: 28px; }
-  .mvo-card { width: 300px; height: 370px; }
-  .quov-section { min-height: auto; }
-  .quov-card { width: calc(33.33% - 19px); min-width: 220px; }
-  .team-section-wrapper { min-height: auto; }
-  .team-card-new { width: 210px; }
-  .team-video-wrapper { width: 320px; }
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  .container { padding: 0 32px; }
-  .mvo-card { width: 310px; height: 380px; }
-  .quov-card { width: calc(33.33% - 19px); min-width: 260px; }
-  .team-card-new { width: 220px; }
-  .team-video-wrapper { width: 340px; }
-}
-
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .container { max-width: 1300px; padding: 0 40px; }
-  .mvo-card { width: 350px; height: 420px; }
-  .quov-card { width: 320px; }
-  .team-card-new { width: 250px; }
-  .team-video-wrapper { width: 380px; }
-}
-
-@media (min-width: 1440px) {
-  .container { max-width: 1600px; padding: 0 60px; }
-  .hero-title-simple { font-size: 5rem; }
-  .hero-subtitle-simple { font-size: 1.5rem; max-width: 800px; }
-  .mvo-section .section-title, .quov-section .section-title, .team-section-new > h3 { font-size: 3rem; }
-  .mvo-section .section-sub, .quov-section .section-sub, .team-section-new > p { font-size: 1.2rem; }
-  .mvo-card { width: 420px; height: 500px; }
-  .mvo-front h4 { font-size: 2rem; }
-  .mvo-front .mvo-icon { font-size: 4.5rem; }
-  .mvo-back h4 { font-size: 1.8rem; }
-  .mvo-back p { font-size: 1.05rem; }
-  .quov-grid { max-width: 1500px; gap: 40px; }
-  .quov-card { width: 380px; padding: 55px 40px 45px; }
-  .quov-card h4 { font-size: 1.5rem; }
-  .quov-icon { font-size: 3rem; }
-  .quov-msg { font-size: 1rem; }
-  .team-section-new { max-width: 1600px; }
-  .team-layout { gap: 50px; }
-  .team-card-new { width: 300px; }
-  .team-card-new img { height: 320px; }
-  .team-info-new h3 { font-size: 1.3rem; }
-  .team-info-new .role { font-size: 1rem; }
-  .team-video-wrapper { width: 480px; }
-  .team-video-wrapper video, .team-video-wrapper iframe, .video-placeholder { height: 360px; }
-  .video-placeholder i { font-size: 4rem; }
-  .catalog-btn { padding: 22px 70px; font-size: 1.4rem; }
-  #profileCard { width: 380px; }
-  #profileCard img { height: 180px; }
-  .profile-body h2 { font-size: 1.6rem; }
-  .profile-body .profile-role { font-size: 0.95rem; }
-  .profile-body p { font-size: 1rem; }
-  .social-icon { width: 55px; height: 55px; font-size: 1.4rem; }
-  #profileClose { padding: 14px 36px; font-size: 1rem; }
-}
-
-@media (max-width: 767px) and (orientation: landscape) {
-  .hero-simple { min-height: 100vh; }
-  .mvo-card { height: 320px; }
-  .mvo-front .mvo-icon { font-size: 2rem; margin-bottom: 10px; }
-  .mvo-front h4 { font-size: 1.1rem; margin-bottom: 6px; }
-  .mvo-front a { font-size: 0.6rem; }
-  .mvo-back p { font-size: 0.7rem; margin-bottom: 10px; }
-  .mvo-back h4 { font-size: 1rem; margin-bottom: 10px; }
-  .quov-card { padding: 20px 16px; }
-  .quov-icon { font-size: 1.6rem; margin-bottom: 10px; }
-  .quov-card h4 { font-size: 0.9rem; margin-bottom: 8px; }
-  .team-card-new img { height: 160px; }
-  .team-info-new { padding: 12px; }
-  .team-info-new h3 { font-size: 0.85rem; }
-}
-
-@media (max-width: 319px) {
-  .container { padding: 0 12px; }
-  .hero-title-simple { font-size: 1.6rem; }
-  .hero-subtitle-simple { font-size: 0.75rem; }
-  .mvo-card { width: 260px; height: 320px; }
-  .mvo-front { padding: 20px 16px; }
-  .mvo-front .mvo-icon { font-size: 2rem; margin-bottom: 10px; }
-  .mvo-front h4 { font-size: 1.1rem; }
-  .mvo-back { padding: 20px 16px; }
-  .mvo-back p { font-size: 0.7rem; }
-  .quov-card { padding: 20px 16px; }
-  .quov-card h4 { font-size: 0.9rem; }
-  .quov-msg { font-size: 0.75rem; }
-  .team-card-new { max-width: 240px; }
-  .catalog-btn { padding: 8px 20px; font-size: 0.75rem; }
-}
-
-/* ========== 10. ANIMACIONES ========== */
 .mvo-card .mvo-card-inner {
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ============================================
+   11. RESPONSIVE DESIGN
+   ============================================ */
+
+/* Móviles pequeños (320px - 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-simple {
+    min-height: 70vh;
+  }
+
+  .hero-title-simple {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle-simple {
+    font-size: 0.85rem;
+    padding: 0 16px;
+  }
+
+  .mvo-section,
+  .quov-section {
+    padding: 40px 0 60px;
+    min-height: auto;
+  }
+
+  .mvo-section .section-title,
+  .quov-section .section-title,
+  .team-section-new > h3 {
+    font-size: 1.5rem;
+  }
+
+  .mvo-section .section-sub,
+  .quov-section .section-sub,
+  .team-section-new > p {
+    font-size: 0.8rem;
+    padding: 0 16px;
+  }
+
+  .mvo-grid,
+  .quov-grid {
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .mvo-card {
+    width: 280px;
+    height: 340px;
+  }
+
+  .mvo-front h4 {
+    font-size: 1.3rem;
+  }
+
+  .mvo-front .mvo-icon {
+    font-size: 2.5rem;
+  }
+
+  .mvo-front a {
+    font-size: 0.65rem;
+  }
+
+  .mvo-back p {
+    font-size: 0.8rem;
+  }
+
+  .mvo-back h4 {
+    font-size: 1.2rem;
+  }
+
+  .quov-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 28px 20px;
+  }
+
+  .quov-card h4 {
+    font-size: 1rem;
+  }
+
+  .quov-icon {
+    font-size: 2rem;
+  }
+
+  .team-section-wrapper {
+    padding: 40px 0;
+    min-height: auto;
+  }
+
+  .team-layout {
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .team-card-new {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .team-card-new img {
+    height: 200px;
+  }
+
+  .team-video-wrapper {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .team-video-wrapper video,
+  .team-video-wrapper iframe {
+    height: 200px;
+  }
+
+  .video-placeholder {
+    height: 200px;
+  }
+
+  .video-placeholder i {
+    font-size: 2rem;
+  }
+
+  .catalog-btn {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+  }
+
+  #profileCard {
+    width: 260px;
+  }
+
+  #profileCard img {
+    height: 120px;
+  }
+
+  .profile-body {
+    padding: 12px 16px;
+  }
+
+  .profile-body h2 {
+    font-size: 1rem;
+  }
+
+  .profile-body p {
+    font-size: 0.7rem;
+  }
+
+  .profile-social-icons {
+    gap: 15px;
+    margin: 15px 0 20px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  #profileClose {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
+
+  .card-overlay-new span {
+    padding: 6px 16px !important;
+    font-size: 0.7rem !important;
+    min-width: 90px !important;
+  }
+
+  .team-card-new .card-overlay-new {
+    bottom: -65px !important;
+    padding: 55px 15px 15px !important;
+  }
+}
+
+/* Móviles grandes (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .hero-title-simple {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle-simple {
+    font-size: 0.95rem;
+  }
+
+  .mvo-section,
+  .quov-section,
+  .team-section-wrapper {
+    min-height: auto;
+  }
+
+  .mvo-grid,
+  .quov-grid {
+    gap: 24px;
+  }
+
+  .mvo-card {
+    width: 300px;
+    height: 360px;
+  }
+
+  .quov-card {
+    width: calc(50% - 12px);
+    min-width: 200px;
+  }
+
+  .team-layout {
+    gap: 28px;
+  }
+
+  .team-card-new {
+    width: calc(50% - 14px);
+    min-width: 200px;
+  }
+
+  .team-video-wrapper {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .catalog-btn {
+    padding: 12px 32px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablets (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .hero-title-simple {
+    font-size: 3rem;
+  }
+
+  .mvo-section,
+  .quov-section,
+  .team-section-wrapper {
+    min-height: auto;
+  }
+
+  .mvo-grid {
+    gap: 28px;
+  }
+
+  .mvo-card {
+    width: 300px;
+    height: 370px;
+  }
+
+  .quov-card {
+    width: calc(33.33% - 19px);
+    min-width: 220px;
+  }
+
+  .team-card-new {
+    width: 210px;
+  }
+
+  .team-video-wrapper {
+    width: 320px;
+  }
+}
+
+/* Laptops pequeñas (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .mvo-card {
+    width: 310px;
+    height: 380px;
+  }
+
+  .quov-card {
+    width: calc(33.33% - 19px);
+    min-width: 260px;
+  }
+
+  .team-card-new {
+    width: 220px;
+  }
+
+  .team-video-wrapper {
+    width: 340px;
+  }
+}
+
+/* Laptops grandes (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .container {
+    max-width: 1300px;
+    padding: 0 40px;
+  }
+
+  .mvo-card {
+    width: 350px;
+    height: 420px;
+  }
+
+  .quov-card {
+    width: 320px;
+  }
+
+  .team-card-new {
+    width: 250px;
+  }
+
+  .team-video-wrapper {
+    width: 380px;
+  }
+}
+
+/* Pantallas grandes (1440px en adelante) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 60px;
+  }
+
+  .hero-title-simple {
+    font-size: 5rem;
+  }
+
+  .hero-subtitle-simple {
+    font-size: 1.5rem;
+    max-width: 800px;
+  }
+
+  .mvo-section .section-title,
+  .quov-section .section-title,
+  .team-section-new > h3 {
+    font-size: 3rem;
+  }
+
+  .mvo-section .section-sub,
+  .quov-section .section-sub,
+  .team-section-new > p {
+    font-size: 1.2rem;
+  }
+
+  .mvo-card {
+    width: 420px;
+    height: 500px;
+  }
+
+  .mvo-front h4 {
+    font-size: 2rem;
+  }
+
+  .mvo-front .mvo-icon {
+    font-size: 4.5rem;
+  }
+
+  .mvo-back h4 {
+    font-size: 1.8rem;
+  }
+
+  .mvo-back p {
+    font-size: 1.05rem;
+  }
+
+  .quov-grid {
+    max-width: 1500px;
+    gap: 40px;
+  }
+
+  .quov-card {
+    width: 380px;
+    padding: 55px 40px 45px;
+  }
+
+  .quov-card h4 {
+    font-size: 1.5rem;
+  }
+
+  .quov-icon {
+    font-size: 3rem;
+  }
+
+  .quov-msg {
+    font-size: 1rem;
+  }
+
+  .team-section-new {
+    max-width: 1600px;
+  }
+
+  .team-layout {
+    gap: 50px;
+  }
+
+  .team-card-new {
+    width: 300px;
+  }
+
+  .team-card-new img {
+    height: 320px;
+  }
+
+  .team-info-new h3 {
+    font-size: 1.3rem;
+  }
+
+  .team-info-new .role {
+    font-size: 1rem;
+  }
+
+  .team-video-wrapper {
+    width: 480px;
+  }
+
+  .team-video-wrapper video,
+  .team-video-wrapper iframe,
+  .video-placeholder {
+    height: 360px;
+  }
+
+  .video-placeholder i {
+    font-size: 4rem;
+  }
+
+  .catalog-btn {
+    padding: 22px 70px;
+    font-size: 1.4rem;
+  }
+
+  #profileCard {
+    width: 380px;
+  }
+
+  #profileCard img {
+    height: 180px;
+  }
+
+  .profile-body h2 {
+    font-size: 1.6rem;
+  }
+
+  .profile-body .profile-role {
+    font-size: 0.95rem;
+  }
+
+  .profile-body p {
+    font-size: 1rem;
+  }
+
+  .social-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+
+  #profileClose {
+    padding: 14px 36px;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape en móviles */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-simple {
+    min-height: 100vh;
+  }
+
+  .mvo-card {
+    height: 320px;
+  }
+
+  .mvo-front .mvo-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .mvo-front h4 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .mvo-front a {
+    font-size: 0.6rem;
+  }
+
+  .mvo-back p {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+
+  .mvo-back h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .quov-card {
+    padding: 20px 16px;
+  }
+
+  .quov-icon {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .quov-card h4 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .team-card-new img {
+    height: 160px;
+  }
+
+  .team-info-new {
+    padding: 12px;
+  }
+
+  .team-info-new h3 {
+    font-size: 0.85rem;
+  }
+}
+
+/* Móviles muy pequeños (<320px) */
+@media (max-width: 319px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-title-simple {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle-simple {
+    font-size: 0.75rem;
+  }
+
+  .mvo-card {
+    width: 260px;
+    height: 320px;
+  }
+
+  .mvo-front {
+    padding: 20px 16px;
+  }
+
+  .mvo-front .mvo-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .mvo-front h4 {
+    font-size: 1.1rem;
+  }
+
+  .mvo-back {
+    padding: 20px 16px;
+  }
+
+  .mvo-back p {
+    font-size: 0.7rem;
+  }
+
+  .quov-card {
+    padding: 20px 16px;
+  }
+
+  .quov-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .quov-msg {
+    font-size: 0.75rem;
+  }
+
+  .team-card-new {
+    max-width: 240px;
+  }
+
+  .catalog-btn {
+    padding: 8px 20px;
+    font-size: 0.75rem;
+  }
 }

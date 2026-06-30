@@ -1,7 +1,7 @@
 /* ============================================
    TABLA DE CONTENIDO - INICIO.CSS
    ============================================
-   0. BASE Y VARIABLES
+   0. VARIABLES GLOBALES
    1. HERO SECTION
    2. FEATURES GRID 
    3. BOTONES
@@ -10,7 +10,7 @@
    6. RESPONSIVE DESIGN
    ============================================ */
 
-/* ========== 0. BASE Y VARIABLES ========== */
+/* ========== 0. VARIABLES GLOBALES ========== */
 * {
   margin: 0;
   padding: 0;
@@ -21,42 +21,90 @@ body {
   font-family: 'Syne', sans-serif;
 }
 
+/* MODO DÍA*/
 :root {
+  /* HERO */
   --hero-start: #ffffff;
-  --hero-end: #ffffffa5;
-  
-  --quov-blue: #00BFFF;
+  --hero-end: #ffffffeb;
+
+  --hero-bg-start: #ffffff;
+  --hero-bg-end: #e5feff;
+
+  --hero-description: rgba(255, 255, 255, 0.91);
+
+  --hero-glow: rgba(0, 191, 255, 0.82);
+
+  /* COLORES PRINCIPALES */
+  --quov-blue: #00bfffe0;
   --quov-blue-dark: #0099CC;
   --quov-blue-light: #4DCFFF;
-  --quov-blue-glow: rgba(0, 191, 255, 0.1);
-  --quov-blue-glow-strong: rgba(0, 191, 255, 0.5);
-  --quov-blue-glow-card: rgba(0, 191, 255, 0.2);
+
+  --quov-blue-glow: rgba(0, 191, 255, 0.817);
+  --quov-blue-glow-strong: rgb(25, 191, 246);
+
+  --quov-blue-glow-card: rgba(0, 191, 255, 0.20);
   --quov-blue-glow-card-dark: rgba(0, 191, 255, 0.25);
-  
-  --hero-bg-start: #0a0a0a;
-  --hero-bg-end: #1a1a2e;
+
+  /*  TARJETAS */
   --card-bg: #fefefe;
   --card-bg-hover: rgba(255, 255, 255, 0.95);
+
   --card-bg-dark: #2d2d2d;
   --card-bg-dark-hover: rgba(45, 45, 45, 0.95);
-  
+
+  /* BORDES */
   --border-light: #d1d5db;
   --border-dark: #3d3d3d;
-  
+
+  /* TEXTOS */
   --text-primary: #111111;
-  --text-primary-dark: #f5f5f5;
   --text-secondary: #444444;
+
+  --text-primary-dark: #f5f5f5;
   --text-secondary-dark: #cccccc;
-  --text-white-muted: rgba(255, 255, 255, 0.8);
-  
+
+  --text-white-muted: rgba(255, 255, 255, 0.91);
+
+  /*  ESTRELLAS */
   --star-color: #FFD700;
   --star-glow: rgba(255, 215, 0, 0.5);
-  
+
+  /* ICONOS */
   --feature-icon-gradient-start: #00BFFF;
   --feature-icon-gradient-end: #0099CC;
+
+  /* TESTIMONIOS */
   --testimonial-border-gradient-start: transparent;
   --testimonial-border-gradient-mid: #00BFFF;
   --testimonial-border-gradient-end: #4DCFFF;
+}
+
+/* MODO OSCURO*/
+body.dark-mode {
+
+  /* HERO */
+  --hero-bg-start: #0d1117;
+  --hero-bg-end: #182330;
+
+  --hero-description: #d8e8f5;
+
+  --hero-glow: rgba(0, 191, 255, 0.22);
+
+  /* TARJETAS */
+  --card-bg: #2d2d2d;
+  --card-bg-hover: rgba(45, 45, 45, 0.95);
+
+  /* BORDES */
+  --border-light: #3d3d3d;
+
+  /* TEXTOS */
+  --text-primary: #f5f5f5;
+  --text-secondary: #cccccc;
+  --text-white-muted: #d8e8f5;
+
+  /* EFECTOS*/
+  --quov-blue-glow-card: rgba(0, 191, 255, 0.25);
+
 }
 
 /* ========== 1. HERO SECTION ========== */
@@ -76,7 +124,7 @@ body {
   position: absolute;
   width: 200%;
   height: 150%;
-  background: radial-gradient(circle, var(--quov-blue-glow) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--quov-blue-glow) 0%);
   animation: rotate 20s linear infinite;
 }
 
@@ -185,6 +233,7 @@ body {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--quov-blue-glow-strong);
+  filter: brightness(125%);
 }
 
 /* ========== 4. TESTIMONIOS ========== */

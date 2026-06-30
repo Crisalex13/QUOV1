@@ -43,12 +43,12 @@
   --card-shadow: rgba(0, 0, 0, 0.08);
   --card-shadow-hover: rgba(0, 0, 0, 0.15);
   
-  --scanner-gradient-start: rgba(0, 191, 255, 0.05);
-  --scanner-gradient-end: rgba(0, 191, 255, 0.02);
+  --scanner-gradient-start: rgb(0, 191, 255);
+  --scanner-gradient-end: rgba(0, 191, 255, 0.747);
   --scanner-ripple-color: rgba(0, 191, 255, 0.12);
-  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.15), rgba(0, 191, 255, 0.08), transparent);
+  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgb(0, 191, 255), rgba(0, 191, 255, 0.979), transparent);
   --dropzone-hover-bg: rgba(0, 191, 255, 0.04);
-  --btn-access-shadow: rgba(0, 191, 255, 0.32);
+  --btn-access-shadow: rgba(0, 191, 255, 0.705);
   --btn-back-bg: rgba(0, 191, 255, 0.08);
   --btn-back-border: rgba(0, 191, 255, 0.2);
   --btn-back-shadow: rgba(0, 191, 255, 0.3);
@@ -73,14 +73,14 @@ body.dark-mode {
   --card-shadow: rgba(0, 0, 0, 0.3);
   --card-shadow-hover: rgba(0, 0, 0, 0.5);
   
-  --scanner-gradient-start: rgba(0, 191, 255, 0.08);
-  --scanner-gradient-end: rgba(0, 191, 255, 0.03);
+  --scanner-gradient-start: rgba(0, 191, 255, 0.505);
+  --scanner-gradient-end: rgba(0, 191, 255, 0.863);
   --scanner-ripple-color: rgba(0, 191, 255, 0.2);
-  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.25), rgba(0, 191, 255, 0.15), transparent);
+  --scanner-sweep-gradient: linear-gradient(90deg, transparent, rgba(25, 186, 240, 0.781), rgba(0, 191, 255, 0.689), transparent);
   --dropzone-hover-bg: rgba(0, 191, 255, 0.08);
-  --btn-access-shadow: rgba(0, 191, 255, 0.4);
+  --btn-access-shadow: rgba(0, 191, 255, 0.918);
   --btn-back-bg: rgba(0, 191, 255, 0.12);
-  --btn-back-border: rgba(0, 191, 255, 0.3);
+  --btn-back-border: rgba(25, 191, 247, 0.959);
   --btn-back-shadow: rgba(0, 191, 255, 0.4);
   --result-tag-bg: rgba(0, 191, 255, 0.2);
   --error-bg: rgba(239, 68, 68, 0.12);
