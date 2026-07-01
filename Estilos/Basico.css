@@ -114,9 +114,22 @@ nav .mx-auto {
 }
 
 /* Logo */
-.logo-nav {
-  height: 36px;
-  width: auto;
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 40px;
+  height: auto;
+}
+
+.brand-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 nav .font-display,

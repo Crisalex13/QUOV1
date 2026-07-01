@@ -31,7 +31,11 @@
   <!-- NAVBAR -->
   <nav>
     <div class="mx-auto">
-      <a href="../index.html" class="font-display">QUOV</a>
+    <!-- Logo y QUOV juntos -->
+      <a href="../index.html" class="brand-link">
+        <img src="../img/logo.png" alt="QUOV" class="brand-logo">
+        <span class="brand-text">QUOV</span>
+      </a>
       <div class="nav-links-desktop">
         <a href="../index.html" class="nav-link">INICIO</a>
         <a href="../Esqueleto/Catalogo.html#catalogo" class="nav-link">CATÁLOGO</a>
@@ -177,7 +181,12 @@
       <!-- Mensajes del chat -->
       <div class="chat-messages" id="chatMessages">
         <div class="message ia">
-          <div class="message-avatar">🤖</div>
+          <div class="message-avatar">
+            <img src="../img/logo.png" 
+              alt="QUOV IA" 
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            >
+          </div>
           <div class="message-bubble">
             <p>📚 ¡Hola! Soy <strong>QUOV IA</strong>, tu asistente de lectura.</p>
             <p style="margin-top:8px;">Sube un PDF y podré:</p>
@@ -187,7 +196,7 @@
               <li>Hacer resúmenes por capítulos (avisándote si aún no vas tan lejos)</li>
               <li>Responder preguntas con contexto, incluso sobre una imagen que le envíes</li>
             </ul>
-            <p style="margin-top:8px;font-style:italic;">📖 ¡Empieza subiendo tu libro!</p>
+            <p style="margin-top:8px;font-style:italic;">¡Empieza subiendo tu libro!</p>
           </div>
         </div>
       </div>
@@ -217,12 +226,17 @@
       </div>
       <div class="chat-suggestions" id="suggestions">
         <span>💡 Sugerencias:</span>
-        <button class="suggestion-chip" data-text="Hazme un resumen del capítulo 1">📝 Resumen Capítulo 1</button>
+        <button class="suggestion-chip" data-text="Hazme un resumen del libro">📝 Resumen del libro</button>
         <button class="suggestion-chip" data-text="¿De qué trata este libro?">📖 ¿De qué trata?</button>
         <button class="suggestion-chip" data-text="Subraya la idea principal de esta página">🖍️ Subraya esta página</button>
+        <button class="suggestion-chip" data-text="¿Quiénes son los personajes principales?">👤 Personajes principales</button>
+        <button class="suggestion-chip" data-text="¿Cuál es el mensaje del libro?">💡 Mensaje principal</button>
+        <button class="suggestion-chip" data-text="¿Qué opinas del final?">🔚 Opinión del final</button>
+        <button class="suggestion-chip" data-text="Subraya la frase más importante">⭐ Frase importante</button>
+        <button class="suggestion-chip" data-text="¿Cuál es el conflicto principal?">⚔️ Conflicto principal</button>
+        <button class="suggestion-chip" data-text="¿Quiero saber más sobre este libro?">📚 Datos del libro</button>
       </div>
     </div>
-
   </div>
 
   <!-- FOOTER -->

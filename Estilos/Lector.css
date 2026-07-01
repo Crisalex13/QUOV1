@@ -5,7 +5,7 @@
    2. HERO
    3. CONTENEDOR PRINCIPAL
    4. PANEL PDF
-   5. TOOLBAR DEL PDF (cambiar / quitar)
+   5. TOOLBAR DEL PDF
    6. DROP ZONE
    7. VISOR PDF + CAPA DE SUBRAYADO
    8. PANEL CHAT
@@ -115,7 +115,7 @@ body.dark-mode {
 }
 
 /* ============================================
-   5. TOOLBAR DEL PDF (cambiar / quitar)
+   5. TOOLBAR DEL PDF
    ============================================ */
 .pdf-toolbar {
   display: none;
@@ -442,6 +442,7 @@ body.dark-mode #pdfContainer {
    ============================================ */
 .chat-messages {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 16px 18px;
   display: flex;
@@ -467,17 +468,33 @@ body.dark-mode #pdfContainer {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-neutral-100);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-  background: var(--bg-neutral-100);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .message.user .message-avatar {
   background: var(--quov-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message.user .avatar-icon {
   color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
 }
 
 .message-bubble {
@@ -515,13 +532,11 @@ body.dark-mode #pdfContainer {
   border: 1px solid var(--border-light);
 }
 
-/* Mensaje de confirmación de capítulo ("¿estás seguro?") */
 .message-bubble.confirm-msg {
   border-left: 3px solid #f59e0b;
   background: rgba(245, 158, 11, 0.08);
 }
 
-/* Etiqueta de acción de subrayado realizado */
 .action-tag {
   display: inline-flex;
   align-items: center;
@@ -686,13 +701,17 @@ body.dark-mode .action-tag { color: var(--quov-blue-light); }
 
 .chat-suggestions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 8px 16px 12px;
+  flex-wrap: nowrap;          /* wrap */
+  overflow-x: auto;         
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  gap: 8px;                  
+  padding: 10px 16px 12px;
   border-top: 1px solid var(--border-light);
   background: var(--bg-secondary);
   flex-shrink: 0;
   align-items: center;
+  scrollbar-width: thin;
 }
 
 .chat-suggestions span {
@@ -700,6 +719,8 @@ body.dark-mode .action-tag { color: var(--quov-blue-light); }
   color: var(--text-secondary);
   font-weight: 600;
   margin-right: 4px;
+  flex-shrink: 0;            
+  white-space: nowrap;
 }
 
 .suggestion-chip {
@@ -713,6 +734,15 @@ body.dark-mode .action-tag { color: var(--quov-blue-light); }
   transition: all 0.2s;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
+  flex-shrink: 0;           
+}
+
+.chat-suggestions::-webkit-scrollbar {
+  height: 4px;
+}
+.chat-suggestions::-webkit-scrollbar-thumb {
+  background: var(--quov-blue);
+  border-radius: 4px;
 }
 
 .suggestion-chip:hover {
@@ -724,52 +754,283 @@ body.dark-mode .action-tag { color: var(--quov-blue-light); }
 /* ============================================
    12. RESPONSIVE
    ============================================ */
-@media (max-width: 1024px) {
-  .lector-container {
-    flex-direction: column;
-    padding: 20px 16px 40px;
-  }
 
-  .chat-panel {
-    flex: none;
-    max-width: none;
-    height: 55vh;
-    max-height: 500px;
-  }
+/* Teléfonos pequeños 320px – 480px */
+@media (min-width: 320px) and (max-width: 480px) {
+  .lector-hero { padding: 20px 16px 16px; }
+  .lector-hero h1 { font-size: 1.4rem; }
+  .lector-hero p { font-size: 0.78rem; }
 
-  .pdf-panel {
-    min-height: 400px;
-  }
+  .lector-container { flex-direction: column; padding: 12px 12px 24px; gap: 14px; min-height: auto; }
+  .pdf-panel { min-height: 300px; border-radius: 14px; }
+
+  .drop-zone { padding: 16px 12px; margin: 10px; border-radius: 12px; }
+  .drop-zone-icon { font-size: 1.6rem; }
+  .drop-zone-title { font-size: 0.8rem; }
+  .drop-zone-sub { font-size: 0.7rem; }
+
+  .pdf-toolbar { padding: 8px 10px; flex-wrap: wrap; gap: 6px; }
+  .pdf-toolbar-name { font-size: 0.75rem; max-width: 120px; }
+  .pdf-toolbar-meta { font-size: 0.6rem; }
+  .pdf-toolbar-actions button { padding: 4px 8px; font-size: 0.65rem; }
+  .pdf-toolbar-actions button span { display: none; }
+
+  .pdf-viewer { min-height: 250px; }
+  #pdfContainer { min-height: 200px; padding: 6px; }
+  .pdf-controls { padding: 8px 10px; gap: 8px; flex-wrap: wrap; }
+  .pdf-controls button { padding: 4px 10px; font-size: 0.7rem; }
+  #pageInfo { font-size: 0.7rem; min-width: 60px; }
+  .pdf-loading { padding: 20px; }
+  .pdf-loading .spinner { width: 30px; height: 30px; }
+
+  .chat-panel { height: 55vh; max-height: 400px; min-width: auto; max-width: none; border-radius: 14px; }
+  .chat-header { padding: 10px 12px; }
+  .chat-avatar { width: 28px; height: 28px; }
+  .chat-title { font-size: 0.8rem; }
+  .chat-subtitle { font-size: 0.6rem; }
+  .chat-clear-btn { font-size: 0.75rem; padding: 2px 6px; }
+
+  .chat-messages { padding: 10px 12px; gap: 8px; }
+  .message { gap: 6px; }
+  .message-avatar { width: 26px; height: 26px; }
+  .message.user .avatar-icon { font-size: 0.75rem; }
+  .message-bubble { max-width: 92%; padding: 8px 10px; font-size: 0.75rem; border-radius: 10px; }
+  .message-bubble .msg-image { max-width: 120px; }
+  .action-tag { font-size: 0.65rem; padding: 3px 8px; }
+
+  .attachment-preview { padding: 6px 12px; }
+  .attachment-preview img { width: 28px; height: 28px; }
+  .attachment-name { font-size: 0.65rem; }
+
+  .chat-input-area { padding: 6px 10px; gap: 6px; }
+  .attach-btn { width: 32px; height: 32px; font-size: 0.7rem; }
+  .chat-input-area textarea { min-height: 32px; max-height: 60px; padding: 6px 10px; font-size: 0.72rem; border-radius: 8px; }
+  .chat-input-area button#sendBtn { width: 34px; height: 34px; font-size: 0.8rem; }
+
+  .chat-suggestions { padding: 4px 10px 8px; gap: 4px; }
+  .chat-suggestions span { font-size: 0.6rem; }
+  .suggestion-chip { font-size: 0.6rem; padding: 2px 8px; }
 }
 
-@media (max-width: 640px) {
-  .lector-hero { padding: 24px 16px 20px; }
-  .lector-hero h1 { font-size: 1.5rem; }
+/* Teléfonos medianos 481px – 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .lector-hero { padding: 24px 20px 20px; }
+  .lector-hero h1 { font-size: 1.6rem; }
   .lector-hero p { font-size: 0.82rem; }
 
-  .lector-container { padding: 12px 12px 32px; gap: 16px; }
-
-  .pdf-toolbar { padding: 10px 12px; flex-wrap: wrap; }
-  .pdf-toolbar-actions button span { display: none; }
-  .pdf-toolbar-actions button { padding: 6px 10px; }
+  .lector-container { flex-direction: column; padding: 16px 16px 32px; gap: 16px; min-height: auto; }
+  .pdf-panel { min-height: 350px; border-radius: 16px; }
 
   .drop-zone { padding: 20px 16px; margin: 12px; }
   .drop-zone-icon { font-size: 1.8rem; }
-  .drop-zone-title { font-size: 0.82rem; }
+  .drop-zone-title { font-size: 0.85rem; }
+  .drop-zone-sub { font-size: 0.72rem; }
 
-  #pdfContainer { min-height: 250px; padding: 8px; }
-  .pdf-controls { padding: 8px 12px; gap: 10px; }
-  .pdf-controls button { padding: 4px 10px; font-size: 0.8rem; }
+  .pdf-toolbar { padding: 10px 14px; }
+  .pdf-toolbar-name { font-size: 0.8rem; max-width: 160px; }
+  .pdf-toolbar-meta { font-size: 0.65rem; }
+  .pdf-toolbar-actions button { padding: 4px 10px; font-size: 0.7rem; }
+  .pdf-toolbar-actions button span { display: none; }
 
-  .chat-panel { height: 50vh; max-height: 450px; }
-  .chat-header { padding: 10px 14px; }
+  .pdf-viewer { min-height: 280px; }
+  #pdfContainer { min-height: 220px; padding: 8px; }
+  .pdf-controls { padding: 10px 14px; gap: 12px; }
+  .pdf-controls button { padding: 5px 12px; font-size: 0.75rem; }
+  #pageInfo { font-size: 0.75rem; min-width: 70px; }
+
+  .chat-panel { height: 50vh; max-height: 450px; min-width: auto; max-width: none; border-radius: 16px; }
+  .chat-header { padding: 12px 16px; }
+  .chat-avatar { width: 32px; height: 32px; }
+  .chat-title { font-size: 0.85rem; }
+  .chat-subtitle { font-size: 0.65rem; }
+
   .chat-messages { padding: 12px 14px; gap: 10px; }
-  .message-bubble { font-size: 0.8rem; padding: 8px 12px; max-width: 92%; }
-  .chat-input-area { padding: 8px 12px; gap: 6px; }
-  .chat-input-area textarea { font-size: 0.78rem; padding: 8px 12px; min-height: 36px; }
-  .chat-input-area button#sendBtn { width: 38px; height: 38px; font-size: 0.85rem; }
+  .message-bubble { max-width: 90%; padding: 8px 12px; font-size: 0.8rem; }
+  .message-bubble .msg-image { max-width: 150px; }
+
+  .chat-input-area { padding: 8px 12px; gap: 8px; }
   .attach-btn { width: 36px; height: 36px; }
-  .chat-suggestions { padding: 6px 12px 10px; gap: 4px; }
+  .chat-input-area textarea { min-height: 36px; max-height: 70px; padding: 8px 12px; font-size: 0.78rem; }
+  .chat-input-area button#sendBtn { width: 38px; height: 38px; font-size: 0.85rem; }
+
+  .chat-suggestions { padding: 6px 12px 10px; gap: 5px; }
   .suggestion-chip { font-size: 0.65rem; padding: 3px 10px; }
-  .chat-suggestions span { font-size: 0.65rem; }
+}
+
+/* Tablets 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .lector-hero { padding: 32px 24px 24px; }
+  .lector-hero h1 { font-size: 2rem; }
+  .lector-hero p { font-size: 0.88rem; }
+
+  .lector-container { flex-direction: column; padding: 20px 20px 40px; gap: 20px; min-height: auto; }
+  .pdf-panel { min-height: 400px; }
+
+  .drop-zone { padding: 24px 18px; margin: 14px; }
+  .drop-zone-icon { font-size: 2rem; }
+  .drop-zone-title { font-size: 0.9rem; }
+
+  .pdf-toolbar { padding: 10px 16px; }
+  .pdf-toolbar-name { font-size: 0.82rem; max-width: 200px; }
+  .pdf-toolbar-actions button span { display: inline; }
+  .pdf-toolbar-actions button { padding: 5px 12px; font-size: 0.72rem; }
+
+  .pdf-viewer { min-height: 320px; }
+  #pdfContainer { min-height: 260px; padding: 12px; }
+  .pdf-controls { padding: 10px 16px; gap: 14px; }
+
+  .chat-panel { height: 50vh; max-height: 480px; min-width: auto; max-width: none; }
+  .chat-header { padding: 12px 16px; }
+  .chat-avatar { width: 34px; height: 34px; }
+
+  .chat-messages { padding: 14px 16px; gap: 10px; }
+  .message-bubble { max-width: 88%; font-size: 0.82rem; }
+
+  .chat-input-area { padding: 10px 14px; gap: 8px; }
+  .attach-btn { width: 38px; height: 38px; }
+  .chat-input-area textarea { min-height: 38px; max-height: 70px; font-size: 0.8rem; }
+  .chat-input-area button#sendBtn { width: 40px; height: 40px; }
+
+  .chat-suggestions { padding: 6px 14px 10px; }
+  .suggestion-chip { font-size: 0.7rem; }
+}
+
+/* Laptops / Escritorios pequeños 1024px – 1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .lector-container { padding: 24px 20px 40px; gap: 20px; }
+  .pdf-panel { flex: 1.1; }
+  .chat-panel { flex: 0.7; min-width: 260px; max-width: 360px; height: 65vh; max-height: 700px; }
+  .drop-zone { padding: 28px 18px; }
+  .drop-zone-icon { font-size: 2.2rem; }
+  .pdf-toolbar { padding: 10px 16px; }
+  .pdf-toolbar-name { max-width: 180px; }
+  #pdfContainer { padding: 14px; }
+  .chat-messages { padding: 14px 16px; }
+  .message-bubble { max-width: 85%; font-size: 0.82rem; }
+  .chat-input-area { padding: 10px 14px; }
+  .chat-input-area textarea { font-size: 0.8rem; min-height: 40px; }
+}
+
+/* Escritorios grandes 1280px – 1439px */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .lector-container { padding: 28px 24px 48px; gap: 24px; max-width: 1360px; }
+  .pdf-panel { flex: 1.2; }
+  .chat-panel { flex: 0.8; min-width: 280px; max-width: 400px; height: 68vh; max-height: 750px; }
+  .pdf-toolbar { padding: 12px 18px; }
+  .pdf-toolbar-name { max-width: 220px; }
+  #pdfContainer { padding: 16px; }
+  .message-bubble { max-width: 82%; font-size: 0.85rem; }
+  .chat-input-area { padding: 12px 16px; }
+  .chat-input-area textarea { font-size: 0.82rem; }
+}
+
+/* Pantallas extra grandes 1440px en adelante */
+@media (min-width: 1440px) {
+  .lector-hero { padding: 48px 32px 36px; }
+  .lector-hero h1 { font-size: 3rem; }
+  .lector-hero p { font-size: 1rem; max-width: 700px; }
+
+  .lector-container { padding: 32px 32px 60px; gap: 28px; max-width: 1600px; min-height: 75vh; }
+  .pdf-panel { flex: 1.3; border-radius: 24px; min-height: 500px; }
+
+  .drop-zone { padding: 40px 28px; margin: 20px; border-radius: 20px; }
+  .drop-zone-icon { font-size: 2.8rem; }
+  .drop-zone-title { font-size: 1rem; }
+  .drop-zone-sub { font-size: 0.82rem; }
+
+  .pdf-toolbar { padding: 14px 20px; }
+  .pdf-toolbar-name { font-size: 0.9rem; max-width: 300px; }
+  .pdf-toolbar-meta { font-size: 0.75rem; }
+  .pdf-toolbar-actions button { padding: 8px 16px; font-size: 0.8rem; }
+
+  .pdf-viewer { min-height: 450px; }
+  #pdfContainer { min-height: 400px; padding: 20px; }
+  .pdf-controls { padding: 14px 20px; gap: 20px; }
+  .pdf-controls button { padding: 8px 16px; font-size: 0.85rem; }
+  #pageInfo { font-size: 0.9rem; min-width: 100px; }
+  .pdf-loading .spinner { width: 48px; height: 48px; }
+
+  .chat-panel { flex: 0.8; min-width: 340px; max-width: 460px; height: 72vh; max-height: 850px; border-radius: 24px; }
+  .chat-header { padding: 16px 20px; }
+  .chat-avatar { width: 40px; height: 40px; }
+  .chat-title { font-size: 1rem; }
+  .chat-subtitle { font-size: 0.75rem; }
+  .chat-clear-btn { font-size: 0.95rem; padding: 6px 10px; }
+
+  .chat-messages { padding: 18px 20px; gap: 14px; }
+  .message { gap: 12px; }
+  .message-avatar { width: 36px; height: 36px; }
+  .message.user .avatar-icon { font-size: 1.1rem; }
+  .message-bubble { max-width: 80%; padding: 12px 18px; font-size: 0.9rem; border-radius: 16px; }
+  .message-bubble .msg-image { max-width: 220px; }
+  .action-tag { font-size: 0.78rem; padding: 5px 12px; }
+
+  .attachment-preview { padding: 10px 20px; }
+  .attachment-preview img { width: 40px; height: 40px; }
+  .attachment-name { font-size: 0.8rem; }
+
+  .chat-input-area { padding: 14px 20px; gap: 10px; }
+  .attach-btn { width: 44px; height: 44px; font-size: 1rem; }
+  .chat-input-area textarea { min-height: 46px; max-height: 90px; padding: 12px 16px; font-size: 0.85rem; border-radius: 14px; }
+  .chat-input-area button#sendBtn { width: 48px; height: 48px; font-size: 1.1rem; }
+
+  .chat-suggestions { padding: 10px 20px 14px; gap: 8px; }
+  .chat-suggestions span { font-size: 0.76rem; }
+  .suggestion-chip { font-size: 0.76rem; padding: 5px 14px; }
+}
+
+/* Landscape en móviles */
+@media (max-width: 767px) and (orientation: landscape) {
+  .lector-container { flex-direction: row; padding: 12px 16px 20px; gap: 12px; min-height: 80vh; }
+  .pdf-panel { min-height: 250px; flex: 1.5; }
+  .chat-panel { height: 80vh; max-height: 400px; flex: 1; min-width: 200px; max-width: 350px; }
+  #pdfContainer { min-height: 150px; }
+  .chat-messages { padding: 8px 10px; gap: 6px; }
+  .message-bubble { font-size: 0.7rem; padding: 6px 10px; }
+  .message-avatar { width: 22px; height: 22px; }
+  .message.user .avatar-icon { font-size: 0.7rem; }
+  .chat-input-area { padding: 4px 8px; }
+  .chat-input-area textarea { min-height: 28px; max-height: 50px; font-size: 0.7rem; padding: 4px 8px; }
+  .attach-btn { width: 28px; height: 28px; font-size: 0.6rem; }
+  .chat-input-area button#sendBtn { width: 30px; height: 30px; font-size: 0.7rem; }
+  .drop-zone { padding: 12px 10px; margin: 8px; }
+  .drop-zone-icon { font-size: 1.2rem; }
+  .drop-zone-title { font-size: 0.7rem; }
+  .drop-zone-sub { font-size: 0.6rem; }
+  .lector-hero { padding: 12px 16px 8px; }
+  .lector-hero h1 { font-size: 1.2rem; }
+  .lector-hero p { font-size: 0.7rem; }
+  .pdf-controls { padding: 4px 8px; gap: 6px; }
+  .pdf-controls button { padding: 2px 8px; font-size: 0.65rem; }
+  #pageInfo { font-size: 0.65rem; min-width: 50px; }
+  .chat-suggestions { padding: 4px 8px 6px; gap: 3px; }
+  .suggestion-chip { font-size: 0.55rem; padding: 2px 6px; }
+  .chat-suggestions span { font-size: 0.55rem; }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 319px) {
+  .lector-hero h1 { font-size: 1.2rem; }
+  .lector-hero p { font-size: 0.7rem; }
+  .lector-container { padding: 8px 8px 16px; gap: 10px; }
+  .drop-zone { padding: 12px 8px; margin: 6px; }
+  .drop-zone-icon { font-size: 1.2rem; }
+  .drop-zone-title { font-size: 0.7rem; }
+  .drop-zone-sub { font-size: 0.6rem; }
+  .chat-panel { height: 50vh; max-height: 350px; }
+  .chat-messages { padding: 6px 8px; gap: 6px; }
+  .message-bubble { font-size: 0.65rem; padding: 4px 8px; max-width: 95%; }
+  .message-avatar { width: 20px; height: 20px; }
+  .message.user .avatar-icon { font-size: 0.6rem; }
+  .chat-input-area { padding: 4px 6px; gap: 4px; }
+  .chat-input-area textarea { min-height: 28px; max-height: 40px; font-size: 0.65rem; padding: 4px 6px; }
+  .attach-btn { width: 26px; height: 26px; font-size: 0.5rem; }
+  .chat-input-area button#sendBtn { width: 28px; height: 28px; font-size: 0.65rem; }
+  #pdfContainer { min-height: 150px; padding: 4px; }
+  .pdf-controls { padding: 4px 6px; gap: 4px; }
+  .pdf-controls button { padding: 2px 6px; font-size: 0.6rem; }
+  #pageInfo { font-size: 0.6rem; min-width: 40px; }
+  .chat-suggestions { padding: 2px 6px 4px; }
+  .suggestion-chip { font-size: 0.5rem; padding: 1px 6px; }
+  .chat-suggestions span { font-size: 0.5rem; }
 }

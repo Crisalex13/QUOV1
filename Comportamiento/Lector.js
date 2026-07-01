@@ -25,13 +25,13 @@ let pdfDoc = null;
 let currentPage = 1;
 let totalPages = 0;
 let fullText = '';
-let pageTexts = [];        // texto plano por página (índice 0 = página 1)
-let chapterMap = [];        // [{ num: 1, page: 3 }, ...] detectados en el libro
+let pageTexts = [];
+let chapterMap = [];
 let currentFileName = '';
 let isProcessing = false;
 let chatHistory = [];
-let currentPageTextContent = null; // textContent (items + viewport) de la página visible, para subrayar
-let attachedImage = null;   // { base64, mediaType, name }
+let currentPageTextContent = null;
+let attachedImage = null;
 
 // Elementos DOM
 const dropZone = document.getElementById('dropZone');
@@ -101,7 +101,6 @@ function loadPDF(file) {
   currentFileName = file.name;
   currentBookName.textContent = currentFileName;
 
-  // Mostrar loading
   pdfLoadingText.textContent = 'Cargando libro...';
   pdfLoading.classList.add('show');
   pdfViewer.classList.remove('show');
@@ -116,30 +115,24 @@ function loadPDF(file) {
       totalPages = pdfDoc.numPages;
       currentPage = 1;
 
-      // Extraer texto completo + detectar capítulos
       pdfLoadingText.textContent = 'Leyendo todas las páginas...';
       await extractFullText(pdfDoc);
       detectarCapitulos();
 
-      // Renderizar primera página
       await renderPage(currentPage);
 
-      // Actualizar controles
       pdfLoading.classList.remove('show');
       pdfViewer.classList.add('show');
       updateControls();
 
-      // Mostrar toolbar con info del archivo
       pdfToolbarName.textContent = currentFileName;
       pdfToolbarMeta.textContent = `${totalPages} páginas` + (chapterMap.length ? ` · ${chapterMap.length} capítulos detectados` : '');
       pdfToolbar.classList.add('show');
 
-      // Habilitar chat
       chatInput.disabled = false;
       sendBtn.disabled = false;
       attachImageBtn.disabled = false;
 
-      // Mensaje de bienvenida con resumen automático
       await generarResumenAutomatico();
 
     } catch (error) {
@@ -167,11 +160,9 @@ async function renderPage(pageNum) {
 
   await page.render({ canvasContext: context, viewport: viewport }).promise;
 
-  // Guardamos el contenido de texto + viewport de ESTA página para poder subrayar sobre ella
   const textContent = await page.getTextContent();
   currentPageTextContent = { items: textContent.items, viewport };
 
-  // Armamos el wrapper con canvas + capa de subrayado encima
   pdfContainer.innerHTML = '';
   const wrap = document.createElement('div');
   wrap.className = 'pdf-page-wrap';
@@ -218,7 +209,6 @@ async function extractFullText(doc) {
   fullText = text;
 }
 
-// Convierte números romanos básicos (I, II, III, IV...) a número arábigo
 function romanoANumero(roman) {
   const valores = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
   let total = 0;
@@ -233,7 +223,6 @@ function romanoANumero(roman) {
   return total || null;
 }
 
-// Busca encabezados de capítulo ("Capítulo 3", "Capítulo III", etc.) en cada página
 function detectarCapitulos() {
   chapterMap = [];
   const regex = /cap[ií]tulo\s+([0-9]+|[ivxlcdm]+)\b/i;
@@ -245,7 +234,6 @@ function detectarCapitulos() {
     if (isNaN(num)) num = romanoANumero(match[1]);
     if (!num) return;
 
-    // Evitar duplicados del mismo capítulo (p.ej. mencionado varias veces en la misma página)
     const yaExiste = chapterMap.some(c => c.num === num);
     if (!yaExiste) {
       chapterMap.push({ num, page: idx + 1 });
@@ -255,7 +243,6 @@ function detectarCapitulos() {
   chapterMap.sort((a, b) => a.page - b.page);
 }
 
-// Estima en qué capítulo va el lector según la página actual
 function capituloActualEstimado(pagina) {
   if (chapterMap.length > 0) {
     let ultimo = null;
@@ -265,7 +252,6 @@ function capituloActualEstimado(pagina) {
     }
     return ultimo ? ultimo.num : (chapterMap[0] ? 0 : null);
   }
-  // Fallback si no se detectaron encabezados de capítulo: aproximación por páginas
   return Math.max(1, Math.ceil(pagina / 10));
 }
 
@@ -275,12 +261,11 @@ function capituloActualEstimado(pagina) {
 function normalizar(str) {
   return str
     .toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // quita acentos
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-// Busca un fragmento de texto dentro de los items de la página actual y dibuja el subrayado
 function subrayarEnPaginaActual(textoBuscado) {
   const layer = document.getElementById('highlightLayer');
   if (!layer || !currentPageTextContent) return false;
@@ -291,7 +276,6 @@ function subrayarEnPaginaActual(textoBuscado) {
   const objetivo = normalizar(textoBuscado);
   if (!objetivo) return false;
 
-  // Construimos el texto concatenado de la página y un mapa de a qué item pertenece cada carácter
   let concat = '';
   const mapaItem = [];
   items.forEach((item, i) => {
@@ -302,7 +286,6 @@ function subrayarEnPaginaActual(textoBuscado) {
 
   let inicio = concat.indexOf(objetivo);
 
-  // Si no encuentra el fragmento completo, probamos solo con las primeras palabras (más tolerante)
   if (inicio === -1) {
     const palabras = objetivo.split(' ').filter(w => w.length > 2).slice(0, 6).join(' ');
     if (palabras) inicio = concat.indexOf(palabras);
@@ -330,7 +313,6 @@ function subrayarEnPaginaActual(textoBuscado) {
   return itemsAfectados.size > 0;
 }
 
-// Calcula la posición/tamaño en píxeles de un item de texto de PDF.js dentro del viewport renderizado
 function obtenerRectDeItem(item, viewport) {
   const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
   const fontHeight = Math.hypot(tx[2], tx[3]);
@@ -343,7 +325,6 @@ function obtenerRectDeItem(item, viewport) {
   };
 }
 
-// Va a la página indicada y, una vez renderizada, intenta subrayar el texto solicitado
 async function irYSubrayar(pagina, texto) {
   if (pagina < 1 || pagina > totalPages) return false;
   if (pagina !== currentPage) {
@@ -363,7 +344,6 @@ chatInput.addEventListener('keydown', e => {
   }
 });
 
-// Sugerencias
 document.querySelectorAll('.suggestion-chip').forEach(chip => {
   chip.addEventListener('click', () => {
     chatInput.value = chip.dataset.text;
@@ -379,13 +359,11 @@ async function enviarMensaje() {
   isProcessing = true;
   sendBtn.disabled = true;
 
-  // Mostrar mensaje del usuario (con imagen si la adjuntó)
   agregarMensajeUsuario(texto, attachedImage);
 
   const imagenParaEnviar = attachedImage;
   limpiarAdjunto();
 
-  // ¿Pidió un capítulo que todavía no alcanza? Respondemos sin llamar a la IA.
   const confirmacion = revisarConfirmacionCapitulo(texto);
   if (confirmacion) {
     agregarMensaje('ia', confirmacion, true);
@@ -395,7 +373,6 @@ async function enviarMensaje() {
     return;
   }
 
-  // Mostrar indicador de escritura
   const loadingId = agregarMensajeLoading();
 
   try {
@@ -429,7 +406,6 @@ async function enviarMensaje() {
   scrollChat();
 }
 
-// Revisa si el usuario pide un resumen/análisis de un capítulo que aún no ha leído
 function revisarConfirmacionCapitulo(pregunta) {
   const match = /cap[ií]tulo\s+(\d+|[ivxlcdm]+)/i.exec(pregunta);
   if (!match) return null;
@@ -449,7 +425,6 @@ Te recomiendo seguir leyendo hasta el capítulo ${capituloPedido} para que el re
   return null;
 }
 
-// Extrae la etiqueta [HIGHLIGHT página=N]texto[/HIGHLIGHT] de la respuesta de la IA, si existe
 function extraerAccionDeSubrayado(respuesta) {
   const regex = /\[HIGHLIGHT\s+p[aá]gina=(\d+)\]([\s\S]*?)\[\/HIGHLIGHT\]/i;
   const match = regex.exec(respuesta);
@@ -594,8 +569,23 @@ function agregarMensaje(tipo, texto, esConfirmacion) {
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\n/g, '<br>');
 
+  let avatarHtml = '';
+  if (tipo === 'user') {
+    avatarHtml = `
+      <div class="message-avatar">
+        <span class="avatar-icon">👤</span>
+      </div>
+    `;
+  } else {
+    avatarHtml = `
+      <div class="message-avatar">
+        <img src="../img/logo.png" alt="QUOV IA" class="avatar-img">
+      </div>
+    `;
+  }
+
   div.innerHTML = `
-    <div class="message-avatar">${tipo === 'user' ? '👤' : '🤖'}</div>
+    ${avatarHtml}
     <div class="message-bubble${esConfirmacion ? ' confirm-msg' : ''}">${contenido}</div>
   `;
 
@@ -616,7 +606,9 @@ function agregarMensajeUsuario(texto, imagen) {
   const contenido = (texto || '').replace(/\n/g, '<br>');
 
   div.innerHTML = `
-    <div class="message-avatar">👤</div>
+    <div class="message-avatar">
+      <span class="avatar-icon">👤</span>
+    </div>
     <div class="message-bubble">${imgHtml}${contenido}</div>
   `;
 
@@ -630,7 +622,9 @@ function agregarMensajeLoading() {
   div.className = 'message ia loading-message';
   div.id = 'loadingMsg';
   div.innerHTML = `
-    <div class="message-avatar">🤖</div>
+    <div class="message-avatar">
+      <img src="../img/logo.png" alt="QUOV IA" class="avatar-img">
+    </div>
     <div class="message-bubble">
       <span class="loading-dots">Pensando<span>.</span><span>.</span><span>.</span></span>
     </div>
@@ -659,10 +653,8 @@ clearChatBtn.addEventListener('click', () => {
   }
 });
 
-// "Cambiar" -> abre el selector de archivos directamente para subir otro PDF
 changePdfBtn.addEventListener('click', () => fileInput.click());
 
-// "Quitar" -> borra el PDF actual y regresa a la pantalla inicial
 removePdfBtn.addEventListener('click', () => {
   if (confirm('¿Quitar este PDF? Perderás el contexto de lectura actual.')) {
     resetLector();
