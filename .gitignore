@@ -14,3 +14,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Pruebas
+Pruebas/Escaner.css
+Pruebas/Escaner.js

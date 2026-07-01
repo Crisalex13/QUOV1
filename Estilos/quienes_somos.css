@@ -49,8 +49,8 @@ body {
   --quov-black-light: #1a1a1a;
   --quov-white: #ffffff;
   --quov-white-dark: #f5f5f5;
-  --quov-gray: #0059ff; /* Fundador */
-  --quov-gray-light: #00d9ff; /* QUOV letras fuertes*/
+  --quov-gray: #0059ff;
+  --quov-gray-light: #00d9ff;
   --borde-seccion: 2px solid #00bfff78;
 
   /* ---- FONDOS Y TEXTOS ---- */
@@ -650,12 +650,49 @@ body.dark-mode {
   color: var(--team-overlay-text);
   padding: 60px 20px 20px;
   text-align: center;
-    transition: bottom 0.3s ease;
+  transition: bottom 0.3s ease;
   pointer-events: none;
 }
 
 .team-card-new:hover .card-overlay-new {
   bottom: 0;
+}
+
+/* Botón "Ver perfil" - Estilos base */
+.card-overlay-new span {
+  display: inline-block;
+  background: var(--quov-blue-dark);
+  padding: 9px 22px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: 'Syne', sans-serif;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--quov-white) !important;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-overlay-new span:hover {
+  background: var(--quov-blue) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
+  color: var(--quov-white) !important;
+}
+
+.card-overlay-new span:active {
+  transform: scale(0.98);
+  background: var(--quov-blue-dark) !important;
+  color: var(--quov-white) !important;
+}
+
+.team-card-new:hover .card-overlay-new span {
+  color: var(--quov-white) !important;
+  background: var(--quov-blue) !important;
 }
 
 .team-info-new {
@@ -677,41 +714,6 @@ body.dark-mode {
   font-size: 0.9rem;
   margin-bottom: 10px;
   text-align: center;
-}
-
-/* Botón "Ver perfil" */
-.card-overlay-new span {
-  display: inline-block;
-  background: var(--quov-blue-dark);
-  padding: 9px 22px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  font-family: 'Syne', sans-serif;
-  pointer-events: auto;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: var(--quov-white) !important;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-}
-
-.card-overlay-new span:hover {
-  background: var(--quov-blue) !important;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
-  color: var(--quov-white) !important;
-}
-
-.card-overlay-new span:active {
-  transform: scale(0.98);
-  background: var(--quov-blue-dark) !important;
-  color: var(--quov-white) !important;
-}
-
-.team-card-new:hover .card-overlay-new span {
-  color: var(--quov-white) !important;
-  background: var(--quov-blue) !important;
 }
 
 /* Video wrapper */
@@ -785,6 +787,17 @@ body.dark-mode {
   overflow: hidden;
   box-shadow: 0 15px 40px var(--profile-card-shadow);
   animation: profileSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes profileSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 #profileCard img {
@@ -1135,15 +1148,25 @@ body.dark-mode {
     font-size: 0.8rem;
   }
 
-  .card-overlay-new span {
-    padding: 6px 16px !important;
-    font-size: 0.7rem !important;
-    min-width: 90px !important;
+  /* === FIX BOTÓN VER PERFIL EN MÓVIL === */
+  .team-card-new .card-overlay-new {
+    bottom: 0 !important;
+    pointer-events: auto !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 60%) !important;
+    padding: 50px 15px 15px !important;
+    opacity: 1 !important;
   }
 
-  .team-card-new .card-overlay-new {
-    bottom: -65px !important;
-    padding: 55px 15px 15px !important;
+  .card-overlay-new span {
+    padding: 10px 20px !important;
+    font-size: 0.8rem !important;
+    min-width: 100px !important;
+    min-height: 44px !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+    position: relative !important;
   }
 }
 
@@ -1200,6 +1223,23 @@ body.dark-mode {
     padding: 12px 32px;
     font-size: 0.95rem;
   }
+
+  /* === FIX BOTÓN VER PERFIL EN MÓVIL === */
+  .team-card-new .card-overlay-new {
+    bottom: 0 !important;
+    pointer-events: auto !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%) !important;
+    padding: 45px 15px 15px !important;
+  }
+
+  .card-overlay-new span {
+    padding: 10px 22px !important;
+    font-size: 0.85rem !important;
+    min-width: 110px !important;
+    min-height: 44px !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
+  }
 }
 
 /* Tablets (768px - 991px) */
@@ -1238,6 +1278,22 @@ body.dark-mode {
 
   .team-video-wrapper {
     width: 320px;
+  }
+
+  /* === FIX BOTÓN VER PERFIL EN TABLET === */
+  .team-card-new .card-overlay-new {
+    bottom: 0 !important;
+    pointer-events: auto !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%) !important;
+    padding: 40px 15px 15px !important;
+  }
+
+  .card-overlay-new span {
+    padding: 8px 18px !important;
+    font-size: 0.8rem !important;
+    min-height: 40px !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
   }
 }
 
@@ -1496,6 +1552,21 @@ body.dark-mode {
   .team-info-new h3 {
     font-size: 0.85rem;
   }
+
+  /* === FIX BOTÓN VER PERFIL EN LANDSCAPE === */
+  .team-card-new .card-overlay-new {
+    bottom: 0 !important;
+    pointer-events: auto !important;
+    padding: 30px 10px 10px !important;
+  }
+
+  .card-overlay-new span {
+    padding: 6px 14px !important;
+    font-size: 0.7rem !important;
+    min-height: 36px !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
+  }
 }
 
 /* Móviles muy pequeños (<320px) */
@@ -1557,5 +1628,21 @@ body.dark-mode {
   .catalog-btn {
     padding: 8px 20px;
     font-size: 0.75rem;
+  }
+
+  /* === FIX BOTÓN VER PERFIL === */
+  .team-card-new .card-overlay-new {
+    bottom: 0 !important;
+    pointer-events: auto !important;
+    padding: 40px 10px 10px !important;
+  }
+
+  .card-overlay-new span {
+    padding: 6px 12px !important;
+    font-size: 0.65rem !important;
+    min-height: 34px !important;
+    min-width: 80px !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
   }
 }

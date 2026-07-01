@@ -1,12 +1,13 @@
 /* ============================================ 
-TABLA DE CONTENIDO - QUIENES SOMOS.JS 
-============================================ 
-1. EFECTO DE TARJETAS DE EQUIPO (Modal de perfil)
-2. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO
-3. TARJETAS QUOV - CLIC PARA TODOS
-============================================ */
+   TABLA DE CONTENIDO - QUIENES_SOMOS.JS 
+   ============================================ 
+   1. EFECTO DE TARJETAS DE EQUIPO (Modal de perfil)
+   2. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO
+   3. TARJETAS QUOV - CLIC PARA TODOS
+   ============================================ */
 
-// 1. EFECTO DE TARJETAS DE EQUIPO
+// 1. EFECTO DE TARJETAS DE EQUIPO 
+
 function openProfile(name, role, img, desc, facebook, instagram, tiktok) {
   document.getElementById('profileName').textContent = name;
   document.getElementById('profileRole').textContent = role;
@@ -40,10 +41,30 @@ function closeProfile() {
 }
 
 document.querySelectorAll('.team-card-new').forEach(card => {
+  // Función para abrir el perfil desde la tarjeta
+  const openCardProfile = (e) => {
+    // Si el clic fue en el botón, no hacemos nada 
+    const isButton = e.target.closest('.card-overlay-new span');
+    if (!isButton) {
+      // Abrimos el perfil desde los datos de la tarjeta
+      openProfile(
+        card.dataset.name,
+        card.dataset.role,
+        card.dataset.img,
+        card.dataset.desc,
+        card.dataset.facebook,
+        card.dataset.instagram,
+        card.dataset.tiktok
+      );
+    }
+  };
+  
+  card.addEventListener('click', openCardProfile);
+  
   const btn = card.querySelector('.card-overlay-new span');
   if (btn) {
     btn.addEventListener('click', function(e) {
-      e.stopPropagation();
+      e.stopPropagation(); // Evita que se dispare el clic de la tarjeta
       openProfile(
         card.dataset.name,
         card.dataset.role,
@@ -57,11 +78,20 @@ document.querySelectorAll('.team-card-new').forEach(card => {
   }
 });
 
+// Cerrar con tecla Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeProfile();
 });
 
+// Cerrar modal al hacer clic en el fondo (blur)
+document.getElementById('profileBlur')?.addEventListener('click', closeProfile);
+
+console.log('✅ Tarjetas de equipo: modo táctil mejorado');
+
+// ============================================
 // 2. ANIMACIÓN AUTOMÁTICA DE TARJETAS MVO (FLIP AUTOMÁTICO + HOVER)
+// ============================================
+
 (function initAutoFlipCards() {
   setTimeout(() => {
     const cards = document.querySelectorAll('.mvo-card');
@@ -146,7 +176,10 @@ document.addEventListener('keydown', e => {
   }, 500);
 })();
 
+// ============================================
 // 3. TARJETAS QUOV - CLIC PARA TODOS 
+// ============================================
+
 (function initQuovCards() {
   const quovCards = document.querySelectorAll('.quov-card');
   
